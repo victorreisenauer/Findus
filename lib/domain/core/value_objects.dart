@@ -18,4 +18,6 @@ abstract class ValueObject<T> {
   
   @override
   String toString() => 'EmailAddress($value)';
+
+  bool isValid() => value.isRight();
 }

@@ -14,6 +14,7 @@ dependencies:
 # automatically update versions. Change to static versions for compatibility once more developers work on this project. 
   dartz: 
   freezed_annotation:
+  flutter_bloc:
 
 dev_dependencies:
   flutter_test:
