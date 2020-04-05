@@ -35,3 +35,10 @@ The domain layer is used for:
 
 Infrastructure layer:
 The infrastructure layer is composed of two parts - low-level data sources and high level repositories. Additionally, this layer holds data transfer objects (DTOs). It deals with APIs, Firebase libraries, databases and device sensors.
+
+
+
+Other design patterns to keep in mind:
+
+Facade:
+used for connecting two or more interfaces into one unified interface. It is on the same layer level as Repositories, so it should not let any Exceptions permittate to "higher" layers.
