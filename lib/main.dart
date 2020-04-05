@@ -1,16 +1,8 @@
-import 'package:lrs_app_v3/domain/auth/value_objects.dart';
+import 'package:flutter/material.dart';
+import 'package:lrs_app_v3/presenation/lrs_app.dart';
 
 void main() {
-  f();
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(LrsApp());
 }
 
-
-f() {
-  final email = EmailAddress('hello@hello.com');
-  final shortPassword = Password('damn');
-  final longPassword = Password('damnnnnn');
-
-  print(email.value);
-  print(shortPassword.value);
-  print(longPassword.value);
-}
