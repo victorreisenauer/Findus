@@ -38,7 +38,11 @@ The infrastructure layer is composed of two parts - low-level data sources and h
 
 
 
-Other design patterns to keep in mind:
+Things to keep in mind:
 
 Facade:
 used for connecting two or more interfaces into one unified interface. It is on the same layer level as Repositories, so it should not let any Exceptions permittate to "higher" layers.
+
+Freezed:
+Freezed is a package that helps create data classes (as known from Cotlin) to reduce boilerplate code. Run 'flutter pub run build_runner watch --delete-conflicting-outputs' to create/rebuild classes with the @freeze property. More on freeze here: https://resocoder.com/2020/02/11/freezed-data-class-union-in-one-dart-package/
+
