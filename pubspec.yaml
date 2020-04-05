@@ -9,11 +9,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
-  http:
-  test:
-  flutter_bloc:
-  auto_orientation:
-  equatable:
   lrs_data_client:
     git: git@git.hndrk.xyz:lrs-app/data-client.git
 
