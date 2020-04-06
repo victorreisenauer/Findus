@@ -19,7 +19,7 @@ class LrsApp extends StatelessWidget {
 
       child: MaterialApp(
         title: "LRS App",
-        initialRoute: Router.initialPage,    
+        initialRoute: Router.signInPage,    
         onGenerateRoute: Router.onGenerateRoute,
         navigatorKey: Router.navigatorKey, 
       ),

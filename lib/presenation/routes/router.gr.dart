@@ -7,12 +7,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/router_utils.dart';
-import 'package:lrs_app_v3/presenation/pages/initial_page.dart';
-import 'package:lrs_app_v3/presenation/pages/home_page.dart';
-import 'package:lrs_app_v3/presenation/pages/exercise_page.dart';
+import 'package:lrs_app_v3/presenation/pages/sign_in/sign_in_page.dart';
+import 'package:lrs_app_v3/presenation/pages/home/home_page.dart';
+import 'package:lrs_app_v3/presenation/pages/exercise/exercise_page.dart';
 
 class Router {
-  static const initialPage = '/';
+  static const signInPage = '/';
   static const homePage = '/home-page';
   static const exercisePage = '/exercise-page';
   static GlobalKey<NavigatorState> get navigatorKey =>
@@ -22,9 +22,9 @@ class Router {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
-      case Router.initialPage:
+      case Router.signInPage:
         return MaterialPageRoute(
-          builder: (_) => InitialPage(),
+          builder: (_) => SignInPage(),
           settings: settings,
         );
       case Router.homePage:
