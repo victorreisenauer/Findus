@@ -20,7 +20,7 @@ abstract class User with _$User implements IEntity {
   }) = _User;
 }
 
-/*
+/* TODO make work: 
 extension UserX on User {
   Option<ValueFailure<dynamic>> get failureOption {
     return name.failureOrUnit

@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-
+import 'package:lrs_app_v3/injection.dart';
 import 'package:lrs_app_v3/presenation/pages/sign_in/sign_in_page.dart/';
+import 'package:lrs_app_v3/application/auth/auth_bloc.dart';
 
 
 class LrsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+        ),
+      ],
+
+      child: MaterialApp(
         title: "LRS App",
         initialRoute: '/sign_in',    
         routes: {
           '/sign_in' : (context) => SignInPage(),
         }  
+      ),
     );
   }
 }
