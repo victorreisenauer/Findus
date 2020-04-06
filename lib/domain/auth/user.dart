@@ -12,6 +12,7 @@ import 'package:lrs_app_v3/domain/core/entitiy.dart';
 part 'user.freezed.dart';
 
 @freezed
+/// is an Entity that represents a user with related id, name and email address
 abstract class User with _$User implements IEntity {
   const factory User({
     @required UniqueId id,

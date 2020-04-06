@@ -8,6 +8,10 @@ import 'errors.dart';
 import 'common_interfaces.dart';
 
 @immutable
+/// Value Objects either contain a Failure, or a value.
+/// They represent any value that needs to be passed around 
+/// between application and infrastructure layers and are part of the domain layer.
+/// They are based on Functional Programming Principles. 
 abstract class ValueObject<T> implements IValidatable {
   const ValueObject();
   Either<ValueFailure<T>, T> get value;
@@ -30,6 +34,7 @@ abstract class ValueObject<T> implements IValidatable {
   }
 
   @override
+  ///returns true when object contained within is data, not a Failure
   bool isValid() {
     return value.isRight();
   }
@@ -47,6 +52,7 @@ abstract class ValueObject<T> implements IValidatable {
   String toString() => 'Value($value)';
 }
 
+/// Is a ValueObject that represents any unique ids
 class UniqueId extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
