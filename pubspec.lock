@@ -338,10 +338,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: efb6bf8299b59503f00a08a9af7a16c467e5e45b
+      resolved-ref: ebcddd262f384ae64fd11f58f1e5e3b5d48526d1
       url: "git@git.hndrk.xyz:lrs-app/data-client.git"
     source: git
-    version: "1.1.0-alpha"
+    version: "1.2.0-alpha"
   matcher:
     dependency: transitive
     description:
