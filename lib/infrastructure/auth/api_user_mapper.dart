@@ -11,7 +11,7 @@ class ApiUserMapper {
     return _user == null
         ? null
         : User(
-            id: UniqueId.fromFirebaseId(_user.id.toString()),
+            id: UniqueId.fromApiId(_user.id.toString()),
             name: StringSingleLine(_user.name),
             emailAddress: EmailAddress(_user.email),
           );

@@ -52,7 +52,8 @@ abstract class ValueObject<T> implements IValidatable {
   String toString() => 'Value($value)';
 }
 
-/// Is a ValueObject that represents any unique ids
+/// ValueObject that represents uniqueIds for users in application, 
+/// so the app is independent of userIds in backend. 
 class UniqueId extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
@@ -64,7 +65,7 @@ class UniqueId extends ValueObject<String> {
     );
   }
 
-  factory UniqueId.fromFirebaseId(String firebaseId) {
+  factory UniqueId.fromApiId(String firebaseId) {
     assert(firebaseId != null);
     return UniqueId._(
       right(firebaseId),

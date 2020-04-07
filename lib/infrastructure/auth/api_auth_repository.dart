@@ -20,6 +20,7 @@ import 'api_user_mapper.dart';
 ///This repository only serves as placeholder, as implementation will happen only after
 ///testing all other layers (except presentation).
 class ApiAuthRepository implements IAuthFacade {
+  // temporary local initialization
   final lrs_api.Api api  = lrs_api.Api("https://api.lrs.hndrk.xyz/");
   final ApiUserMapper _apiUserMapper = ApiUserMapper();
 
@@ -34,20 +35,12 @@ class ApiAuthRepository implements IAuthFacade {
       // Session was supplied and is invalid...
     if (!await api.validateSession() && api.session != null) {
       print("ERROR: Your session is invalid.");
-
-    if (api.session == null) api.login(
-      username: "Admin", 
-      password: "admin"
-      );
     }
   }
-
 
   @override
   Future<Option<User>> getSignedInUser() async => this.api
   .currentUser.then((u) => optionOf(_apiUserMapper.toDomain(u)));
-  //.then(u) => optionOf(_apiUserMapper.toDomain(u));
-
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -57,12 +50,8 @@ class ApiAuthRepository implements IAuthFacade {
     final emailAddressStr = emailAddress.value.getOrElse(() => 'INVALID EMAIL');
     final passwordStr = password.value.getOrElse(() => 'INVALID PASSWORD');
     try {
-      return await api
-          .create(
-            username: emailAddressStr,
-            password: passwordStr,
-          )
-          .then((_) => right(unit));
+      api.create(username: emailAddressStr,password: passwordStr);
+      return api.currentUser.then((_) => right(unit));
     } on PlatformException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
         return left(const AuthFailure.emailAlreadyInUse());
@@ -80,10 +69,8 @@ class ApiAuthRepository implements IAuthFacade {
     final emailAddressStr = emailAddress.value.getOrElse(() => 'INVALID EMAIL');
     final passwordStr = password.value.getOrElse(() => 'INVALID PASSWORD');
     try {
-      return await api.login(
-        username: emailAddressStr, 
-        password: passwordStr
-        ).then((_) => right(unit));
+      api.login(username: emailAddressStr, password: passwordStr);
+      return await api.currentUser.then((_) => right(unit));
     } on PlatformException catch (e) {
       if (e.code == 'ERROR_WRONG_PASSWORD' ||
           e.code == 'ERROR_USER_NOT_FOUND') {
@@ -98,7 +85,6 @@ class ApiAuthRepository implements IAuthFacade {
     return null;
   }
   
-
   @override
   Future<void> signOut() async {
     api.logout();
