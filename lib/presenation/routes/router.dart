@@ -8,7 +8,6 @@ import 'package:lrs_app_v3/presenation/pages/exercise/exercise_page.dart';
 class $Router {
   @initial
   SignInPage signInPage;
-
   HomePage homePage;
   ExercisePage exercisePage;
 }
