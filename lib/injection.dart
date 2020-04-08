@@ -6,10 +6,6 @@ import 'package:lrs_app_v3/injection.iconfig.dart';
 final GetIt getIt = GetIt.instance;
 
 @injectableInit
-void configureInjection(String environment) =>
-    $initGetIt(getIt, environment: environment);
-
-abstract class Env {
-  static const dev = 'dev';
-  static const prod = 'prod';
-}
+void configureInjection(String env) =>
+    $initGetIt(getIt, environment: env);
+    
