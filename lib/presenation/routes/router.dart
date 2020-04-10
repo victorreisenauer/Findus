@@ -4,7 +4,7 @@ import 'package:lrs_app_v3/presenation/pages/sign_in/sign_in_page.dart';
 import 'package:lrs_app_v3/presenation/pages/home/home_page.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/exercise_page.dart';
 
-@autoRouter
+@MaterialAutoRouter()
 class $Router {
   @initial
   SignInPage signInPage;

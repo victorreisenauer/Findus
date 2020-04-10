@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/collection.dart';
+import '../lesson/exercise.dart';
 
 
 import 'failures.dart';
@@ -63,4 +64,18 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(
       max: maxLength,
     ));
   }
+}
+
+Either<ValueFailure<Map>, Map> validateExerciseData(Map input) {
+  // validate Exercise data
+  return right(input);
+}
+
+Either<ValueFailure<List>, List> validateExerciseList(List input) {
+  for (var i in input) {
+    if (i.runtimeType != Exercise) {
+      return left(ValueFailure.notOfTypeExercise(failedValue: i));
+    } 
+  }
+  return right(input);
 }

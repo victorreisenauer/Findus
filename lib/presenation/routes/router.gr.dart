@@ -6,7 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:auto_route/router_utils.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:lrs_app_v3/presenation/pages/sign_in/sign_in_page.dart';
 import 'package:lrs_app_v3/presenation/pages/home/home_page.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/exercise_page.dart';
@@ -15,15 +15,12 @@ class Router {
   static const signInPage = '/';
   static const homePage = '/home-page';
   static const exercisePage = '/exercise-page';
-  static GlobalKey<NavigatorState> get navigatorKey =>
-      getNavigatorKey<Router>();
-  static NavigatorState get navigator => navigatorKey.currentState;
-
+  static final navigator = ExtendedNavigator();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
       case Router.signInPage:
-        return MaterialPageRoute(
+        return MaterialPageRoute<dynamic>(
           builder: (_) => SignInPage(),
           settings: settings,
         );
@@ -32,7 +29,7 @@ class Router {
           return misTypedArgsRoute<String>(args);
         }
         final typedArgs = args as String;
-        return MaterialPageRoute(
+        return MaterialPageRoute<dynamic>(
           builder: (_) => HomePage(page: typedArgs),
           settings: settings,
         );
@@ -41,7 +38,7 @@ class Router {
           return misTypedArgsRoute<ExercisePageArguments>(args);
         }
         final typedArgs = args as ExercisePageArguments;
-        return MaterialPageRoute(
+        return MaterialPageRoute<dynamic>(
           builder: (_) => ExercisePage(
               exerciseId: typedArgs.exerciseId, type: typedArgs.type),
           settings: settings,

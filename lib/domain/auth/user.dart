@@ -11,6 +11,7 @@ import 'package:lrs_app_v3/domain/core/entitiy.dart';
 
 part 'user.freezed.dart';
 
+
 @freezed
 /// is an Entity that represents a user with related id, name and email address
 abstract class User with _$User implements IEntity {
@@ -21,7 +22,6 @@ abstract class User with _$User implements IEntity {
   }) = _User;
 }
 
-/* TODO make work: 
 extension UserX on User {
   Option<ValueFailure<dynamic>> get failureOption {
     return name.failureOrUnit
@@ -29,4 +29,3 @@ extension UserX on User {
         .fold((l) => some(l), (r) => none());
   }
 }
-*/

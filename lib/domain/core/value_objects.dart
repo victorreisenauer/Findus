@@ -65,10 +65,10 @@ class UniqueId extends ValueObject<String> {
     );
   }
 
-  factory UniqueId.fromApiId(String firebaseId) {
-    assert(firebaseId != null);
+  factory UniqueId.fromApiId(String apiId) {
+    assert(apiId != null);
     return UniqueId._(
-      right(firebaseId),
+      right(apiId),
     );
   }
 

@@ -35,4 +35,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidPhotoUrl({
     @required T failedValue,
   }) = InvalidPhotoUrl<T>;
+  const factory ValueFailure.notOfTypeExercise({
+    @required T failedValue,
+  }) = NotOfTypeExercise<T>;
 }
