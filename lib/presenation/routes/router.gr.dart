@@ -25,12 +25,8 @@ class Router {
           settings: settings,
         );
       case Router.homePage:
-        if (hasInvalidArgs<String>(args, isRequired: true)) {
-          return misTypedArgsRoute<String>(args);
-        }
-        final typedArgs = args as String;
         return MaterialPageRoute<dynamic>(
-          builder: (_) => HomePage(page: typedArgs),
+          builder: (_) => HomePage(),
           settings: settings,
         );
       case Router.exercisePage:

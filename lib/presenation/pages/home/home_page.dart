@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
+import 'widgets/logout_button.dart';
 
 class HomePage extends StatelessWidget {
-  final String page;
-
-  const HomePage({@required this.page});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Second Page'),
+        title: Text('HomePage'),
       ),
       body: Center(
-        child: Text(
-          page,
-          style: Theme.of(context).textTheme.display2,
-        ),
+        child: LogoutButton()
       ),
     );
   }

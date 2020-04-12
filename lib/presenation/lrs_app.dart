@@ -14,7 +14,7 @@ class LrsApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+          create: (context) => getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         ),
       ],
 

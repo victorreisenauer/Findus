@@ -21,6 +21,7 @@ class ExerciseType extends ValueObject<String>{
 
 
 class ExerciseData extends ValueObject {
+  // TODO: think of how ExerciseData ValueObject should look
   @override
   final Either<ValueFailure<Map>, Map> value;
 
