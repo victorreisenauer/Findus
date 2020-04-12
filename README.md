@@ -2,6 +2,18 @@
 
 The third version of the LRS App. 
 
+# Current progress:
+
+## Features:
+- Authentication feature (logging in/signing up with email and password) is tested and working
+- Lesson feature (getting lesson data and showing exercises on screen) is currently being implemented
+
+## Current MVP:
+
+![alt text](/doc/homePage.jpg "HomePage")
+![alt text](/doc/signInPage.jpg "SignInPage")
+
+
 # Our way of doing things:
 
 To not get stuck up in the spaghetti architecture, we make use of the Domain-Driven Design principles.
@@ -17,6 +29,8 @@ Those principles are outlined in the following course:
 ## Domain-Driven Design:
 
 Here is a quick overview of the layers. 
+
+![alt text](/doc/DDD-Flutter-Diagram-v3.svg "Layers")
 
  Presentation layer: 
  Whenever some logic operates with data that is later on sent to a server or persisted in a local database, that logic has nothing to do in the presentation layer
@@ -43,7 +57,14 @@ The infrastructure layer is composed of two parts - low-level data sources and h
 
 ## Test driven development:
 
-Whenever possible we aim to write tests before the actuall class implementation. This makes sure we have a good understanding how that class should behave before writing it and helps us only write code that will actually be useful. 
+Whenever possible we will write (unit) tests before the actual class implementation. This makes sure we have a good understanding how that class should behave before writing it and helps us only write code that will actually be useful. 
+
+All dependencies of those unit tests are mocked using classes implemented in the 'test' Environment, or mocked using packages like mockito. 
+
+Example: You want to write a bloc implementing authentication in the application layer. First write a `mockAuthRepository` (file is in the same directory as the actual repository will be, so we can find it easily). Then write tests for the `authBloc`, only then implement the production authBloc class to pass all the tests.  
+
+More on **test driven development** here: https://itnext.io/test-driven-development-in-flutter-e7fe7921ea92
+
 
 
 ## Environments:
