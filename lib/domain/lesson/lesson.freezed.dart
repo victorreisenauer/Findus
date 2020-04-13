@@ -12,8 +12,7 @@ T _$identity<T>(T value) => value;
 class _$LessonTearOff {
   const _$LessonTearOff();
 
-  _Lesson call(
-      {@required UniqueId id, @required ExerciseList<Exercise> exerciseList}) {
+  _Lesson call({@required UniqueId id, @required ExerciseList exerciseList}) {
     return _Lesson(
       id: id,
       exerciseList: exerciseList,
@@ -26,7 +25,7 @@ const $Lesson = _$LessonTearOff();
 
 mixin _$Lesson {
   UniqueId get id;
-  ExerciseList<Exercise> get exerciseList;
+  ExerciseList get exerciseList;
 
   $LessonCopyWith<Lesson> get copyWith;
 }
@@ -34,7 +33,7 @@ mixin _$Lesson {
 abstract class $LessonCopyWith<$Res> {
   factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
       _$LessonCopyWithImpl<$Res>;
-  $Res call({UniqueId id, ExerciseList<Exercise> exerciseList});
+  $Res call({UniqueId id, ExerciseList exerciseList});
 }
 
 class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
@@ -53,7 +52,7 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
       id: id == freezed ? _value.id : id as UniqueId,
       exerciseList: exerciseList == freezed
           ? _value.exerciseList
-          : exerciseList as ExerciseList<Exercise>,
+          : exerciseList as ExerciseList,
     ));
   }
 }
@@ -62,7 +61,7 @@ abstract class _$LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   factory _$LessonCopyWith(_Lesson value, $Res Function(_Lesson) then) =
       __$LessonCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, ExerciseList<Exercise> exerciseList});
+  $Res call({UniqueId id, ExerciseList exerciseList});
 }
 
 class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
@@ -82,7 +81,7 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
       id: id == freezed ? _value.id : id as UniqueId,
       exerciseList: exerciseList == freezed
           ? _value.exerciseList
-          : exerciseList as ExerciseList<Exercise>,
+          : exerciseList as ExerciseList,
     ));
   }
 }
@@ -96,7 +95,7 @@ class _$_Lesson with DiagnosticableTreeMixin implements _Lesson {
   @override
   final UniqueId id;
   @override
-  final ExerciseList<Exercise> exerciseList;
+  final ExerciseList exerciseList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -136,13 +135,12 @@ class _$_Lesson with DiagnosticableTreeMixin implements _Lesson {
 
 abstract class _Lesson implements Lesson {
   const factory _Lesson(
-      {@required UniqueId id,
-      @required ExerciseList<Exercise> exerciseList}) = _$_Lesson;
+      {@required UniqueId id, @required ExerciseList exerciseList}) = _$_Lesson;
 
   @override
   UniqueId get id;
   @override
-  ExerciseList<Exercise> get exerciseList;
+  ExerciseList get exerciseList;
   @override
   _$LessonCopyWith<_Lesson> get copyWith;
 }

@@ -39,7 +39,7 @@ void main() {
   final String shortPassword = 'test';
   final String validPassword = 'Test%Password123';
   test('return ValueFailures password is empty', () async {
-    var failure1 = EmailAddress(emptyPassword).value;   
+    var failure1 = Password(emptyPassword).value;   
     expect(failure1.fold(
       (f) => f.failedValue,
       (_) => null), 

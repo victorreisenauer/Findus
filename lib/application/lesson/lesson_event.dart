@@ -1,4 +1,7 @@
 part of 'lesson_bloc.dart';
 
-@immutable
-abstract class LessonEvent {}
+@freezed
+abstract class LessonEvent with _$LessonEvent{
+  const factory LessonEvent.fetchLessonById(int id) = FetchLessonById;
+  const factory LessonEvent.fetchAllLessons() = FetchAllLessons;
+}

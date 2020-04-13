@@ -2,6 +2,8 @@ import 'package:dartz/dartz.dart';
 import '../core/value_objects.dart';
 import '../core/failures.dart';
 import '../core/value_validators.dart';
+import '../lesson/exercise.dart';
+import '../lesson/lesson.dart';
 
 class ExerciseType extends ValueObject<String>{
   @override
@@ -38,7 +40,7 @@ class ExerciseData extends ValueObject {
 
 
 
-class ExerciseList<Exercise> extends ValueObject {
+class ExerciseList extends ValueObject {
   // get initial
   // get next
   // validations
@@ -48,9 +50,27 @@ class ExerciseList<Exercise> extends ValueObject {
   factory ExerciseList(List input) {
     assert(input != null);
     return ExerciseList._(
-      validateExerciseList(input)
+      validateObjectList(input, Exercise)
     );
   }
 
   const ExerciseList._(this.value);
+}
+
+
+class LessonList extends ValueObject {
+  // get initial
+  // get next
+  // validations
+  @override
+  final Either<ValueFailure<List>, List> value;
+
+  factory LessonList(List input) {
+    assert(input != null);
+    return LessonList._(
+      validateObjectList(input, Lesson)
+    );
+  }
+
+  const LessonList._(this.value);
 }

@@ -65,9 +65,11 @@ class _$ValueFailureTearOff {
     );
   }
 
-  NotOfTypeExercise<T> notOfTypeExercise<T>({@required T failedValue}) {
-    return NotOfTypeExercise<T>(
+  NotOfObjectType<T> notOfObjectType<T>(
+      {@required T failedValue, @required Type validType}) {
+    return NotOfObjectType<T>(
       failedValue: failedValue,
+      validType: validType,
     );
   }
 }
@@ -89,7 +91,9 @@ mixin _$ValueFailure<T> {
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
-    @required Result notOfTypeExercise(@required T failedValue),
+    @required
+        Result notOfObjectType(
+            @required T failedValue, @required Type validType),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -101,7 +105,7 @@ mixin _$ValueFailure<T> {
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
-    Result notOfTypeExercise(@required T failedValue),
+    Result notOfObjectType(@required T failedValue, @required Type validType),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -114,7 +118,7 @@ mixin _$ValueFailure<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    @required Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    @required Result notOfObjectType(NotOfObjectType<T> value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -126,7 +130,7 @@ mixin _$ValueFailure<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    Result notOfObjectType(NotOfObjectType<T> value),
     @required Result orElse(),
   });
 
@@ -250,7 +254,9 @@ class _$ExceedingLength<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
-    @required Result notOfTypeExercise(@required T failedValue),
+    @required
+        Result notOfObjectType(
+            @required T failedValue, @required Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -260,7 +266,7 @@ class _$ExceedingLength<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return exceedingLength(failedValue, max);
   }
 
@@ -275,7 +281,7 @@ class _$ExceedingLength<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
-    Result notOfTypeExercise(@required T failedValue),
+    Result notOfObjectType(@required T failedValue, @required Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -296,7 +302,7 @@ class _$ExceedingLength<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    @required Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    @required Result notOfObjectType(NotOfObjectType<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -306,7 +312,7 @@ class _$ExceedingLength<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return exceedingLength(this);
   }
 
@@ -321,7 +327,7 @@ class _$ExceedingLength<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    Result notOfObjectType(NotOfObjectType<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -418,7 +424,9 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
-    @required Result notOfTypeExercise(@required T failedValue),
+    @required
+        Result notOfObjectType(
+            @required T failedValue, @required Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -428,7 +436,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return empty(failedValue);
   }
 
@@ -443,7 +451,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
-    Result notOfTypeExercise(@required T failedValue),
+    Result notOfObjectType(@required T failedValue, @required Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -464,7 +472,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    @required Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    @required Result notOfObjectType(NotOfObjectType<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -474,7 +482,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return empty(this);
   }
 
@@ -489,7 +497,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    Result notOfObjectType(NotOfObjectType<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -587,7 +595,9 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
-    @required Result notOfTypeExercise(@required T failedValue),
+    @required
+        Result notOfObjectType(
+            @required T failedValue, @required Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -597,7 +607,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return multiline(failedValue);
   }
 
@@ -612,7 +622,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
-    Result notOfTypeExercise(@required T failedValue),
+    Result notOfObjectType(@required T failedValue, @required Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -633,7 +643,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    @required Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    @required Result notOfObjectType(NotOfObjectType<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -643,7 +653,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return multiline(this);
   }
 
@@ -658,7 +668,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    Result notOfObjectType(NotOfObjectType<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -769,7 +779,9 @@ class _$NumberTooLarge<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
-    @required Result notOfTypeExercise(@required T failedValue),
+    @required
+        Result notOfObjectType(
+            @required T failedValue, @required Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -779,7 +791,7 @@ class _$NumberTooLarge<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return numberTooLarge(failedValue, max);
   }
 
@@ -794,7 +806,7 @@ class _$NumberTooLarge<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
-    Result notOfTypeExercise(@required T failedValue),
+    Result notOfObjectType(@required T failedValue, @required Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -815,7 +827,7 @@ class _$NumberTooLarge<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    @required Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    @required Result notOfObjectType(NotOfObjectType<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -825,7 +837,7 @@ class _$NumberTooLarge<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return numberTooLarge(this);
   }
 
@@ -840,7 +852,7 @@ class _$NumberTooLarge<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    Result notOfObjectType(NotOfObjectType<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -951,7 +963,9 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
-    @required Result notOfTypeExercise(@required T failedValue),
+    @required
+        Result notOfObjectType(
+            @required T failedValue, @required Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -961,7 +975,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return listTooLong(failedValue, max);
   }
 
@@ -976,7 +990,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
-    Result notOfTypeExercise(@required T failedValue),
+    Result notOfObjectType(@required T failedValue, @required Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -997,7 +1011,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    @required Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    @required Result notOfObjectType(NotOfObjectType<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1007,7 +1021,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return listTooLong(this);
   }
 
@@ -1022,7 +1036,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    Result notOfObjectType(NotOfObjectType<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1125,7 +1139,9 @@ class _$InvalidEmail<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
-    @required Result notOfTypeExercise(@required T failedValue),
+    @required
+        Result notOfObjectType(
+            @required T failedValue, @required Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1135,7 +1151,7 @@ class _$InvalidEmail<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return invalidEmail(failedValue);
   }
 
@@ -1150,7 +1166,7 @@ class _$InvalidEmail<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
-    Result notOfTypeExercise(@required T failedValue),
+    Result notOfObjectType(@required T failedValue, @required Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1171,7 +1187,7 @@ class _$InvalidEmail<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    @required Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    @required Result notOfObjectType(NotOfObjectType<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1181,7 +1197,7 @@ class _$InvalidEmail<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return invalidEmail(this);
   }
 
@@ -1196,7 +1212,7 @@ class _$InvalidEmail<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    Result notOfObjectType(NotOfObjectType<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1297,7 +1313,9 @@ class _$ShortPassword<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
-    @required Result notOfTypeExercise(@required T failedValue),
+    @required
+        Result notOfObjectType(
+            @required T failedValue, @required Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1307,7 +1325,7 @@ class _$ShortPassword<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return shortPassword(failedValue);
   }
 
@@ -1322,7 +1340,7 @@ class _$ShortPassword<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
-    Result notOfTypeExercise(@required T failedValue),
+    Result notOfObjectType(@required T failedValue, @required Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1343,7 +1361,7 @@ class _$ShortPassword<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    @required Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    @required Result notOfObjectType(NotOfObjectType<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1353,7 +1371,7 @@ class _$ShortPassword<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return shortPassword(this);
   }
 
@@ -1368,7 +1386,7 @@ class _$ShortPassword<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    Result notOfObjectType(NotOfObjectType<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1469,7 +1487,9 @@ class _$InvalidPhotoUrl<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
-    @required Result notOfTypeExercise(@required T failedValue),
+    @required
+        Result notOfObjectType(
+            @required T failedValue, @required Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1479,7 +1499,7 @@ class _$InvalidPhotoUrl<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return invalidPhotoUrl(failedValue);
   }
 
@@ -1494,7 +1514,7 @@ class _$InvalidPhotoUrl<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
-    Result notOfTypeExercise(@required T failedValue),
+    Result notOfObjectType(@required T failedValue, @required Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1515,7 +1535,7 @@ class _$InvalidPhotoUrl<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    @required Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    @required Result notOfObjectType(NotOfObjectType<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1525,7 +1545,7 @@ class _$InvalidPhotoUrl<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
+    assert(notOfObjectType != null);
     return invalidPhotoUrl(this);
   }
 
@@ -1540,7 +1560,7 @@ class _$InvalidPhotoUrl<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    Result notOfObjectType(NotOfObjectType<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1561,75 +1581,86 @@ abstract class InvalidPhotoUrl<T> implements ValueFailure<T> {
   $InvalidPhotoUrlCopyWith<T, InvalidPhotoUrl<T>> get copyWith;
 }
 
-abstract class $NotOfTypeExerciseCopyWith<T, $Res>
+abstract class $NotOfObjectTypeCopyWith<T, $Res>
     implements $ValueFailureCopyWith<T, $Res> {
-  factory $NotOfTypeExerciseCopyWith(NotOfTypeExercise<T> value,
-          $Res Function(NotOfTypeExercise<T>) then) =
-      _$NotOfTypeExerciseCopyWithImpl<T, $Res>;
+  factory $NotOfObjectTypeCopyWith(
+          NotOfObjectType<T> value, $Res Function(NotOfObjectType<T>) then) =
+      _$NotOfObjectTypeCopyWithImpl<T, $Res>;
   @override
-  $Res call({T failedValue});
+  $Res call({T failedValue, Type validType});
 }
 
-class _$NotOfTypeExerciseCopyWithImpl<T, $Res>
+class _$NotOfObjectTypeCopyWithImpl<T, $Res>
     extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $NotOfTypeExerciseCopyWith<T, $Res> {
-  _$NotOfTypeExerciseCopyWithImpl(
-      NotOfTypeExercise<T> _value, $Res Function(NotOfTypeExercise<T>) _then)
-      : super(_value, (v) => _then(v as NotOfTypeExercise<T>));
+    implements $NotOfObjectTypeCopyWith<T, $Res> {
+  _$NotOfObjectTypeCopyWithImpl(
+      NotOfObjectType<T> _value, $Res Function(NotOfObjectType<T>) _then)
+      : super(_value, (v) => _then(v as NotOfObjectType<T>));
 
   @override
-  NotOfTypeExercise<T> get _value => super._value as NotOfTypeExercise<T>;
+  NotOfObjectType<T> get _value => super._value as NotOfObjectType<T>;
 
   @override
   $Res call({
     Object failedValue = freezed,
+    Object validType = freezed,
   }) {
-    return _then(NotOfTypeExercise<T>(
+    return _then(NotOfObjectType<T>(
       failedValue:
           failedValue == freezed ? _value.failedValue : failedValue as T,
+      validType: validType == freezed ? _value.validType : validType as Type,
     ));
   }
 }
 
-class _$NotOfTypeExercise<T>
+class _$NotOfObjectType<T>
     with DiagnosticableTreeMixin
-    implements NotOfTypeExercise<T> {
-  const _$NotOfTypeExercise({@required this.failedValue})
-      : assert(failedValue != null);
+    implements NotOfObjectType<T> {
+  const _$NotOfObjectType(
+      {@required this.failedValue, @required this.validType})
+      : assert(failedValue != null),
+        assert(validType != null);
 
   @override
   final T failedValue;
+  @override
+  final Type validType;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ValueFailure<$T>.notOfTypeExercise(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.notOfObjectType(failedValue: $failedValue, validType: $validType)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.notOfTypeExercise'))
-      ..add(DiagnosticsProperty('failedValue', failedValue));
+      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.notOfObjectType'))
+      ..add(DiagnosticsProperty('failedValue', failedValue))
+      ..add(DiagnosticsProperty('validType', validType));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is NotOfTypeExercise<T> &&
+        (other is NotOfObjectType<T> &&
             (identical(other.failedValue, failedValue) ||
                 const DeepCollectionEquality()
-                    .equals(other.failedValue, failedValue)));
+                    .equals(other.failedValue, failedValue)) &&
+            (identical(other.validType, validType) ||
+                const DeepCollectionEquality()
+                    .equals(other.validType, validType)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(failedValue) ^
+      const DeepCollectionEquality().hash(validType);
 
   @override
-  $NotOfTypeExerciseCopyWith<T, NotOfTypeExercise<T>> get copyWith =>
-      _$NotOfTypeExerciseCopyWithImpl<T, NotOfTypeExercise<T>>(
-          this, _$identity);
+  $NotOfObjectTypeCopyWith<T, NotOfObjectType<T>> get copyWith =>
+      _$NotOfObjectTypeCopyWithImpl<T, NotOfObjectType<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1643,7 +1674,9 @@ class _$NotOfTypeExercise<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
-    @required Result notOfTypeExercise(@required T failedValue),
+    @required
+        Result notOfObjectType(
+            @required T failedValue, @required Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1653,8 +1686,8 @@ class _$NotOfTypeExercise<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
-    return notOfTypeExercise(failedValue);
+    assert(notOfObjectType != null);
+    return notOfObjectType(failedValue, validType);
   }
 
   @override
@@ -1668,12 +1701,12 @@ class _$NotOfTypeExercise<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
-    Result notOfTypeExercise(@required T failedValue),
+    Result notOfObjectType(@required T failedValue, @required Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (notOfTypeExercise != null) {
-      return notOfTypeExercise(failedValue);
+    if (notOfObjectType != null) {
+      return notOfObjectType(failedValue, validType);
     }
     return orElse();
   }
@@ -1689,7 +1722,7 @@ class _$NotOfTypeExercise<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    @required Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    @required Result notOfObjectType(NotOfObjectType<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1699,8 +1732,8 @@ class _$NotOfTypeExercise<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
-    assert(notOfTypeExercise != null);
-    return notOfTypeExercise(this);
+    assert(notOfObjectType != null);
+    return notOfObjectType(this);
   }
 
   @override
@@ -1714,23 +1747,25 @@ class _$NotOfTypeExercise<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
-    Result notOfTypeExercise(NotOfTypeExercise<T> value),
+    Result notOfObjectType(NotOfObjectType<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (notOfTypeExercise != null) {
-      return notOfTypeExercise(this);
+    if (notOfObjectType != null) {
+      return notOfObjectType(this);
     }
     return orElse();
   }
 }
 
-abstract class NotOfTypeExercise<T> implements ValueFailure<T> {
-  const factory NotOfTypeExercise({@required T failedValue}) =
-      _$NotOfTypeExercise<T>;
+abstract class NotOfObjectType<T> implements ValueFailure<T> {
+  const factory NotOfObjectType(
+      {@required T failedValue,
+      @required Type validType}) = _$NotOfObjectType<T>;
 
   @override
   T get failedValue;
+  Type get validType;
   @override
-  $NotOfTypeExerciseCopyWith<T, NotOfTypeExercise<T>> get copyWith;
+  $NotOfObjectTypeCopyWith<T, NotOfObjectType<T>> get copyWith;
 }

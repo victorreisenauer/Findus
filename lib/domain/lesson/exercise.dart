@@ -11,6 +11,7 @@ import '../core/failures.dart';
 part 'exercise.freezed.dart';
 
 @freezed
+// TODO: Make exercise implement IEntity
 abstract class Exercise with _$Exercise {
   const factory Exercise({
     @required UniqueId id,

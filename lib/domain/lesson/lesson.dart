@@ -10,13 +10,13 @@ import 'exercise.dart';
 
 part 'lesson.freezed.dart';
 
-// TODO: make lesson and exercise implement IEntity
+// TODO: make lesson implement IEntity
 @freezed
 /// Data class for Lessons. 
 abstract class Lesson with _$Lesson  {
   @override
   const factory Lesson({
     @required UniqueId id, 
-    @required ExerciseList<Exercise> exerciseList,
+    @required ExerciseList exerciseList,
   }) = _Lesson;
 }

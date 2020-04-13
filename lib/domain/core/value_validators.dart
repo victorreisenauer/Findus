@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/collection.dart';
 import '../lesson/exercise.dart';
+import 'value_objects.dart';
 
 
 import 'failures.dart';
@@ -71,10 +72,11 @@ Either<ValueFailure<Map>, Map> validateExerciseData(Map input) {
   return right(input);
 }
 
-Either<ValueFailure<List>, List> validateExerciseList(List input) {
+Either<ValueFailure<List>, List> validateObjectList(List input, Object obj) {
+  // TODO: add ObjectList not empty validation
   for (var i in input) {
-    if (i.runtimeType != Exercise) {
-      return left(ValueFailure.notOfTypeExercise(failedValue: i));
+    if (i.runtimeType != obj.runtimeType) {
+      return left(ValueFailure.notOfObjectType(failedValue: i, validType: obj.runtimeType));
     } 
   }
   return right(input);

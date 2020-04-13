@@ -14,6 +14,7 @@ import 'package:lrs_app_v3/infrastructure/lesson/mock_lesson_repository.dart';
 import 'package:lrs_app_v3/domain/lesson/i_lesson_facade.dart';
 import 'package:lrs_app_v3/application/auth/auth_bloc.dart';
 import 'package:lrs_app_v3/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:lrs_app_v3/application/lesson/lesson_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
@@ -22,6 +23,7 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerLazySingleton<Api>(() => apiInjectableModule.api);
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthFacade>()));
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
+  g.registerFactory<LessonBloc>(() => LessonBloc(g<ILessonFacade>()));
 
   //Register dev Dependencies --------
   if (environment == 'dev') {

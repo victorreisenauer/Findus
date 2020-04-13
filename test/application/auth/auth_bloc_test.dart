@@ -27,6 +27,7 @@ void main() {
         bloc,
         emits(AuthState.initial())
       );
+      bloc.close();
     });
 
     test('emits state "Unauthenticated" when no user is signed in', () {
@@ -41,6 +42,7 @@ void main() {
           AuthState.unauthenticated()
         ])
       );
+      bloc.close();
     });
 
     test('emits state "Authenticated" with user obj when user is signed in',() {
