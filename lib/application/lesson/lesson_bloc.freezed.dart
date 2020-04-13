@@ -12,7 +12,7 @@ T _$identity<T>(T value) => value;
 class _$LessonEventTearOff {
   const _$LessonEventTearOff();
 
-  FetchLessonById fetchLessonById(int id) {
+  FetchLessonById fetchLessonById(UniqueId id) {
     return FetchLessonById(
       id,
     );
@@ -29,12 +29,12 @@ const $LessonEvent = _$LessonEventTearOff();
 mixin _$LessonEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result fetchLessonById(int id),
+    @required Result fetchLessonById(UniqueId id),
     @required Result fetchAllLessons(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result fetchLessonById(int id),
+    Result fetchLessonById(UniqueId id),
     Result fetchAllLessons(),
     @required Result orElse(),
   });
@@ -69,7 +69,7 @@ abstract class $FetchLessonByIdCopyWith<$Res> {
   factory $FetchLessonByIdCopyWith(
           FetchLessonById value, $Res Function(FetchLessonById) then) =
       _$FetchLessonByIdCopyWithImpl<$Res>;
-  $Res call({int id});
+  $Res call({UniqueId id});
 }
 
 class _$FetchLessonByIdCopyWithImpl<$Res>
@@ -87,7 +87,7 @@ class _$FetchLessonByIdCopyWithImpl<$Res>
     Object id = freezed,
   }) {
     return _then(FetchLessonById(
-      id == freezed ? _value.id : id as int,
+      id == freezed ? _value.id : id as UniqueId,
     ));
   }
 }
@@ -98,7 +98,7 @@ class _$FetchLessonById
   const _$FetchLessonById(this.id) : assert(id != null);
 
   @override
-  final int id;
+  final UniqueId id;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -132,7 +132,7 @@ class _$FetchLessonById
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result fetchLessonById(int id),
+    @required Result fetchLessonById(UniqueId id),
     @required Result fetchAllLessons(),
   }) {
     assert(fetchLessonById != null);
@@ -143,7 +143,7 @@ class _$FetchLessonById
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result fetchLessonById(int id),
+    Result fetchLessonById(UniqueId id),
     Result fetchAllLessons(),
     @required Result orElse(),
   }) {
@@ -181,9 +181,9 @@ class _$FetchLessonById
 }
 
 abstract class FetchLessonById implements LessonEvent {
-  const factory FetchLessonById(int id) = _$FetchLessonById;
+  const factory FetchLessonById(UniqueId id) = _$FetchLessonById;
 
-  int get id;
+  UniqueId get id;
   $FetchLessonByIdCopyWith<FetchLessonById> get copyWith;
 }
 
@@ -231,7 +231,7 @@ class _$FetchAllLessons
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result fetchLessonById(int id),
+    @required Result fetchLessonById(UniqueId id),
     @required Result fetchAllLessons(),
   }) {
     assert(fetchLessonById != null);
@@ -242,7 +242,7 @@ class _$FetchAllLessons
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result fetchLessonById(int id),
+    Result fetchLessonById(UniqueId id),
     Result fetchAllLessons(),
     @required Result orElse(),
   }) {

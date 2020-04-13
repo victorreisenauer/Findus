@@ -74,6 +74,7 @@ Either<ValueFailure<Map>, Map> validateExerciseData(Map input) {
 
 Either<ValueFailure<List>, List> validateObjectList(List input, Object obj) {
   // TODO: add ObjectList not empty validation
+  // TODO: add test to hinder the exact same object (by unique id) being added multiple times
   for (var i in input) {
     if (i.runtimeType != obj.runtimeType) {
       return left(ValueFailure.notOfObjectType(failedValue: i, validType: obj.runtimeType));

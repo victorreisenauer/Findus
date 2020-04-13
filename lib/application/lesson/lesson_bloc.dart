@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../domain/core/value_objects.dart';
 import '../../domain/lesson/i_lesson_facade.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson_failure.dart';

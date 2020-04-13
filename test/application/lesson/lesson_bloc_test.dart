@@ -34,7 +34,7 @@ void main() {
       when(mockLessonRepository.getLessonById(any))
         .thenAnswer((_) async => Right(_lesson));
       final bloc = LessonBloc(mockLessonRepository);
-      bloc.add(LessonEvent.fetchLessonById(1));
+      bloc.add(LessonEvent.fetchLessonById(_lesson.id));
       expectLater(
         bloc,
         emitsInOrder([
@@ -49,7 +49,7 @@ void main() {
       when(mockLessonRepository.getLessonById(any))
         .thenAnswer((_) async => Left(_lessonFailure));
       final bloc = LessonBloc(mockLessonRepository);
-      bloc.add(LessonEvent.fetchLessonById(1));
+      bloc.add(LessonEvent.fetchLessonById(_lesson.id));
       expectLater(
         bloc,
         emitsInOrder([
