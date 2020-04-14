@@ -8,6 +8,15 @@ void main() {
     final String missingAtInput = 'test.com';
     final String missingDomainInput = 'test@.com';
     final String validInput = 'test@gmail.com';
+
+    test('returns empty EmailAddress with EmailAddress.empty() constructor', (){
+      var emptyEmailAddress = EmailAddress.empty().value;
+      expect(emptyEmailAddress.fold(
+        (f) => null,
+        (output) => output,
+        ),
+        emptyInput);
+    });
     
     test('return ValueFailures if inputs are empty, missing an @, or missing a domain', () async {
       var failure1 = EmailAddress(emptyInput).value;   

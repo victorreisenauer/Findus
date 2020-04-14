@@ -4,5 +4,5 @@ part of 'auth_bloc.dart';
 abstract class AuthState with _$AuthState {
   const factory AuthState.initial() = Initial;
   const factory AuthState.authenticated(User user) = Authenticated;
-  const factory AuthState.unauthenticated() = Unauthenticated;
+  const factory AuthState.unauthenticated({User emptyUser}) = Unauthenticated;
 }

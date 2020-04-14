@@ -10,11 +10,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:lrs_app_v3/presenation/pages/sign_in/sign_in_page.dart';
 import 'package:lrs_app_v3/presenation/pages/home/home_page.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/exercise_page.dart';
+import 'package:lrs_app_v3/presenation/pages/welcome/welcome_page.dart';
 
 class Router {
   static const signInPage = '/';
   static const homePage = '/home-page';
   static const exercisePage = '/exercise-page';
+  static const welcomePage = '/welcome-page';
   static final navigator = ExtendedNavigator();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -37,6 +39,11 @@ class Router {
         return MaterialPageRoute<dynamic>(
           builder: (_) => ExercisePage(
               exerciseId: typedArgs.exerciseId, type: typedArgs.type),
+          settings: settings,
+        );
+      case Router.welcomePage:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => WelcomePage(),
           settings: settings,
         );
       default:

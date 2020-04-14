@@ -33,7 +33,7 @@ class SignInForm extends StatelessWidget {
 
               // if authentication was successful
               (_) {
-                Router.navigator.pushReplacementNamed(Router.homePage);
+                Router.navigator.pushReplacementNamed(Router.welcomePage);
                 context
                   .bloc<AuthBloc>()
                   .add(const AuthEvent.authCheckRequested());

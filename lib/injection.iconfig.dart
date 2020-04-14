@@ -10,7 +10,7 @@ import 'package:lrs_app_v3/domain/auth/i_auth_facade.dart';
 import 'package:lrs_app_v3/infrastructure/auth/test_auth_repository.dart';
 import 'package:lrs_data_client/src/api.dart';
 import 'package:lrs_app_v3/infrastructure/core/api_injectable_module.dart';
-import 'package:lrs_app_v3/infrastructure/lesson/mock_lesson_repository.dart';
+import 'package:lrs_app_v3/infrastructure/lesson/test_lesson_repository.dart';
 import 'package:lrs_app_v3/domain/lesson/i_lesson_facade.dart';
 import 'package:lrs_app_v3/application/auth/auth_bloc.dart';
 import 'package:lrs_app_v3/application/auth/sign_in_form/sign_in_form_bloc.dart';
@@ -33,7 +33,7 @@ void $initGetIt(GetIt g, {String environment}) {
   //Register test Dependencies --------
   if (environment == 'test') {
     g.registerLazySingleton<IAuthFacade>(() => TestAuthRepository());
-    g.registerLazySingleton<ILessonFacade>(() => MockLessonRepository());
+    g.registerLazySingleton<ILessonFacade>(() => TestLessonRepository());
   }
 }
 

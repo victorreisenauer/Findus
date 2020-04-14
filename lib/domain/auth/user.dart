@@ -20,6 +20,12 @@ abstract class User with _$User implements IEntity {
     @required StringSingleLine name,
     @required EmailAddress emailAddress,
   }) = _User;
+
+  factory User.empty() => User(
+    id: UniqueId(),
+    name: StringSingleLine(''),  
+    emailAddress: EmailAddress.empty(),  
+  );
 }
 
 extension UserX on User {

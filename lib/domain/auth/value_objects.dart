@@ -20,6 +20,8 @@ class EmailAddress extends ValueObject<String> {
   }
 
   const EmailAddress._(this.value);
+
+  factory EmailAddress.empty() => EmailAddress._(Right(''));
 }
 
 

@@ -29,13 +29,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       authCheckRequested: (e) async* {
         final userOption = await _authFacade.getSignedInUser();
         yield userOption.fold(
-          () => const AuthState.unauthenticated(),
+          () => AuthState.unauthenticated(emptyUser: User.empty()),
           (user) => AuthState.authenticated(user),
         );
       },
       signedOut: (e) async* {
         await _authFacade.signOut();
-        yield const AuthState.unauthenticated();
+        yield AuthState.unauthenticated(emptyUser: User.empty());
       },
     );
   }

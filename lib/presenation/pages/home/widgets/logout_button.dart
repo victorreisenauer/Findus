@@ -10,10 +10,11 @@ class LogoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState> (
       listener: (context, state) {
-        if (state == AuthState.unauthenticated()) {
-          Router.navigator.pushReplacementNamed(Router.signInPage);
-        }
-        // if state is unauthenticated --> route to signInScreen
+        state.map(
+          initial: (_){},
+          authenticated: (_){},
+          unauthenticated: (_) => Router.navigator.pushReplacementNamed(Router.welcomePage),
+        );
         },
       
       builder: (context, state) {
