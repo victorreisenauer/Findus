@@ -40,6 +40,8 @@ class ExerciseData extends ValueObject {
 
 
 
+
+// TODO: needs fixing
 class ExerciseList extends ValueObject {
   // get initial
   // get next
@@ -50,7 +52,7 @@ class ExerciseList extends ValueObject {
   factory ExerciseList(List input) {
     assert(input != null);
     return ExerciseList._(
-      validateObjectList(input, Exercise)
+      right(input)
     );
   }
 
@@ -63,12 +65,12 @@ class LessonList extends ValueObject {
   // get next
   // validations
   @override
-  final Either<ValueFailure<List>, List> value;
+  final Either<ValueFailure<List>, List<Lesson>> value;
 
-  factory LessonList(List input) {
+  factory LessonList(List<Lesson> input) {
     assert(input != null);
     return LessonList._(
-      validateObjectList(input, Lesson)
+      right(input)
     );
   }
 

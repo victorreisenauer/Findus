@@ -1,6 +1,7 @@
 import 'package:lrs_app_v3/domain/lesson/lesson.dart';
 import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_failure.dart';
 import 'sample_exercise.dart';
 
 LessonList sampleLessonList = LessonList([sampleLesson1, sampleLesson2, sampleLesson3]);
@@ -22,3 +23,8 @@ Lesson sampleLesson3 = Lesson(
   exerciseList: ExerciseList([sampleExercise3, sampleExercise2, sampleExercise3, sampleExercise1]),
   id: UniqueId(),
   );
+
+
+// some sample LessonFailures
+
+final LessonFailure sampleLessonFailure = LessonFailure.unexpected();

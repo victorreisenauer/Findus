@@ -8,13 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:lrs_app_v3/presenation/pages/sign_in/sign_in_page.dart';
-import 'package:lrs_app_v3/presenation/pages/home/home_page.dart';
+import 'package:lrs_app_v3/presenation/pages/overview/overview_page.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/exercise_page.dart';
 import 'package:lrs_app_v3/presenation/pages/welcome/welcome_page.dart';
 
 class Router {
   static const signInPage = '/';
-  static const homePage = '/home-page';
+  static const overviewPage = '/overview-page';
   static const exercisePage = '/exercise-page';
   static const welcomePage = '/welcome-page';
   static final navigator = ExtendedNavigator();
@@ -26,9 +26,9 @@ class Router {
           builder: (_) => SignInPage(),
           settings: settings,
         );
-      case Router.homePage:
+      case Router.overviewPage:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => HomePage(),
+          builder: (_) => OverviewPage(),
           settings: settings,
         );
       case Router.exercisePage:
