@@ -4,10 +4,7 @@ class ExercisePage extends StatelessWidget {
   final String exerciseId;
   final String type;
 
-  const ExercisePage({
-    @required this.exerciseId,
-    @required this.type
-  });
+  const ExercisePage({@required this.exerciseId, @required this.type});
 
   @override
   Widget build(BuildContext context) {
