@@ -140,8 +140,8 @@ class _$Exercise1StateTearOff {
     return const Initial();
   }
 
-  ShowCorrection showCorrection() {
-    return const ShowCorrection();
+  ShowExercise showExercise() {
+    return const ShowExercise();
   }
 }
 
@@ -152,23 +152,23 @@ mixin _$Exercise1State {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result showCorrection(),
+    @required Result showExercise(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result showCorrection(),
+    Result showExercise(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(Initial value),
-    @required Result showCorrection(ShowCorrection value),
+    @required Result showExercise(ShowExercise value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(Initial value),
-    Result showCorrection(ShowCorrection value),
+    Result showExercise(ShowExercise value),
     @required Result orElse(),
   });
 }
@@ -222,10 +222,10 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result showCorrection(),
+    @required Result showExercise(),
   }) {
     assert(initial != null);
-    assert(showCorrection != null);
+    assert(showExercise != null);
     return initial();
   }
 
@@ -233,7 +233,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result showCorrection(),
+    Result showExercise(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -247,10 +247,10 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(Initial value),
-    @required Result showCorrection(ShowCorrection value),
+    @required Result showExercise(ShowExercise value),
   }) {
     assert(initial != null);
-    assert(showCorrection != null);
+    assert(showExercise != null);
     return initial(this);
   }
 
@@ -258,7 +258,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(Initial value),
-    Result showCorrection(ShowCorrection value),
+    Result showExercise(ShowExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -273,34 +273,34 @@ abstract class Initial implements Exercise1State {
   const factory Initial() = _$Initial;
 }
 
-abstract class $ShowCorrectionCopyWith<$Res> {
-  factory $ShowCorrectionCopyWith(
-          ShowCorrection value, $Res Function(ShowCorrection) then) =
-      _$ShowCorrectionCopyWithImpl<$Res>;
+abstract class $ShowExerciseCopyWith<$Res> {
+  factory $ShowExerciseCopyWith(
+          ShowExercise value, $Res Function(ShowExercise) then) =
+      _$ShowExerciseCopyWithImpl<$Res>;
 }
 
-class _$ShowCorrectionCopyWithImpl<$Res>
+class _$ShowExerciseCopyWithImpl<$Res>
     extends _$Exercise1StateCopyWithImpl<$Res>
-    implements $ShowCorrectionCopyWith<$Res> {
-  _$ShowCorrectionCopyWithImpl(
-      ShowCorrection _value, $Res Function(ShowCorrection) _then)
-      : super(_value, (v) => _then(v as ShowCorrection));
+    implements $ShowExerciseCopyWith<$Res> {
+  _$ShowExerciseCopyWithImpl(
+      ShowExercise _value, $Res Function(ShowExercise) _then)
+      : super(_value, (v) => _then(v as ShowExercise));
 
   @override
-  ShowCorrection get _value => super._value as ShowCorrection;
+  ShowExercise get _value => super._value as ShowExercise;
 }
 
-class _$ShowCorrection implements ShowCorrection {
-  const _$ShowCorrection();
+class _$ShowExercise implements ShowExercise {
+  const _$ShowExercise();
 
   @override
   String toString() {
-    return 'Exercise1State.showCorrection()';
+    return 'Exercise1State.showExercise()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ShowCorrection);
+    return identical(this, other) || (other is ShowExercise);
   }
 
   @override
@@ -310,23 +310,23 @@ class _$ShowCorrection implements ShowCorrection {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result showCorrection(),
+    @required Result showExercise(),
   }) {
     assert(initial != null);
-    assert(showCorrection != null);
-    return showCorrection();
+    assert(showExercise != null);
+    return showExercise();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result showCorrection(),
+    Result showExercise(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (showCorrection != null) {
-      return showCorrection();
+    if (showExercise != null) {
+      return showExercise();
     }
     return orElse();
   }
@@ -335,28 +335,28 @@ class _$ShowCorrection implements ShowCorrection {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(Initial value),
-    @required Result showCorrection(ShowCorrection value),
+    @required Result showExercise(ShowExercise value),
   }) {
     assert(initial != null);
-    assert(showCorrection != null);
-    return showCorrection(this);
+    assert(showExercise != null);
+    return showExercise(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(Initial value),
-    Result showCorrection(ShowCorrection value),
+    Result showExercise(ShowExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (showCorrection != null) {
-      return showCorrection(this);
+    if (showExercise != null) {
+      return showExercise(this);
     }
     return orElse();
   }
 }
 
-abstract class ShowCorrection implements Exercise1State {
-  const factory ShowCorrection() = _$ShowCorrection;
+abstract class ShowExercise implements Exercise1State {
+  const factory ShowExercise() = _$ShowExercise;
 }
