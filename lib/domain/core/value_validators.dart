@@ -1,24 +1,20 @@
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/collection.dart';
-import '../lesson/exercise.dart';
-import 'value_objects.dart';
 
-
-import 'failures.dart';
+import 'package:lrs_app_v3/domain/core/failures.dart';
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   const emailRegex =
-    r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
-  if (RegExp(emailRegex).hasMatch(input)){
+      r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
+  if (RegExp(emailRegex).hasMatch(input)) {
     return right(input);
   } else {
     return left(ValueFailure.invalidEmail(failedValue: input));
   }
 }
 
-
 Either<ValueFailure<String>, String> validatePassword(String input) {
-  if (input.length >= 8) {
+  if (input.length > 7) {
     return right(input);
   } else {
     return left(ValueFailure.shortPassword(failedValue: input));
@@ -72,13 +68,7 @@ Either<ValueFailure<Map>, Map> validateExerciseData(Map input) {
   return right(input);
 }
 
-Either<ValueFailure<List>, List> validateObjectList(List input, Object obj) {
+Either<ValueFailure<List<T>>, List<T>> validateObjectList<T>(List input) {
   // TODO: add ObjectList not empty validation
-  // TODO: add test to hinder the exact same object (by unique id) being added multiple times
-  for (var i in input) {
-    if (i.runtimeType != obj.runtimeType) {
-      return left(ValueFailure.notOfObjectType(failedValue: i, validType: obj.runtimeType));
-    } 
-  }
   return right(input);
 }

@@ -99,7 +99,7 @@ class WelcomePage extends StatelessWidget {
             ),
             color: Colors.green[500],
             onPressed: () {
-              Router.navigator.pushReplacementNamed(Router.homePage);
+              Router.navigator.pushReplacementNamed(Router.overviewPage);
             },
             child: Text(
               "Los Gehts!",

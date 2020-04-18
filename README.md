@@ -1,4 +1,4 @@
-branc# lrs_app_v3
+# lrs_app_v3
 
 The third version of the LRS App. 
 

@@ -30,20 +30,17 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     SignInFormEvent event,
   ) async* {
     yield* event.map(
-      emailChanged: (e) async *{
+      emailChanged: (e) async* {
         yield state.copyWith(
           emailAddress: EmailAddress(e.emailStr),
           authFailureOrSuccessOption: none(),
         );
       },
-      
-      passwordChanged: (e) async*{
+      passwordChanged: (e) async* {
         yield state.copyWith(
-          password: Password(e.passwordStr),
-          authFailureOrSuccessOption: none()
-        );
+            password: Password(e.passwordStr),
+            authFailureOrSuccessOption: none());
       },
-
       signInWithGooglePressed: (e) async* {
         yield state.copyWith(
           isSubmitting: true,
@@ -51,17 +48,14 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         );
         final failureOrSuccess = await _authFacade.signInWithGoogle();
         yield state.copyWith(
-          isSubmitting: false,
-          authFailureOrSuccessOption: some(failureOrSuccess)
-        );
+            isSubmitting: false,
+            authFailureOrSuccessOption: some(failureOrSuccess));
       },
-
       registerWithEmailAndPasswordPressed: (e) async* {
         yield* _performActionOnAuthFacadeWithEmailAndPassword(
           _authFacade.registerWithEmailAndPassword,
         );
       },
-
       signInWithEmailAndPasswordPressed: (e) async* {
         yield* _performActionOnAuthFacadeWithEmailAndPassword(
           _authFacade.signInWithEmailAndPassword,
@@ -74,7 +68,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     Future<Either<AuthFailure, Unit>> Function({
       @required EmailAddress emailAddress,
       @required Password password,
-    }) forwardedCall,
+    })
+        forwardedCall,
   ) async* {
     Either<AuthFailure, Unit> failureOrSuccess;
 
@@ -99,4 +94,3 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     );
   }
 }
-
