@@ -1,12 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/collection.dart';
 
-import '../core/value_objects.dart';
-import '../core/failures.dart';
-import '../core/value_validators.dart';
-import 'package:lrs_app_v3/domain/lesson/exercise.dart';
-import '../lesson/lesson.dart';
-import 'package:lrs_app_v3/infrastructure/lesson/models/exercise_model.dart';
+import 'package:lrs_app_v3/domain/core/value_objects.dart';
+import 'package:lrs_app_v3/domain/core/failures.dart';
+import 'package:lrs_app_v3/domain/core/value_validators.dart';
 
 class ExerciseType extends ValueObject<String> {
   @override

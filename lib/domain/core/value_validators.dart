@@ -1,13 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/collection.dart';
 
-
-import 'failures.dart';
+import 'package:lrs_app_v3/domain/core/failures.dart';
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   const emailRegex =
-    r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
-  if (RegExp(emailRegex).hasMatch(input)){
+      r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
+  if (RegExp(emailRegex).hasMatch(input)) {
     return right(input);
   } else {
     return left(ValueFailure.invalidEmail(failedValue: input));

@@ -2,10 +2,9 @@ import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
-import 'value_objects.dart';
-import '../core/value_objects.dart';
-import '../core/entitiy.dart';
-import 'exercise.dart';
+import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
+import 'package:lrs_app_v3/domain/core/value_objects.dart';
+import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 
 part 'lesson.freezed.dart';
 
