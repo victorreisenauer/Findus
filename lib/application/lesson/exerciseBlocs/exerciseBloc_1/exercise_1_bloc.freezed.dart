@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 class _$Exercise_1EventTearOff {
   const _$Exercise_1EventTearOff();
 
+  GetExercise getExercise() {
+    return const GetExercise();
+  }
+
   DroppedDraggable droppedDraggable(String idTarget, String idDraggable) {
     return DroppedDraggable(
       idTarget,
@@ -30,22 +34,26 @@ const $Exercise_1Event = _$Exercise_1EventTearOff();
 mixin _$Exercise_1Event {
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result getExercise(),
     @required Result droppedDraggable(String idTarget, String idDraggable),
     @required Result pressedFinish(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result getExercise(),
     Result droppedDraggable(String idTarget, String idDraggable),
     Result pressedFinish(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
     @required Result pressedFinish(PressedFinish value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
     Result pressedFinish(PressedFinish value),
     @required Result orElse(),
@@ -65,6 +73,100 @@ class _$Exercise_1EventCopyWithImpl<$Res>
   final Exercise_1Event _value;
   // ignore: unused_field
   final $Res Function(Exercise_1Event) _then;
+}
+
+abstract class $GetExerciseCopyWith<$Res> {
+  factory $GetExerciseCopyWith(
+          GetExercise value, $Res Function(GetExercise) then) =
+      _$GetExerciseCopyWithImpl<$Res>;
+}
+
+class _$GetExerciseCopyWithImpl<$Res>
+    extends _$Exercise_1EventCopyWithImpl<$Res>
+    implements $GetExerciseCopyWith<$Res> {
+  _$GetExerciseCopyWithImpl(
+      GetExercise _value, $Res Function(GetExercise) _then)
+      : super(_value, (v) => _then(v as GetExercise));
+
+  @override
+  GetExercise get _value => super._value as GetExercise;
+}
+
+class _$GetExercise implements GetExercise {
+  const _$GetExercise();
+
+  @override
+  String toString() {
+    return 'Exercise_1Event.getExercise()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GetExercise);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getExercise(),
+    @required Result droppedDraggable(String idTarget, String idDraggable),
+    @required Result pressedFinish(),
+  }) {
+    assert(getExercise != null);
+    assert(droppedDraggable != null);
+    assert(pressedFinish != null);
+    return getExercise();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getExercise(),
+    Result droppedDraggable(String idTarget, String idDraggable),
+    Result pressedFinish(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getExercise != null) {
+      return getExercise();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getExercise(GetExercise value),
+    @required Result droppedDraggable(DroppedDraggable value),
+    @required Result pressedFinish(PressedFinish value),
+  }) {
+    assert(getExercise != null);
+    assert(droppedDraggable != null);
+    assert(pressedFinish != null);
+    return getExercise(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getExercise(GetExercise value),
+    Result droppedDraggable(DroppedDraggable value),
+    Result pressedFinish(PressedFinish value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getExercise != null) {
+      return getExercise(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetExercise implements Exercise_1Event {
+  const factory GetExercise() = _$GetExercise;
 }
 
 abstract class $DroppedDraggableCopyWith<$Res> {
@@ -136,9 +238,11 @@ class _$DroppedDraggable implements DroppedDraggable {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result getExercise(),
     @required Result droppedDraggable(String idTarget, String idDraggable),
     @required Result pressedFinish(),
   }) {
+    assert(getExercise != null);
     assert(droppedDraggable != null);
     assert(pressedFinish != null);
     return droppedDraggable(idTarget, idDraggable);
@@ -147,6 +251,7 @@ class _$DroppedDraggable implements DroppedDraggable {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result getExercise(),
     Result droppedDraggable(String idTarget, String idDraggable),
     Result pressedFinish(),
     @required Result orElse(),
@@ -161,9 +266,11 @@ class _$DroppedDraggable implements DroppedDraggable {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
     @required Result pressedFinish(PressedFinish value),
   }) {
+    assert(getExercise != null);
     assert(droppedDraggable != null);
     assert(pressedFinish != null);
     return droppedDraggable(this);
@@ -172,6 +279,7 @@ class _$DroppedDraggable implements DroppedDraggable {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
     Result pressedFinish(PressedFinish value),
     @required Result orElse(),
@@ -229,9 +337,11 @@ class _$PressedFinish implements PressedFinish {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result getExercise(),
     @required Result droppedDraggable(String idTarget, String idDraggable),
     @required Result pressedFinish(),
   }) {
+    assert(getExercise != null);
     assert(droppedDraggable != null);
     assert(pressedFinish != null);
     return pressedFinish();
@@ -240,6 +350,7 @@ class _$PressedFinish implements PressedFinish {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result getExercise(),
     Result droppedDraggable(String idTarget, String idDraggable),
     Result pressedFinish(),
     @required Result orElse(),
@@ -254,9 +365,11 @@ class _$PressedFinish implements PressedFinish {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
     @required Result pressedFinish(PressedFinish value),
   }) {
+    assert(getExercise != null);
     assert(droppedDraggable != null);
     assert(pressedFinish != null);
     return pressedFinish(this);
@@ -265,6 +378,7 @@ class _$PressedFinish implements PressedFinish {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
     Result pressedFinish(PressedFinish value),
     @required Result orElse(),
@@ -288,8 +402,11 @@ class _$Exercise_1StateTearOff {
     return const Initial();
   }
 
-  ShowExercise showExercise() {
-    return const ShowExercise();
+  ShowExercise showExercise(List<dynamic> text, List<dynamic> answers) {
+    return ShowExercise(
+      text,
+      answers,
+    );
   }
 }
 
@@ -300,12 +417,12 @@ mixin _$Exercise_1State {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result showExercise(),
+    @required Result showExercise(List<dynamic> text, List<dynamic> answers),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result showExercise(),
+    Result showExercise(List<dynamic> text, List<dynamic> answers),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -370,7 +487,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result showExercise(),
+    @required Result showExercise(List<dynamic> text, List<dynamic> answers),
   }) {
     assert(initial != null);
     assert(showExercise != null);
@@ -381,7 +498,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result showExercise(),
+    Result showExercise(List<dynamic> text, List<dynamic> answers),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -425,6 +542,7 @@ abstract class $ShowExerciseCopyWith<$Res> {
   factory $ShowExerciseCopyWith(
           ShowExercise value, $Res Function(ShowExercise) then) =
       _$ShowExerciseCopyWithImpl<$Res>;
+  $Res call({List<dynamic> text, List<dynamic> answers});
 }
 
 class _$ShowExerciseCopyWithImpl<$Res>
@@ -436,45 +554,75 @@ class _$ShowExerciseCopyWithImpl<$Res>
 
   @override
   ShowExercise get _value => super._value as ShowExercise;
+
+  @override
+  $Res call({
+    Object text = freezed,
+    Object answers = freezed,
+  }) {
+    return _then(ShowExercise(
+      text == freezed ? _value.text : text as List<dynamic>,
+      answers == freezed ? _value.answers : answers as List<dynamic>,
+    ));
+  }
 }
 
 class _$ShowExercise implements ShowExercise {
-  const _$ShowExercise();
+  const _$ShowExercise(this.text, this.answers)
+      : assert(text != null),
+        assert(answers != null);
+
+  @override
+  final List<dynamic> text;
+  @override
+  final List<dynamic> answers;
 
   @override
   String toString() {
-    return 'Exercise_1State.showExercise()';
+    return 'Exercise_1State.showExercise(text: $text, answers: $answers)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ShowExercise);
+    return identical(this, other) ||
+        (other is ShowExercise &&
+            (identical(other.text, text) ||
+                const DeepCollectionEquality().equals(other.text, text)) &&
+            (identical(other.answers, answers) ||
+                const DeepCollectionEquality().equals(other.answers, answers)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(text) ^
+      const DeepCollectionEquality().hash(answers);
+
+  @override
+  $ShowExerciseCopyWith<ShowExercise> get copyWith =>
+      _$ShowExerciseCopyWithImpl<ShowExercise>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result showExercise(),
+    @required Result showExercise(List<dynamic> text, List<dynamic> answers),
   }) {
     assert(initial != null);
     assert(showExercise != null);
-    return showExercise();
+    return showExercise(text, answers);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result showExercise(),
+    Result showExercise(List<dynamic> text, List<dynamic> answers),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (showExercise != null) {
-      return showExercise();
+      return showExercise(text, answers);
     }
     return orElse();
   }
@@ -506,5 +654,10 @@ class _$ShowExercise implements ShowExercise {
 }
 
 abstract class ShowExercise implements Exercise_1State {
-  const factory ShowExercise() = _$ShowExercise;
+  const factory ShowExercise(List<dynamic> text, List<dynamic> answers) =
+      _$ShowExercise;
+
+  List<dynamic> get text;
+  List<dynamic> get answers;
+  $ShowExerciseCopyWith<ShowExercise> get copyWith;
 }
