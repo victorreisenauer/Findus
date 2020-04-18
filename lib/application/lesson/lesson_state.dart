@@ -6,9 +6,11 @@ abstract class LessonState with _$LessonState {
   const factory LessonState.lessonLoading() = LessonLoading;
   const factory LessonState.lessonLoaded(Lesson lesson) = LessonLoaded;
   const factory LessonState.lessonError(LessonFailure error) = LessonError;
-  const factory LessonState.allLessonsLoading() = AllLessonsLoading;
   const factory LessonState.allLessonsLoaded(ObjectList<Lesson> lessons) =
       AllLessonsLoaded;
-  const factory LessonState.allLessonsError(LessonFailure error) =
-      AllLessonsError;
+  const factory LessonState.lessonStarted(Exercise exercise, int lessonLength) =
+      LessonStarted;
+  const factory LessonState.lessonAdvanced(Exercise exercise) = LessonAdvanced;
+  const factory LessonState.lessonFinished() = LessonFinished;
+  const factory LessonState.lessonAborted() = LessonAborted;
 }

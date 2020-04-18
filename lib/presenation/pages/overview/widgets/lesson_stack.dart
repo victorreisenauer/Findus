@@ -12,10 +12,10 @@ class LessonStack extends StatelessWidget {
     return BlocConsumer<LessonBloc, LessonState>(
       listener: (context, state) {},
       builder: (context, LessonState state) {
-        if (state is AllLessonsLoading) {
+        if (state is LessonLoading) {
           return Center(child: CircularProgressIndicator());
         }
-        if (state is AllLessonsError) {
+        if (state is LessonError) {
           return Center(
             child: Text(state.toString()),
           );
@@ -32,6 +32,9 @@ class LessonStack extends StatelessWidget {
                 ),
                 onPressed: () {
                   Router.navigator.pushReplacementNamed(Router.exercisePage);
+                  return context
+                      .bloc<LessonBloc>()
+                      .add(StartLesson(lessons[index].id));
                 },
               );
             },

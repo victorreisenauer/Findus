@@ -17,7 +17,16 @@ class TestLessonRepository implements ILessonFacade {
     return right(sampler.getSampleObject());
   }
 
-  Future<Either<LessonFailure, ObjectList<Lesson>>> getUserLessons() async {
-    return right(sampler.getSampleObjectList());
+  Stream<Either<LessonFailure, ObjectList<Lesson>>> getUserLessons() async* {
+    int i = 0;
+    while (i < 3) {
+      i++;
+      yield right(sampler.getSampleObjectList());
+    }
+  }
+
+  Future<Either<LessonFailure, Unit>> saveResults(
+      ObjectList<Object> results) async {
+    return left(LessonFailure.unexpected());
   }
 }

@@ -7,17 +7,16 @@ import '../core/background_image.dart';
 import 'widgets/lesson_stack.dart';
 
 class OverviewPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => getIt<LessonBloc>()..add(LessonEvent.fetchAllLessons()),
-        child: BackgroundImage(
-          imagePath: "assets/images/overview_background.jpg",
+        body: BlocProvider(
+      create: (context) =>
+          getIt<LessonBloc>()..add(LessonEvent.fetchAllLessons()),
+      child: BackgroundImage(
+        imagePath: "assets/images/overview_background.jpg",
         child: LessonStack(),
-        ),
-      )
-    );
+      ),
+    ));
   }
 }

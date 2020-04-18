@@ -37,28 +37,12 @@ class Router {
           settings: settings,
         );
       case Router.exercisePage:
-        if (hasInvalidArgs<ExercisePageArguments>(args, isRequired: true)) {
-          return misTypedArgsRoute<ExercisePageArguments>(args);
-        }
-        final typedArgs = args as ExercisePageArguments;
         return MaterialPageRoute<dynamic>(
-          builder: (_) => ExercisePage(
-              exerciseId: typedArgs.exerciseId, type: typedArgs.type),
+          builder: (_) => ExercisePage(),
           settings: settings,
         );
       default:
         return unknownRoutePage(settings.name);
     }
   }
-}
-
-//**************************************************************************
-// Arguments holder classes
-//***************************************************************************
-
-//ExercisePage arguments holder class
-class ExercisePageArguments {
-  final String exerciseId;
-  final String type;
-  ExercisePageArguments({@required this.exerciseId, @required this.type});
 }

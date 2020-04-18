@@ -2,8 +2,8 @@ import 'package:lrs_app_v3/domain/core/failures.dart';
 
 class NotAuthenticatedError extends Error {}
 
-class UnexpectedValueError extends Error {
-  final ValueFailure<dynamic> valueFailure;
+class UnexpectedValueError<T> extends Error {
+  final ValueFailure<T> valueFailure;
 
   UnexpectedValueError(this.valueFailure);
 
