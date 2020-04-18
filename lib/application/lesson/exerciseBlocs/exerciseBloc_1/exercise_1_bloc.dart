@@ -58,9 +58,9 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
 
       yield Exercise_1State.showExercise(text, answers);
     }, droppedDraggable: (e) {
-      print('Hey');
+      print(e);
     }, pressedFinish: (e) {
-      print('Hey');
+      print(e);
     });
   }
 }
