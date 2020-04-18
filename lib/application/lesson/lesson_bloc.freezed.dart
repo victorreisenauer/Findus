@@ -310,7 +310,7 @@ class _$LessonStateTearOff {
     return const AllLessonsLoading();
   }
 
-  AllLessonsLoaded allLessonsLoaded(LessonList lessons) {
+  AllLessonsLoaded allLessonsLoaded(ObjectList<Lesson> lessons) {
     return AllLessonsLoaded(
       lessons,
     );
@@ -334,7 +334,7 @@ mixin _$LessonState {
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
     @required Result allLessonsLoading(),
-    @required Result allLessonsLoaded(LessonList lessons),
+    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
     @required Result allLessonsError(LessonFailure error),
   });
   @optionalTypeArgs
@@ -344,7 +344,7 @@ mixin _$LessonState {
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
     Result allLessonsLoading(),
-    Result allLessonsLoaded(LessonList lessons),
+    Result allLessonsLoaded(ObjectList<Lesson> lessons),
     Result allLessonsError(LessonFailure error),
     @required Result orElse(),
   });
@@ -429,7 +429,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
     @required Result allLessonsLoading(),
-    @required Result allLessonsLoaded(LessonList lessons),
+    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
     @required Result allLessonsError(LessonFailure error),
   }) {
     assert(initial != null);
@@ -450,7 +450,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
     Result allLessonsLoading(),
-    Result allLessonsLoaded(LessonList lessons),
+    Result allLessonsLoaded(ObjectList<Lesson> lessons),
     Result allLessonsError(LessonFailure error),
     @required Result orElse(),
   }) {
@@ -552,7 +552,7 @@ class _$LessonLoading with DiagnosticableTreeMixin implements LessonLoading {
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
     @required Result allLessonsLoading(),
-    @required Result allLessonsLoaded(LessonList lessons),
+    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
     @required Result allLessonsError(LessonFailure error),
   }) {
     assert(initial != null);
@@ -573,7 +573,7 @@ class _$LessonLoading with DiagnosticableTreeMixin implements LessonLoading {
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
     Result allLessonsLoading(),
-    Result allLessonsLoaded(LessonList lessons),
+    Result allLessonsLoaded(ObjectList<Lesson> lessons),
     Result allLessonsError(LessonFailure error),
     @required Result orElse(),
   }) {
@@ -710,7 +710,7 @@ class _$LessonLoaded with DiagnosticableTreeMixin implements LessonLoaded {
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
     @required Result allLessonsLoading(),
-    @required Result allLessonsLoaded(LessonList lessons),
+    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
     @required Result allLessonsError(LessonFailure error),
   }) {
     assert(initial != null);
@@ -731,7 +731,7 @@ class _$LessonLoaded with DiagnosticableTreeMixin implements LessonLoaded {
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
     Result allLessonsLoading(),
-    Result allLessonsLoaded(LessonList lessons),
+    Result allLessonsLoaded(ObjectList<Lesson> lessons),
     Result allLessonsError(LessonFailure error),
     @required Result orElse(),
   }) {
@@ -871,7 +871,7 @@ class _$LessonError with DiagnosticableTreeMixin implements LessonError {
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
     @required Result allLessonsLoading(),
-    @required Result allLessonsLoaded(LessonList lessons),
+    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
     @required Result allLessonsError(LessonFailure error),
   }) {
     assert(initial != null);
@@ -892,7 +892,7 @@ class _$LessonError with DiagnosticableTreeMixin implements LessonError {
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
     Result allLessonsLoading(),
-    Result allLessonsLoaded(LessonList lessons),
+    Result allLessonsLoaded(ObjectList<Lesson> lessons),
     Result allLessonsError(LessonFailure error),
     @required Result orElse(),
   }) {
@@ -1001,7 +1001,7 @@ class _$AllLessonsLoading
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
     @required Result allLessonsLoading(),
-    @required Result allLessonsLoaded(LessonList lessons),
+    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
     @required Result allLessonsError(LessonFailure error),
   }) {
     assert(initial != null);
@@ -1022,7 +1022,7 @@ class _$AllLessonsLoading
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
     Result allLessonsLoading(),
-    Result allLessonsLoaded(LessonList lessons),
+    Result allLessonsLoaded(ObjectList<Lesson> lessons),
     Result allLessonsError(LessonFailure error),
     @required Result orElse(),
   }) {
@@ -1082,7 +1082,7 @@ abstract class $AllLessonsLoadedCopyWith<$Res> {
   factory $AllLessonsLoadedCopyWith(
           AllLessonsLoaded value, $Res Function(AllLessonsLoaded) then) =
       _$AllLessonsLoadedCopyWithImpl<$Res>;
-  $Res call({LessonList lessons});
+  $Res call({ObjectList<Lesson> lessons});
 }
 
 class _$AllLessonsLoadedCopyWithImpl<$Res>
@@ -1100,7 +1100,7 @@ class _$AllLessonsLoadedCopyWithImpl<$Res>
     Object lessons = freezed,
   }) {
     return _then(AllLessonsLoaded(
-      lessons == freezed ? _value.lessons : lessons as LessonList,
+      lessons == freezed ? _value.lessons : lessons as ObjectList<Lesson>,
     ));
   }
 }
@@ -1111,7 +1111,7 @@ class _$AllLessonsLoaded
   const _$AllLessonsLoaded(this.lessons) : assert(lessons != null);
 
   @override
-  final LessonList lessons;
+  final ObjectList<Lesson> lessons;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -1150,7 +1150,7 @@ class _$AllLessonsLoaded
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
     @required Result allLessonsLoading(),
-    @required Result allLessonsLoaded(LessonList lessons),
+    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
     @required Result allLessonsError(LessonFailure error),
   }) {
     assert(initial != null);
@@ -1171,7 +1171,7 @@ class _$AllLessonsLoaded
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
     Result allLessonsLoading(),
-    Result allLessonsLoaded(LessonList lessons),
+    Result allLessonsLoaded(ObjectList<Lesson> lessons),
     Result allLessonsError(LessonFailure error),
     @required Result orElse(),
   }) {
@@ -1224,9 +1224,10 @@ class _$AllLessonsLoaded
 }
 
 abstract class AllLessonsLoaded implements LessonState {
-  const factory AllLessonsLoaded(LessonList lessons) = _$AllLessonsLoaded;
+  const factory AllLessonsLoaded(ObjectList<Lesson> lessons) =
+      _$AllLessonsLoaded;
 
-  LessonList get lessons;
+  ObjectList<Lesson> get lessons;
   $AllLessonsLoadedCopyWith<AllLessonsLoaded> get copyWith;
 }
 
@@ -1314,7 +1315,7 @@ class _$AllLessonsError
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
     @required Result allLessonsLoading(),
-    @required Result allLessonsLoaded(LessonList lessons),
+    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
     @required Result allLessonsError(LessonFailure error),
   }) {
     assert(initial != null);
@@ -1335,7 +1336,7 @@ class _$AllLessonsError
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
     Result allLessonsLoading(),
-    Result allLessonsLoaded(LessonList lessons),
+    Result allLessonsLoaded(ObjectList<Lesson> lessons),
     Result allLessonsError(LessonFailure error),
     @required Result orElse(),
   }) {

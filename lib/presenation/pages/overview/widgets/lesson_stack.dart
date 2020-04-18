@@ -24,7 +24,7 @@ class LessonStack extends StatelessWidget {
           var lessons = state.lessons.value.fold((_) => null, (v) => v);
           return ListView.builder(
             padding: const EdgeInsets.all(8),
-            itemCount: lessons.length,
+            itemCount: state.lessons.length,
             itemBuilder: (BuildContext context, int index) {
               return FlatButton(
                 child: Center(

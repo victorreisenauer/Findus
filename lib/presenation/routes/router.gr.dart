@@ -7,20 +7,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:lrs_app_v3/presenation/pages/welcome/welcome_page.dart';
 import 'package:lrs_app_v3/presenation/pages/sign_in/sign_in_page.dart';
 import 'package:lrs_app_v3/presenation/pages/overview/overview_page.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/exercise_page.dart';
-import 'package:lrs_app_v3/presenation/pages/welcome/welcome_page.dart';
 
 class Router {
-  static const signInPage = '/';
+  static const welcomePage = '/';
+  static const signInPage = '/sign-in-page';
   static const overviewPage = '/overview-page';
   static const exercisePage = '/exercise-page';
-  static const welcomePage = '/welcome-page';
   static final navigator = ExtendedNavigator();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
+      case Router.welcomePage:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => WelcomePage(),
+          settings: settings,
+        );
       case Router.signInPage:
         return MaterialPageRoute<dynamic>(
           builder: (_) => SignInPage(),
@@ -39,11 +44,6 @@ class Router {
         return MaterialPageRoute<dynamic>(
           builder: (_) => ExercisePage(
               exerciseId: typedArgs.exerciseId, type: typedArgs.type),
-          settings: settings,
-        );
-      case Router.welcomePage:
-        return MaterialPageRoute<dynamic>(
-          builder: (_) => WelcomePage(),
           settings: settings,
         );
       default:
