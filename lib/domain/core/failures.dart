@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 
 part 'failures.freezed.dart';
 
-
 @freezed
+
 /// Failure to handle Exceptions with ValueObjects (like Password, emailAddress).
 /// Examples: password exceeds length, password is empty, email is invalide etc.
 abstract class ValueFailure<T> with _$ValueFailure<T> {

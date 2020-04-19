@@ -1,237 +1,49 @@
+import 'dart:convert';
+
+import 'package:kt_dart/collection.dart';
+
 import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
+import 'samples_generator.dart';
+import 'package:lrs_app_v3/infrastructure/lesson/models/exercise_model.dart';
 
-ExerciseList sampleExerciseList =
-    ExerciseList([sampleExercise1, sampleExercise2, sampleExercise3]);
-Exercise sampleExercise1 = Exercise(
-  id: UniqueId(),
-  type: ExerciseType("sampleExerciseType1"),
-  data: ExerciseData({
-    "1": "somedata",
-    "2": [1, 2, 3],
-    "3": {"3.1": "spam"}
-  }),
-);
+class SampleExerciseGenerator implements SamplesGenerator {
+  final List jsonIds = ['0001', '0002', '0003', '0004'];
+  final List<String> jsonTypes = [
+    'sampleType1',
+    'sampleType2',
+    'sampleType3',
+    'sampleType4'
+  ];
+  final List<Map> jsonData = [
+    {
+      "1": "somedata",
+      "2": "blabla",
+      "3": ["list", "spam"]
+    },
+    {
+      "1": "someotherdata",
+      "2": [1, 2, 3, 5],
+      "3": {"3.1": "and eggs"}
+    }
+  ];
 
-Exercise sampleExercise2 = Exercise(
-  id: UniqueId(),
-  type: ExerciseType("sampleExerciseType2"),
-  data: ExerciseData({
-    "1": "somedata2",
-    "2": [1, 2, 3, 4],
-    "3": {"3.1": "bacon"}
-  }),
-);
+  String getSampleEncodedJson() =>
+      jsonEncode({'id': jsonIds[0], 'type': jsonTypes[0], 'data': jsonData[1]});
 
-Exercise sampleExercise3 = Exercise(
-  id: UniqueId(),
-  type: ExerciseType("sampleExerciseType3"),
-  data: ExerciseData({
-    "1": "somedata3",
-    "2": [1, 2, 3, 5],
-    "3": {"3.1": "and eggs"}
-  }),
-);
+  List getSampleSerializableList() => [
+        {'id': jsonIds[0], 'type': jsonTypes[0], 'data': jsonData[0]},
+        {'id': jsonIds[1], 'type': jsonTypes[1], 'data': jsonData[1]}
+      ];
 
-Exercise sampleExerciseForExercise_1_1 = Exercise(
-  id: UniqueId(),
-  type: ExerciseType("exercise_1"),
-  data: ExerciseData({
-    // all normal strings
-    1: [
-      'Renato',
-      'und',
-      'Frederik',
-      'plagt',
-      'die',
-      '.',
-      'Von',
-      'oder',
-      'keine',
-      'Spur.',
-      'Seit',
-      'Stunden',
-      'sitzen',
-      'sie',
-      'schon',
-      'in',
-      'Frederiks',
-      'Zimmer',
-      'und',
-      'warten',
-      'auf',
-      'den',
-      'versprochenen',
-      'Besuch',
-      'einer',
-      'Mitschülerin.',
-      'Die',
-      'heißt',
-      'Susanne,',
-      'ist',
-      '15',
-      'Jahre',
-      'alt',
-      'und',
-      'geht',
-      'in',
-      'die',
-      '9.',
-      'Klasse.',
-      'Sie',
-      'ist',
-      'schon',
-      'fast',
-      'eine',
-      'Fast',
-      'alle',
-      'Jungen',
-      'aus',
-      'der',
-      'Schule',
-      'wollen',
-      'mit',
-      'Susanne',
-      'befreundet',
-      'sein,',
-      'weil',
-      'sie',
-      'so',
-      'hübsch',
-      'ist.',
-      'Heute',
-      'Morgen',
-      'hat',
-      'Susanne',
-      'auf',
-      'dem',
-      'Schulhof',
-      'vor',
-      'gestrahlt',
-      'und',
-      'Renato',
-      'und',
-      'Frederik',
-      'gefragt,',
-      'ob',
-      'die',
-      'beiden',
-      'mit',
-      'ihr',
-      'am',
-      'Nachmittag',
-      'einen',
-      'Film',
-      'gucken',
-      'wollen.'
-    ],
-    // all drag targets
-    2: [
-      'Traurig _ _ _ _',
-      'Heiter_ _ _ _',
-      'Fröhlich_ _ _ _',
-      'Schön_ _ _ _',
-      'Berühmt_ _ _ _.',
-      'Freundlich_ _ _ _'
-    ],
-    // order of the text
-    3: [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    // possible answers
-    4: ['heit', 'keit'],
-    // right answers (i.e. 0 = 'heit' and 1 = 'keit')
-    5: [1, 1, 1, 0, 0, 1]
-  }),
-);
+  Map getSampleDecodedJson() => jsonDecode(getSampleEncodedJson());
+
+  ExerciseModel getSampleObjectModel() =>
+      ExerciseModel.fromJson(jsonDecode(getSampleEncodedJson()));
+
+  Exercise getSampleObject() => getSampleObjectModel().toDomain();
+
+  ObjectList<Exercise> getSampleObjectList() =>
+      ObjectList([getSampleObject(), getSampleObject()].toImmutableList());
+}

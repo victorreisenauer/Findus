@@ -12,7 +12,6 @@ part 'auth_state.dart';
 
 part 'auth_bloc.freezed.dart';
 
-
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthFacade _authFacade;
@@ -23,8 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthState get initialState => const AuthState.initial();
 
   @override
-  Stream<AuthState> mapEventToState(AuthEvent event) 
-  async* {
+  Stream<AuthState> mapEventToState(AuthEvent event) async* {
     yield* event.map(
       authCheckRequested: (e) async* {
         final userOption = await _authFacade.getSignedInUser();
