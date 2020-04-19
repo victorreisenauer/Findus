@@ -12,9 +12,9 @@ class OverviewPage extends StatelessWidget {
     return Scaffold(
         body: BlocProvider(
       create: (context) =>
-          getIt<LessonBloc>()..add(LessonEvent.fetchAllLessons()),
+          getIt<LessonBloc>()..add(LessonEvent.fetchAllLessonIds()),
       child: BackgroundImage(
-        imagePath: "assets/images/overview_background.jpg",
+        imagePath: "assets/images/overview_background_plain.jpg",
         child: LessonStack(),
       ),
     ));

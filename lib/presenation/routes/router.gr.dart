@@ -11,6 +11,7 @@ import 'package:lrs_app_v3/presenation/pages/welcome/welcome_page.dart';
 import 'package:lrs_app_v3/presenation/pages/sign_in/sign_in_page.dart';
 import 'package:lrs_app_v3/presenation/pages/overview/overview_page.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/exercise_page.dart';
+import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 
 class Router {
   static const welcomePage = '/';
@@ -37,12 +38,29 @@ class Router {
           settings: settings,
         );
       case Router.exercisePage:
+        if (hasInvalidArgs<ExercisePageArguments>(args, isRequired: true)) {
+          return misTypedArgsRoute<ExercisePageArguments>(args);
+        }
+        final typedArgs = args as ExercisePageArguments;
         return MaterialPageRoute<dynamic>(
-          builder: (_) => ExercisePage(),
+          builder: (_) => ExercisePage(
+              exercise: typedArgs.exercise,
+              lessonLength: typedArgs.lessonLength),
           settings: settings,
         );
       default:
         return unknownRoutePage(settings.name);
     }
   }
+}
+
+//**************************************************************************
+// Arguments holder classes
+//***************************************************************************
+
+//ExercisePage arguments holder class
+class ExercisePageArguments {
+  final Exercise exercise;
+  final int lessonLength;
+  ExercisePageArguments({@required this.exercise, this.lessonLength});
 }

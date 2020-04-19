@@ -2,10 +2,9 @@ part of 'lesson_bloc.dart';
 
 @freezed
 abstract class LessonEvent with _$LessonEvent {
-  const factory LessonEvent.fetchAllLessons() = FetchAllLessons;
-  const factory LessonEvent.lessonsReceived(
-          Either<LessonFailure, ObjectList<Lesson>> failureOrLessons) =
-      LessonsReceived;
+  const factory LessonEvent.fetchAllLessonIds() = FetchAllLessonIds;
+  const factory LessonEvent.lessonIdsReceived(
+      Either<LessonFailure, List<UniqueId>> ids) = LessonIdsReceived;
   const factory LessonEvent.startLesson(UniqueId id) = StartLesson;
   const factory LessonEvent.advanceLesson() = AdvanceLesson;
   // TODO: create designated Results Object to hold results data

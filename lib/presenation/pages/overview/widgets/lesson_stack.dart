@@ -10,7 +10,13 @@ class LessonStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LessonBloc, LessonState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is LessonStarted) {
+          Router.navigator.pushReplacementNamed(Router.exercisePage,
+              arguments: ExercisePageArguments(
+                  exercise: state.exercise, lessonLength: state.lessonLength));
+        }
+      },
       builder: (context, LessonState state) {
         if (state is LessonLoading) {
           return Center(child: CircularProgressIndicator());
@@ -20,21 +26,23 @@ class LessonStack extends StatelessWidget {
             child: Text(state.toString()),
           );
         }
-        if (state is AllLessonsLoaded) {
-          var lessons = state.lessons.value.fold((_) => null, (v) => v);
+        if (state is AllLessonIdsLoaded) {
           return ListView.builder(
             padding: const EdgeInsets.all(8),
-            itemCount: state.lessons.length,
+            itemCount: state.ids.length,
             itemBuilder: (BuildContext context, int index) {
               return FlatButton(
+                color: Colors.blue,
                 child: Center(
-                  child: Text(lessons[index].id.value.toString()),
+                  child: Text(
+                    "Lektion ${index + 1}",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
                 onPressed: () {
-                  Router.navigator.pushReplacementNamed(Router.exercisePage);
                   return context
                       .bloc<LessonBloc>()
-                      .add(StartLesson(lessons[index].id));
+                      .add(StartLesson(state.ids[index]));
                 },
               );
             },
