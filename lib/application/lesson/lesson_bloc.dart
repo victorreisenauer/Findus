@@ -19,17 +19,14 @@ part 'lesson_state.dart';
 
 part 'lesson_bloc.freezed.dart';
 
-class MockExercise extends Mock implements Exercise {}
-
 @injectable
 class LessonBloc extends Bloc<LessonEvent, LessonState> {
   final ILessonFacade _lessonFacade;
-  int _index = 0;
   Lesson _currentLesson;
 
   LessonBloc(this._lessonFacade);
 
-  StreamSubscription<Either<LessonFailure, ObjectList<Lesson>>>
+  StreamSubscription<Either<LessonFailure, List<UniqueId>>>
       _lessonStreamSubscription;
 
   @override
@@ -39,32 +36,25 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
   Stream<LessonState> mapEventToState(
     LessonEvent event,
   ) async* {
-    yield* event.map(fetchAllLessons: (e) async* {
+    yield* event.map(fetchAllLessonIds: (e) async* {
       yield const LessonState.lessonLoading();
       await _lessonStreamSubscription?.cancel();
       _lessonStreamSubscription = _lessonFacade
-          .getUserLessons()
-          .listen((lessons) => add(LessonEvent.lessonsReceived(lessons)));
-    }, lessonsReceived: (e) async* {
-      yield e.failureOrLessons.fold(
+          .getUserLessonIds()
+          .listen((lessons) => add(LessonEvent.lessonIdsReceived(lessons)));
+    }, lessonIdsReceived: (e) async* {
+      yield e.ids.fold(
         (f) => LessonState.lessonError(f),
-        (lessons) => LessonState.allLessonsLoaded(lessons),
+        (ids) => LessonState.allLessonIdsLoaded(ids),
       );
     }, startLesson: (e) async* {
+      yield LessonLoading();
       final failureOrLesson = await _lessonFacade.getLessonById(e.id);
       yield failureOrLesson.fold((f) => LessonError(f), (lesson) {
-        this._index = 0;
         this._currentLesson = lesson;
-        final Exercise exercise =
-            _currentLesson.exerciseList.getOrCrash()[_index];
-        final int lessonLength = _currentLesson.exerciseList.length;
-        return LessonStarted(exercise, lessonLength);
+        final ObjectList<Exercise> exerciseList = _currentLesson.exerciseList;
+        return LessonStarted(exerciseList);
       });
-    }, advanceLesson: (e) async* {
-      this._index++;
-      final Exercise exercise =
-          _currentLesson.exerciseList.getOrCrash()[_index];
-      yield LessonAdvanced(exercise);
     }, finishLesson: (e) async* {
       _lessonFacade.saveResults(e.results);
       yield LessonFinished();

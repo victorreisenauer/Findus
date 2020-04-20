@@ -12,6 +12,8 @@ import 'samples_generator.dart';
 class SampleLessonGenerator implements SamplesGenerator {
   final SampleExerciseGenerator _exerciseGenerator = SampleExerciseGenerator();
   final List<String> jsonIds = ['0001', '0002', '0003', '0004'];
+  List<Lesson> _currentLessonList;
+  UniqueId sampleId = UniqueId();
 
   String getSampleEncodedJson() => jsonEncode({
         'id': jsonIds[0],
@@ -22,11 +24,26 @@ class SampleLessonGenerator implements SamplesGenerator {
 
   Lesson getSampleObject() => Lesson(
         exerciseList: _exerciseGenerator.getSampleObjectList(),
-        id: UniqueId(),
+        id: sampleId,
       );
 
-  ObjectList<Lesson> getSampleObjectList() =>
-      ObjectList([getSampleObject(), getSampleObject()].toImmutableList());
+  ObjectList<Lesson> getSampleObjectList() {
+    _currentLessonList = [
+      getSampleObject(),
+      getSampleObject(),
+      getSampleObject()
+    ];
+    return ObjectList(_currentLessonList.toImmutableList());
+  }
+
+  List<UniqueId> getSampleObjectListIds() {
+    getSampleObjectList();
+    List<UniqueId> _ids = [];
+    for (Lesson lesson in _currentLessonList) {
+      _ids.add(lesson.id);
+    }
+    return _ids;
+  }
 
   LessonFailure getSampleFailure() => LessonFailure.unexpected();
 }

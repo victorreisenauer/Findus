@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+
+import 'package:lrs_app_v3/presenation/pages/overview/overview_page.dart';
 
 main() {
   runApp(TestApp());
@@ -9,6 +9,6 @@ main() {
 class TestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Scaffold());
+    return MaterialApp(home: OverviewPage());
   }
 }

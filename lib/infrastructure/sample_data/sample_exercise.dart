@@ -9,6 +9,7 @@ import 'samples_generator.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/models/exercise_model.dart';
 
 class SampleExerciseGenerator implements SamplesGenerator {
+  final UniqueId sampleId = UniqueId();
   final List jsonIds = ['0001', '0002', '0003', '0004'];
   final List<String> jsonTypes = [
     'sampleExercise1',
@@ -211,11 +212,22 @@ class SampleExerciseGenerator implements SamplesGenerator {
       "1": "someotherdata",
       "2": [1, 2, 3, 5],
       "3": {"3.1": "and eggs"}
-    }
+    },
+    jerryJsonData,
   ];
 
   String getSampleEncodedJson() =>
       jsonEncode({'id': jsonIds[0], 'type': jsonTypes[0], 'data': jsonData[1]});
+
+  String getEncodedJsonForType(String type) {
+    for (int i = 0; i <= jsonTypes.length; i++) {
+      if (jsonTypes[i] == type) {
+        return jsonEncode(
+            {'id': jsonIds[i], 'type': jsonTypes[i], 'data': jsonData[i]});
+      }
+    }
+    throw Exception("No sampleExercise of that type was found");
+  }
 
   List getSampleSerializableList() => [
         {'id': jsonIds[0], 'type': jsonTypes[0], 'data': jsonData[0]},
@@ -225,7 +237,7 @@ class SampleExerciseGenerator implements SamplesGenerator {
   Map getSampleDecodedJson() => jsonDecode(getSampleEncodedJson());
 
   ExerciseModel getSampleObjectModel() =>
-      ExerciseModel.fromJson(jsonDecode(getSampleEncodedJson()));
+      ExerciseModel.fromJson(jsonDecode(getEncodedJsonForType('sampleType3')));
 
   Exercise getSampleObject() => getSampleObjectModel().toDomain();
 
@@ -242,3 +254,192 @@ class SampleExerciseGenerator implements SamplesGenerator {
     throw Exception("No sampleExercise of that type was found");
   }
 }
+
+Map jerryJsonData = {
+  "1": [
+    'Renato',
+    'und',
+    'Frederik',
+    'plagt',
+    'die',
+    'Von',
+    'oder',
+    'keine',
+    'Spur.',
+    'Seit',
+    'Stunden',
+    'sitzen',
+    'sie',
+    'schon',
+    'in',
+    'Frederiks',
+    'Zimmer',
+    'und',
+    'warten',
+    'auf',
+    'den',
+    'versprochenen',
+    'Besuch',
+    'einer',
+    'Mitschülerin.',
+    'Die',
+    'heißt',
+    'Susanne,',
+    'ist',
+    '15',
+    'Jahre',
+    'alt',
+    'und',
+    'geht',
+    'in',
+    'die',
+    '9.',
+    'Klasse.',
+    'Sie',
+    'ist',
+    'schon',
+    'fast',
+    'eine',
+    'Fast',
+    'alle',
+    'Jungen',
+    'aus',
+    'der',
+    'Schule',
+    'wollen',
+    'mit',
+    'Susanne',
+    'befreundet',
+    'sein,',
+    'weil',
+    'sie',
+    'so',
+    'hübsch',
+    'ist.',
+    'Heute',
+    'Morgen',
+    'hat',
+    'Susanne',
+    'auf',
+    'dem',
+    'Schulhof',
+    'vor',
+    'gestrahlt',
+    'und',
+    'Renato',
+    'und',
+    'Frederik',
+    'gefragt,',
+    'ob',
+    'die',
+    'beiden',
+    'mit',
+    'ihr',
+    'am',
+    'Nachmittag',
+    'einen',
+    'Film',
+    'gucken',
+    'wollen.'
+  ],
+  "2": [
+    'Traurig_ _ _ _.',
+    'Heiter_ _ _ _',
+    'Fröhlich_ _ _ _',
+    'Schön_ _ _ _',
+    'Berühmt_ _ _ _.',
+    'Freundlich_ _ _ _'
+  ],
+  "3": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+};

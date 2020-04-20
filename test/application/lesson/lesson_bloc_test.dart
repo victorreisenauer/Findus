@@ -2,7 +2,7 @@ import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:dartz/dartz.dart';
 
-import 'package:lrs_app_v3/infrastructure/lesson/mock_lesson_repository.dart';
+import 'package:lrs_app_v3/infrastructure/lesson/test_lesson_repository.dart';
 import 'package:lrs_app_v3/application/lesson/lesson_bloc.dart';
 import 'package:lrs_app_v3/infrastructure/sample_data/sample_barrel.dart';
 import 'package:lrs_app_v3/domain/lesson/exercise.dart';
@@ -15,106 +15,66 @@ void main() {
   SampleExerciseGenerator exSampler = SampleExerciseGenerator();
   Lesson sampleLesson = sampler.getSampleObject();
   ObjectList<Lesson> sampleLessonList = sampler.getSampleObjectList();
+  List<UniqueId> sampleLessonListIds = sampler.getSampleObjectListIds();
+
   Exercise sampleExercise = sampleLesson.exerciseList.getOrCrash()[0];
   Exercise sampleExerciseNext = sampleLesson.exerciseList.getOrCrash()[1];
 
+  TestLessonRepository testLessonRepo = TestLessonRepository();
+
   group('LessonBloc => ', () {
     test('emits Initial state [] on initialization', () {
-      final bloc = LessonBloc(mockLessonRepository);
+      final bloc = LessonBloc(testLessonRepo);
       expectLater(bloc, emits(LessonState.initial()));
-      bloc.close();
     });
 
     test(
-        'emits [Initial, LessonLoading, LessonLoaded(Lesson)] on successful FetchLessonById Event',
+        'emits [Initial, LessonLoading, allLessonIdsLoaded(ObjectList<Ids>)] on successful FetchAllLessonIds Event',
         () {
-      when(mockLessonRepository.getLessonById(any))
-          .thenAnswer((_) async => Right(sampleLesson));
-      final bloc = LessonBloc(mockLessonRepository);
-      bloc.add(LessonEvent.fetchLessonById(sampleLesson.id));
+      final bloc = LessonBloc(testLessonRepo);
+      bloc.add(LessonEvent.fetchAllLessonIds());
       expectLater(
           bloc,
           emitsInOrder([
             LessonState.initial(),
             LessonState.lessonLoading(),
-            LessonState.lessonLoaded(sampleLesson),
+            LessonState.allLessonIdsLoaded(sampleLessonListIds),
+            LessonState.allLessonIdsLoaded(sampleLessonListIds),
+            LessonState.allLessonIdsLoaded(sampleLessonListIds),
           ]));
-      bloc.close();
     });
-    test(
-        'emits [Initial, LessonLoading, LessonError(e)] on unsuccessful FetchLessonById Event',
-        () {
-      when(mockLessonRepository.getLessonById(any))
-          .thenAnswer((_) async => Left(sampler.getSampleFailure()));
-      final bloc = LessonBloc(mockLessonRepository);
-      bloc.add(LessonEvent.fetchLessonById(sampler.getSampleObject().id));
-      expectLater(
-          bloc,
-          emitsInOrder([
-            LessonState.initial(),
-            LessonState.lessonLoading(),
-            LessonState.lessonError(sampler.getSampleFailure()),
-          ]));
-      bloc.close();
-    });
-    test(
-        'emits [Initial, LessonsLoading, AllLessonsLoaded(LessonList)] on successful FetchAllLessons Event',
-        () {
-      when(mockLessonRepository.getUserLessons())
-          .thenAnswer((_) async => Right(sampleLessonList));
-      final bloc = LessonBloc(mockLessonRepository);
-      bloc.add(LessonEvent.fetchAllLessons());
-      expectLater(
-          bloc,
-          emitsInOrder([
-            LessonState.initial(),
-            LessonState.lessonLoading(),
-            LessonState.allLessonsLoaded(sampleLessonList),
-          ]));
-      bloc.close();
-    });
-    test(
-        'emits [Initial, LessonsLoading, LessonError(e)] on unsuccessful FetchAllLessons Event',
-        () {
-      when(mockLessonRepository.getUserLessons())
-          .thenAnswer((_) async => Left(sampler.getSampleFailure()));
-      final bloc = LessonBloc(mockLessonRepository);
-      bloc.add(LessonEvent.fetchAllLessons());
-      expectLater(
-          bloc,
-          emitsInOrder([
-            LessonState.initial(),
-            LessonState.lessonLoading(),
-            LessonState.lessonError(sampler.getSampleFailure()),
-          ]));
-      bloc.close();
-    });
-  });
 
-  group('LessonBloc =>', () {
-    test(' emits [LessonStarted] on successful startLesson Event', () {
-      final bloc = LessonBloc(mockLessonRepository);
-      bloc.add(LessonEvent.startLesson(sampleLesson));
+    test(
+        'emits [Initial, LessonLoading, LessonStarted] on successfulStartLesson Event',
+        () {
+      final bloc = LessonBloc(testLessonRepo);
+      bloc.add(LessonEvent.startLesson(sampleLesson.id));
       expectLater(
           bloc,
           emitsInOrder([
             LessonState.initial(),
-            LessonState.lessonStarted(sampleExercise)
+            LessonState.lessonLoading(),
+            LessonState.lessonStarted(sampleLesson.exerciseList.getOrCrash()[0],
+                sampleLesson.exerciseList.length),
           ]));
-      bloc.close();
     });
-    test('emits [LessonAdvanced] on advanceLesson Event', () {
-      final bloc = LessonBloc(mockLessonRepository);
+    test(
+        'emits [Initial, LessonLoading, LessonStarted, LessonAdvanced] on StartLesson, then AdvanceLesson Event',
+        () {
+      final bloc = LessonBloc(testLessonRepo);
+      bloc.add(LessonEvent.startLesson(sampleLesson.id));
       bloc.add(LessonEvent.advanceLesson());
+
       expectLater(
           bloc,
           emitsInOrder([
             LessonState.initial(),
-            LessonState.lessonAdvanced(sampleExerciseNext)
+            LessonState.lessonLoading(),
+            LessonState.lessonStarted(sampleLesson.exerciseList.getOrCrash()[0],
+                sampleLesson.exerciseList.length),
+            LessonState.lessonAdvanced(
+                sampleLesson.exerciseList.getOrCrash()[1])
           ]));
-      bloc.close();
     });
-    test('emits [] on finishLesson Event', () {});
-    test('emits [] on abortLesson Event', () {});
   });
 }

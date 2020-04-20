@@ -17,11 +17,11 @@ class TestLessonRepository implements ILessonFacade {
     return right(sampler.getSampleObject());
   }
 
-  Stream<Either<LessonFailure, ObjectList<Lesson>>> getUserLessons() async* {
+  Stream<Either<LessonFailure, List<UniqueId>>> getUserLessonIds() async* {
     int i = 0;
-    while (i < 3) {
+    while (i < 4) {
       i++;
-      yield right(sampler.getSampleObjectList());
+      yield right(sampler.getSampleObjectListIds());
     }
   }
 

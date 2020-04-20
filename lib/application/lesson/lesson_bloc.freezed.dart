@@ -12,14 +12,14 @@ T _$identity<T>(T value) => value;
 class _$LessonEventTearOff {
   const _$LessonEventTearOff();
 
-  FetchAllLessons fetchAllLessons() {
-    return const FetchAllLessons();
+  FetchAllLessonIds fetchAllLessonIds() {
+    return const FetchAllLessonIds();
   }
 
-  LessonsReceived lessonsReceived(
-      Either<LessonFailure, ObjectList<Lesson>> failureOrLessons) {
-    return LessonsReceived(
-      failureOrLessons,
+  LessonIdsReceived lessonIdsReceived(
+      Either<LessonFailure, List<UniqueId>> ids) {
+    return LessonIdsReceived(
+      ids,
     );
   }
 
@@ -27,10 +27,6 @@ class _$LessonEventTearOff {
     return StartLesson(
       id,
     );
-  }
-
-  AdvanceLesson advanceLesson() {
-    return const AdvanceLesson();
   }
 
   FinishLesson finishLesson(Object results) {
@@ -50,41 +46,35 @@ const $LessonEvent = _$LessonEventTearOff();
 mixin _$LessonEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result fetchAllLessons(),
+    @required Result fetchAllLessonIds(),
     @required
-        Result lessonsReceived(
-            Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+        Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result advanceLesson(),
     @required Result finishLesson(Object results),
     @required Result abortLesson(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result fetchAllLessons(),
-    Result lessonsReceived(
-        Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+    Result fetchAllLessonIds(),
+    Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result advanceLesson(),
     Result finishLesson(Object results),
     Result abortLesson(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result fetchAllLessons(FetchAllLessons value),
-    @required Result lessonsReceived(LessonsReceived value),
+    @required Result fetchAllLessonIds(FetchAllLessonIds value),
+    @required Result lessonIdsReceived(LessonIdsReceived value),
     @required Result startLesson(StartLesson value),
-    @required Result advanceLesson(AdvanceLesson value),
     @required Result finishLesson(FinishLesson value),
     @required Result abortLesson(AbortLesson value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result fetchAllLessons(FetchAllLessons value),
-    Result lessonsReceived(LessonsReceived value),
+    Result fetchAllLessonIds(FetchAllLessonIds value),
+    Result lessonIdsReceived(LessonIdsReceived value),
     Result startLesson(StartLesson value),
-    Result advanceLesson(AdvanceLesson value),
     Result finishLesson(FinishLesson value),
     Result abortLesson(AbortLesson value),
     @required Result orElse(),
@@ -105,42 +95,43 @@ class _$LessonEventCopyWithImpl<$Res> implements $LessonEventCopyWith<$Res> {
   final $Res Function(LessonEvent) _then;
 }
 
-abstract class $FetchAllLessonsCopyWith<$Res> {
-  factory $FetchAllLessonsCopyWith(
-          FetchAllLessons value, $Res Function(FetchAllLessons) then) =
-      _$FetchAllLessonsCopyWithImpl<$Res>;
+abstract class $FetchAllLessonIdsCopyWith<$Res> {
+  factory $FetchAllLessonIdsCopyWith(
+          FetchAllLessonIds value, $Res Function(FetchAllLessonIds) then) =
+      _$FetchAllLessonIdsCopyWithImpl<$Res>;
 }
 
-class _$FetchAllLessonsCopyWithImpl<$Res>
+class _$FetchAllLessonIdsCopyWithImpl<$Res>
     extends _$LessonEventCopyWithImpl<$Res>
-    implements $FetchAllLessonsCopyWith<$Res> {
-  _$FetchAllLessonsCopyWithImpl(
-      FetchAllLessons _value, $Res Function(FetchAllLessons) _then)
-      : super(_value, (v) => _then(v as FetchAllLessons));
+    implements $FetchAllLessonIdsCopyWith<$Res> {
+  _$FetchAllLessonIdsCopyWithImpl(
+      FetchAllLessonIds _value, $Res Function(FetchAllLessonIds) _then)
+      : super(_value, (v) => _then(v as FetchAllLessonIds));
 
   @override
-  FetchAllLessons get _value => super._value as FetchAllLessons;
+  FetchAllLessonIds get _value => super._value as FetchAllLessonIds;
 }
 
-class _$FetchAllLessons
+class _$FetchAllLessonIds
     with DiagnosticableTreeMixin
-    implements FetchAllLessons {
-  const _$FetchAllLessons();
+    implements FetchAllLessonIds {
+  const _$FetchAllLessonIds();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LessonEvent.fetchAllLessons()';
+    return 'LessonEvent.fetchAllLessonIds()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'LessonEvent.fetchAllLessons'));
+    properties
+      ..add(DiagnosticsProperty('type', 'LessonEvent.fetchAllLessonIds'));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is FetchAllLessons);
+    return identical(this, other) || (other is FetchAllLessonIds);
   }
 
   @override
@@ -149,39 +140,34 @@ class _$FetchAllLessons
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result fetchAllLessons(),
+    @required Result fetchAllLessonIds(),
     @required
-        Result lessonsReceived(
-            Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+        Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result advanceLesson(),
     @required Result finishLesson(Object results),
     @required Result abortLesson(),
   }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
+    assert(fetchAllLessonIds != null);
+    assert(lessonIdsReceived != null);
     assert(startLesson != null);
-    assert(advanceLesson != null);
     assert(finishLesson != null);
     assert(abortLesson != null);
-    return fetchAllLessons();
+    return fetchAllLessonIds();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result fetchAllLessons(),
-    Result lessonsReceived(
-        Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+    Result fetchAllLessonIds(),
+    Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result advanceLesson(),
     Result finishLesson(Object results),
     Result abortLesson(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (fetchAllLessons != null) {
-      return fetchAllLessons();
+    if (fetchAllLessonIds != null) {
+      return fetchAllLessonIds();
     }
     return orElse();
   }
@@ -189,150 +175,139 @@ class _$FetchAllLessons
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result fetchAllLessons(FetchAllLessons value),
-    @required Result lessonsReceived(LessonsReceived value),
+    @required Result fetchAllLessonIds(FetchAllLessonIds value),
+    @required Result lessonIdsReceived(LessonIdsReceived value),
     @required Result startLesson(StartLesson value),
-    @required Result advanceLesson(AdvanceLesson value),
     @required Result finishLesson(FinishLesson value),
     @required Result abortLesson(AbortLesson value),
   }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
+    assert(fetchAllLessonIds != null);
+    assert(lessonIdsReceived != null);
     assert(startLesson != null);
-    assert(advanceLesson != null);
     assert(finishLesson != null);
     assert(abortLesson != null);
-    return fetchAllLessons(this);
+    return fetchAllLessonIds(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result fetchAllLessons(FetchAllLessons value),
-    Result lessonsReceived(LessonsReceived value),
+    Result fetchAllLessonIds(FetchAllLessonIds value),
+    Result lessonIdsReceived(LessonIdsReceived value),
     Result startLesson(StartLesson value),
-    Result advanceLesson(AdvanceLesson value),
     Result finishLesson(FinishLesson value),
     Result abortLesson(AbortLesson value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (fetchAllLessons != null) {
-      return fetchAllLessons(this);
+    if (fetchAllLessonIds != null) {
+      return fetchAllLessonIds(this);
     }
     return orElse();
   }
 }
 
-abstract class FetchAllLessons implements LessonEvent {
-  const factory FetchAllLessons() = _$FetchAllLessons;
+abstract class FetchAllLessonIds implements LessonEvent {
+  const factory FetchAllLessonIds() = _$FetchAllLessonIds;
 }
 
-abstract class $LessonsReceivedCopyWith<$Res> {
-  factory $LessonsReceivedCopyWith(
-          LessonsReceived value, $Res Function(LessonsReceived) then) =
-      _$LessonsReceivedCopyWithImpl<$Res>;
-  $Res call({Either<LessonFailure, ObjectList<Lesson>> failureOrLessons});
+abstract class $LessonIdsReceivedCopyWith<$Res> {
+  factory $LessonIdsReceivedCopyWith(
+          LessonIdsReceived value, $Res Function(LessonIdsReceived) then) =
+      _$LessonIdsReceivedCopyWithImpl<$Res>;
+  $Res call({Either<LessonFailure, List<UniqueId>> ids});
 }
 
-class _$LessonsReceivedCopyWithImpl<$Res>
+class _$LessonIdsReceivedCopyWithImpl<$Res>
     extends _$LessonEventCopyWithImpl<$Res>
-    implements $LessonsReceivedCopyWith<$Res> {
-  _$LessonsReceivedCopyWithImpl(
-      LessonsReceived _value, $Res Function(LessonsReceived) _then)
-      : super(_value, (v) => _then(v as LessonsReceived));
+    implements $LessonIdsReceivedCopyWith<$Res> {
+  _$LessonIdsReceivedCopyWithImpl(
+      LessonIdsReceived _value, $Res Function(LessonIdsReceived) _then)
+      : super(_value, (v) => _then(v as LessonIdsReceived));
 
   @override
-  LessonsReceived get _value => super._value as LessonsReceived;
+  LessonIdsReceived get _value => super._value as LessonIdsReceived;
 
   @override
   $Res call({
-    Object failureOrLessons = freezed,
+    Object ids = freezed,
   }) {
-    return _then(LessonsReceived(
-      failureOrLessons == freezed
-          ? _value.failureOrLessons
-          : failureOrLessons as Either<LessonFailure, ObjectList<Lesson>>,
+    return _then(LessonIdsReceived(
+      ids == freezed
+          ? _value.ids
+          : ids as Either<LessonFailure, List<UniqueId>>,
     ));
   }
 }
 
-class _$LessonsReceived
+class _$LessonIdsReceived
     with DiagnosticableTreeMixin
-    implements LessonsReceived {
-  const _$LessonsReceived(this.failureOrLessons)
-      : assert(failureOrLessons != null);
+    implements LessonIdsReceived {
+  const _$LessonIdsReceived(this.ids) : assert(ids != null);
 
   @override
-  final Either<LessonFailure, ObjectList<Lesson>> failureOrLessons;
+  final Either<LessonFailure, List<UniqueId>> ids;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LessonEvent.lessonsReceived(failureOrLessons: $failureOrLessons)';
+    return 'LessonEvent.lessonIdsReceived(ids: $ids)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'LessonEvent.lessonsReceived'))
-      ..add(DiagnosticsProperty('failureOrLessons', failureOrLessons));
+      ..add(DiagnosticsProperty('type', 'LessonEvent.lessonIdsReceived'))
+      ..add(DiagnosticsProperty('ids', ids));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LessonsReceived &&
-            (identical(other.failureOrLessons, failureOrLessons) ||
-                const DeepCollectionEquality()
-                    .equals(other.failureOrLessons, failureOrLessons)));
+        (other is LessonIdsReceived &&
+            (identical(other.ids, ids) ||
+                const DeepCollectionEquality().equals(other.ids, ids)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(failureOrLessons);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(ids);
 
   @override
-  $LessonsReceivedCopyWith<LessonsReceived> get copyWith =>
-      _$LessonsReceivedCopyWithImpl<LessonsReceived>(this, _$identity);
+  $LessonIdsReceivedCopyWith<LessonIdsReceived> get copyWith =>
+      _$LessonIdsReceivedCopyWithImpl<LessonIdsReceived>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result fetchAllLessons(),
+    @required Result fetchAllLessonIds(),
     @required
-        Result lessonsReceived(
-            Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+        Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result advanceLesson(),
     @required Result finishLesson(Object results),
     @required Result abortLesson(),
   }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
+    assert(fetchAllLessonIds != null);
+    assert(lessonIdsReceived != null);
     assert(startLesson != null);
-    assert(advanceLesson != null);
     assert(finishLesson != null);
     assert(abortLesson != null);
-    return lessonsReceived(failureOrLessons);
+    return lessonIdsReceived(ids);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result fetchAllLessons(),
-    Result lessonsReceived(
-        Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+    Result fetchAllLessonIds(),
+    Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result advanceLesson(),
     Result finishLesson(Object results),
     Result abortLesson(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (lessonsReceived != null) {
-      return lessonsReceived(failureOrLessons);
+    if (lessonIdsReceived != null) {
+      return lessonIdsReceived(ids);
     }
     return orElse();
   }
@@ -340,48 +315,44 @@ class _$LessonsReceived
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result fetchAllLessons(FetchAllLessons value),
-    @required Result lessonsReceived(LessonsReceived value),
+    @required Result fetchAllLessonIds(FetchAllLessonIds value),
+    @required Result lessonIdsReceived(LessonIdsReceived value),
     @required Result startLesson(StartLesson value),
-    @required Result advanceLesson(AdvanceLesson value),
     @required Result finishLesson(FinishLesson value),
     @required Result abortLesson(AbortLesson value),
   }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
+    assert(fetchAllLessonIds != null);
+    assert(lessonIdsReceived != null);
     assert(startLesson != null);
-    assert(advanceLesson != null);
     assert(finishLesson != null);
     assert(abortLesson != null);
-    return lessonsReceived(this);
+    return lessonIdsReceived(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result fetchAllLessons(FetchAllLessons value),
-    Result lessonsReceived(LessonsReceived value),
+    Result fetchAllLessonIds(FetchAllLessonIds value),
+    Result lessonIdsReceived(LessonIdsReceived value),
     Result startLesson(StartLesson value),
-    Result advanceLesson(AdvanceLesson value),
     Result finishLesson(FinishLesson value),
     Result abortLesson(AbortLesson value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (lessonsReceived != null) {
-      return lessonsReceived(this);
+    if (lessonIdsReceived != null) {
+      return lessonIdsReceived(this);
     }
     return orElse();
   }
 }
 
-abstract class LessonsReceived implements LessonEvent {
-  const factory LessonsReceived(
-          Either<LessonFailure, ObjectList<Lesson>> failureOrLessons) =
-      _$LessonsReceived;
+abstract class LessonIdsReceived implements LessonEvent {
+  const factory LessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids) =
+      _$LessonIdsReceived;
 
-  Either<LessonFailure, ObjectList<Lesson>> get failureOrLessons;
-  $LessonsReceivedCopyWith<LessonsReceived> get copyWith;
+  Either<LessonFailure, List<UniqueId>> get ids;
+  $LessonIdsReceivedCopyWith<LessonIdsReceived> get copyWith;
 }
 
 abstract class $StartLessonCopyWith<$Res> {
@@ -448,19 +419,16 @@ class _$StartLesson with DiagnosticableTreeMixin implements StartLesson {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result fetchAllLessons(),
+    @required Result fetchAllLessonIds(),
     @required
-        Result lessonsReceived(
-            Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+        Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result advanceLesson(),
     @required Result finishLesson(Object results),
     @required Result abortLesson(),
   }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
+    assert(fetchAllLessonIds != null);
+    assert(lessonIdsReceived != null);
     assert(startLesson != null);
-    assert(advanceLesson != null);
     assert(finishLesson != null);
     assert(abortLesson != null);
     return startLesson(id);
@@ -469,11 +437,9 @@ class _$StartLesson with DiagnosticableTreeMixin implements StartLesson {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result fetchAllLessons(),
-    Result lessonsReceived(
-        Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+    Result fetchAllLessonIds(),
+    Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result advanceLesson(),
     Result finishLesson(Object results),
     Result abortLesson(),
     @required Result orElse(),
@@ -488,17 +454,15 @@ class _$StartLesson with DiagnosticableTreeMixin implements StartLesson {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result fetchAllLessons(FetchAllLessons value),
-    @required Result lessonsReceived(LessonsReceived value),
+    @required Result fetchAllLessonIds(FetchAllLessonIds value),
+    @required Result lessonIdsReceived(LessonIdsReceived value),
     @required Result startLesson(StartLesson value),
-    @required Result advanceLesson(AdvanceLesson value),
     @required Result finishLesson(FinishLesson value),
     @required Result abortLesson(AbortLesson value),
   }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
+    assert(fetchAllLessonIds != null);
+    assert(lessonIdsReceived != null);
     assert(startLesson != null);
-    assert(advanceLesson != null);
     assert(finishLesson != null);
     assert(abortLesson != null);
     return startLesson(this);
@@ -507,10 +471,9 @@ class _$StartLesson with DiagnosticableTreeMixin implements StartLesson {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result fetchAllLessons(FetchAllLessons value),
-    Result lessonsReceived(LessonsReceived value),
+    Result fetchAllLessonIds(FetchAllLessonIds value),
+    Result lessonIdsReceived(LessonIdsReceived value),
     Result startLesson(StartLesson value),
-    Result advanceLesson(AdvanceLesson value),
     Result finishLesson(FinishLesson value),
     Result abortLesson(AbortLesson value),
     @required Result orElse(),
@@ -528,126 +491,6 @@ abstract class StartLesson implements LessonEvent {
 
   UniqueId get id;
   $StartLessonCopyWith<StartLesson> get copyWith;
-}
-
-abstract class $AdvanceLessonCopyWith<$Res> {
-  factory $AdvanceLessonCopyWith(
-          AdvanceLesson value, $Res Function(AdvanceLesson) then) =
-      _$AdvanceLessonCopyWithImpl<$Res>;
-}
-
-class _$AdvanceLessonCopyWithImpl<$Res> extends _$LessonEventCopyWithImpl<$Res>
-    implements $AdvanceLessonCopyWith<$Res> {
-  _$AdvanceLessonCopyWithImpl(
-      AdvanceLesson _value, $Res Function(AdvanceLesson) _then)
-      : super(_value, (v) => _then(v as AdvanceLesson));
-
-  @override
-  AdvanceLesson get _value => super._value as AdvanceLesson;
-}
-
-class _$AdvanceLesson with DiagnosticableTreeMixin implements AdvanceLesson {
-  const _$AdvanceLesson();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LessonEvent.advanceLesson()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'LessonEvent.advanceLesson'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is AdvanceLesson);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result fetchAllLessons(),
-    @required
-        Result lessonsReceived(
-            Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
-    @required Result startLesson(UniqueId id),
-    @required Result advanceLesson(),
-    @required Result finishLesson(Object results),
-    @required Result abortLesson(),
-  }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
-    assert(startLesson != null);
-    assert(advanceLesson != null);
-    assert(finishLesson != null);
-    assert(abortLesson != null);
-    return advanceLesson();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result fetchAllLessons(),
-    Result lessonsReceived(
-        Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
-    Result startLesson(UniqueId id),
-    Result advanceLesson(),
-    Result finishLesson(Object results),
-    Result abortLesson(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (advanceLesson != null) {
-      return advanceLesson();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result fetchAllLessons(FetchAllLessons value),
-    @required Result lessonsReceived(LessonsReceived value),
-    @required Result startLesson(StartLesson value),
-    @required Result advanceLesson(AdvanceLesson value),
-    @required Result finishLesson(FinishLesson value),
-    @required Result abortLesson(AbortLesson value),
-  }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
-    assert(startLesson != null);
-    assert(advanceLesson != null);
-    assert(finishLesson != null);
-    assert(abortLesson != null);
-    return advanceLesson(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result fetchAllLessons(FetchAllLessons value),
-    Result lessonsReceived(LessonsReceived value),
-    Result startLesson(StartLesson value),
-    Result advanceLesson(AdvanceLesson value),
-    Result finishLesson(FinishLesson value),
-    Result abortLesson(AbortLesson value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (advanceLesson != null) {
-      return advanceLesson(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AdvanceLesson implements LessonEvent {
-  const factory AdvanceLesson() = _$AdvanceLesson;
 }
 
 abstract class $FinishLessonCopyWith<$Res> {
@@ -714,19 +557,16 @@ class _$FinishLesson with DiagnosticableTreeMixin implements FinishLesson {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result fetchAllLessons(),
+    @required Result fetchAllLessonIds(),
     @required
-        Result lessonsReceived(
-            Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+        Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result advanceLesson(),
     @required Result finishLesson(Object results),
     @required Result abortLesson(),
   }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
+    assert(fetchAllLessonIds != null);
+    assert(lessonIdsReceived != null);
     assert(startLesson != null);
-    assert(advanceLesson != null);
     assert(finishLesson != null);
     assert(abortLesson != null);
     return finishLesson(results);
@@ -735,11 +575,9 @@ class _$FinishLesson with DiagnosticableTreeMixin implements FinishLesson {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result fetchAllLessons(),
-    Result lessonsReceived(
-        Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+    Result fetchAllLessonIds(),
+    Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result advanceLesson(),
     Result finishLesson(Object results),
     Result abortLesson(),
     @required Result orElse(),
@@ -754,17 +592,15 @@ class _$FinishLesson with DiagnosticableTreeMixin implements FinishLesson {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result fetchAllLessons(FetchAllLessons value),
-    @required Result lessonsReceived(LessonsReceived value),
+    @required Result fetchAllLessonIds(FetchAllLessonIds value),
+    @required Result lessonIdsReceived(LessonIdsReceived value),
     @required Result startLesson(StartLesson value),
-    @required Result advanceLesson(AdvanceLesson value),
     @required Result finishLesson(FinishLesson value),
     @required Result abortLesson(AbortLesson value),
   }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
+    assert(fetchAllLessonIds != null);
+    assert(lessonIdsReceived != null);
     assert(startLesson != null);
-    assert(advanceLesson != null);
     assert(finishLesson != null);
     assert(abortLesson != null);
     return finishLesson(this);
@@ -773,10 +609,9 @@ class _$FinishLesson with DiagnosticableTreeMixin implements FinishLesson {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result fetchAllLessons(FetchAllLessons value),
-    Result lessonsReceived(LessonsReceived value),
+    Result fetchAllLessonIds(FetchAllLessonIds value),
+    Result lessonIdsReceived(LessonIdsReceived value),
     Result startLesson(StartLesson value),
-    Result advanceLesson(AdvanceLesson value),
     Result finishLesson(FinishLesson value),
     Result abortLesson(AbortLesson value),
     @required Result orElse(),
@@ -837,19 +672,16 @@ class _$AbortLesson with DiagnosticableTreeMixin implements AbortLesson {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result fetchAllLessons(),
+    @required Result fetchAllLessonIds(),
     @required
-        Result lessonsReceived(
-            Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+        Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result advanceLesson(),
     @required Result finishLesson(Object results),
     @required Result abortLesson(),
   }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
+    assert(fetchAllLessonIds != null);
+    assert(lessonIdsReceived != null);
     assert(startLesson != null);
-    assert(advanceLesson != null);
     assert(finishLesson != null);
     assert(abortLesson != null);
     return abortLesson();
@@ -858,11 +690,9 @@ class _$AbortLesson with DiagnosticableTreeMixin implements AbortLesson {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result fetchAllLessons(),
-    Result lessonsReceived(
-        Either<LessonFailure, ObjectList<Lesson>> failureOrLessons),
+    Result fetchAllLessonIds(),
+    Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result advanceLesson(),
     Result finishLesson(Object results),
     Result abortLesson(),
     @required Result orElse(),
@@ -877,17 +707,15 @@ class _$AbortLesson with DiagnosticableTreeMixin implements AbortLesson {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result fetchAllLessons(FetchAllLessons value),
-    @required Result lessonsReceived(LessonsReceived value),
+    @required Result fetchAllLessonIds(FetchAllLessonIds value),
+    @required Result lessonIdsReceived(LessonIdsReceived value),
     @required Result startLesson(StartLesson value),
-    @required Result advanceLesson(AdvanceLesson value),
     @required Result finishLesson(FinishLesson value),
     @required Result abortLesson(AbortLesson value),
   }) {
-    assert(fetchAllLessons != null);
-    assert(lessonsReceived != null);
+    assert(fetchAllLessonIds != null);
+    assert(lessonIdsReceived != null);
     assert(startLesson != null);
-    assert(advanceLesson != null);
     assert(finishLesson != null);
     assert(abortLesson != null);
     return abortLesson(this);
@@ -896,10 +724,9 @@ class _$AbortLesson with DiagnosticableTreeMixin implements AbortLesson {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result fetchAllLessons(FetchAllLessons value),
-    Result lessonsReceived(LessonsReceived value),
+    Result fetchAllLessonIds(FetchAllLessonIds value),
+    Result lessonIdsReceived(LessonIdsReceived value),
     Result startLesson(StartLesson value),
-    Result advanceLesson(AdvanceLesson value),
     Result finishLesson(FinishLesson value),
     Result abortLesson(AbortLesson value),
     @required Result orElse(),
@@ -939,22 +766,15 @@ class _$LessonStateTearOff {
     );
   }
 
-  AllLessonsLoaded allLessonsLoaded(ObjectList<Lesson> lessons) {
-    return AllLessonsLoaded(
-      lessons,
+  AllLessonIdsLoaded allLessonIdsLoaded(List<UniqueId> ids) {
+    return AllLessonIdsLoaded(
+      ids,
     );
   }
 
-  LessonStarted lessonStarted(Exercise exercise, int lessonLength) {
+  LessonStarted lessonStarted(ObjectList<Exercise> exerciseList) {
     return LessonStarted(
-      exercise,
-      lessonLength,
-    );
-  }
-
-  LessonAdvanced lessonAdvanced(Exercise exercise) {
-    return LessonAdvanced(
-      exercise,
+      exerciseList,
     );
   }
 
@@ -977,9 +797,8 @@ mixin _$LessonState {
     @required Result lessonLoading(),
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
-    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    @required Result lessonStarted(Exercise exercise, int lessonLength),
-    @required Result lessonAdvanced(Exercise exercise),
+    @required Result allLessonIdsLoaded(List<UniqueId> ids),
+    @required Result lessonStarted(ObjectList<Exercise> exerciseList),
     @required Result lessonFinished(),
     @required Result lessonAborted(),
   });
@@ -989,9 +808,8 @@ mixin _$LessonState {
     Result lessonLoading(),
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
-    Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    Result lessonStarted(Exercise exercise, int lessonLength),
-    Result lessonAdvanced(Exercise exercise),
+    Result allLessonIdsLoaded(List<UniqueId> ids),
+    Result lessonStarted(ObjectList<Exercise> exerciseList),
     Result lessonFinished(),
     Result lessonAborted(),
     @required Result orElse(),
@@ -1002,9 +820,8 @@ mixin _$LessonState {
     @required Result lessonLoading(LessonLoading value),
     @required Result lessonLoaded(LessonLoaded value),
     @required Result lessonError(LessonError value),
-    @required Result allLessonsLoaded(AllLessonsLoaded value),
+    @required Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     @required Result lessonStarted(LessonStarted value),
-    @required Result lessonAdvanced(LessonAdvanced value),
     @required Result lessonFinished(LessonFinished value),
     @required Result lessonAborted(LessonAborted value),
   });
@@ -1014,9 +831,8 @@ mixin _$LessonState {
     Result lessonLoading(LessonLoading value),
     Result lessonLoaded(LessonLoaded value),
     Result lessonError(LessonError value),
-    Result allLessonsLoaded(AllLessonsLoaded value),
+    Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     Result lessonStarted(LessonStarted value),
-    Result lessonAdvanced(LessonAdvanced value),
     Result lessonFinished(LessonFinished value),
     Result lessonAborted(LessonAborted value),
     @required Result orElse(),
@@ -1080,9 +896,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result lessonLoading(),
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
-    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    @required Result lessonStarted(Exercise exercise, int lessonLength),
-    @required Result lessonAdvanced(Exercise exercise),
+    @required Result allLessonIdsLoaded(List<UniqueId> ids),
+    @required Result lessonStarted(ObjectList<Exercise> exerciseList),
     @required Result lessonFinished(),
     @required Result lessonAborted(),
   }) {
@@ -1090,9 +905,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return initial();
@@ -1105,9 +919,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result lessonLoading(),
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
-    Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    Result lessonStarted(Exercise exercise, int lessonLength),
-    Result lessonAdvanced(Exercise exercise),
+    Result allLessonIdsLoaded(List<UniqueId> ids),
+    Result lessonStarted(ObjectList<Exercise> exerciseList),
     Result lessonFinished(),
     Result lessonAborted(),
     @required Result orElse(),
@@ -1126,9 +939,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result lessonLoading(LessonLoading value),
     @required Result lessonLoaded(LessonLoaded value),
     @required Result lessonError(LessonError value),
-    @required Result allLessonsLoaded(AllLessonsLoaded value),
+    @required Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     @required Result lessonStarted(LessonStarted value),
-    @required Result lessonAdvanced(LessonAdvanced value),
     @required Result lessonFinished(LessonFinished value),
     @required Result lessonAborted(LessonAborted value),
   }) {
@@ -1136,9 +948,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return initial(this);
@@ -1151,9 +962,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result lessonLoading(LessonLoading value),
     Result lessonLoaded(LessonLoaded value),
     Result lessonError(LessonError value),
-    Result allLessonsLoaded(AllLessonsLoaded value),
+    Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     Result lessonStarted(LessonStarted value),
-    Result lessonAdvanced(LessonAdvanced value),
     Result lessonFinished(LessonFinished value),
     Result lessonAborted(LessonAborted value),
     @required Result orElse(),
@@ -1215,9 +1025,8 @@ class _$LessonLoading with DiagnosticableTreeMixin implements LessonLoading {
     @required Result lessonLoading(),
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
-    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    @required Result lessonStarted(Exercise exercise, int lessonLength),
-    @required Result lessonAdvanced(Exercise exercise),
+    @required Result allLessonIdsLoaded(List<UniqueId> ids),
+    @required Result lessonStarted(ObjectList<Exercise> exerciseList),
     @required Result lessonFinished(),
     @required Result lessonAborted(),
   }) {
@@ -1225,9 +1034,8 @@ class _$LessonLoading with DiagnosticableTreeMixin implements LessonLoading {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonLoading();
@@ -1240,9 +1048,8 @@ class _$LessonLoading with DiagnosticableTreeMixin implements LessonLoading {
     Result lessonLoading(),
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
-    Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    Result lessonStarted(Exercise exercise, int lessonLength),
-    Result lessonAdvanced(Exercise exercise),
+    Result allLessonIdsLoaded(List<UniqueId> ids),
+    Result lessonStarted(ObjectList<Exercise> exerciseList),
     Result lessonFinished(),
     Result lessonAborted(),
     @required Result orElse(),
@@ -1261,9 +1068,8 @@ class _$LessonLoading with DiagnosticableTreeMixin implements LessonLoading {
     @required Result lessonLoading(LessonLoading value),
     @required Result lessonLoaded(LessonLoaded value),
     @required Result lessonError(LessonError value),
-    @required Result allLessonsLoaded(AllLessonsLoaded value),
+    @required Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     @required Result lessonStarted(LessonStarted value),
-    @required Result lessonAdvanced(LessonAdvanced value),
     @required Result lessonFinished(LessonFinished value),
     @required Result lessonAborted(LessonAborted value),
   }) {
@@ -1271,9 +1077,8 @@ class _$LessonLoading with DiagnosticableTreeMixin implements LessonLoading {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonLoading(this);
@@ -1286,9 +1091,8 @@ class _$LessonLoading with DiagnosticableTreeMixin implements LessonLoading {
     Result lessonLoading(LessonLoading value),
     Result lessonLoaded(LessonLoaded value),
     Result lessonError(LessonError value),
-    Result allLessonsLoaded(AllLessonsLoaded value),
+    Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     Result lessonStarted(LessonStarted value),
-    Result lessonAdvanced(LessonAdvanced value),
     Result lessonFinished(LessonFinished value),
     Result lessonAborted(LessonAborted value),
     @required Result orElse(),
@@ -1385,9 +1189,8 @@ class _$LessonLoaded with DiagnosticableTreeMixin implements LessonLoaded {
     @required Result lessonLoading(),
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
-    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    @required Result lessonStarted(Exercise exercise, int lessonLength),
-    @required Result lessonAdvanced(Exercise exercise),
+    @required Result allLessonIdsLoaded(List<UniqueId> ids),
+    @required Result lessonStarted(ObjectList<Exercise> exerciseList),
     @required Result lessonFinished(),
     @required Result lessonAborted(),
   }) {
@@ -1395,9 +1198,8 @@ class _$LessonLoaded with DiagnosticableTreeMixin implements LessonLoaded {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonLoaded(lesson);
@@ -1410,9 +1212,8 @@ class _$LessonLoaded with DiagnosticableTreeMixin implements LessonLoaded {
     Result lessonLoading(),
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
-    Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    Result lessonStarted(Exercise exercise, int lessonLength),
-    Result lessonAdvanced(Exercise exercise),
+    Result allLessonIdsLoaded(List<UniqueId> ids),
+    Result lessonStarted(ObjectList<Exercise> exerciseList),
     Result lessonFinished(),
     Result lessonAborted(),
     @required Result orElse(),
@@ -1431,9 +1232,8 @@ class _$LessonLoaded with DiagnosticableTreeMixin implements LessonLoaded {
     @required Result lessonLoading(LessonLoading value),
     @required Result lessonLoaded(LessonLoaded value),
     @required Result lessonError(LessonError value),
-    @required Result allLessonsLoaded(AllLessonsLoaded value),
+    @required Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     @required Result lessonStarted(LessonStarted value),
-    @required Result lessonAdvanced(LessonAdvanced value),
     @required Result lessonFinished(LessonFinished value),
     @required Result lessonAborted(LessonAborted value),
   }) {
@@ -1441,9 +1241,8 @@ class _$LessonLoaded with DiagnosticableTreeMixin implements LessonLoaded {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonLoaded(this);
@@ -1456,9 +1255,8 @@ class _$LessonLoaded with DiagnosticableTreeMixin implements LessonLoaded {
     Result lessonLoading(LessonLoading value),
     Result lessonLoaded(LessonLoaded value),
     Result lessonError(LessonError value),
-    Result allLessonsLoaded(AllLessonsLoaded value),
+    Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     Result lessonStarted(LessonStarted value),
-    Result lessonAdvanced(LessonAdvanced value),
     Result lessonFinished(LessonFinished value),
     Result lessonAborted(LessonAborted value),
     @required Result orElse(),
@@ -1558,9 +1356,8 @@ class _$LessonError with DiagnosticableTreeMixin implements LessonError {
     @required Result lessonLoading(),
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
-    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    @required Result lessonStarted(Exercise exercise, int lessonLength),
-    @required Result lessonAdvanced(Exercise exercise),
+    @required Result allLessonIdsLoaded(List<UniqueId> ids),
+    @required Result lessonStarted(ObjectList<Exercise> exerciseList),
     @required Result lessonFinished(),
     @required Result lessonAborted(),
   }) {
@@ -1568,9 +1365,8 @@ class _$LessonError with DiagnosticableTreeMixin implements LessonError {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonError(error);
@@ -1583,9 +1379,8 @@ class _$LessonError with DiagnosticableTreeMixin implements LessonError {
     Result lessonLoading(),
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
-    Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    Result lessonStarted(Exercise exercise, int lessonLength),
-    Result lessonAdvanced(Exercise exercise),
+    Result allLessonIdsLoaded(List<UniqueId> ids),
+    Result lessonStarted(ObjectList<Exercise> exerciseList),
     Result lessonFinished(),
     Result lessonAborted(),
     @required Result orElse(),
@@ -1604,9 +1399,8 @@ class _$LessonError with DiagnosticableTreeMixin implements LessonError {
     @required Result lessonLoading(LessonLoading value),
     @required Result lessonLoaded(LessonLoaded value),
     @required Result lessonError(LessonError value),
-    @required Result allLessonsLoaded(AllLessonsLoaded value),
+    @required Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     @required Result lessonStarted(LessonStarted value),
-    @required Result lessonAdvanced(LessonAdvanced value),
     @required Result lessonFinished(LessonFinished value),
     @required Result lessonAborted(LessonAborted value),
   }) {
@@ -1614,9 +1408,8 @@ class _$LessonError with DiagnosticableTreeMixin implements LessonError {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonError(this);
@@ -1629,9 +1422,8 @@ class _$LessonError with DiagnosticableTreeMixin implements LessonError {
     Result lessonLoading(LessonLoading value),
     Result lessonLoaded(LessonLoaded value),
     Result lessonError(LessonError value),
-    Result allLessonsLoaded(AllLessonsLoaded value),
+    Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     Result lessonStarted(LessonStarted value),
-    Result lessonAdvanced(LessonAdvanced value),
     Result lessonFinished(LessonFinished value),
     Result lessonAborted(LessonAborted value),
     @required Result orElse(),
@@ -1651,69 +1443,69 @@ abstract class LessonError implements LessonState {
   $LessonErrorCopyWith<LessonError> get copyWith;
 }
 
-abstract class $AllLessonsLoadedCopyWith<$Res> {
-  factory $AllLessonsLoadedCopyWith(
-          AllLessonsLoaded value, $Res Function(AllLessonsLoaded) then) =
-      _$AllLessonsLoadedCopyWithImpl<$Res>;
-  $Res call({ObjectList<Lesson> lessons});
+abstract class $AllLessonIdsLoadedCopyWith<$Res> {
+  factory $AllLessonIdsLoadedCopyWith(
+          AllLessonIdsLoaded value, $Res Function(AllLessonIdsLoaded) then) =
+      _$AllLessonIdsLoadedCopyWithImpl<$Res>;
+  $Res call({List<UniqueId> ids});
 }
 
-class _$AllLessonsLoadedCopyWithImpl<$Res>
+class _$AllLessonIdsLoadedCopyWithImpl<$Res>
     extends _$LessonStateCopyWithImpl<$Res>
-    implements $AllLessonsLoadedCopyWith<$Res> {
-  _$AllLessonsLoadedCopyWithImpl(
-      AllLessonsLoaded _value, $Res Function(AllLessonsLoaded) _then)
-      : super(_value, (v) => _then(v as AllLessonsLoaded));
+    implements $AllLessonIdsLoadedCopyWith<$Res> {
+  _$AllLessonIdsLoadedCopyWithImpl(
+      AllLessonIdsLoaded _value, $Res Function(AllLessonIdsLoaded) _then)
+      : super(_value, (v) => _then(v as AllLessonIdsLoaded));
 
   @override
-  AllLessonsLoaded get _value => super._value as AllLessonsLoaded;
+  AllLessonIdsLoaded get _value => super._value as AllLessonIdsLoaded;
 
   @override
   $Res call({
-    Object lessons = freezed,
+    Object ids = freezed,
   }) {
-    return _then(AllLessonsLoaded(
-      lessons == freezed ? _value.lessons : lessons as ObjectList<Lesson>,
+    return _then(AllLessonIdsLoaded(
+      ids == freezed ? _value.ids : ids as List<UniqueId>,
     ));
   }
 }
 
-class _$AllLessonsLoaded
+class _$AllLessonIdsLoaded
     with DiagnosticableTreeMixin
-    implements AllLessonsLoaded {
-  const _$AllLessonsLoaded(this.lessons) : assert(lessons != null);
+    implements AllLessonIdsLoaded {
+  const _$AllLessonIdsLoaded(this.ids) : assert(ids != null);
 
   @override
-  final ObjectList<Lesson> lessons;
+  final List<UniqueId> ids;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LessonState.allLessonsLoaded(lessons: $lessons)';
+    return 'LessonState.allLessonIdsLoaded(ids: $ids)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'LessonState.allLessonsLoaded'))
-      ..add(DiagnosticsProperty('lessons', lessons));
+      ..add(DiagnosticsProperty('type', 'LessonState.allLessonIdsLoaded'))
+      ..add(DiagnosticsProperty('ids', ids));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AllLessonsLoaded &&
-            (identical(other.lessons, lessons) ||
-                const DeepCollectionEquality().equals(other.lessons, lessons)));
+        (other is AllLessonIdsLoaded &&
+            (identical(other.ids, ids) ||
+                const DeepCollectionEquality().equals(other.ids, ids)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(lessons);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(ids);
 
   @override
-  $AllLessonsLoadedCopyWith<AllLessonsLoaded> get copyWith =>
-      _$AllLessonsLoadedCopyWithImpl<AllLessonsLoaded>(this, _$identity);
+  $AllLessonIdsLoadedCopyWith<AllLessonIdsLoaded> get copyWith =>
+      _$AllLessonIdsLoadedCopyWithImpl<AllLessonIdsLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1722,9 +1514,8 @@ class _$AllLessonsLoaded
     @required Result lessonLoading(),
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
-    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    @required Result lessonStarted(Exercise exercise, int lessonLength),
-    @required Result lessonAdvanced(Exercise exercise),
+    @required Result allLessonIdsLoaded(List<UniqueId> ids),
+    @required Result lessonStarted(ObjectList<Exercise> exerciseList),
     @required Result lessonFinished(),
     @required Result lessonAborted(),
   }) {
@@ -1732,12 +1523,11 @@ class _$AllLessonsLoaded
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
-    return allLessonsLoaded(lessons);
+    return allLessonIdsLoaded(ids);
   }
 
   @override
@@ -1747,16 +1537,15 @@ class _$AllLessonsLoaded
     Result lessonLoading(),
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
-    Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    Result lessonStarted(Exercise exercise, int lessonLength),
-    Result lessonAdvanced(Exercise exercise),
+    Result allLessonIdsLoaded(List<UniqueId> ids),
+    Result lessonStarted(ObjectList<Exercise> exerciseList),
     Result lessonFinished(),
     Result lessonAborted(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (allLessonsLoaded != null) {
-      return allLessonsLoaded(lessons);
+    if (allLessonIdsLoaded != null) {
+      return allLessonIdsLoaded(ids);
     }
     return orElse();
   }
@@ -1768,9 +1557,8 @@ class _$AllLessonsLoaded
     @required Result lessonLoading(LessonLoading value),
     @required Result lessonLoaded(LessonLoaded value),
     @required Result lessonError(LessonError value),
-    @required Result allLessonsLoaded(AllLessonsLoaded value),
+    @required Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     @required Result lessonStarted(LessonStarted value),
-    @required Result lessonAdvanced(LessonAdvanced value),
     @required Result lessonFinished(LessonFinished value),
     @required Result lessonAborted(LessonAborted value),
   }) {
@@ -1778,12 +1566,11 @@ class _$AllLessonsLoaded
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
-    return allLessonsLoaded(this);
+    return allLessonIdsLoaded(this);
   }
 
   @override
@@ -1793,36 +1580,32 @@ class _$AllLessonsLoaded
     Result lessonLoading(LessonLoading value),
     Result lessonLoaded(LessonLoaded value),
     Result lessonError(LessonError value),
-    Result allLessonsLoaded(AllLessonsLoaded value),
+    Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     Result lessonStarted(LessonStarted value),
-    Result lessonAdvanced(LessonAdvanced value),
     Result lessonFinished(LessonFinished value),
     Result lessonAborted(LessonAborted value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (allLessonsLoaded != null) {
-      return allLessonsLoaded(this);
+    if (allLessonIdsLoaded != null) {
+      return allLessonIdsLoaded(this);
     }
     return orElse();
   }
 }
 
-abstract class AllLessonsLoaded implements LessonState {
-  const factory AllLessonsLoaded(ObjectList<Lesson> lessons) =
-      _$AllLessonsLoaded;
+abstract class AllLessonIdsLoaded implements LessonState {
+  const factory AllLessonIdsLoaded(List<UniqueId> ids) = _$AllLessonIdsLoaded;
 
-  ObjectList<Lesson> get lessons;
-  $AllLessonsLoadedCopyWith<AllLessonsLoaded> get copyWith;
+  List<UniqueId> get ids;
+  $AllLessonIdsLoadedCopyWith<AllLessonIdsLoaded> get copyWith;
 }
 
 abstract class $LessonStartedCopyWith<$Res> {
   factory $LessonStartedCopyWith(
           LessonStarted value, $Res Function(LessonStarted) then) =
       _$LessonStartedCopyWithImpl<$Res>;
-  $Res call({Exercise exercise, int lessonLength});
-
-  $ExerciseCopyWith<$Res> get exercise;
+  $Res call({ObjectList<Exercise> exerciseList});
 }
 
 class _$LessonStartedCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
@@ -1836,39 +1619,25 @@ class _$LessonStartedCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object exercise = freezed,
-    Object lessonLength = freezed,
+    Object exerciseList = freezed,
   }) {
     return _then(LessonStarted(
-      exercise == freezed ? _value.exercise : exercise as Exercise,
-      lessonLength == freezed ? _value.lessonLength : lessonLength as int,
+      exerciseList == freezed
+          ? _value.exerciseList
+          : exerciseList as ObjectList<Exercise>,
     ));
-  }
-
-  @override
-  $ExerciseCopyWith<$Res> get exercise {
-    if (_value.exercise == null) {
-      return null;
-    }
-    return $ExerciseCopyWith<$Res>(_value.exercise, (value) {
-      return _then(_value.copyWith(exercise: value));
-    });
   }
 }
 
 class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
-  const _$LessonStarted(this.exercise, this.lessonLength)
-      : assert(exercise != null),
-        assert(lessonLength != null);
+  const _$LessonStarted(this.exerciseList) : assert(exerciseList != null);
 
   @override
-  final Exercise exercise;
-  @override
-  final int lessonLength;
+  final ObjectList<Exercise> exerciseList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LessonState.lessonStarted(exercise: $exercise, lessonLength: $lessonLength)';
+    return 'LessonState.lessonStarted(exerciseList: $exerciseList)';
   }
 
   @override
@@ -1876,27 +1645,21 @@ class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'LessonState.lessonStarted'))
-      ..add(DiagnosticsProperty('exercise', exercise))
-      ..add(DiagnosticsProperty('lessonLength', lessonLength));
+      ..add(DiagnosticsProperty('exerciseList', exerciseList));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is LessonStarted &&
-            (identical(other.exercise, exercise) ||
+            (identical(other.exerciseList, exerciseList) ||
                 const DeepCollectionEquality()
-                    .equals(other.exercise, exercise)) &&
-            (identical(other.lessonLength, lessonLength) ||
-                const DeepCollectionEquality()
-                    .equals(other.lessonLength, lessonLength)));
+                    .equals(other.exerciseList, exerciseList)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(exercise) ^
-      const DeepCollectionEquality().hash(lessonLength);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseList);
 
   @override
   $LessonStartedCopyWith<LessonStarted> get copyWith =>
@@ -1909,9 +1672,8 @@ class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
     @required Result lessonLoading(),
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
-    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    @required Result lessonStarted(Exercise exercise, int lessonLength),
-    @required Result lessonAdvanced(Exercise exercise),
+    @required Result allLessonIdsLoaded(List<UniqueId> ids),
+    @required Result lessonStarted(ObjectList<Exercise> exerciseList),
     @required Result lessonFinished(),
     @required Result lessonAborted(),
   }) {
@@ -1919,12 +1681,11 @@ class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
-    return lessonStarted(exercise, lessonLength);
+    return lessonStarted(exerciseList);
   }
 
   @override
@@ -1934,16 +1695,15 @@ class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
     Result lessonLoading(),
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
-    Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    Result lessonStarted(Exercise exercise, int lessonLength),
-    Result lessonAdvanced(Exercise exercise),
+    Result allLessonIdsLoaded(List<UniqueId> ids),
+    Result lessonStarted(ObjectList<Exercise> exerciseList),
     Result lessonFinished(),
     Result lessonAborted(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (lessonStarted != null) {
-      return lessonStarted(exercise, lessonLength);
+      return lessonStarted(exerciseList);
     }
     return orElse();
   }
@@ -1955,9 +1715,8 @@ class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
     @required Result lessonLoading(LessonLoading value),
     @required Result lessonLoaded(LessonLoaded value),
     @required Result lessonError(LessonError value),
-    @required Result allLessonsLoaded(AllLessonsLoaded value),
+    @required Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     @required Result lessonStarted(LessonStarted value),
-    @required Result lessonAdvanced(LessonAdvanced value),
     @required Result lessonFinished(LessonFinished value),
     @required Result lessonAborted(LessonAborted value),
   }) {
@@ -1965,9 +1724,8 @@ class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonStarted(this);
@@ -1980,9 +1738,8 @@ class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
     Result lessonLoading(LessonLoading value),
     Result lessonLoaded(LessonLoaded value),
     Result lessonError(LessonError value),
-    Result allLessonsLoaded(AllLessonsLoaded value),
+    Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     Result lessonStarted(LessonStarted value),
-    Result lessonAdvanced(LessonAdvanced value),
     Result lessonFinished(LessonFinished value),
     Result lessonAborted(LessonAborted value),
     @required Result orElse(),
@@ -1996,186 +1753,11 @@ class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
 }
 
 abstract class LessonStarted implements LessonState {
-  const factory LessonStarted(Exercise exercise, int lessonLength) =
+  const factory LessonStarted(ObjectList<Exercise> exerciseList) =
       _$LessonStarted;
 
-  Exercise get exercise;
-  int get lessonLength;
+  ObjectList<Exercise> get exerciseList;
   $LessonStartedCopyWith<LessonStarted> get copyWith;
-}
-
-abstract class $LessonAdvancedCopyWith<$Res> {
-  factory $LessonAdvancedCopyWith(
-          LessonAdvanced value, $Res Function(LessonAdvanced) then) =
-      _$LessonAdvancedCopyWithImpl<$Res>;
-  $Res call({Exercise exercise});
-
-  $ExerciseCopyWith<$Res> get exercise;
-}
-
-class _$LessonAdvancedCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
-    implements $LessonAdvancedCopyWith<$Res> {
-  _$LessonAdvancedCopyWithImpl(
-      LessonAdvanced _value, $Res Function(LessonAdvanced) _then)
-      : super(_value, (v) => _then(v as LessonAdvanced));
-
-  @override
-  LessonAdvanced get _value => super._value as LessonAdvanced;
-
-  @override
-  $Res call({
-    Object exercise = freezed,
-  }) {
-    return _then(LessonAdvanced(
-      exercise == freezed ? _value.exercise : exercise as Exercise,
-    ));
-  }
-
-  @override
-  $ExerciseCopyWith<$Res> get exercise {
-    if (_value.exercise == null) {
-      return null;
-    }
-    return $ExerciseCopyWith<$Res>(_value.exercise, (value) {
-      return _then(_value.copyWith(exercise: value));
-    });
-  }
-}
-
-class _$LessonAdvanced with DiagnosticableTreeMixin implements LessonAdvanced {
-  const _$LessonAdvanced(this.exercise) : assert(exercise != null);
-
-  @override
-  final Exercise exercise;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LessonState.lessonAdvanced(exercise: $exercise)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'LessonState.lessonAdvanced'))
-      ..add(DiagnosticsProperty('exercise', exercise));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is LessonAdvanced &&
-            (identical(other.exercise, exercise) ||
-                const DeepCollectionEquality()
-                    .equals(other.exercise, exercise)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exercise);
-
-  @override
-  $LessonAdvancedCopyWith<LessonAdvanced> get copyWith =>
-      _$LessonAdvancedCopyWithImpl<LessonAdvanced>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result lessonLoading(),
-    @required Result lessonLoaded(Lesson lesson),
-    @required Result lessonError(LessonFailure error),
-    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    @required Result lessonStarted(Exercise exercise, int lessonLength),
-    @required Result lessonAdvanced(Exercise exercise),
-    @required Result lessonFinished(),
-    @required Result lessonAborted(),
-  }) {
-    assert(initial != null);
-    assert(lessonLoading != null);
-    assert(lessonLoaded != null);
-    assert(lessonError != null);
-    assert(allLessonsLoaded != null);
-    assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
-    assert(lessonFinished != null);
-    assert(lessonAborted != null);
-    return lessonAdvanced(exercise);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result lessonLoading(),
-    Result lessonLoaded(Lesson lesson),
-    Result lessonError(LessonFailure error),
-    Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    Result lessonStarted(Exercise exercise, int lessonLength),
-    Result lessonAdvanced(Exercise exercise),
-    Result lessonFinished(),
-    Result lessonAborted(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (lessonAdvanced != null) {
-      return lessonAdvanced(exercise);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(Initial value),
-    @required Result lessonLoading(LessonLoading value),
-    @required Result lessonLoaded(LessonLoaded value),
-    @required Result lessonError(LessonError value),
-    @required Result allLessonsLoaded(AllLessonsLoaded value),
-    @required Result lessonStarted(LessonStarted value),
-    @required Result lessonAdvanced(LessonAdvanced value),
-    @required Result lessonFinished(LessonFinished value),
-    @required Result lessonAborted(LessonAborted value),
-  }) {
-    assert(initial != null);
-    assert(lessonLoading != null);
-    assert(lessonLoaded != null);
-    assert(lessonError != null);
-    assert(allLessonsLoaded != null);
-    assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
-    assert(lessonFinished != null);
-    assert(lessonAborted != null);
-    return lessonAdvanced(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(Initial value),
-    Result lessonLoading(LessonLoading value),
-    Result lessonLoaded(LessonLoaded value),
-    Result lessonError(LessonError value),
-    Result allLessonsLoaded(AllLessonsLoaded value),
-    Result lessonStarted(LessonStarted value),
-    Result lessonAdvanced(LessonAdvanced value),
-    Result lessonFinished(LessonFinished value),
-    Result lessonAborted(LessonAborted value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (lessonAdvanced != null) {
-      return lessonAdvanced(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LessonAdvanced implements LessonState {
-  const factory LessonAdvanced(Exercise exercise) = _$LessonAdvanced;
-
-  Exercise get exercise;
-  $LessonAdvancedCopyWith<LessonAdvanced> get copyWith;
 }
 
 abstract class $LessonFinishedCopyWith<$Res> {
@@ -2223,9 +1805,8 @@ class _$LessonFinished with DiagnosticableTreeMixin implements LessonFinished {
     @required Result lessonLoading(),
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
-    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    @required Result lessonStarted(Exercise exercise, int lessonLength),
-    @required Result lessonAdvanced(Exercise exercise),
+    @required Result allLessonIdsLoaded(List<UniqueId> ids),
+    @required Result lessonStarted(ObjectList<Exercise> exerciseList),
     @required Result lessonFinished(),
     @required Result lessonAborted(),
   }) {
@@ -2233,9 +1814,8 @@ class _$LessonFinished with DiagnosticableTreeMixin implements LessonFinished {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonFinished();
@@ -2248,9 +1828,8 @@ class _$LessonFinished with DiagnosticableTreeMixin implements LessonFinished {
     Result lessonLoading(),
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
-    Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    Result lessonStarted(Exercise exercise, int lessonLength),
-    Result lessonAdvanced(Exercise exercise),
+    Result allLessonIdsLoaded(List<UniqueId> ids),
+    Result lessonStarted(ObjectList<Exercise> exerciseList),
     Result lessonFinished(),
     Result lessonAborted(),
     @required Result orElse(),
@@ -2269,9 +1848,8 @@ class _$LessonFinished with DiagnosticableTreeMixin implements LessonFinished {
     @required Result lessonLoading(LessonLoading value),
     @required Result lessonLoaded(LessonLoaded value),
     @required Result lessonError(LessonError value),
-    @required Result allLessonsLoaded(AllLessonsLoaded value),
+    @required Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     @required Result lessonStarted(LessonStarted value),
-    @required Result lessonAdvanced(LessonAdvanced value),
     @required Result lessonFinished(LessonFinished value),
     @required Result lessonAborted(LessonAborted value),
   }) {
@@ -2279,9 +1857,8 @@ class _$LessonFinished with DiagnosticableTreeMixin implements LessonFinished {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonFinished(this);
@@ -2294,9 +1871,8 @@ class _$LessonFinished with DiagnosticableTreeMixin implements LessonFinished {
     Result lessonLoading(LessonLoading value),
     Result lessonLoaded(LessonLoaded value),
     Result lessonError(LessonError value),
-    Result allLessonsLoaded(AllLessonsLoaded value),
+    Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     Result lessonStarted(LessonStarted value),
-    Result lessonAdvanced(LessonAdvanced value),
     Result lessonFinished(LessonFinished value),
     Result lessonAborted(LessonAborted value),
     @required Result orElse(),
@@ -2358,9 +1934,8 @@ class _$LessonAborted with DiagnosticableTreeMixin implements LessonAborted {
     @required Result lessonLoading(),
     @required Result lessonLoaded(Lesson lesson),
     @required Result lessonError(LessonFailure error),
-    @required Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    @required Result lessonStarted(Exercise exercise, int lessonLength),
-    @required Result lessonAdvanced(Exercise exercise),
+    @required Result allLessonIdsLoaded(List<UniqueId> ids),
+    @required Result lessonStarted(ObjectList<Exercise> exerciseList),
     @required Result lessonFinished(),
     @required Result lessonAborted(),
   }) {
@@ -2368,9 +1943,8 @@ class _$LessonAborted with DiagnosticableTreeMixin implements LessonAborted {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonAborted();
@@ -2383,9 +1957,8 @@ class _$LessonAborted with DiagnosticableTreeMixin implements LessonAborted {
     Result lessonLoading(),
     Result lessonLoaded(Lesson lesson),
     Result lessonError(LessonFailure error),
-    Result allLessonsLoaded(ObjectList<Lesson> lessons),
-    Result lessonStarted(Exercise exercise, int lessonLength),
-    Result lessonAdvanced(Exercise exercise),
+    Result allLessonIdsLoaded(List<UniqueId> ids),
+    Result lessonStarted(ObjectList<Exercise> exerciseList),
     Result lessonFinished(),
     Result lessonAborted(),
     @required Result orElse(),
@@ -2404,9 +1977,8 @@ class _$LessonAborted with DiagnosticableTreeMixin implements LessonAborted {
     @required Result lessonLoading(LessonLoading value),
     @required Result lessonLoaded(LessonLoaded value),
     @required Result lessonError(LessonError value),
-    @required Result allLessonsLoaded(AllLessonsLoaded value),
+    @required Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     @required Result lessonStarted(LessonStarted value),
-    @required Result lessonAdvanced(LessonAdvanced value),
     @required Result lessonFinished(LessonFinished value),
     @required Result lessonAborted(LessonAborted value),
   }) {
@@ -2414,9 +1986,8 @@ class _$LessonAborted with DiagnosticableTreeMixin implements LessonAborted {
     assert(lessonLoading != null);
     assert(lessonLoaded != null);
     assert(lessonError != null);
-    assert(allLessonsLoaded != null);
+    assert(allLessonIdsLoaded != null);
     assert(lessonStarted != null);
-    assert(lessonAdvanced != null);
     assert(lessonFinished != null);
     assert(lessonAborted != null);
     return lessonAborted(this);
@@ -2429,9 +2000,8 @@ class _$LessonAborted with DiagnosticableTreeMixin implements LessonAborted {
     Result lessonLoading(LessonLoading value),
     Result lessonLoaded(LessonLoaded value),
     Result lessonError(LessonError value),
-    Result allLessonsLoaded(AllLessonsLoaded value),
+    Result allLessonIdsLoaded(AllLessonIdsLoaded value),
     Result lessonStarted(LessonStarted value),
-    Result lessonAdvanced(LessonAdvanced value),
     Result lessonFinished(LessonFinished value),
     Result lessonAborted(LessonAborted value),
     @required Result orElse(),

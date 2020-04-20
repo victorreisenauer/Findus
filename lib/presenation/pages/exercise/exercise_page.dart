@@ -2,63 +2,62 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:lrs_app_v3/injection.dart';
-import 'package:lrs_app_v3/application/lesson/lesson_bloc.dart';
+import 'package:lrs_app_v3/application/lesson/exercise/exercise_bloc.dart';
+import 'package:lrs_app_v3/application/lesson/progress/progress_bloc.dart';
+import 'package:lrs_app_v3/domain/lesson/exercise.dart';
+import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
 
 class ExercisePage extends StatelessWidget {
-  int lessonLength;
+  final ObjectList<Exercise> exerciseList;
+  //TODO: figure out if this ^is elegant or if data should be transmitted by LessonStarted state directly?
+
+  const ExercisePage({@required this.exerciseList});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // access to lessonbloc --> if state is lessonstarted(exercise, lesson length) or lessonadvance(exercise)
-        // give access to progressbloc and exercise bloc, add ProgressInit(lesson length), add ExerciseBloc buildExercise()
-        //--> give access to exercisebloc and
-        // add bloclistener for exercise --> if state is ExerciseBuilt(Template)
-        // return template (displayed on screen)
-        body: BlocProvider<LessonBloc>(
-      create: (context) => getIt<LessonBloc>(),
-      child: BlocConsumer<LessonBloc, LessonState>(
-        listener: (context, state) {
-          if (state is LessonStarted) {
-            this.lessonLength = state.lessonLength;
-          }
-        },
-        builder: (context, state) {
-          state.map(
-              initial: (_) => {},
-              lessonLoading: (_) => {},
-              lessonLoaded: (_) => {},
-              lessonError: (_) => {},
-              allLessonsLoaded: (_) => {},
-              lessonStarted: (_) => {},
-              lessonAdvanced: (_) => {},
-              lessonFinished: (_) => {},
-              lessonAborted: (_) => {});
-          if (state is LessonStarted) {
-            return Text(this.lessonLength.toString());
-          }
-          if (state is LessonError) {
-            return Text("Lesson error");
-          }
-          return Text("no state was called");
-        },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<ProgressBloc>()
+            ..add(ProgressEvent.startProgress(exerciseList.length)),
+        ),
+        BlocProvider(
+          create: (context) => ExerciseBloc(exerciseList: exerciseList)
+            ..add(ExerciseEvent.buildExercise()),
+        )
+      ],
+      child: Scaffold(
+        body: BlocBuilder<ProgressBloc, ProgressState>(
+          builder: (context, state) {
+            if (state is ProgressUpdated) {
+              return Center(
+                child: Column(
+                  children: [
+                    Container(
+                      child: LinearProgressIndicator(
+                        value: state.currentProgress,
+                      ),
+                    ),
+                    FlatButton(
+                      child: Text("Press for progress"),
+                      onPressed: () {
+                        context.bloc().add(ProgressEvent.updateProgress(true));
+                      },
+                    ),
+                  ],
+                ),
+              );
+            }
+            return Center(child: Text("No state was called"));
+          },
+        ),
       ),
-    ));
+    );
   }
 }
 
 /*
- * 
- * MultiBlocProvider(
-              providers: [
-                BlocProvider(
-                  create: (context) => getIt<ProgressBloc>()
-                    ..add(ProgressEvent.progressInit(state.lessonLength)),
-                ),
-                BlocProvider(
-                  create: (context) => getIt<ExerciseBloc>()
-                    ..add(ExerciseEvent.buildExercise(state.exercise)),
-                )
-              ],
+
               child: BlocListener<ExerciseBloc, ExerciseState>(
                 listener: (context, state) {
                   if (state is ExerciseBuilt) {

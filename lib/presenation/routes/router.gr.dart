@@ -11,6 +11,8 @@ import 'package:lrs_app_v3/presenation/pages/welcome/welcome_page.dart';
 import 'package:lrs_app_v3/presenation/pages/sign_in/sign_in_page.dart';
 import 'package:lrs_app_v3/presenation/pages/overview/overview_page.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/exercise_page.dart';
+import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
+import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 
 class Router {
   static const welcomePage = '/';
@@ -37,8 +39,12 @@ class Router {
           settings: settings,
         );
       case Router.exercisePage:
+        if (hasInvalidArgs<ObjectList<Exercise>>(args, isRequired: true)) {
+          return misTypedArgsRoute<ObjectList<Exercise>>(args);
+        }
+        final typedArgs = args as ObjectList<Exercise>;
         return MaterialPageRoute<dynamic>(
-          builder: (_) => ExercisePage(),
+          builder: (_) => ExercisePage(exerciseList: typedArgs),
           settings: settings,
         );
       default:

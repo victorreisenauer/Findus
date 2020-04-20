@@ -13,6 +13,7 @@ part 'exercise_1_event.dart';
 part 'exercise_1_state.dart';
 part 'exercise_1_bloc.freezed.dart';
 
+/*
 @injectable
 class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
   Map exerciseData = SampleExerciseGenerator()
@@ -125,3 +126,8 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
     return widgets;
   }
 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
+*/
