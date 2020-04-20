@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:lrs_app_v3/injection.dart';
 import 'package:lrs_app_v3/application/lesson/lesson_bloc.dart';
+import 'package:lrs_app_v3/application/lesson/progress/progress_bloc.dart';
 import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 
 class ExercisePage extends StatelessWidget {
@@ -14,8 +15,43 @@ class ExercisePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text("Exercise arrived, lesson length is $lessonLength"),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<ProgressBloc>()
+            ..add(ProgressEvent.startProgress(lessonLength)),
+        ),
+        //BlocProvider(
+        //  create: (context) => getIt<ExerciseBloc>()
+        //    ..add(ExerciseEvent.buildExercise(state.exercise)),
+        //)
+      ],
+      child: Scaffold(
+        body: BlocBuilder<ProgressBloc, ProgressState>(
+          builder: (context, state) {
+            if (state is ProgressUpdated) {
+              return Center(
+                child: Column(
+                  children: [
+                    Container(
+                      child: LinearProgressIndicator(
+                        value: state.currentProgress,
+                      ),
+                    ),
+                    FlatButton(
+                      child: Text("Press for progress"),
+                      onPressed: () {
+                        context.bloc().add(ProgressEvent.updateProgress(true));
+                      },
+                    ),
+                  ],
+                ),
+              );
+            }
+            return Center(child: Text("No state was called"));
+          },
+        ),
+      ),
     );
   }
 }
