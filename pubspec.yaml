@@ -23,6 +23,8 @@ dependencies:
   mockito:
   flushbar: 1.9.1
   equatable:
+  google_fonts:
+  path_provider:
 
 dev_dependencies:
   flutter_test:
