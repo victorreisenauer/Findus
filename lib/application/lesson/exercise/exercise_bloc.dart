@@ -7,9 +7,9 @@ import 'package:dartz/dartz.dart';
 
 import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
-import 'package:lrs_app_v3/presenation/templates/exercise_2_temp.dart';
 import 'package:lrs_app_v3/domain/lesson/template_failure.dart';
-import 'package:lrs_app_v3/presenation/templates/template_list.dart';
+import 'package:lrs_app_v3/presenation/pages/exercise/templates/template_list.dart';
+import 'package:lrs_app_v3/presenation/pages/exercise/templates/template.dart';
 
 part 'exercise_event.dart';
 part 'exercise_state.dart';
@@ -20,7 +20,7 @@ part 'exercise_bloc.freezed.dart';
 class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   final ObjectList<Exercise> exerciseList;
   int _index = 0;
-  List templateList = [Temp0002()];
+  TemplateList templateList = TemplateList();
 
   ExerciseBloc({@required this.exerciseList});
 
@@ -29,7 +29,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
 
   Either<TemplateFailure, Template> templateLookup(ExerciseType type) {
     print("exercisetype: $type");
-    for (Template temp in templateList) {
+    for (Template temp in templateList.templates) {
       if (temp.type == type) {
         print("templatetype: ${temp.type}");
         return right(temp);

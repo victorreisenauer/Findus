@@ -22,7 +22,6 @@ part 'lesson_bloc.freezed.dart';
 @injectable
 class LessonBloc extends Bloc<LessonEvent, LessonState> {
   final ILessonFacade _lessonFacade;
-  int _index = 0;
   Lesson _currentLesson;
 
   LessonBloc(this._lessonFacade);
@@ -52,18 +51,10 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
       yield LessonLoading();
       final failureOrLesson = await _lessonFacade.getLessonById(e.id);
       yield failureOrLesson.fold((f) => LessonError(f), (lesson) {
-        this._index = 0;
         this._currentLesson = lesson;
-        final Exercise exercise =
-            _currentLesson.exerciseList.getOrCrash()[_index];
-        final int lessonLength = _currentLesson.exerciseList.length;
-        return LessonStarted(exercise, lessonLength);
+        final ObjectList<Exercise> exerciseList = _currentLesson.exerciseList;
+        return LessonStarted(exerciseList);
       });
-    }, advanceLesson: (e) async* {
-      this._index++;
-      final Exercise exercise =
-          _currentLesson.exerciseList.getOrCrash()[_index];
-      yield LessonAdvanced(exercise);
     }, finishLesson: (e) async* {
       _lessonFacade.saveResults(e.results);
       yield LessonFinished();

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
-
-abstract class Template extends StatelessWidget {
-  ExerciseType get type;
-}
+import 'package:lrs_app_v3/presenation/pages/exercise/templates/template.dart';
 
 class Temp0002 extends Template {
   final ExerciseType type = ExerciseType('sampleType3');

@@ -22,7 +22,7 @@ class ExercisePage extends StatelessWidget {
             ..add(ProgressEvent.startProgress(exerciseList.length)),
         ),
         BlocProvider(
-          create: (context) => getIt<ExerciseBloc>(exerciseList)
+          create: (context) => ExerciseBloc(exerciseList: exerciseList)
             ..add(ExerciseEvent.buildExercise()),
         )
       ],
