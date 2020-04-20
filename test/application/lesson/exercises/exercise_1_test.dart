@@ -10,6 +10,7 @@ main() {
     });
     test('emits showExercise state', () {
       final bloc = Exercise_1Bloc();
+      expectLater(bloc, emits(Exercise_1State.initial()));
       bloc.add(Exercise_1Event.getExercise());
       bloc.close();
     });
