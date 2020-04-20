@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
 
 class Cloud extends StatelessWidget {
-  const Cloud({Key key}) : super(key: key);
+  final double opacity;
+  final Widget child;
+
+  const Cloud({this.opacity, this.child, key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CustomPaint(
-        painter: _CloudPainter(),
+    return Stack(children: [
+      SizedBox.expand(
+        child: CustomPaint(
+          painter: _CloudPainter(opacity: opacity != null ? opacity : 1.0),
+        ),
       ),
-    );
+      child != null ? child : Container(),
+    ]);
   }
 }
 
 class _CloudPainter extends CustomPainter {
+  double opacity;
+  _CloudPainter({this.opacity});
   @override
   void paint(Canvas canvas, Size size) {
     Paint lightCloud = Paint()
-      ..color = Color.fromRGBO(225, 245, 254, 1)
+      ..color = Color.fromRGBO(225, 245, 254, opacity)
       ..style = PaintingStyle.fill
       ..strokeWidth = 1.0;
 
     Paint darkCloud = Paint()
-      ..color = Color.fromRGBO(208, 237, 250, 1.0)
+      ..color = Color.fromRGBO(208, 237, 250, opacity)
       ..style = PaintingStyle.fill
       ..strokeWidth = 1.0;
 

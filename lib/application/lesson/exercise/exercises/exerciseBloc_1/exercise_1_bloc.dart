@@ -13,15 +13,13 @@ part 'exercise_1_event.dart';
 part 'exercise_1_state.dart';
 part 'exercise_1_bloc.freezed.dart';
 
-/*
 @injectable
 class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
-  Map exerciseData = SampleExerciseGenerator()
-      .getEncodedJsonForType('sampleExercise1')['data'];
+  Map exerciseData;
 
-  TextStyle defaultTextStyle = GoogleFonts.reemKufi();
+  TextStyle defaultTextStyle = GoogleFonts.reemKufi(fontSize: 20.0);
 
-  // Exercise_1Bloc({this.exerciseData});
+  Exercise_1Bloc({this.exerciseData});
 
   @override
   Exercise_1State get initialState => Exercise_1State.initial();
@@ -45,9 +43,6 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
 
       List<dynamic> text = values[0];
       List<dynamic> answers = values[1];
-
-      print(text);
-      print(answers);
 
       yield Exercise_1State.showExercise(text, answers);
     }, droppedDraggable: (e) {
@@ -126,8 +121,3 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
     return widgets;
   }
 }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-*/
