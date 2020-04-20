@@ -11,6 +11,7 @@ import 'package:lrs_app_v3/presenation/pages/welcome/welcome_page.dart';
 import 'package:lrs_app_v3/presenation/pages/sign_in/sign_in_page.dart';
 import 'package:lrs_app_v3/presenation/pages/overview/overview_page.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/exercise_page.dart';
+import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
 import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 
 class Router {
@@ -38,29 +39,16 @@ class Router {
           settings: settings,
         );
       case Router.exercisePage:
-        if (hasInvalidArgs<ExercisePageArguments>(args, isRequired: true)) {
-          return misTypedArgsRoute<ExercisePageArguments>(args);
+        if (hasInvalidArgs<ObjectList<Exercise>>(args, isRequired: true)) {
+          return misTypedArgsRoute<ObjectList<Exercise>>(args);
         }
-        final typedArgs = args as ExercisePageArguments;
+        final typedArgs = args as ObjectList<Exercise>;
         return MaterialPageRoute<dynamic>(
-          builder: (_) => ExercisePage(
-              exercise: typedArgs.exercise,
-              lessonLength: typedArgs.lessonLength),
+          builder: (_) => ExercisePage(exerciseList: typedArgs),
           settings: settings,
         );
       default:
         return unknownRoutePage(settings.name);
     }
   }
-}
-
-//**************************************************************************
-// Arguments holder classes
-//***************************************************************************
-
-//ExercisePage arguments holder class
-class ExercisePageArguments {
-  final Exercise exercise;
-  final int lessonLength;
-  ExercisePageArguments({@required this.exercise, this.lessonLength});
 }

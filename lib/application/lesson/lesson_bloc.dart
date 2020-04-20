@@ -19,8 +19,6 @@ part 'lesson_state.dart';
 
 part 'lesson_bloc.freezed.dart';
 
-class MockExercise extends Mock implements Exercise {}
-
 @injectable
 class LessonBloc extends Bloc<LessonEvent, LessonState> {
   final ILessonFacade _lessonFacade;

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:lrs_app_v3/injection.dart';
-import 'package:lrs_app_v3/application/lesson/lesson_bloc.dart';
+import 'package:lrs_app_v3/application/lesson/exercise/exercise_bloc.dart';
 import 'package:lrs_app_v3/application/lesson/progress/progress_bloc.dart';
 import 'package:lrs_app_v3/domain/lesson/exercise.dart';
+import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
 
 class ExercisePage extends StatelessWidget {
-  final Exercise exercise;
-  final int lessonLength;
+  final ObjectList<Exercise> exerciseList;
   //TODO: figure out if this ^is elegant or if data should be transmitted by LessonStarted state directly?
 
-  const ExercisePage({@required this.exercise, this.lessonLength});
+  const ExercisePage({@required this.exerciseList});
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,12 @@ class ExercisePage extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => getIt<ProgressBloc>()
-            ..add(ProgressEvent.startProgress(lessonLength)),
+            ..add(ProgressEvent.startProgress(exerciseList.length)),
         ),
-        //BlocProvider(
-        //  create: (context) => getIt<ExerciseBloc>()
-        //    ..add(ExerciseEvent.buildExercise(state.exercise)),
-        //)
+        BlocProvider(
+          create: (context) => getIt<ExerciseBloc>(exerciseList)
+            ..add(ExerciseEvent.buildExercise()),
+        )
       ],
       child: Scaffold(
         body: BlocBuilder<ProgressBloc, ProgressState>(
@@ -57,18 +57,7 @@ class ExercisePage extends StatelessWidget {
 }
 
 /*
- * 
- * MultiBlocProvider(
-              providers: [
-                BlocProvider(
-                  create: (context) => getIt<ProgressBloc>()
-                    ..add(ProgressEvent.progressInit(state.lessonLength)),
-                ),
-                BlocProvider(
-                  create: (context) => getIt<ExerciseBloc>()
-                    ..add(ExerciseEvent.buildExercise(state.exercise)),
-                )
-              ],
+
               child: BlocListener<ExerciseBloc, ExerciseState>(
                 listener: (context, state) {
                   if (state is ExerciseBuilt) {
