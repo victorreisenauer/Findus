@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
 import 'package:lrs_app_v3/infrastructure/sample_data/sample_exercise.dart';
@@ -13,7 +15,10 @@ part 'exercise_1_bloc.freezed.dart';
 
 @injectable
 class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
-  Map exerciseData = sampleExerciseForExercise_1_1.data.value.getOrElse(null);
+  Map exerciseData = SampleExerciseGenerator()
+      .getEncodedJsonForType('sampleExercise1')['data'];
+
+  TextStyle defaultTextStyle = GoogleFonts.reemKufi();
 
   // Exercise_1Bloc({this.exerciseData});
 
@@ -25,33 +30,20 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
     Exercise_1Event event,
   ) async* {
     yield* event.map(getExercise: (e) async* {
-      yield Exercise_1State.initial();
-      List<dynamic> text = List();
-      List<dynamic> answers = List();
+      // yield Exercise_1State.initial();
 
-      int normalListPos = 0;
-      int targetListPos = 0;
+      List<String> suffix = List();
+      List<Color> suffixColor = List();
 
-      List<String> normalList = exerciseData[1];
-      List<String> targetList = exerciseData[2];
-
-      (exerciseData[3] as List<int>).forEach((f) {
-        if (f == 0) {
-          text.add([0, normalList[normalListPos]]);
-          normalListPos++;
-        }
-        if (f == 1) {
-          text.add([1, targetList[targetListPos], targetListPos]);
-          targetListPos++;
-        }
+      exerciseData["2"].forEach((f) {
+        suffix.add('_ _ _ _');
+        suffixColor.add(Colors.green);
       });
 
-      int answerPos = 0;
+      List<List> values = _dataToList(exerciseData, suffix, suffixColor);
 
-      (exerciseData[4] as List<String>).forEach((f) {
-        answers.add([f, answerPos]);
-        answerPos++;
-      });
+      List<dynamic> text = values[0];
+      List<dynamic> answers = values[1];
 
       print(text);
       print(answers);
@@ -62,5 +54,74 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
     }, pressedFinish: (e) {
       print(e);
     });
+  }
+
+  List<List> _dataToList(
+      Map data, List<String> suffix, List<Color> suffixColor) {
+    List<dynamic> text = List();
+    List<dynamic> answers = List();
+
+    int normalListPos = 0;
+    int targetListPos = 0;
+
+    List<dynamic> normalList = data["1"];
+    List<dynamic> targetList = data["2"];
+
+    (data["3"]).forEach((f) {
+      if (f == 0) {
+        text.add([
+          0,
+          Text(
+            normalList[normalListPos],
+            style: defaultTextStyle,
+          )
+        ]);
+        normalListPos++;
+      }
+      if (f == 1) {
+        text.add([
+          1,
+          Row(
+            children: _dragTargetBuildWidget(targetList[targetListPos],
+                suffix[targetListPos], suffixColor[targetListPos]),
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+          ),
+          targetListPos
+        ]);
+        targetListPos++;
+      }
+    });
+
+    int answerPos = 0;
+
+    (data["4"]).forEach((f) {
+      answers.add([f, answerPos]);
+      answerPos++;
+    });
+
+    return [text, answers];
+  }
+
+  List<Widget> _dragTargetBuildWidget(
+      String text, String suffix, Color suffixColor) {
+    List<Widget> widgets = List();
+    List<String> textParts = text.split('§suffix§');
+    widgets.add(Text(
+      textParts[0],
+      style: defaultTextStyle,
+    ));
+    widgets.add(Text(
+      suffix,
+      style:
+          GoogleFonts.reemKufi(textStyle: defaultTextStyle, color: suffixColor),
+    ));
+    if (textParts.length > 1)
+      widgets.add(Text(
+        textParts[1],
+        style: defaultTextStyle,
+      ));
+    return widgets;
   }
 }
