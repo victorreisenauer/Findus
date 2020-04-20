@@ -8,9 +8,12 @@ class Template_1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => Exercise_1Bloc(),
-      child: Template_1Body(),
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: BlocProvider(
+        create: (context) => Exercise_1Bloc(),
+        child: Template_1Body(),
+      ),
     );
   }
 }

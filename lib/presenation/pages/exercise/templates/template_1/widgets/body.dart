@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lrs_app_v3/application/lesson/exerciseBlocs/exerciseBloc_1/exercise_1_bloc.dart';
+import 'package:lrs_app_v3/presenation/pages/exercise/templates/sharedWidgets/cloud.dart';
 
 class Template_1Body extends StatefulWidget {
   Template_1Body({Key key}) : super(key: key);
@@ -20,22 +23,28 @@ class _Template_1BodyState extends State<Template_1Body> {
     return BlocBuilder<Exercise_1Bloc, Exercise_1State>(
       builder: (context, state) {
         if (state is ShowExercise) {
-          return Center(
-            child: Container(
-              height: 250,
-              width: 250,
-              child: Column(children: [
-                SingleChildScrollView(
-                  child: Column(children: [
-                    Wrap(
-                      children: _getWrapChildernFromText(state.text),
-                    ),
-                  ]),
+          return Column(children: [
+            Expanded(
+              child: Center(
+                child: Wrap(
+                  children: _getWrapChildernFromText(state.text),
                 ),
-                _getAnswers(state.answers),
-              ]),
+              ),
             ),
-          );
+            Container(
+                height: 100,
+                // width: 300,
+                color: Colors.green,
+                child: _getAnswers(state.answers)),
+            Center(
+              child: Container(
+                  height: 50,
+                  width: 100,
+                  child: Cloud(
+                    child: Center(child: Text('Hello')),
+                  )),
+            )
+          ]);
         }
         return CircularProgressIndicator();
       },
@@ -50,11 +59,13 @@ class _Template_1BodyState extends State<Template_1Body> {
       }
       if (f[0] == 1) {
         widgets.add(DragTarget(
-          builder: (context, list1, list2) {
+          builder: (context, List<String> list1, list2) {
             return f[1];
           },
           onAccept: (data) => print(data),
-          onWillAccept: (data) => true,
+          onWillAccept: (data) {
+            return true;
+          },
         ));
       }
     });
@@ -62,6 +73,103 @@ class _Template_1BodyState extends State<Template_1Body> {
   }
 
   Widget _getAnswers(List<dynamic> answers) {
-    return Row();
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+              height: 90,
+              width: 150,
+              child: Stack(children: [
+                Container(
+                    height: 90,
+                    width: 150,
+                    child: Cloud(
+                      opacity: 1.0,
+                    )),
+                Center(
+                  child: Text(answers[0][0]),
+                )
+              ])),
+        ),
+        _getCloudWithText('Hayy'),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+              height: 90,
+              width: 150,
+              child: Cloud(
+                opacity: 1.0,
+              )),
+        ),
+      ]),
+    );
+  }
+
+  Widget _getCloudWithText(String text) {
+    return Container(
+      height: 90,
+      width: 150,
+      child: Draggable(
+        affinity: Axis.vertical,
+        child: Stack(
+          children: <Widget>[
+            Container(
+                height: 90,
+                width: 150,
+                child: Cloud(
+                  opacity: 1.0,
+                )),
+            Center(
+              child: Text(
+                'Hello',
+                style: GoogleFonts.reemKufi(),
+              ),
+            )
+          ],
+        ),
+        childWhenDragging: Stack(
+          children: <Widget>[
+            Container(
+                height: 90,
+                width: 150,
+                child: Cloud(
+                  opacity: 1.0,
+                )),
+            Center(
+              child: Text(
+                'Hello1',
+                style: GoogleFonts.reemKufi(),
+              ),
+            )
+          ],
+        ),
+        feedback: Container(
+          height: 90,
+          width: 150,
+          child: Stack(
+            children: <Widget>[
+              Container(
+                  height: 90,
+                  width: 150,
+                  child: Cloud(
+                    opacity: 0.4,
+                  )),
+              Center(
+                child: Text(
+                  'Hello2',
+                  style: GoogleFonts.reemKufi(
+                      decoration: TextDecoration.none,
+                      color: Colors.black,
+                      fontSize: 15.0),
+                ),
+              )
+            ],
+          ),
+        ),
+        data: ['Hello', 'WTF'],
+      ),
+    );
   }
 }
