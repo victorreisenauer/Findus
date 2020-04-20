@@ -18,7 +18,7 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
   Map exerciseData = SampleExerciseGenerator()
       .getEncodedJsonForType('sampleExercise1')['data'];
 
-  TextStyle defaultTextStyle = GoogleFonts.reemKufi();
+  TextStyle defaultTextStyle = GoogleFonts.reemKufi(fontSize: 20.0);
 
   // Exercise_1Bloc({this.exerciseData});
 
@@ -44,9 +44,6 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
 
       List<dynamic> text = values[0];
       List<dynamic> answers = values[1];
-
-      print(text);
-      print(answers);
 
       yield Exercise_1State.showExercise(text, answers);
     }, droppedDraggable: (e) {
