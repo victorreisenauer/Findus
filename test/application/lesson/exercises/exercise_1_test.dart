@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lrs_app_v3/application/lesson/exerciseBlocs/exerciseBloc_1/exercise_1_bloc.dart';
+import 'package:lrs_app_v3/application/lesson/exercise/exercises/exerciseBloc_1/exercise_1_bloc.dart';
 
 main() {
   group("Exercise 1 Bloc => ", () {
