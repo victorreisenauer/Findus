@@ -15,11 +15,14 @@ part 'exercise_1_bloc.freezed.dart';
 
 @injectable
 class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
-  Map exerciseData;
+  ExerciseData exerciseData;
+  Map exerciseDataMap;
 
   TextStyle defaultTextStyle = GoogleFonts.reemKufi(fontSize: 20.0);
 
-  Exercise_1Bloc({this.exerciseData});
+  Exercise_1Bloc({this.exerciseData}) {
+    exerciseDataMap = exerciseData.value.getOrElse(null);
+  }
 
   @override
   Exercise_1State get initialState => Exercise_1State.initial();
@@ -34,12 +37,12 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
       List<String> suffix = List();
       List<Color> suffixColor = List();
 
-      exerciseData["2"].forEach((f) {
+      exerciseDataMap["2"].forEach((f) {
         suffix.add('_ _ _ _');
         suffixColor.add(Colors.green);
       });
 
-      List<List> values = _dataToList(exerciseData, suffix, suffixColor);
+      List<List> values = _dataToList(exerciseDataMap, suffix, suffixColor);
 
       List<dynamic> text = values[0];
       List<dynamic> answers = values[1];
