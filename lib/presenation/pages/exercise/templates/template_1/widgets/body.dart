@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lrs_app_v3/application/lesson/exerciseBlocs/exerciseBloc_1/exercise_1_bloc.dart';
-import 'package:lrs_app_v3/presenation/pages/exercise/templates/sharedWidgets/cloud.dart';
+import 'package:lrs_app_v3/application/lesson/exercise/exercises/exerciseBloc_1/exercise_1_bloc.dart';
+import 'package:lrs_app_v3/presenation/pages/core/cloud.dart';
 
 class Template_1Body extends StatefulWidget {
   Template_1Body({Key key}) : super(key: key);
