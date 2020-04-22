@@ -16,7 +16,14 @@ class OverviewPage extends StatelessWidget {
               getIt<LessonBloc>()..add(LessonEvent.fetchAllLessonIds()),
           child: BackgroundImage(
             imagePath: "assets/images/overview_background_plain.jpg",
-            child: BlocBuilder<LessonBloc, LessonState>(
+            child: BlocConsumer<LessonBloc, LessonState>(
+              listener: (context, state) {
+                if (state is LessonStarted) {
+                  Router.navigator.pushNamed(Router.exercisePage,
+                      arguments: ExercisePageArguments(
+                          exerciseList: state.exerciseList));
+                }
+              },
               builder: (context, state) {
                 if (state is LessonLoading) {
                   return Center(child: CircularProgressIndicator());
@@ -40,7 +47,6 @@ class OverviewPage extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          //TODO: route to exercise page
                           return context
                               .bloc<LessonBloc>()
                               .add(StartLesson(state.ids[index]));

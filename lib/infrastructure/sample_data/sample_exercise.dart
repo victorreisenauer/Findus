@@ -12,23 +12,23 @@ class SampleExerciseGenerator implements SamplesGenerator {
   final UniqueId sampleId = UniqueId();
   final List jsonIds = ['0001', '0002', '0003', '0004'];
   final List<String> jsonTypes = [
-    'sampleExercise1',
+    'sampleType1',
     'sampleType2',
     'sampleType3',
     'sampleType4'
   ];
   final List<Map> jsonData = [
-    {
-      "1": "someotherdata",
-      "2": [1, 2, 3, 5],
-      "3": {"3.1": "and eggs"}
-    },
-    {
-      "1": "someotherdata",
-      "2": [1, 2, 3, 5],
-      "3": {"3.1": "and eggs"}
-    },
     jerryJsonData,
+    {
+      "1": "someotherdata",
+      "2": [1, 2, 3, 5],
+      "3": {"3.1": "and eggs"}
+    },
+    {
+      "1": "someotherdata",
+      "2": [1, 2, 3, 5],
+      "3": {"3.1": "and eggs"}
+    },
   ];
 
   String getSampleEncodedJson() =>
@@ -52,7 +52,7 @@ class SampleExerciseGenerator implements SamplesGenerator {
   Map getSampleDecodedJson() => jsonDecode(getSampleEncodedJson());
 
   ExerciseModel getSampleObjectModel() =>
-      ExerciseModel.fromJson(jsonDecode(getEncodedJsonForType('sampleType3')));
+      ExerciseModel.fromJson(jsonDecode(getEncodedJsonForType('sampleType1')));
 
   Exercise getSampleObject() => getSampleObjectModel().toDomain();
 

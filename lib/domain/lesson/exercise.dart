@@ -6,12 +6,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
 import 'package:lrs_app_v3/domain/core/failures.dart';
+import 'package:lrs_app_v3/domain/core/entitiy.dart';
 
 part 'exercise.freezed.dart';
 
 @freezed
-// TODO: Make exercise implement IEntity
-abstract class Exercise with _$Exercise {
+
+/// Data class for exercise object
+abstract class Exercise with _$Exercise implements IEntity {
   const factory Exercise({
     @required UniqueId id,
     @required ExerciseType type,

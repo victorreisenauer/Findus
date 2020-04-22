@@ -4,9 +4,6 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-import 'package:lrs_app_v3/application/lesson/exercise/exercise_bloc.dart';
-import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
-import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 import 'package:lrs_app_v3/application/lesson/progress/progress_bloc.dart';
 import 'package:lrs_app_v3/infrastructure/auth/api_user_mapper.dart';
 import 'package:lrs_app_v3/infrastructure/auth/dev_auth_repository.dart';
@@ -23,8 +20,6 @@ import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
   final apiInjectableModule = _$ApiInjectableModule();
-  g.registerFactory<ExerciseBloc>(
-      () => ExerciseBloc(exerciseList: g<ObjectList<Exercise>>()));
   g.registerFactory<ProgressBloc>(() => ProgressBloc());
   g.registerLazySingleton<ApiUserMapper>(() => ApiUserMapper());
   g.registerLazySingleton<Api>(() => apiInjectableModule.api);

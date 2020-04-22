@@ -11,7 +11,7 @@ class ExercisePage extends StatelessWidget {
   final ObjectList<Exercise> exerciseList;
   //TODO: figure out if this ^is elegant or if data should be transmitted by LessonStarted state directly?
 
-  const ExercisePage({@required this.exerciseList});
+  const ExercisePage({Key key, @required this.exerciseList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,49 @@ class ExercisePage extends StatelessWidget {
         )
       ],
       child: Scaffold(
-        body: BlocBuilder<ProgressBloc, ProgressState>(
+        body: BlocBuilder<ExerciseBloc, ExerciseState>(
+          builder: (context, state) {
+            if (state is ExerciseError) {
+              return Center(child: Text("exerciseerror"));
+            }
+            if (state is ExerciseCompleted) {
+              return Center(
+                child: Text("exercise is completed"),
+              );
+            }
+            if (state is ExerciseBuilt) {
+              print("this state was called");
+              return state.builtExercise;
+            }
+            return Center(
+              child: FlatButton(
+                onPressed: () {
+                  getIt<ExerciseBloc>().add(ExerciseEvent.buildExercise());
+                },
+                child: Text("Press me for rebuild"),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+/*
+
+              child: BlocListener<ExerciseBloc, ExerciseState>(
+                listener: (context, state) {
+                  if (state is ExerciseBuilt) {
+                    return state.template;
+                  }
+                },
+              ),
+            );
+
+
+
+                    body: BlocBuilder<ProgressBloc, ProgressState>(
           builder: (context, state) {
             if (state is ProgressUpdated) {
               return Center(
@@ -48,22 +90,4 @@ class ExercisePage extends StatelessWidget {
                 ),
               );
             }
-            return Center(child: Text("No state was called"));
-          },
-        ),
-      ),
-    );
-  }
-}
-
-/*
-
-              child: BlocListener<ExerciseBloc, ExerciseState>(
-                listener: (context, state) {
-                  if (state is ExerciseBuilt) {
-                    return state.template;
-                  }
-                },
-              ),
-            );
  */

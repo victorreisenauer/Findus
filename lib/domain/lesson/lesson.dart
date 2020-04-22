@@ -6,13 +6,14 @@ import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 
+import '../core/entitiy.dart';
+
 part 'lesson.freezed.dart';
 
-// TODO: make lesson implement IEntity
 @freezed
 
 /// Data class for Lessons.
-abstract class Lesson with _$Lesson {
+abstract class Lesson with _$Lesson implements IEntity {
   @override
   const factory Lesson({
     @required UniqueId id,
