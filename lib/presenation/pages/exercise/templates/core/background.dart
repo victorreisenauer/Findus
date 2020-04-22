@@ -5,11 +5,9 @@ class Background extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Expanded(
-        child: CustomPaint(
-          painter: _BackgroundPainter(),
-        ),
+    return SizedBox.expand(
+      child: CustomPaint(
+        painter: _BackgroundPainter(),
       ),
     );
   }

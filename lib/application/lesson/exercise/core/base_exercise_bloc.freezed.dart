@@ -27,6 +27,10 @@ class _$BaseExerciseEventTearOff {
   ShowAbortDismissed showAbortDismissed() {
     return const ShowAbortDismissed();
   }
+
+  ShowStandardScreen showStandardScreen() {
+    return const ShowStandardScreen();
+  }
 }
 
 // ignore: unused_element
@@ -39,6 +43,7 @@ mixin _$BaseExerciseEvent {
     @required Result showAbortPressed(),
     @required Result showHelpDismissed(),
     @required Result showAbortDismissed(),
+    @required Result showStandardScreen(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -46,6 +51,7 @@ mixin _$BaseExerciseEvent {
     Result showAbortPressed(),
     Result showHelpDismissed(),
     Result showAbortDismissed(),
+    Result showStandardScreen(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -54,6 +60,7 @@ mixin _$BaseExerciseEvent {
     @required Result showAbortPressed(ShowAbortPressed value),
     @required Result showHelpDismissed(ShowHelpDismissed value),
     @required Result showAbortDismissed(ShowAbortDismissed value),
+    @required Result showStandardScreen(ShowStandardScreen value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -61,6 +68,7 @@ mixin _$BaseExerciseEvent {
     Result showAbortPressed(ShowAbortPressed value),
     Result showHelpDismissed(ShowHelpDismissed value),
     Result showAbortDismissed(ShowAbortDismissed value),
+    Result showStandardScreen(ShowStandardScreen value),
     @required Result orElse(),
   });
 }
@@ -120,11 +128,13 @@ class _$ShowHelpPressed implements ShowHelpPressed {
     @required Result showAbortPressed(),
     @required Result showHelpDismissed(),
     @required Result showAbortDismissed(),
+    @required Result showStandardScreen(),
   }) {
     assert(showHelpPressed != null);
     assert(showAbortPressed != null);
     assert(showHelpDismissed != null);
     assert(showAbortDismissed != null);
+    assert(showStandardScreen != null);
     return showHelpPressed();
   }
 
@@ -135,6 +145,7 @@ class _$ShowHelpPressed implements ShowHelpPressed {
     Result showAbortPressed(),
     Result showHelpDismissed(),
     Result showAbortDismissed(),
+    Result showStandardScreen(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -151,11 +162,13 @@ class _$ShowHelpPressed implements ShowHelpPressed {
     @required Result showAbortPressed(ShowAbortPressed value),
     @required Result showHelpDismissed(ShowHelpDismissed value),
     @required Result showAbortDismissed(ShowAbortDismissed value),
+    @required Result showStandardScreen(ShowStandardScreen value),
   }) {
     assert(showHelpPressed != null);
     assert(showAbortPressed != null);
     assert(showHelpDismissed != null);
     assert(showAbortDismissed != null);
+    assert(showStandardScreen != null);
     return showHelpPressed(this);
   }
 
@@ -166,6 +179,7 @@ class _$ShowHelpPressed implements ShowHelpPressed {
     Result showAbortPressed(ShowAbortPressed value),
     Result showHelpDismissed(ShowHelpDismissed value),
     Result showAbortDismissed(ShowAbortDismissed value),
+    Result showStandardScreen(ShowStandardScreen value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -220,11 +234,13 @@ class _$ShowAbortPressed implements ShowAbortPressed {
     @required Result showAbortPressed(),
     @required Result showHelpDismissed(),
     @required Result showAbortDismissed(),
+    @required Result showStandardScreen(),
   }) {
     assert(showHelpPressed != null);
     assert(showAbortPressed != null);
     assert(showHelpDismissed != null);
     assert(showAbortDismissed != null);
+    assert(showStandardScreen != null);
     return showAbortPressed();
   }
 
@@ -235,6 +251,7 @@ class _$ShowAbortPressed implements ShowAbortPressed {
     Result showAbortPressed(),
     Result showHelpDismissed(),
     Result showAbortDismissed(),
+    Result showStandardScreen(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -251,11 +268,13 @@ class _$ShowAbortPressed implements ShowAbortPressed {
     @required Result showAbortPressed(ShowAbortPressed value),
     @required Result showHelpDismissed(ShowHelpDismissed value),
     @required Result showAbortDismissed(ShowAbortDismissed value),
+    @required Result showStandardScreen(ShowStandardScreen value),
   }) {
     assert(showHelpPressed != null);
     assert(showAbortPressed != null);
     assert(showHelpDismissed != null);
     assert(showAbortDismissed != null);
+    assert(showStandardScreen != null);
     return showAbortPressed(this);
   }
 
@@ -266,6 +285,7 @@ class _$ShowAbortPressed implements ShowAbortPressed {
     Result showAbortPressed(ShowAbortPressed value),
     Result showHelpDismissed(ShowHelpDismissed value),
     Result showAbortDismissed(ShowAbortDismissed value),
+    Result showStandardScreen(ShowStandardScreen value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -320,11 +340,13 @@ class _$ShowHelpDismissed implements ShowHelpDismissed {
     @required Result showAbortPressed(),
     @required Result showHelpDismissed(),
     @required Result showAbortDismissed(),
+    @required Result showStandardScreen(),
   }) {
     assert(showHelpPressed != null);
     assert(showAbortPressed != null);
     assert(showHelpDismissed != null);
     assert(showAbortDismissed != null);
+    assert(showStandardScreen != null);
     return showHelpDismissed();
   }
 
@@ -335,6 +357,7 @@ class _$ShowHelpDismissed implements ShowHelpDismissed {
     Result showAbortPressed(),
     Result showHelpDismissed(),
     Result showAbortDismissed(),
+    Result showStandardScreen(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -351,11 +374,13 @@ class _$ShowHelpDismissed implements ShowHelpDismissed {
     @required Result showAbortPressed(ShowAbortPressed value),
     @required Result showHelpDismissed(ShowHelpDismissed value),
     @required Result showAbortDismissed(ShowAbortDismissed value),
+    @required Result showStandardScreen(ShowStandardScreen value),
   }) {
     assert(showHelpPressed != null);
     assert(showAbortPressed != null);
     assert(showHelpDismissed != null);
     assert(showAbortDismissed != null);
+    assert(showStandardScreen != null);
     return showHelpDismissed(this);
   }
 
@@ -366,6 +391,7 @@ class _$ShowHelpDismissed implements ShowHelpDismissed {
     Result showAbortPressed(ShowAbortPressed value),
     Result showHelpDismissed(ShowHelpDismissed value),
     Result showAbortDismissed(ShowAbortDismissed value),
+    Result showStandardScreen(ShowStandardScreen value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -420,11 +446,13 @@ class _$ShowAbortDismissed implements ShowAbortDismissed {
     @required Result showAbortPressed(),
     @required Result showHelpDismissed(),
     @required Result showAbortDismissed(),
+    @required Result showStandardScreen(),
   }) {
     assert(showHelpPressed != null);
     assert(showAbortPressed != null);
     assert(showHelpDismissed != null);
     assert(showAbortDismissed != null);
+    assert(showStandardScreen != null);
     return showAbortDismissed();
   }
 
@@ -435,6 +463,7 @@ class _$ShowAbortDismissed implements ShowAbortDismissed {
     Result showAbortPressed(),
     Result showHelpDismissed(),
     Result showAbortDismissed(),
+    Result showStandardScreen(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -451,11 +480,13 @@ class _$ShowAbortDismissed implements ShowAbortDismissed {
     @required Result showAbortPressed(ShowAbortPressed value),
     @required Result showHelpDismissed(ShowHelpDismissed value),
     @required Result showAbortDismissed(ShowAbortDismissed value),
+    @required Result showStandardScreen(ShowStandardScreen value),
   }) {
     assert(showHelpPressed != null);
     assert(showAbortPressed != null);
     assert(showHelpDismissed != null);
     assert(showAbortDismissed != null);
+    assert(showStandardScreen != null);
     return showAbortDismissed(this);
   }
 
@@ -466,6 +497,7 @@ class _$ShowAbortDismissed implements ShowAbortDismissed {
     Result showAbortPressed(ShowAbortPressed value),
     Result showHelpDismissed(ShowHelpDismissed value),
     Result showAbortDismissed(ShowAbortDismissed value),
+    Result showStandardScreen(ShowStandardScreen value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -478,6 +510,112 @@ class _$ShowAbortDismissed implements ShowAbortDismissed {
 
 abstract class ShowAbortDismissed implements BaseExerciseEvent {
   const factory ShowAbortDismissed() = _$ShowAbortDismissed;
+}
+
+abstract class $ShowStandardScreenCopyWith<$Res> {
+  factory $ShowStandardScreenCopyWith(
+          ShowStandardScreen value, $Res Function(ShowStandardScreen) then) =
+      _$ShowStandardScreenCopyWithImpl<$Res>;
+}
+
+class _$ShowStandardScreenCopyWithImpl<$Res>
+    extends _$BaseExerciseEventCopyWithImpl<$Res>
+    implements $ShowStandardScreenCopyWith<$Res> {
+  _$ShowStandardScreenCopyWithImpl(
+      ShowStandardScreen _value, $Res Function(ShowStandardScreen) _then)
+      : super(_value, (v) => _then(v as ShowStandardScreen));
+
+  @override
+  ShowStandardScreen get _value => super._value as ShowStandardScreen;
+}
+
+class _$ShowStandardScreen implements ShowStandardScreen {
+  const _$ShowStandardScreen();
+
+  @override
+  String toString() {
+    return 'BaseExerciseEvent.showStandardScreen()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ShowStandardScreen);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result showHelpPressed(),
+    @required Result showAbortPressed(),
+    @required Result showHelpDismissed(),
+    @required Result showAbortDismissed(),
+    @required Result showStandardScreen(),
+  }) {
+    assert(showHelpPressed != null);
+    assert(showAbortPressed != null);
+    assert(showHelpDismissed != null);
+    assert(showAbortDismissed != null);
+    assert(showStandardScreen != null);
+    return showStandardScreen();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result showHelpPressed(),
+    Result showAbortPressed(),
+    Result showHelpDismissed(),
+    Result showAbortDismissed(),
+    Result showStandardScreen(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (showStandardScreen != null) {
+      return showStandardScreen();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result showHelpPressed(ShowHelpPressed value),
+    @required Result showAbortPressed(ShowAbortPressed value),
+    @required Result showHelpDismissed(ShowHelpDismissed value),
+    @required Result showAbortDismissed(ShowAbortDismissed value),
+    @required Result showStandardScreen(ShowStandardScreen value),
+  }) {
+    assert(showHelpPressed != null);
+    assert(showAbortPressed != null);
+    assert(showHelpDismissed != null);
+    assert(showAbortDismissed != null);
+    assert(showStandardScreen != null);
+    return showStandardScreen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result showHelpPressed(ShowHelpPressed value),
+    Result showAbortPressed(ShowAbortPressed value),
+    Result showHelpDismissed(ShowHelpDismissed value),
+    Result showAbortDismissed(ShowAbortDismissed value),
+    Result showStandardScreen(ShowStandardScreen value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (showStandardScreen != null) {
+      return showStandardScreen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowStandardScreen implements BaseExerciseEvent {
+  const factory ShowStandardScreen() = _$ShowStandardScreen;
 }
 
 class _$BaseExerciseStateTearOff {

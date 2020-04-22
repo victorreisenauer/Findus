@@ -16,6 +16,16 @@ class BaseExerciseBloc extends Bloc<BaseExerciseEvent, BaseExerciseState> {
   Stream<BaseExerciseState> mapEventToState(
     BaseExerciseEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    yield* event.map(showAbortDismissed: (e) async* {
+      yield BaseExerciseState.show(false, false);
+    }, showAbortPressed: (e) async* {
+      yield BaseExerciseState.show(false, true);
+    }, showHelpDismissed: (e) async* {
+      yield BaseExerciseState.show(false, false);
+    }, showHelpPressed: (e) async* {
+      yield BaseExerciseState.show(true, false);
+    }, showStandardScreen: (e) async* {
+      yield BaseExerciseState.show(false, false);
+    });
   }
 }

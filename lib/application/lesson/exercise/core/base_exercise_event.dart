@@ -6,4 +6,5 @@ abstract class BaseExerciseEvent with _$BaseExerciseEvent {
   const factory BaseExerciseEvent.showAbortPressed() = ShowAbortPressed;
   const factory BaseExerciseEvent.showHelpDismissed() = ShowHelpDismissed;
   const factory BaseExerciseEvent.showAbortDismissed() = ShowAbortDismissed;
+  const factory BaseExerciseEvent.showStandardScreen() = ShowStandardScreen;
 }
