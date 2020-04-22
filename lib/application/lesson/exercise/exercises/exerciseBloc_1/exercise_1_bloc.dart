@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +14,6 @@ part 'exercise_1_event.dart';
 part 'exercise_1_state.dart';
 part 'exercise_1_bloc.freezed.dart';
 
-@injectable
 class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
   ExerciseData exerciseData;
   Map exerciseDataMap;
