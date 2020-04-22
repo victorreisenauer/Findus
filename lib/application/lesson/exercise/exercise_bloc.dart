@@ -9,7 +9,7 @@ import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
 import 'package:lrs_app_v3/domain/lesson/template_failure.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/templates/template.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/templates/template_2/exercise_2_temp.dart';
-//import 'package:lrs_app_v3/presenation/pages/exercise/templates/template_1/exercise_1_temp.dart';
+import 'package:lrs_app_v3/presenation/pages/exercise/templates/template_1/exercise_1_temp.dart';
 
 part 'exercise_event.dart';
 part 'exercise_state.dart';
@@ -31,6 +31,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   Either<TemplateFailure, Template> templateLookup(
       ExerciseType type, ExerciseData exerciseData) {
     List templates = [
+      Temp0001(exerciseData: exerciseData),
       Temp0002(exerciseData: exerciseData),
     ];
     for (Template temp in templates) {
