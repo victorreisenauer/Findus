@@ -92,12 +92,18 @@ class _$GetExerciseCopyWithImpl<$Res>
   GetExercise get _value => super._value as GetExercise;
 }
 
-class _$GetExercise implements GetExercise {
+class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
   const _$GetExercise();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Exercise_1Event.getExercise()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'Exercise_1Event.getExercise'));
   }
 
   @override
@@ -198,7 +204,9 @@ class _$DroppedDraggableCopyWithImpl<$Res>
   }
 }
 
-class _$DroppedDraggable implements DroppedDraggable {
+class _$DroppedDraggable
+    with DiagnosticableTreeMixin
+    implements DroppedDraggable {
   const _$DroppedDraggable(this.idTarget, this.idDraggable)
       : assert(idTarget != null),
         assert(idDraggable != null);
@@ -209,8 +217,17 @@ class _$DroppedDraggable implements DroppedDraggable {
   final String idDraggable;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Exercise_1Event.droppedDraggable(idTarget: $idTarget, idDraggable: $idDraggable)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Exercise_1Event.droppedDraggable'))
+      ..add(DiagnosticsProperty('idTarget', idTarget))
+      ..add(DiagnosticsProperty('idDraggable', idDraggable));
   }
 
   @override
@@ -318,12 +335,19 @@ class _$PressedFinishCopyWithImpl<$Res>
   PressedFinish get _value => super._value as PressedFinish;
 }
 
-class _$PressedFinish implements PressedFinish {
+class _$PressedFinish with DiagnosticableTreeMixin implements PressedFinish {
   const _$PressedFinish();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Exercise_1Event.pressedFinish()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Exercise_1Event.pressedFinish'));
   }
 
   @override
@@ -467,12 +491,18 @@ class _$InitialCopyWithImpl<$Res> extends _$Exercise_1StateCopyWithImpl<$Res>
   Initial get _value => super._value as Initial;
 }
 
-class _$Initial implements Initial {
+class _$Initial with DiagnosticableTreeMixin implements Initial {
   const _$Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Exercise_1State.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'Exercise_1State.initial'));
   }
 
   @override
@@ -567,7 +597,7 @@ class _$ShowExerciseCopyWithImpl<$Res>
   }
 }
 
-class _$ShowExercise implements ShowExercise {
+class _$ShowExercise with DiagnosticableTreeMixin implements ShowExercise {
   const _$ShowExercise(this.text, this.answers)
       : assert(text != null),
         assert(answers != null);
@@ -578,8 +608,17 @@ class _$ShowExercise implements ShowExercise {
   final List<dynamic> answers;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Exercise_1State.showExercise(text: $text, answers: $answers)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Exercise_1State.showExercise'))
+      ..add(DiagnosticsProperty('text', text))
+      ..add(DiagnosticsProperty('answers', answers));
   }
 
   @override
