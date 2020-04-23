@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lrs_app_v3/presenation/pages/exercise/templates/core/base_exercise.dart';
+import 'package:lrs_app_v3/presenation/pages/core/base_exercise.dart';
 import 'package:lrs_app_v3/presenation/pages/exercise/templates/template_1/exercise_1_temp.dart';
 
 main() {
@@ -16,10 +16,14 @@ class _BaseExerciseTestApp extends StatelessWidget {
           onAbort: () {
             print('onAbortPressed');
           },
-          child: Container(
-            height: 250,
-            width: 250,
-            color: Colors.red,
+          child: SizedBox.expand(
+            child: Container(color: Colors.red),
+          ),
+          centerBottomBarWidget: RaisedButton(
+            child: Text('Hello'),
+            onPressed: () {
+              print('Hello mate');
+            },
           ),
         ),
       ),
