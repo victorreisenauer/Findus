@@ -16,7 +16,7 @@ class _$Exercise_1EventTearOff {
     return const GetExercise();
   }
 
-  DroppedDraggable droppedDraggable(String idTarget, String idDraggable) {
+  DroppedDraggable droppedDraggable(int idTarget, int idDraggable) {
     return DroppedDraggable(
       idTarget,
       idDraggable,
@@ -35,13 +35,13 @@ mixin _$Exercise_1Event {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result getExercise(),
-    @required Result droppedDraggable(String idTarget, String idDraggable),
+    @required Result droppedDraggable(int idTarget, int idDraggable),
     @required Result pressedFinish(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getExercise(),
-    Result droppedDraggable(String idTarget, String idDraggable),
+    Result droppedDraggable(int idTarget, int idDraggable),
     Result pressedFinish(),
     @required Result orElse(),
   });
@@ -118,7 +118,7 @@ class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result getExercise(),
-    @required Result droppedDraggable(String idTarget, String idDraggable),
+    @required Result droppedDraggable(int idTarget, int idDraggable),
     @required Result pressedFinish(),
   }) {
     assert(getExercise != null);
@@ -131,7 +131,7 @@ class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getExercise(),
-    Result droppedDraggable(String idTarget, String idDraggable),
+    Result droppedDraggable(int idTarget, int idDraggable),
     Result pressedFinish(),
     @required Result orElse(),
   }) {
@@ -179,7 +179,7 @@ abstract class $DroppedDraggableCopyWith<$Res> {
   factory $DroppedDraggableCopyWith(
           DroppedDraggable value, $Res Function(DroppedDraggable) then) =
       _$DroppedDraggableCopyWithImpl<$Res>;
-  $Res call({String idTarget, String idDraggable});
+  $Res call({int idTarget, int idDraggable});
 }
 
 class _$DroppedDraggableCopyWithImpl<$Res>
@@ -198,8 +198,8 @@ class _$DroppedDraggableCopyWithImpl<$Res>
     Object idDraggable = freezed,
   }) {
     return _then(DroppedDraggable(
-      idTarget == freezed ? _value.idTarget : idTarget as String,
-      idDraggable == freezed ? _value.idDraggable : idDraggable as String,
+      idTarget == freezed ? _value.idTarget : idTarget as int,
+      idDraggable == freezed ? _value.idDraggable : idDraggable as int,
     ));
   }
 }
@@ -212,9 +212,9 @@ class _$DroppedDraggable
         assert(idDraggable != null);
 
   @override
-  final String idTarget;
+  final int idTarget;
   @override
-  final String idDraggable;
+  final int idDraggable;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -256,7 +256,7 @@ class _$DroppedDraggable
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result getExercise(),
-    @required Result droppedDraggable(String idTarget, String idDraggable),
+    @required Result droppedDraggable(int idTarget, int idDraggable),
     @required Result pressedFinish(),
   }) {
     assert(getExercise != null);
@@ -269,7 +269,7 @@ class _$DroppedDraggable
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getExercise(),
-    Result droppedDraggable(String idTarget, String idDraggable),
+    Result droppedDraggable(int idTarget, int idDraggable),
     Result pressedFinish(),
     @required Result orElse(),
   }) {
@@ -310,11 +310,11 @@ class _$DroppedDraggable
 }
 
 abstract class DroppedDraggable implements Exercise_1Event {
-  const factory DroppedDraggable(String idTarget, String idDraggable) =
+  const factory DroppedDraggable(int idTarget, int idDraggable) =
       _$DroppedDraggable;
 
-  String get idTarget;
-  String get idDraggable;
+  int get idTarget;
+  int get idDraggable;
   $DroppedDraggableCopyWith<DroppedDraggable> get copyWith;
 }
 
@@ -362,7 +362,7 @@ class _$PressedFinish with DiagnosticableTreeMixin implements PressedFinish {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result getExercise(),
-    @required Result droppedDraggable(String idTarget, String idDraggable),
+    @required Result droppedDraggable(int idTarget, int idDraggable),
     @required Result pressedFinish(),
   }) {
     assert(getExercise != null);
@@ -375,7 +375,7 @@ class _$PressedFinish with DiagnosticableTreeMixin implements PressedFinish {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getExercise(),
-    Result droppedDraggable(String idTarget, String idDraggable),
+    Result droppedDraggable(int idTarget, int idDraggable),
     Result pressedFinish(),
     @required Result orElse(),
   }) {

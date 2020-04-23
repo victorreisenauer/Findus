@@ -5,9 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
-import 'package:lrs_app_v3/infrastructure/sample_data/sample_exercise.dart';
 import 'package:meta/meta.dart';
 
 part 'exercise_1_event.dart';
@@ -17,11 +15,17 @@ part 'exercise_1_bloc.freezed.dart';
 class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
   ExerciseData exerciseData;
   Map exerciseDataMap;
+  List<int> filledSuffix;
 
-  TextStyle defaultTextStyle = GoogleFonts.reemKufi(fontSize: 20.0);
+  TextStyle defaultTextStyle = GoogleFonts.reemKufi(
+      fontSize: 18.0,
+      decoration: TextDecoration.none,
+      color: Colors.black87,
+      fontWeight: FontWeight.normal);
 
   Exercise_1Bloc({this.exerciseData}) {
     exerciseDataMap = exerciseData.value.getOrElse(null);
+    filledSuffix = List();
   }
 
   @override
@@ -39,7 +43,8 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
 
       exerciseDataMap["2"].forEach((f) {
         suffix.add('_ _ _ _');
-        suffixColor.add(Colors.green);
+        filledSuffix.add(null);
+        suffixColor.add(Colors.black87);
       });
 
       List<List> values = _dataToList(exerciseDataMap, suffix, suffixColor);
@@ -48,9 +53,18 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
       List<dynamic> answers = values[1];
 
       yield Exercise_1State.showExercise(text, answers);
-    }, droppedDraggable: (e) {
-      print(e);
-    }, pressedFinish: (e) {
+    }, droppedDraggable: (e) async* {
+      filledSuffix[e.idTarget] = e.idDraggable;
+
+      List<String> suffix = List();
+      List<Color> suffixColor = List();
+
+      for (int i = 0; i < exerciseDataMap["2"].length; i++) {
+        if (filledSuffix[i] != null) {
+          suffix.add()
+        }
+      }
+    }, pressedFinish: (e) async* {
       print(e);
     });
   }
@@ -96,7 +110,13 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
     int answerPos = 0;
 
     (data["4"]).forEach((f) {
-      answers.add([f, answerPos]);
+      answers.add([
+        Text(
+          f,
+          style: defaultTextStyle,
+        ),
+        answerPos
+      ]);
       answerPos++;
     });
 
