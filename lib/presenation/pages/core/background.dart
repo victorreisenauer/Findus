@@ -37,18 +37,18 @@ class _BackgroundPainter extends CustomPainter {
     Path darkerSky = Path();
     darkerSky.moveTo(0.0, 0.0);
     darkerSky.lineTo(size.width, 0.0);
-    darkerSky.lineTo(size.width, size.height * 0.14);
+    darkerSky.lineTo(size.width, size.height * 0.10);
 
-    darkerSky.quadraticBezierTo(size.width * 0.85, size.height * 0.21,
-        size.width * 0.7, size.height * 0.16);
-    darkerSky.quadraticBezierTo(size.width * 0.655, size.height * 0.21,
-        size.width * 0.58, size.height * 0.17);
-    darkerSky.quadraticBezierTo(size.width * 0.42, size.height * 0.24,
-        size.width * 0.26, size.height * 0.17);
-    darkerSky.quadraticBezierTo(size.width * 0.19, size.height * 0.20,
-        size.width * 0.12, size.height * 0.16);
+    darkerSky.quadraticBezierTo(size.width * 0.85, size.height * 0.17,
+        size.width * 0.7, size.height * 0.12);
+    darkerSky.quadraticBezierTo(size.width * 0.655, size.height * 0.17,
+        size.width * 0.58, size.height * 0.13);
+    darkerSky.quadraticBezierTo(size.width * 0.42, size.height * 0.20,
+        size.width * 0.26, size.height * 0.13);
+    darkerSky.quadraticBezierTo(size.width * 0.19, size.height * 0.16,
+        size.width * 0.12, size.height * 0.12);
     darkerSky.quadraticBezierTo(
-        size.width * 0.05, size.height * 0.19, 0.0, size.height * 0.16);
+        size.width * 0.05, size.height * 0.15, 0.0, size.height * 0.12);
 
     darkerSky.lineTo(0.0, 0.0);
     canvas.drawPath(darkerSky, cloudPaintDarkerSky);
@@ -56,14 +56,14 @@ class _BackgroundPainter extends CustomPainter {
     Path lighterSky = Path();
     lighterSky.moveTo(0.0, 0.0);
     lighterSky.lineTo(size.width, 0.0);
-    lighterSky.lineTo(size.width, size.height * 0.10);
+    lighterSky.lineTo(size.width, size.height * 0.08);
 
-    lighterSky.quadraticBezierTo(size.width * 0.8, size.height * 0.18,
-        size.width * 0.6, size.height * 0.08);
-    lighterSky.quadraticBezierTo(size.width * 0.4, size.height * 0.18,
-        size.width * 0.2, size.height * 0.08);
+    lighterSky.quadraticBezierTo(size.width * 0.8, size.height * 0.16,
+        size.width * 0.6, size.height * 0.06);
+    lighterSky.quadraticBezierTo(size.width * 0.4, size.height * 0.16,
+        size.width * 0.2, size.height * 0.06);
     lighterSky.quadraticBezierTo(
-        size.width * 0.1, size.height * 0.13, 0.0, size.height * 0.11);
+        size.width * 0.1, size.height * 0.11, 0.0, size.height * 0.09);
 
     lighterSky.lineTo(0.0, 0.0);
 

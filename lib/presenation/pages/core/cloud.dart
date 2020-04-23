@@ -10,8 +10,11 @@ class Cloud extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(children: [
       SizedBox.expand(
-        child: CustomPaint(
-          painter: _CloudPainter(opacity: opacity != null ? opacity : 1.0),
+        child: Opacity(
+          opacity: opacity != null ? opacity : 1.0,
+          child: CustomPaint(
+            painter: _CloudPainter(opacity: 1.0),
+          ),
         ),
       ),
       child != null ? child : Container(),

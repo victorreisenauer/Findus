@@ -2,19 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lrs_app_v3/application/lesson/exercise/core/base_exercise_bloc.dart';
-import 'package:lrs_app_v3/presenation/pages/exercise/templates/core/background.dart';
+import 'package:lrs_app_v3/presenation/pages/core/background.dart';
 
 class BaseExercise extends StatelessWidget {
   final String help;
   final Widget child;
   final Function onAbort;
-  const BaseExercise({this.help, this.child, this.onAbort});
+  final Widget centerBottomBarWidget;
+  const BaseExercise(
+      {@required this.help,
+      @required this.child,
+      @required this.onAbort,
+      this.centerBottomBarWidget});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => BaseExerciseBloc(),
-      child: _BaseExerciseBody(child: child, help: help, onAbort: onAbort),
+      child: _BaseExerciseBody(
+        child: child,
+        help: help,
+        onAbort: onAbort,
+        centerBottomBarWidget: centerBottomBarWidget,
+      ),
     );
   }
 }
@@ -23,7 +33,13 @@ class _BaseExerciseBody extends StatefulWidget {
   final String help;
   final Widget child;
   final Function onAbort;
-  const _BaseExerciseBody({this.help, this.child, this.onAbort});
+  final Widget centerBottomBarWidget;
+
+  const _BaseExerciseBody(
+      {@required this.help,
+      @required this.child,
+      @required this.onAbort,
+      this.centerBottomBarWidget});
 
   @override
   State<StatefulWidget> createState() {
@@ -33,6 +49,8 @@ class _BaseExerciseBody extends StatefulWidget {
 
 class _BaseExerciseBodyState extends State<_BaseExerciseBody>
     with SingleTickerProviderStateMixin {
+  int animationLength = 200;
+
   @override
   void initState() {
     super.initState();
@@ -51,33 +69,55 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
               child: Stack(
                 children: <Widget>[
                   Background(),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      // TODO create ProgressBar
-                      child: Text('ProgressBar placeholder'),
+                  SafeArea(
+                    child: Stack(
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Container(
+                            // TODO create ProgressBar
+                            child: Text('ProgressBar placeholder'),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: bottomButtons(false),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomLeft,
+                          child: bottomButtons(true),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: _getBottomCenterWidget(context),
+                        ),
+                        SizedBox.expand(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Container(height: 85),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(child: widget.child),
+                                ),
+                              ),
+                              Container(height: 55 + 8.0)
+                            ],
+                          ),
+                        ),
+                        showHelp(state.showHelp, () {
+                          BlocProvider.of<BaseExerciseBloc>(context)
+                              .add(BaseExerciseEvent.showHelpDismissed());
+                        }),
+                        showAbort(state.showAbort, widget.onAbort, () {
+                          BlocProvider.of<BaseExerciseBloc>(context)
+                              .add(BaseExerciseEvent.showAbortDismissed());
+                        })
+                      ],
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: bottomButtons(false),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: bottomButtons(true),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: widget.child,
-                  ),
-                  showHelp(state.showHelp, () {
-                    BlocProvider.of<BaseExerciseBloc>(context)
-                        .add(BaseExerciseEvent.showHelpDismissed());
-                  }),
-                  showAbort(state.showAbort, widget.onAbort, () {
-                    BlocProvider.of<BaseExerciseBloc>(context)
-                        .add(BaseExerciseEvent.showAbortDismissed());
-                  })
                 ],
               ),
             ),
@@ -85,6 +125,19 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
         }
         return Center(child: CircularProgressIndicator());
       },
+    );
+  }
+
+  Widget _getBottomCenterWidget(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Container(
+        height: 55,
+        width: MediaQuery.of(context).size.width - 158,
+        child: widget.centerBottomBarWidget != null
+            ? widget.centerBottomBarWidget
+            : Container(),
+      ),
     );
   }
 
@@ -140,7 +193,7 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
             ? SizedBox.expand(
                 child: Container(
                 child: AnimatedOpacity(
-                  duration: Duration(milliseconds: 300),
+                  duration: Duration(milliseconds: animationLength),
                   child: Container(
                     color: Colors.black,
                   ),
@@ -162,13 +215,13 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
           child: Padding(
             padding: EdgeInsets.only(bottom: 40.0, right: 12.0),
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 300),
+              duration: Duration(milliseconds: animationLength),
               height: height,
               width: width,
               child: GestureDetector(
                 onTap: onTap,
                 child: AnimatedOpacity(
-                    duration: Duration(milliseconds: 300),
+                    duration: Duration(milliseconds: animationLength),
                     opacity: opacity,
                     child: Stack(children: <Widget>[
                       SizedBox.expand(
