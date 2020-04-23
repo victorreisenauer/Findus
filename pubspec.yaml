@@ -25,6 +25,7 @@ dependencies:
   equatable:
   google_fonts:
   path_provider:
+  draggable_scrollbar:
 
 dev_dependencies:
   flutter_test:
