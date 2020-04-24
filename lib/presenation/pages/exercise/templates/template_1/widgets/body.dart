@@ -22,36 +22,45 @@ class _Template_1BodyState extends State<Template_1Body> {
 
   @override
   Widget build(BuildContext context) {
-    return BaseExercise(
-      help: 'This is some real good placeholding help text',
-      onAbort: () {
-        print('onAbort pressed');
+    return BlocConsumer<Exercise_1Bloc, Exercise_1State>(
+      listener: (context, state) {
+        if (state is ShowExercise) {
+          if (state.messageToUser != null) {
+            Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text(state.messageToUser),
+            ));
+          }
+        }
       },
-      centerBottomBarWidget: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: RaisedButton(
-          onPressed: () {
-            BlocProvider.of<Exercise_1Bloc>(context).add(PressedDone());
-          },
-          child: Text(
-            "fertig!",
-            style: GoogleFonts.reemKufi(
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0,
-                color: Colors.white,
-                letterSpacing: 10.0),
-          ),
-          color: Colors.green,
-          elevation: 5.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-        ),
-      ),
-      child: BlocBuilder<Exercise_1Bloc, Exercise_1State>(
-        builder: (context, state) {
-          if (state is ShowExercise) {
-            return Padding(
+      builder: (context, state) {
+        if (state is ShowExercise) {
+          return BaseExercise(
+            help: 'This is some real good placeholding help text',
+            onAbort: () {
+              print('onAbort pressed');
+            },
+            centerBottomBarWidget: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              child: RaisedButton(
+                onPressed: () {
+                  BlocProvider.of<Exercise_1Bloc>(context).add(PressedDone());
+                },
+                child: Text(
+                  state.centerButtonText,
+                  style: GoogleFonts.reemKufi(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      letterSpacing: 10.0),
+                ),
+                color: Colors.green,
+                elevation: 5.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+            ),
+            child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(children: [
                 Expanded(
@@ -65,13 +74,15 @@ class _Template_1BodyState extends State<Template_1Body> {
                 Container(
                     height: 75,
                     // width: 300,
-                    child: Center(child: _getAnswer(state.answers))),
+                    child: Center(
+                        child:
+                            _getAnswer(state.answers, state.correctionMode))),
               ]),
-            );
-          }
-          return CircularProgressIndicator();
-        },
-      ),
+            ),
+          );
+        }
+        return CircularProgressIndicator();
+      },
     );
   }
 
@@ -97,19 +108,20 @@ class _Template_1BodyState extends State<Template_1Body> {
     return widgets;
   }
 
-  Widget _getAnswer(List<dynamic> answers) {
+  Widget _getAnswer(List<dynamic> answers, bool correction) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Row(children: _getAnswers(answers)),
+      child: Row(children: _getAnswers(answers, correction)),
     );
   }
 
-  List<Widget> _getAnswers(List<dynamic> answers) {
+  List<Widget> _getAnswers(List<dynamic> answers, bool correction) {
     List<Widget> widgets = List();
     answers.forEach((f) {
       widgets.add(Padding(
         padding: const EdgeInsets.all(8.0),
         child: Draggable<int>(
+          maxSimultaneousDrags: correction ? 0 : 1,
           affinity: Axis.vertical,
           child: Container(
             height: 75,

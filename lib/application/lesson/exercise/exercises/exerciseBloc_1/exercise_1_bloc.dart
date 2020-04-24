@@ -16,6 +16,10 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
   ExerciseData exerciseData;
   Map exerciseDataMap;
   List<int> filledSuffix;
+  bool correctionPhase = false;
+
+  List<dynamic> lastText;
+  List<dynamic> lastAnswers;
 
   TextStyle defaultTextStyle = GoogleFonts.reemKufi(
       fontSize: 18.0,
@@ -52,7 +56,10 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
       List<dynamic> text = values[0];
       List<dynamic> answers = values[1];
 
-      yield Exercise_1State.showExercise(text, answers);
+      lastText = text;
+      lastAnswers = answers;
+
+      yield Exercise_1State.showExercise(text, answers, "fertig!", false);
     }, droppedDraggable: (e) async* {
       filledSuffix[e.idTarget] = e.idDraggable;
 
@@ -81,11 +88,59 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
       List<dynamic> text = values[0];
       List<dynamic> answers = values[1];
 
-      yield Exercise_1State.showExercise(text, answers);
+      lastText = text;
+      lastAnswers = answers;
+
+      yield Exercise_1State.showExercise(text, answers, "fertig!", false);
     }, pressedDone: (e) async* {
-      print('Hey');
-    }, pressedFinish: (e) async* {
-      print(e);
+      if (correctionPhase) {
+        // TODO implement exercise done
+      } else {
+        bool fieldsMissing = false;
+        List<String> suffix = List();
+        List<Color> suffixColor = List();
+
+        for (int i = 0; i < filledSuffix.length; i++) {
+          if (filledSuffix[i] == null) fieldsMissing = true;
+        }
+
+        if (fieldsMissing) {
+          yield Exercise_1State.showExercise(
+              lastText,
+              lastAnswers,
+              "fertig!",
+              false,
+              "Du musst alle Felder ausgefüllt haben, bevor du die Aufgabe beenden kannst");
+        } else {
+          for (int i = 0; i < exerciseDataMap["2"].length; i++) {
+            String suffixString = '-';
+            for (int j = 0;
+                j < exerciseDataMap["4"][filledSuffix[i]].length;
+                j++) {
+              suffixString += ' ';
+              suffixString += exerciseDataMap["4"][filledSuffix[i]][j];
+            }
+            suffix.add(suffixString);
+            if (filledSuffix[i] == exerciseDataMap["5"][i]) {
+              suffixColor.add(Colors.green);
+            } else {
+              suffixColor.add(Colors.red);
+            }
+          }
+
+          List<List> values = _dataToList(exerciseDataMap, suffix, suffixColor);
+
+          List<dynamic> text = values[0];
+          List<dynamic> answers = values[1];
+
+          lastText = text;
+          lastAnswers = answers;
+
+          correctionPhase = true;
+
+          yield Exercise_1State.showExercise(text, answers, "weiter!", true);
+        }
+      }
     });
   }
 
