@@ -61,9 +61,29 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
 
       for (int i = 0; i < exerciseDataMap["2"].length; i++) {
         if (filledSuffix[i] != null) {
-          suffix.add()
+          String suffixString = '-';
+          for (int j = 0;
+              j < exerciseDataMap["4"][filledSuffix[i]].length;
+              j++) {
+            suffixString += ' ';
+            suffixString += exerciseDataMap["4"][filledSuffix[i]][j];
+          }
+          suffix.add(suffixString);
+          suffixColor.add(Colors.blueAccent.shade400);
+        } else {
+          suffix.add("_ _ _ _");
+          suffixColor.add(Colors.black87);
         }
       }
+
+      List<List> values = _dataToList(exerciseDataMap, suffix, suffixColor);
+
+      List<dynamic> text = values[0];
+      List<dynamic> answers = values[1];
+
+      yield Exercise_1State.showExercise(text, answers);
+    }, pressedDone: (e) async* {
+      print('Hey');
     }, pressedFinish: (e) async* {
       print(e);
     });
@@ -133,8 +153,10 @@ class Exercise_1Bloc extends Bloc<Exercise_1Event, Exercise_1State> {
     ));
     widgets.add(Text(
       suffix,
-      style:
-          GoogleFonts.reemKufi(textStyle: defaultTextStyle, color: suffixColor),
+      style: GoogleFonts.reemKufi(
+          textStyle: defaultTextStyle,
+          color: suffixColor,
+          fontWeight: FontWeight.w700),
     ));
     if (textParts.length > 1)
       widgets.add(Text(

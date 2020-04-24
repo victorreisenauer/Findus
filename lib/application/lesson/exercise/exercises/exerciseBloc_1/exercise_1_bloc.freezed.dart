@@ -26,6 +26,10 @@ class _$Exercise_1EventTearOff {
   PressedFinish pressedFinish() {
     return const PressedFinish();
   }
+
+  PressedDone pressedDone() {
+    return const PressedDone();
+  }
 }
 
 // ignore: unused_element
@@ -37,12 +41,14 @@ mixin _$Exercise_1Event {
     @required Result getExercise(),
     @required Result droppedDraggable(int idTarget, int idDraggable),
     @required Result pressedFinish(),
+    @required Result pressedDone(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getExercise(),
     Result droppedDraggable(int idTarget, int idDraggable),
     Result pressedFinish(),
+    Result pressedDone(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -50,12 +56,14 @@ mixin _$Exercise_1Event {
     @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
     @required Result pressedFinish(PressedFinish value),
+    @required Result pressedDone(PressedDone value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
     Result pressedFinish(PressedFinish value),
+    Result pressedDone(PressedDone value),
     @required Result orElse(),
   });
 }
@@ -120,10 +128,12 @@ class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
     @required Result getExercise(),
     @required Result droppedDraggable(int idTarget, int idDraggable),
     @required Result pressedFinish(),
+    @required Result pressedDone(),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
     assert(pressedFinish != null);
+    assert(pressedDone != null);
     return getExercise();
   }
 
@@ -133,6 +143,7 @@ class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
     Result getExercise(),
     Result droppedDraggable(int idTarget, int idDraggable),
     Result pressedFinish(),
+    Result pressedDone(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -148,10 +159,12 @@ class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
     @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
     @required Result pressedFinish(PressedFinish value),
+    @required Result pressedDone(PressedDone value),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
     assert(pressedFinish != null);
+    assert(pressedDone != null);
     return getExercise(this);
   }
 
@@ -161,6 +174,7 @@ class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
     Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
     Result pressedFinish(PressedFinish value),
+    Result pressedDone(PressedDone value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -258,10 +272,12 @@ class _$DroppedDraggable
     @required Result getExercise(),
     @required Result droppedDraggable(int idTarget, int idDraggable),
     @required Result pressedFinish(),
+    @required Result pressedDone(),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
     assert(pressedFinish != null);
+    assert(pressedDone != null);
     return droppedDraggable(idTarget, idDraggable);
   }
 
@@ -271,6 +287,7 @@ class _$DroppedDraggable
     Result getExercise(),
     Result droppedDraggable(int idTarget, int idDraggable),
     Result pressedFinish(),
+    Result pressedDone(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -286,10 +303,12 @@ class _$DroppedDraggable
     @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
     @required Result pressedFinish(PressedFinish value),
+    @required Result pressedDone(PressedDone value),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
     assert(pressedFinish != null);
+    assert(pressedDone != null);
     return droppedDraggable(this);
   }
 
@@ -299,6 +318,7 @@ class _$DroppedDraggable
     Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
     Result pressedFinish(PressedFinish value),
+    Result pressedDone(PressedDone value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -364,10 +384,12 @@ class _$PressedFinish with DiagnosticableTreeMixin implements PressedFinish {
     @required Result getExercise(),
     @required Result droppedDraggable(int idTarget, int idDraggable),
     @required Result pressedFinish(),
+    @required Result pressedDone(),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
     assert(pressedFinish != null);
+    assert(pressedDone != null);
     return pressedFinish();
   }
 
@@ -377,6 +399,7 @@ class _$PressedFinish with DiagnosticableTreeMixin implements PressedFinish {
     Result getExercise(),
     Result droppedDraggable(int idTarget, int idDraggable),
     Result pressedFinish(),
+    Result pressedDone(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -392,10 +415,12 @@ class _$PressedFinish with DiagnosticableTreeMixin implements PressedFinish {
     @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
     @required Result pressedFinish(PressedFinish value),
+    @required Result pressedDone(PressedDone value),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
     assert(pressedFinish != null);
+    assert(pressedDone != null);
     return pressedFinish(this);
   }
 
@@ -405,6 +430,7 @@ class _$PressedFinish with DiagnosticableTreeMixin implements PressedFinish {
     Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
     Result pressedFinish(PressedFinish value),
+    Result pressedDone(PressedDone value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -417,6 +443,112 @@ class _$PressedFinish with DiagnosticableTreeMixin implements PressedFinish {
 
 abstract class PressedFinish implements Exercise_1Event {
   const factory PressedFinish() = _$PressedFinish;
+}
+
+abstract class $PressedDoneCopyWith<$Res> {
+  factory $PressedDoneCopyWith(
+          PressedDone value, $Res Function(PressedDone) then) =
+      _$PressedDoneCopyWithImpl<$Res>;
+}
+
+class _$PressedDoneCopyWithImpl<$Res>
+    extends _$Exercise_1EventCopyWithImpl<$Res>
+    implements $PressedDoneCopyWith<$Res> {
+  _$PressedDoneCopyWithImpl(
+      PressedDone _value, $Res Function(PressedDone) _then)
+      : super(_value, (v) => _then(v as PressedDone));
+
+  @override
+  PressedDone get _value => super._value as PressedDone;
+}
+
+class _$PressedDone with DiagnosticableTreeMixin implements PressedDone {
+  const _$PressedDone();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Exercise_1Event.pressedDone()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'Exercise_1Event.pressedDone'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is PressedDone);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getExercise(),
+    @required Result droppedDraggable(int idTarget, int idDraggable),
+    @required Result pressedFinish(),
+    @required Result pressedDone(),
+  }) {
+    assert(getExercise != null);
+    assert(droppedDraggable != null);
+    assert(pressedFinish != null);
+    assert(pressedDone != null);
+    return pressedDone();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getExercise(),
+    Result droppedDraggable(int idTarget, int idDraggable),
+    Result pressedFinish(),
+    Result pressedDone(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (pressedDone != null) {
+      return pressedDone();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getExercise(GetExercise value),
+    @required Result droppedDraggable(DroppedDraggable value),
+    @required Result pressedFinish(PressedFinish value),
+    @required Result pressedDone(PressedDone value),
+  }) {
+    assert(getExercise != null);
+    assert(droppedDraggable != null);
+    assert(pressedFinish != null);
+    assert(pressedDone != null);
+    return pressedDone(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getExercise(GetExercise value),
+    Result droppedDraggable(DroppedDraggable value),
+    Result pressedFinish(PressedFinish value),
+    Result pressedDone(PressedDone value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (pressedDone != null) {
+      return pressedDone(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PressedDone implements Exercise_1Event {
+  const factory PressedDone() = _$PressedDone;
 }
 
 class _$Exercise_1StateTearOff {

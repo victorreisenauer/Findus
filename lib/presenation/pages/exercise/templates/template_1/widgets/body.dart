@@ -27,6 +27,27 @@ class _Template_1BodyState extends State<Template_1Body> {
       onAbort: () {
         print('onAbort pressed');
       },
+      centerBottomBarWidget: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+        child: RaisedButton(
+          onPressed: () {
+            BlocProvider.of<Exercise_1Bloc>(context).add(PressedDone());
+          },
+          child: Text(
+            "fertig!",
+            style: GoogleFonts.reemKufi(
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0,
+                color: Colors.white,
+                letterSpacing: 10.0),
+          ),
+          color: Colors.green,
+          elevation: 5.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+        ),
+      ),
       child: BlocBuilder<Exercise_1Bloc, Exercise_1State>(
         builder: (context, state) {
           if (state is ShowExercise) {
