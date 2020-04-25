@@ -59,7 +59,22 @@ class OverviewPage extends StatelessWidget {
                     },
                   );*/
                 }
-                return Center(child: Text("No state was called"));
+                return LayoutBuilder(builder: (context, constrains) {
+                  return Stack(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Container(
+                            height: 125,
+                            width: constrains.maxWidth,
+                            child: CustomPaint(painter: _TopCloudPainter())),
+                      ),
+                      Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    ],
+                  );
+                });
               },
             )),
       ),
@@ -88,14 +103,15 @@ class _OverviewPageBody extends StatelessWidget {
               ),
               _getCloudRowWithLessons(
                   ids, BlocProvider.of<LessonBloc>(context)),
-              Container(
+              /*Container(
                 color: Colors.blue,
                 height: 400,
                 width: constrains.maxWidth,
                 child: CustomPaint(
                   painter: _BottomPainter(),
                 ),
-              ),
+              ),*/
+              Image.asset('assets/images/BottomOverview.jpg'),
             ],
           ),
         );
@@ -124,7 +140,7 @@ List<Widget> _getCloudColumnChildren(
     bool even, List<UniqueId> ids, LessonBloc bloc) {
   List<Widget> widgets = List();
   for (int i = even ? 0 : 1; i < ids.length; i += 2) {
-    widgets.add(_getCloudWithID(ids[i], i.toString(), bloc));
+    widgets.add(_getCloudWithID(ids[i], (i + 1).toString(), bloc));
   }
   if (widgets.length == 0) widgets.add(Container());
   return widgets;
@@ -143,7 +159,7 @@ Widget _getCloudWithID(UniqueId id, String name, LessonBloc bloc) {
           child: Cloud(
               child: Center(
             child: Text(
-              name,
+              'Lektion: ' + name,
               style: GoogleFonts.reemKufi(
                   fontSize: 20.0, fontWeight: FontWeight.bold),
             ),
@@ -180,7 +196,13 @@ class _BottomPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..strokeWidth = 1.0;
 
-    // TODO create bottom Painter
+    Path ground1 = Path();
+    ground1.moveTo(0, size.height * 0.8);
+    ground1.lineTo(size.width, size.height * 0.8);
+    ground1.lineTo(size.width, size.height);
+    ground1.lineTo(0, size.height);
+
+    canvas.drawPath(ground1, green3);
   }
 
   @override
@@ -192,7 +214,6 @@ class _BottomPainter extends CustomPainter {
 class _TopCloudPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    print(size);
     Paint cloudPaintDarkerSky = Paint()
       ..color = Color.fromRGBO(213, 241, 254, 1)
       ..style = PaintingStyle.fill
