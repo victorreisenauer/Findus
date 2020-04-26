@@ -26,6 +26,7 @@ dependencies:
   google_fonts:
   path_provider:
   draggable_scrollbar:
+  audioplayers:
 
 dev_dependencies:
   flutter_test:
@@ -42,3 +43,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/sounds/
