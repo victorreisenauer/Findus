@@ -6,6 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lrs_app_v3/application/lesson/exercise/exercises/exerciseBloc_1/exercise_1_bloc.dart';
 import 'package:lrs_app_v3/presenation/pages/core/base_exercise.dart';
 import 'package:lrs_app_v3/presenation/pages/core/cloud.dart';
+import 'package:lrs_app_v3/application/lesson/exercise/exercise_bloc.dart';
+import 'package:lrs_app_v3/presenation/routes/router.gr.dart';
+import 'package:lrs_app_v3/injection.dart';
 
 class Template_1Body extends StatefulWidget {
   Template_1Body({Key key}) : super(key: key);
@@ -25,13 +28,15 @@ class _Template_1BodyState extends State<Template_1Body> {
     return BaseExercise(
       help: 'This is some real good placeholding help text',
       onAbort: () {
-        print('onAbort pressed');
+        Router.navigator.pushNamed(Router.overviewPage);
       },
       centerBottomBarWidget: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
         child: RaisedButton(
           onPressed: () {
             BlocProvider.of<Exercise_1Bloc>(context).add(PressedDone());
+            BlocProvider.of<ExerciseBloc>(context)
+                .add(ExerciseEvent.buildExercise());
           },
           child: Text(
             "fertig!",
