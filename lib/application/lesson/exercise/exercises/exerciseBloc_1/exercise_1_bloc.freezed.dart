@@ -23,10 +23,6 @@ class _$Exercise_1EventTearOff {
     );
   }
 
-  PressedFinish pressedFinish() {
-    return const PressedFinish();
-  }
-
   PressedDone pressedDone() {
     return const PressedDone();
   }
@@ -40,14 +36,12 @@ mixin _$Exercise_1Event {
   Result when<Result extends Object>({
     @required Result getExercise(),
     @required Result droppedDraggable(int idTarget, int idDraggable),
-    @required Result pressedFinish(),
     @required Result pressedDone(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getExercise(),
     Result droppedDraggable(int idTarget, int idDraggable),
-    Result pressedFinish(),
     Result pressedDone(),
     @required Result orElse(),
   });
@@ -55,14 +49,12 @@ mixin _$Exercise_1Event {
   Result map<Result extends Object>({
     @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
-    @required Result pressedFinish(PressedFinish value),
     @required Result pressedDone(PressedDone value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
-    Result pressedFinish(PressedFinish value),
     Result pressedDone(PressedDone value),
     @required Result orElse(),
   });
@@ -127,12 +119,10 @@ class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
   Result when<Result extends Object>({
     @required Result getExercise(),
     @required Result droppedDraggable(int idTarget, int idDraggable),
-    @required Result pressedFinish(),
     @required Result pressedDone(),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
-    assert(pressedFinish != null);
     assert(pressedDone != null);
     return getExercise();
   }
@@ -142,7 +132,6 @@ class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
   Result maybeWhen<Result extends Object>({
     Result getExercise(),
     Result droppedDraggable(int idTarget, int idDraggable),
-    Result pressedFinish(),
     Result pressedDone(),
     @required Result orElse(),
   }) {
@@ -158,12 +147,10 @@ class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
   Result map<Result extends Object>({
     @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
-    @required Result pressedFinish(PressedFinish value),
     @required Result pressedDone(PressedDone value),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
-    assert(pressedFinish != null);
     assert(pressedDone != null);
     return getExercise(this);
   }
@@ -173,7 +160,6 @@ class _$GetExercise with DiagnosticableTreeMixin implements GetExercise {
   Result maybeMap<Result extends Object>({
     Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
-    Result pressedFinish(PressedFinish value),
     Result pressedDone(PressedDone value),
     @required Result orElse(),
   }) {
@@ -271,12 +257,10 @@ class _$DroppedDraggable
   Result when<Result extends Object>({
     @required Result getExercise(),
     @required Result droppedDraggable(int idTarget, int idDraggable),
-    @required Result pressedFinish(),
     @required Result pressedDone(),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
-    assert(pressedFinish != null);
     assert(pressedDone != null);
     return droppedDraggable(idTarget, idDraggable);
   }
@@ -286,7 +270,6 @@ class _$DroppedDraggable
   Result maybeWhen<Result extends Object>({
     Result getExercise(),
     Result droppedDraggable(int idTarget, int idDraggable),
-    Result pressedFinish(),
     Result pressedDone(),
     @required Result orElse(),
   }) {
@@ -302,12 +285,10 @@ class _$DroppedDraggable
   Result map<Result extends Object>({
     @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
-    @required Result pressedFinish(PressedFinish value),
     @required Result pressedDone(PressedDone value),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
-    assert(pressedFinish != null);
     assert(pressedDone != null);
     return droppedDraggable(this);
   }
@@ -317,7 +298,6 @@ class _$DroppedDraggable
   Result maybeMap<Result extends Object>({
     Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
-    Result pressedFinish(PressedFinish value),
     Result pressedDone(PressedDone value),
     @required Result orElse(),
   }) {
@@ -336,113 +316,6 @@ abstract class DroppedDraggable implements Exercise_1Event {
   int get idTarget;
   int get idDraggable;
   $DroppedDraggableCopyWith<DroppedDraggable> get copyWith;
-}
-
-abstract class $PressedFinishCopyWith<$Res> {
-  factory $PressedFinishCopyWith(
-          PressedFinish value, $Res Function(PressedFinish) then) =
-      _$PressedFinishCopyWithImpl<$Res>;
-}
-
-class _$PressedFinishCopyWithImpl<$Res>
-    extends _$Exercise_1EventCopyWithImpl<$Res>
-    implements $PressedFinishCopyWith<$Res> {
-  _$PressedFinishCopyWithImpl(
-      PressedFinish _value, $Res Function(PressedFinish) _then)
-      : super(_value, (v) => _then(v as PressedFinish));
-
-  @override
-  PressedFinish get _value => super._value as PressedFinish;
-}
-
-class _$PressedFinish with DiagnosticableTreeMixin implements PressedFinish {
-  const _$PressedFinish();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Exercise_1Event.pressedFinish()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Exercise_1Event.pressedFinish'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is PressedFinish);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result getExercise(),
-    @required Result droppedDraggable(int idTarget, int idDraggable),
-    @required Result pressedFinish(),
-    @required Result pressedDone(),
-  }) {
-    assert(getExercise != null);
-    assert(droppedDraggable != null);
-    assert(pressedFinish != null);
-    assert(pressedDone != null);
-    return pressedFinish();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result getExercise(),
-    Result droppedDraggable(int idTarget, int idDraggable),
-    Result pressedFinish(),
-    Result pressedDone(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (pressedFinish != null) {
-      return pressedFinish();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result getExercise(GetExercise value),
-    @required Result droppedDraggable(DroppedDraggable value),
-    @required Result pressedFinish(PressedFinish value),
-    @required Result pressedDone(PressedDone value),
-  }) {
-    assert(getExercise != null);
-    assert(droppedDraggable != null);
-    assert(pressedFinish != null);
-    assert(pressedDone != null);
-    return pressedFinish(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result getExercise(GetExercise value),
-    Result droppedDraggable(DroppedDraggable value),
-    Result pressedFinish(PressedFinish value),
-    Result pressedDone(PressedDone value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (pressedFinish != null) {
-      return pressedFinish(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class PressedFinish implements Exercise_1Event {
-  const factory PressedFinish() = _$PressedFinish;
 }
 
 abstract class $PressedDoneCopyWith<$Res> {
@@ -489,12 +362,10 @@ class _$PressedDone with DiagnosticableTreeMixin implements PressedDone {
   Result when<Result extends Object>({
     @required Result getExercise(),
     @required Result droppedDraggable(int idTarget, int idDraggable),
-    @required Result pressedFinish(),
     @required Result pressedDone(),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
-    assert(pressedFinish != null);
     assert(pressedDone != null);
     return pressedDone();
   }
@@ -504,7 +375,6 @@ class _$PressedDone with DiagnosticableTreeMixin implements PressedDone {
   Result maybeWhen<Result extends Object>({
     Result getExercise(),
     Result droppedDraggable(int idTarget, int idDraggable),
-    Result pressedFinish(),
     Result pressedDone(),
     @required Result orElse(),
   }) {
@@ -520,12 +390,10 @@ class _$PressedDone with DiagnosticableTreeMixin implements PressedDone {
   Result map<Result extends Object>({
     @required Result getExercise(GetExercise value),
     @required Result droppedDraggable(DroppedDraggable value),
-    @required Result pressedFinish(PressedFinish value),
     @required Result pressedDone(PressedDone value),
   }) {
     assert(getExercise != null);
     assert(droppedDraggable != null);
-    assert(pressedFinish != null);
     assert(pressedDone != null);
     return pressedDone(this);
   }
@@ -535,7 +403,6 @@ class _$PressedDone with DiagnosticableTreeMixin implements PressedDone {
   Result maybeMap<Result extends Object>({
     Result getExercise(GetExercise value),
     Result droppedDraggable(DroppedDraggable value),
-    Result pressedFinish(PressedFinish value),
     Result pressedDone(PressedDone value),
     @required Result orElse(),
   }) {
@@ -558,10 +425,15 @@ class _$Exercise_1StateTearOff {
     return const Initial();
   }
 
-  ShowExercise showExercise(List<dynamic> text, List<dynamic> answers) {
+  ShowExercise showExercise(List<dynamic> text, List<dynamic> answers,
+      String centerButtonText, bool correctionMode,
+      [String messageToUser]) {
     return ShowExercise(
       text,
       answers,
+      centerButtonText,
+      correctionMode,
+      messageToUser,
     );
   }
 }
@@ -573,12 +445,15 @@ mixin _$Exercise_1State {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result showExercise(List<dynamic> text, List<dynamic> answers),
+    @required
+        Result showExercise(List<dynamic> text, List<dynamic> answers,
+            String centerButtonText, bool correctionMode, String messageToUser),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result showExercise(List<dynamic> text, List<dynamic> answers),
+    Result showExercise(List<dynamic> text, List<dynamic> answers,
+        String centerButtonText, bool correctionMode, String messageToUser),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -649,7 +524,9 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result showExercise(List<dynamic> text, List<dynamic> answers),
+    @required
+        Result showExercise(List<dynamic> text, List<dynamic> answers,
+            String centerButtonText, bool correctionMode, String messageToUser),
   }) {
     assert(initial != null);
     assert(showExercise != null);
@@ -660,7 +537,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result showExercise(List<dynamic> text, List<dynamic> answers),
+    Result showExercise(List<dynamic> text, List<dynamic> answers,
+        String centerButtonText, bool correctionMode, String messageToUser),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -704,7 +582,12 @@ abstract class $ShowExerciseCopyWith<$Res> {
   factory $ShowExerciseCopyWith(
           ShowExercise value, $Res Function(ShowExercise) then) =
       _$ShowExerciseCopyWithImpl<$Res>;
-  $Res call({List<dynamic> text, List<dynamic> answers});
+  $Res call(
+      {List<dynamic> text,
+      List<dynamic> answers,
+      String centerButtonText,
+      bool correctionMode,
+      String messageToUser});
 }
 
 class _$ShowExerciseCopyWithImpl<$Res>
@@ -721,27 +604,47 @@ class _$ShowExerciseCopyWithImpl<$Res>
   $Res call({
     Object text = freezed,
     Object answers = freezed,
+    Object centerButtonText = freezed,
+    Object correctionMode = freezed,
+    Object messageToUser = freezed,
   }) {
     return _then(ShowExercise(
       text == freezed ? _value.text : text as List<dynamic>,
       answers == freezed ? _value.answers : answers as List<dynamic>,
+      centerButtonText == freezed
+          ? _value.centerButtonText
+          : centerButtonText as String,
+      correctionMode == freezed
+          ? _value.correctionMode
+          : correctionMode as bool,
+      messageToUser == freezed ? _value.messageToUser : messageToUser as String,
     ));
   }
 }
 
 class _$ShowExercise with DiagnosticableTreeMixin implements ShowExercise {
-  const _$ShowExercise(this.text, this.answers)
+  const _$ShowExercise(
+      this.text, this.answers, this.centerButtonText, this.correctionMode,
+      [this.messageToUser])
       : assert(text != null),
-        assert(answers != null);
+        assert(answers != null),
+        assert(centerButtonText != null),
+        assert(correctionMode != null);
 
   @override
   final List<dynamic> text;
   @override
   final List<dynamic> answers;
+  @override
+  final String centerButtonText;
+  @override
+  final bool correctionMode;
+  @override
+  final String messageToUser;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Exercise_1State.showExercise(text: $text, answers: $answers)';
+    return 'Exercise_1State.showExercise(text: $text, answers: $answers, centerButtonText: $centerButtonText, correctionMode: $correctionMode, messageToUser: $messageToUser)';
   }
 
   @override
@@ -750,7 +653,10 @@ class _$ShowExercise with DiagnosticableTreeMixin implements ShowExercise {
     properties
       ..add(DiagnosticsProperty('type', 'Exercise_1State.showExercise'))
       ..add(DiagnosticsProperty('text', text))
-      ..add(DiagnosticsProperty('answers', answers));
+      ..add(DiagnosticsProperty('answers', answers))
+      ..add(DiagnosticsProperty('centerButtonText', centerButtonText))
+      ..add(DiagnosticsProperty('correctionMode', correctionMode))
+      ..add(DiagnosticsProperty('messageToUser', messageToUser));
   }
 
   @override
@@ -760,14 +666,27 @@ class _$ShowExercise with DiagnosticableTreeMixin implements ShowExercise {
             (identical(other.text, text) ||
                 const DeepCollectionEquality().equals(other.text, text)) &&
             (identical(other.answers, answers) ||
-                const DeepCollectionEquality().equals(other.answers, answers)));
+                const DeepCollectionEquality()
+                    .equals(other.answers, answers)) &&
+            (identical(other.centerButtonText, centerButtonText) ||
+                const DeepCollectionEquality()
+                    .equals(other.centerButtonText, centerButtonText)) &&
+            (identical(other.correctionMode, correctionMode) ||
+                const DeepCollectionEquality()
+                    .equals(other.correctionMode, correctionMode)) &&
+            (identical(other.messageToUser, messageToUser) ||
+                const DeepCollectionEquality()
+                    .equals(other.messageToUser, messageToUser)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(text) ^
-      const DeepCollectionEquality().hash(answers);
+      const DeepCollectionEquality().hash(answers) ^
+      const DeepCollectionEquality().hash(centerButtonText) ^
+      const DeepCollectionEquality().hash(correctionMode) ^
+      const DeepCollectionEquality().hash(messageToUser);
 
   @override
   $ShowExerciseCopyWith<ShowExercise> get copyWith =>
@@ -777,23 +696,28 @@ class _$ShowExercise with DiagnosticableTreeMixin implements ShowExercise {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result showExercise(List<dynamic> text, List<dynamic> answers),
+    @required
+        Result showExercise(List<dynamic> text, List<dynamic> answers,
+            String centerButtonText, bool correctionMode, String messageToUser),
   }) {
     assert(initial != null);
     assert(showExercise != null);
-    return showExercise(text, answers);
+    return showExercise(
+        text, answers, centerButtonText, correctionMode, messageToUser);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result showExercise(List<dynamic> text, List<dynamic> answers),
+    Result showExercise(List<dynamic> text, List<dynamic> answers,
+        String centerButtonText, bool correctionMode, String messageToUser),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (showExercise != null) {
-      return showExercise(text, answers);
+      return showExercise(
+          text, answers, centerButtonText, correctionMode, messageToUser);
     }
     return orElse();
   }
@@ -825,10 +749,14 @@ class _$ShowExercise with DiagnosticableTreeMixin implements ShowExercise {
 }
 
 abstract class ShowExercise implements Exercise_1State {
-  const factory ShowExercise(List<dynamic> text, List<dynamic> answers) =
-      _$ShowExercise;
+  const factory ShowExercise(List<dynamic> text, List<dynamic> answers,
+      String centerButtonText, bool correctionMode,
+      [String messageToUser]) = _$ShowExercise;
 
   List<dynamic> get text;
   List<dynamic> get answers;
+  String get centerButtonText;
+  bool get correctionMode;
+  String get messageToUser;
   $ShowExerciseCopyWith<ShowExercise> get copyWith;
 }
