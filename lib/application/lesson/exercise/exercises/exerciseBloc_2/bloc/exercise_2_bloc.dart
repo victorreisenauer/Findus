@@ -43,6 +43,8 @@ class Exercise_2Bloc extends Bloc<Exercise_2Event, Exercise_2State> {
       }
       yield Exercise_2State.showExercise(
           exerciseDataMap["2"], colors, exerciseDataMap["4"], true);
+    }, nextButtonPressed: (e) async* {
+      print("Next Pressed");
     });
   }
 }
