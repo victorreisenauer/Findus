@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lrs_app_v3/presenation/pages/core/base_exercise.dart';
-import 'package:lrs_app_v3/presenation/pages/exercise/templates/template_1/exercise_1_temp.dart';
+import 'package:lrs_app_v3/presentation/pages/core/base_exercise.dart';
 
 main() {
   runApp(_BaseExerciseTestApp());

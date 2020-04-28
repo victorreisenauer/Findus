@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lrs_app_v3/presenation/pages/core/cloud.dart';
+import 'package:lrs_app_v3/presentation/pages/core/cloud.dart';
 
 main() {
   runApp(_CloudTestApp());

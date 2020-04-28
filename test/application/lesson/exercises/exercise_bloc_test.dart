@@ -3,8 +3,8 @@ import 'package:lrs_app_v3/application/lesson/exercise/exercise_bloc.dart';
 import 'package:lrs_app_v3/infrastructure/sample_data/sample_exercise.dart';
 import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
-import 'package:lrs_app_v3/presenation/pages/exercise/templates/template.dart';
-import 'package:lrs_app_v3/presenation/pages/exercise/templates/template_2/exercise_2_temp.dart';
+import 'package:lrs_app_v3/presentation/pages/exercise/templates/template.dart';
+import 'package:lrs_app_v3/presentation/pages/exercise/templates/template_0002/template_0002.dart';
 
 void main() {
   group('LessonBloc => ', () {
@@ -13,9 +13,9 @@ void main() {
     Exercise firstSampleExercise = sampleExerciseList.getOrCrash()[0];
     Exercise secondSampleExercise = sampleExerciseList.getOrCrash()[1];
     Template firstSampleExerciseTemplate =
-        Temp0002(exerciseData: firstSampleExercise.data);
+        Template0002(exerciseData: firstSampleExercise.data);
     Template secondSampleExerciseTemplate =
-        Temp0002(exerciseData: secondSampleExercise.data);
+        Template0002(exerciseData: secondSampleExercise.data);
     test('emits Initial state [] on initialization', () {
       final bloc = ExerciseBloc(exerciseList: sampleExerciseList);
       expectLater(bloc, emits(ExerciseState.initial()));

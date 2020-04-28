@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:lrs_app_v3/presentation/pages/exercise/templates/template_0001/template_0001.dart';
+import 'package:lrs_app_v3/presentation/pages/exercise/templates/template_0002/template_0002.dart';
 import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 
 import 'package:lrs_app_v3/domain/lesson/exercise.dart';
 import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
 import 'package:lrs_app_v3/domain/lesson/template_failure.dart';
-import 'package:lrs_app_v3/presenation/pages/exercise/templates/template.dart';
-import 'package:lrs_app_v3/presenation/pages/exercise/templates/template_2/exercise_2_temp.dart';
-import 'package:lrs_app_v3/presenation/pages/exercise/templates/template_1/exercise_1_temp.dart';
+import 'package:lrs_app_v3/presentation/pages/exercise/templates/template.dart';
 
 part 'exercise_event.dart';
 part 'exercise_state.dart';
@@ -31,8 +31,8 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   Either<TemplateFailure, Template> templateLookup(
       ExerciseType type, ExerciseData exerciseData) {
     List templates = [
-      Temp0001(exerciseData: exerciseData),
-      Temp0002(exerciseData: exerciseData),
+      Template0001(exerciseData: exerciseData),
+      Template0002(exerciseData: exerciseData),
     ];
     for (Template temp in templates) {
       if (temp.type == type) {
