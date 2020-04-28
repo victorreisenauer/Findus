@@ -2,8 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 
 import 'package:lrs_app_v3/domain/auth/auth_failure.dart';
-import 'package:lrs_app_v3/domain/auth/value_objects.dart';
-import 'package:lrs_app_v3/domain/auth/user.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 
 /// Facade(an Entitiy) that connects ApiAuth and GoogleSignIn into one interface.
 /// Serves as abstraction step, so BLoCs in the application layer dont depend

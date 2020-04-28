@@ -2,11 +2,8 @@ import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 
-import 'package:lrs_app_v3/domain/auth/i_auth_facade.dart';
-import 'package:lrs_app_v3/domain/auth/user.dart';
-import 'package:lrs_app_v3/domain/auth/auth_failure.dart';
-import 'package:lrs_app_v3/domain/auth/value_objects.dart';
-import 'package:lrs_app_v3/domain/core/value_objects.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
+import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 
 @RegisterAs(IAuthFacade, env: Environment.test)
 @lazySingleton

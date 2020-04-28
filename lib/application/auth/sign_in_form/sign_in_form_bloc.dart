@@ -4,9 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:lrs_app_v3/domain/auth/value_objects.dart';
-import 'package:lrs_app_v3/domain/auth/auth_failure.dart';
-import 'package:lrs_app_v3/domain/auth/i_auth_facade.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';

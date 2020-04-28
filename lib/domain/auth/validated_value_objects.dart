@@ -2,8 +2,7 @@ import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 
 import 'package:lrs_app_v3/domain/core/failures.dart';
-import 'package:lrs_app_v3/domain/core/value_objects.dart';
-import 'package:lrs_app_v3/domain/core/value_validators.dart';
+import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 
 @immutable
 class EmailAddress extends ValueObject<String> {

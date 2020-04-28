@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lrs_app_v3/injection.dart';
 import 'package:lrs_app_v3/application/lesson/exercise/exercise_bloc.dart';
 import 'package:lrs_app_v3/application/lesson/progress/progress_bloc.dart';
-import 'package:lrs_app_v3/domain/lesson/exercise.dart';
-import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
+import 'package:lrs_app_v3/domain/core/value_objects.dart';
 
 class ExercisePage extends StatelessWidget {
   final ObjectList<Exercise> exerciseList;

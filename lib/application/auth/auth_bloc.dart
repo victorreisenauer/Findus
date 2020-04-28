@@ -4,8 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:lrs_app_v3/domain/auth/i_auth_facade.dart';
-import 'package:lrs_app_v3/domain/auth/user.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

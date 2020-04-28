@@ -5,9 +5,8 @@ import 'package:injectable/injectable.dart';
 
 import 'package:lrs_data_client/lrs_api.dart' as lrs_api;
 import 'package:lrs_app_v3/domain/auth/i_auth_facade.dart';
-import 'package:lrs_app_v3/domain/auth/user.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/domain/auth/auth_failure.dart';
-import 'package:lrs_app_v3/domain/auth/value_objects.dart';
 import 'package:lrs_app_v3/infrastructure/auth/api_user_mapper.dart';
 
 @RegisterAs(IAuthFacade, env: Environment.dev)

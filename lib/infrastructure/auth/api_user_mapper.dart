@@ -1,9 +1,8 @@
 import 'package:injectable/injectable.dart';
 
-import 'package:lrs_data_client/objects.dart' as api ;
-import 'package:lrs_app_v3/domain/core/value_objects.dart';
-import 'package:lrs_app_v3/domain/auth/value_objects.dart';
-import 'package:lrs_app_v3/domain/auth/user.dart';
+import 'package:lrs_data_client/objects.dart' as api;
+import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 
 @lazySingleton
 class ApiUserMapper {

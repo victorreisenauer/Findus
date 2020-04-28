@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:kt_dart/collection.dart';
 
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/domain/core/failures.dart';
-import 'package:lrs_app_v3/domain/core/value_validators.dart';
+import 'package:lrs_app_v3/domain/core/validators.dart';
 
 class ExerciseType extends ValueObject<String> {
   @override
@@ -30,18 +29,4 @@ class ExerciseData extends ValueObject {
   }
 
   const ExerciseData._(this.value);
-}
-
-class ObjectList<T> extends ValueObject<KtList<T>> {
-  @override
-  final Either<ValueFailure<KtList<T>>, KtList<T>> value;
-
-  factory ObjectList(KtList<T> input) {
-    assert(input != null);
-    return ObjectList._(Right(input));
-  }
-
-  const ObjectList._(this.value);
-
-  int get length => value.getOrElse(() => emptyList()).size;
 }

@@ -6,9 +6,8 @@ import 'package:lrs_app_v3/presentation/pages/exercise/templates/template_0002/t
 import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 
-import 'package:lrs_app_v3/domain/lesson/exercise.dart';
-import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
-import 'package:lrs_app_v3/domain/lesson/template_failure.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
+import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/presentation/pages/exercise/templates/template.dart';
 
 part 'exercise_event.dart';

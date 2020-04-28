@@ -2,17 +2,13 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mockito/mockito.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/domain/lesson/i_lesson_facade.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson.dart';
-import 'package:lrs_app_v3/domain/lesson/exercise.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_failure.dart';
-import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
+import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 
 part 'lesson_event.dart';
 part 'lesson_state.dart';

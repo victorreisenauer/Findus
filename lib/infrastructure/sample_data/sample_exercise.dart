@@ -2,9 +2,8 @@ import 'dart:convert';
 
 import 'package:kt_dart/collection.dart';
 
-import 'package:lrs_app_v3/domain/lesson/exercise.dart';
-import 'package:lrs_app_v3/domain/core/value_objects.dart';
-import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
+import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 import 'samples_generator.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/models/exercise_model.dart';
 

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:dartz/dartz.dart';
 import 'package:uuid/uuid.dart';
+import 'package:kt_dart/collection.dart';
 
 import 'package:lrs_app_v3/domain/core/failures.dart';
-import 'package:lrs_app_v3/domain/core/value_validators.dart';
+import 'package:lrs_app_v3/domain/core/validators.dart';
 import 'package:lrs_app_v3/domain/core/errors.dart';
 import 'package:lrs_app_v3/domain/core/common_interfaces.dart';
 
@@ -77,16 +78,16 @@ class UniqueId extends ValueObject<String> {
   const UniqueId._(this.value);
 }
 
-class StringSingleLine extends ValueObject<String> {
+class ObjectList<T> extends ValueObject<KtList<T>> {
   @override
-  final Either<ValueFailure<String>, String> value;
+  final Either<ValueFailure<KtList<T>>, KtList<T>> value;
 
-  factory StringSingleLine(String input) {
+  factory ObjectList(KtList<T> input) {
     assert(input != null);
-    return StringSingleLine._(
-      validateSingleLine(input),
-    );
+    return ObjectList._(Right(input));
   }
 
-  const StringSingleLine._(this.value);
+  const ObjectList._(this.value);
+
+  int get length => value.getOrElse(() => emptyList()).size;
 }

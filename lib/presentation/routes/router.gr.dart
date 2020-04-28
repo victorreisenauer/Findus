@@ -11,8 +11,8 @@ import 'package:lrs_app_v3/presentation/pages/welcome/welcome_page.dart';
 import 'package:lrs_app_v3/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:lrs_app_v3/presentation/pages/overview/overview_page.dart';
 import 'package:lrs_app_v3/presentation/pages/exercise/exercise_page.dart';
-import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
-import 'package:lrs_app_v3/domain/lesson/exercise.dart';
+import 'package:lrs_app_v3/domain/core/value_objects.dart';
+import 'package:lrs_app_v3/domain/lesson/exercise/exercise.dart';
 
 class Router {
   static const welcomePage = '/';
