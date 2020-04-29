@@ -27,6 +27,7 @@ dependencies:
   path_provider:
   draggable_scrollbar:
   audioplayers:
+  data_connection_checker:
 
 dev_dependencies:
   flutter_test:
