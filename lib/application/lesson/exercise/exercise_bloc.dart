@@ -9,6 +9,7 @@ import 'package:dartz/dartz.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/presentation/pages/exercise/templates/template.dart';
+import 'package:lrs_app_v3/presentation/routes/router.gr.dart';
 
 part 'exercise_event.dart';
 part 'exercise_state.dart';
@@ -18,6 +19,7 @@ part 'exercise_bloc.freezed.dart';
 class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   final ObjectList<Exercise> exerciseList;
   int _index = 0;
+  //List _results;
 
   ExerciseBloc({@required this.exerciseList});
 
@@ -46,16 +48,43 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   Stream<ExerciseState> mapEventToState(
     ExerciseEvent event,
   ) async* {
-    if (event is BuildExercise) {
-      Exercise exercise = exerciseList.getOrCrash()[_index++];
-      Either<TemplateFailure, Template> failureOrTemplate =
-          templateLookup(exercise.type, exercise.data);
-      yield failureOrTemplate.fold(
-        (f) => ExerciseError(f),
-        (v) {
-          return ExerciseBuilt(v);
-        },
-      );
-    }
+    yield* event.map(
+      buildFirstExercise: (_) async* {
+        Exercise exercise = exerciseList.getOrCrash()[0];
+        Either<TemplateFailure, Template> failureOrTemplate =
+            templateLookup(exercise.type, exercise.data);
+        yield failureOrTemplate.fold(
+          (f) => ExerciseState.exerciseError(f),
+          (v) {
+            print("this was called");
+            return ExerciseState.exerciseBuilt(v);
+          },
+        );
+      },
+      buildNextExercise: (_) async* {
+        if (this._index < this.exerciseList.length) {
+          Exercise exercise = exerciseList.getOrCrash()[_index++];
+          Either<TemplateFailure, Template> failureOrTemplate =
+              templateLookup(exercise.type, exercise.data);
+          yield failureOrTemplate.fold(
+            (f) => ExerciseState.exerciseError(f),
+            (v) {
+              return ExerciseState.exerciseBuilt(v);
+            },
+          );
+        } else {
+          // push results to lesson bloc
+          Router.navigator.pushNamed(Router.overviewPage);
+          yield ExerciseState.allExercisesCompleted();
+        }
+      },
+      abortExercise: (_) async* {
+        Router.navigator.pushNamed(Router.overviewPage);
+      },
+      finishExercise: (e) async* {
+        // somehow save results like this._results.add(e.exerciseResult);
+        yield ExerciseState.exerciseFinished();
+      },
+    );
   }
 }

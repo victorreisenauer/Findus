@@ -7,5 +7,6 @@ abstract class ExerciseState with _$ExerciseState {
       ExerciseBuilt;
   const factory ExerciseState.exerciseError(TemplateFailure error) =
       ExerciseError;
-  const factory ExerciseState.exerciseCompleted() = ExerciseCompleted;
+  const factory ExerciseState.exerciseFinished() = ExerciseFinished;
+  const factory ExerciseState.allExercisesCompleted() = AllExercisesCompleted;
 }

@@ -23,31 +23,20 @@ class ExercisePage extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ExerciseBloc(exerciseList: exerciseList)
-            ..add(ExerciseEvent.buildExercise()),
+            ..add(ExerciseEvent.buildFirstExercise()),
         )
       ],
       child: Scaffold(
         body: BlocBuilder<ExerciseBloc, ExerciseState>(
           builder: (context, state) {
-            if (state is ExerciseError) {
-              return Center(child: Text("exerciseerror"));
-            }
-            if (state is ExerciseCompleted) {
-              return Center(
-                child: Text("exercise is completed"),
-              );
-            }
             if (state is ExerciseBuilt) {
-              print("this state was called");
               return state.builtExercise;
             }
+            if (state is ExerciseError) {
+              return Center(child: Text(state.error.toString()));
+            }
             return Center(
-              child: FlatButton(
-                onPressed: () {
-                  getIt<ExerciseBloc>().add(ExerciseEvent.buildExercise());
-                },
-                child: Text("Press me for rebuild"),
-              ),
+              child: Text("No state was called on ExercisePage"),
             );
           },
         ),
@@ -55,39 +44,3 @@ class ExercisePage extends StatelessWidget {
     );
   }
 }
-
-/*
-
-              child: BlocListener<ExerciseBloc, ExerciseState>(
-                listener: (context, state) {
-                  if (state is ExerciseBuilt) {
-                    return state.template;
-                  }
-                },
-              ),
-            );
-
-
-
-                    body: BlocBuilder<ProgressBloc, ProgressState>(
-          builder: (context, state) {
-            if (state is ProgressUpdated) {
-              return Center(
-                child: Column(
-                  children: [
-                    Container(
-                      child: LinearProgressIndicator(
-                        value: state.currentProgress,
-                      ),
-                    ),
-                    FlatButton(
-                      child: Text("Press for progress"),
-                      onPressed: () {
-                        context.bloc().add(ProgressEvent.updateProgress(true));
-                      },
-                    ),
-                  ],
-                ),
-              );
-            }
- */
