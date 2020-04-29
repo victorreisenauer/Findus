@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
 
-import '../core/entitiy.dart';
+import 'package:lrs_app_v3/domain/core/entitiy.dart';
 
 part 'lesson.freezed.dart';
 

@@ -20,9 +20,9 @@ class _$ExerciseEventTearOff {
     return const BuildNextExercise();
   }
 
-  FinishExercise finishExercise(Object exerciseResult) {
+  FinishExercise finishExercise(ExerciseResult result) {
     return FinishExercise(
-      exerciseResult,
+      result,
     );
   }
 
@@ -39,14 +39,14 @@ mixin _$ExerciseEvent {
   Result when<Result extends Object>({
     @required Result buildFirstExercise(),
     @required Result buildNextExercise(),
-    @required Result finishExercise(Object exerciseResult),
+    @required Result finishExercise(ExerciseResult result),
     @required Result abortExercise(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result buildFirstExercise(),
     Result buildNextExercise(),
-    Result finishExercise(Object exerciseResult),
+    Result finishExercise(ExerciseResult result),
     Result abortExercise(),
     @required Result orElse(),
   });
@@ -120,7 +120,7 @@ class _$BuildFirstExercise implements BuildFirstExercise {
   Result when<Result extends Object>({
     @required Result buildFirstExercise(),
     @required Result buildNextExercise(),
-    @required Result finishExercise(Object exerciseResult),
+    @required Result finishExercise(ExerciseResult result),
     @required Result abortExercise(),
   }) {
     assert(buildFirstExercise != null);
@@ -135,7 +135,7 @@ class _$BuildFirstExercise implements BuildFirstExercise {
   Result maybeWhen<Result extends Object>({
     Result buildFirstExercise(),
     Result buildNextExercise(),
-    Result finishExercise(Object exerciseResult),
+    Result finishExercise(ExerciseResult result),
     Result abortExercise(),
     @required Result orElse(),
   }) {
@@ -220,7 +220,7 @@ class _$BuildNextExercise implements BuildNextExercise {
   Result when<Result extends Object>({
     @required Result buildFirstExercise(),
     @required Result buildNextExercise(),
-    @required Result finishExercise(Object exerciseResult),
+    @required Result finishExercise(ExerciseResult result),
     @required Result abortExercise(),
   }) {
     assert(buildFirstExercise != null);
@@ -235,7 +235,7 @@ class _$BuildNextExercise implements BuildNextExercise {
   Result maybeWhen<Result extends Object>({
     Result buildFirstExercise(),
     Result buildNextExercise(),
-    Result finishExercise(Object exerciseResult),
+    Result finishExercise(ExerciseResult result),
     Result abortExercise(),
     @required Result orElse(),
   }) {
@@ -286,7 +286,9 @@ abstract class $FinishExerciseCopyWith<$Res> {
   factory $FinishExerciseCopyWith(
           FinishExercise value, $Res Function(FinishExercise) then) =
       _$FinishExerciseCopyWithImpl<$Res>;
-  $Res call({Object exerciseResult});
+  $Res call({ExerciseResult result});
+
+  $ExerciseResultCopyWith<$Res> get result;
 }
 
 class _$FinishExerciseCopyWithImpl<$Res>
@@ -301,38 +303,46 @@ class _$FinishExerciseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object exerciseResult = freezed,
+    Object result = freezed,
   }) {
     return _then(FinishExercise(
-      exerciseResult == freezed ? _value.exerciseResult : exerciseResult,
+      result == freezed ? _value.result : result as ExerciseResult,
     ));
+  }
+
+  @override
+  $ExerciseResultCopyWith<$Res> get result {
+    if (_value.result == null) {
+      return null;
+    }
+    return $ExerciseResultCopyWith<$Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value));
+    });
   }
 }
 
 class _$FinishExercise implements FinishExercise {
-  const _$FinishExercise(this.exerciseResult) : assert(exerciseResult != null);
+  const _$FinishExercise(this.result) : assert(result != null);
 
   @override
-  final Object exerciseResult;
+  final ExerciseResult result;
 
   @override
   String toString() {
-    return 'ExerciseEvent.finishExercise(exerciseResult: $exerciseResult)';
+    return 'ExerciseEvent.finishExercise(result: $result)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is FinishExercise &&
-            (identical(other.exerciseResult, exerciseResult) ||
-                const DeepCollectionEquality()
-                    .equals(other.exerciseResult, exerciseResult)));
+            (identical(other.result, result) ||
+                const DeepCollectionEquality().equals(other.result, result)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(exerciseResult);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
   @override
   $FinishExerciseCopyWith<FinishExercise> get copyWith =>
@@ -343,14 +353,14 @@ class _$FinishExercise implements FinishExercise {
   Result when<Result extends Object>({
     @required Result buildFirstExercise(),
     @required Result buildNextExercise(),
-    @required Result finishExercise(Object exerciseResult),
+    @required Result finishExercise(ExerciseResult result),
     @required Result abortExercise(),
   }) {
     assert(buildFirstExercise != null);
     assert(buildNextExercise != null);
     assert(finishExercise != null);
     assert(abortExercise != null);
-    return finishExercise(exerciseResult);
+    return finishExercise(result);
   }
 
   @override
@@ -358,13 +368,13 @@ class _$FinishExercise implements FinishExercise {
   Result maybeWhen<Result extends Object>({
     Result buildFirstExercise(),
     Result buildNextExercise(),
-    Result finishExercise(Object exerciseResult),
+    Result finishExercise(ExerciseResult result),
     Result abortExercise(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (finishExercise != null) {
-      return finishExercise(exerciseResult);
+      return finishExercise(result);
     }
     return orElse();
   }
@@ -402,9 +412,9 @@ class _$FinishExercise implements FinishExercise {
 }
 
 abstract class FinishExercise implements ExerciseEvent {
-  const factory FinishExercise(Object exerciseResult) = _$FinishExercise;
+  const factory FinishExercise(ExerciseResult result) = _$FinishExercise;
 
-  Object get exerciseResult;
+  ExerciseResult get result;
   $FinishExerciseCopyWith<FinishExercise> get copyWith;
 }
 
@@ -446,7 +456,7 @@ class _$AbortExercise implements AbortExercise {
   Result when<Result extends Object>({
     @required Result buildFirstExercise(),
     @required Result buildNextExercise(),
-    @required Result finishExercise(Object exerciseResult),
+    @required Result finishExercise(ExerciseResult result),
     @required Result abortExercise(),
   }) {
     assert(buildFirstExercise != null);
@@ -461,7 +471,7 @@ class _$AbortExercise implements AbortExercise {
   Result maybeWhen<Result extends Object>({
     Result buildFirstExercise(),
     Result buildNextExercise(),
-    Result finishExercise(Object exerciseResult),
+    Result finishExercise(ExerciseResult result),
     Result abortExercise(),
     @required Result orElse(),
   }) {

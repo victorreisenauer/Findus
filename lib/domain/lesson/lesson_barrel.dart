@@ -4,3 +4,5 @@ export 'lesson.dart';
 export 'template/template_failure.dart';
 export 'exercise/exercise.dart';
 export 'exercise/validated_value_objects.dart';
+export 'exercise/exercise_result.dart';
+export 'lesson_result.dart';

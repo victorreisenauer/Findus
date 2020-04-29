@@ -52,7 +52,9 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
         return LessonStarted(exerciseList);
       });
     }, finishLesson: (e) async* {
-      _lessonFacade.saveResults(e.results);
+      LessonResult result =
+          LessonResult(id: _currentLesson.id, results: e.results);
+      _lessonFacade.saveResults(result);
       yield LessonFinished();
     }, abortLesson: (e) async* {
       yield LessonAborted();

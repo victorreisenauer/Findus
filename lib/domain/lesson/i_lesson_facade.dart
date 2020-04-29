@@ -8,6 +8,6 @@ abstract class ILessonFacade {
   // should send Ids one at a time, only yielding the lessons that are currently
   // visible to the user.
   Future<Either<LessonFailure, Lesson>> getLessonById(UniqueId id);
-  Future<Either<LessonFailure, Unit>> saveResults(ObjectList<Object> results);
+  Future<Either<LessonFailure, Unit>> saveResults(LessonResult result);
   // ^is a stream maybe better?
 }

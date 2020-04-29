@@ -6,6 +6,8 @@ import 'package:lrs_app_v3/presentation/pages/exercise/templates/template_0002/t
 import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 
+import 'package:lrs_app_v3/injection.dart';
+import 'package:lrs_app_v3/application/lesson/lesson_bloc.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/presentation/pages/exercise/templates/template.dart';
@@ -19,7 +21,7 @@ part 'exercise_bloc.freezed.dart';
 class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   final ObjectList<Exercise> exerciseList;
   int _index = 0;
-  //List _results;
+  List<ExerciseResult> _results;
 
   ExerciseBloc({@required this.exerciseList});
 
@@ -73,7 +75,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
             },
           );
         } else {
-          // push results to lesson bloc
+          getIt<LessonBloc>().add(LessonEvent.finishLesson(this._results));
           Router.navigator.pushNamed(Router.overviewPage);
           yield ExerciseState.allExercisesCompleted();
         }
@@ -82,7 +84,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
         Router.navigator.pushNamed(Router.overviewPage);
       },
       finishExercise: (e) async* {
-        // somehow save results like this._results.add(e.exerciseResult);
+        this._results.add(e.result);
         yield ExerciseState.exerciseFinished();
       },
     );

@@ -29,7 +29,7 @@ class _$LessonEventTearOff {
     );
   }
 
-  FinishLesson finishLesson(Object results) {
+  FinishLesson finishLesson(List<ExerciseResult> results) {
     return FinishLesson(
       results,
     );
@@ -50,7 +50,7 @@ mixin _$LessonEvent {
     @required
         Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result finishLesson(Object results),
+    @required Result finishLesson(List<ExerciseResult> results),
     @required Result abortLesson(),
   });
   @optionalTypeArgs
@@ -58,7 +58,7 @@ mixin _$LessonEvent {
     Result fetchAllLessonIds(),
     Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result finishLesson(Object results),
+    Result finishLesson(List<ExerciseResult> results),
     Result abortLesson(),
     @required Result orElse(),
   });
@@ -144,7 +144,7 @@ class _$FetchAllLessonIds
     @required
         Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result finishLesson(Object results),
+    @required Result finishLesson(List<ExerciseResult> results),
     @required Result abortLesson(),
   }) {
     assert(fetchAllLessonIds != null);
@@ -161,7 +161,7 @@ class _$FetchAllLessonIds
     Result fetchAllLessonIds(),
     Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result finishLesson(Object results),
+    Result finishLesson(List<ExerciseResult> results),
     Result abortLesson(),
     @required Result orElse(),
   }) {
@@ -284,7 +284,7 @@ class _$LessonIdsReceived
     @required
         Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result finishLesson(Object results),
+    @required Result finishLesson(List<ExerciseResult> results),
     @required Result abortLesson(),
   }) {
     assert(fetchAllLessonIds != null);
@@ -301,7 +301,7 @@ class _$LessonIdsReceived
     Result fetchAllLessonIds(),
     Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result finishLesson(Object results),
+    Result finishLesson(List<ExerciseResult> results),
     Result abortLesson(),
     @required Result orElse(),
   }) {
@@ -423,7 +423,7 @@ class _$StartLesson with DiagnosticableTreeMixin implements StartLesson {
     @required
         Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result finishLesson(Object results),
+    @required Result finishLesson(List<ExerciseResult> results),
     @required Result abortLesson(),
   }) {
     assert(fetchAllLessonIds != null);
@@ -440,7 +440,7 @@ class _$StartLesson with DiagnosticableTreeMixin implements StartLesson {
     Result fetchAllLessonIds(),
     Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result finishLesson(Object results),
+    Result finishLesson(List<ExerciseResult> results),
     Result abortLesson(),
     @required Result orElse(),
   }) {
@@ -497,7 +497,7 @@ abstract class $FinishLessonCopyWith<$Res> {
   factory $FinishLessonCopyWith(
           FinishLesson value, $Res Function(FinishLesson) then) =
       _$FinishLessonCopyWithImpl<$Res>;
-  $Res call({Object results});
+  $Res call({List<ExerciseResult> results});
 }
 
 class _$FinishLessonCopyWithImpl<$Res> extends _$LessonEventCopyWithImpl<$Res>
@@ -514,7 +514,7 @@ class _$FinishLessonCopyWithImpl<$Res> extends _$LessonEventCopyWithImpl<$Res>
     Object results = freezed,
   }) {
     return _then(FinishLesson(
-      results == freezed ? _value.results : results,
+      results == freezed ? _value.results : results as List<ExerciseResult>,
     ));
   }
 }
@@ -523,7 +523,7 @@ class _$FinishLesson with DiagnosticableTreeMixin implements FinishLesson {
   const _$FinishLesson(this.results) : assert(results != null);
 
   @override
-  final Object results;
+  final List<ExerciseResult> results;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -561,7 +561,7 @@ class _$FinishLesson with DiagnosticableTreeMixin implements FinishLesson {
     @required
         Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result finishLesson(Object results),
+    @required Result finishLesson(List<ExerciseResult> results),
     @required Result abortLesson(),
   }) {
     assert(fetchAllLessonIds != null);
@@ -578,7 +578,7 @@ class _$FinishLesson with DiagnosticableTreeMixin implements FinishLesson {
     Result fetchAllLessonIds(),
     Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result finishLesson(Object results),
+    Result finishLesson(List<ExerciseResult> results),
     Result abortLesson(),
     @required Result orElse(),
   }) {
@@ -625,9 +625,9 @@ class _$FinishLesson with DiagnosticableTreeMixin implements FinishLesson {
 }
 
 abstract class FinishLesson implements LessonEvent {
-  const factory FinishLesson(Object results) = _$FinishLesson;
+  const factory FinishLesson(List<ExerciseResult> results) = _$FinishLesson;
 
-  Object get results;
+  List<ExerciseResult> get results;
   $FinishLessonCopyWith<FinishLesson> get copyWith;
 }
 
@@ -676,7 +676,7 @@ class _$AbortLesson with DiagnosticableTreeMixin implements AbortLesson {
     @required
         Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     @required Result startLesson(UniqueId id),
-    @required Result finishLesson(Object results),
+    @required Result finishLesson(List<ExerciseResult> results),
     @required Result abortLesson(),
   }) {
     assert(fetchAllLessonIds != null);
@@ -693,7 +693,7 @@ class _$AbortLesson with DiagnosticableTreeMixin implements AbortLesson {
     Result fetchAllLessonIds(),
     Result lessonIdsReceived(Either<LessonFailure, List<UniqueId>> ids),
     Result startLesson(UniqueId id),
-    Result finishLesson(Object results),
+    Result finishLesson(List<ExerciseResult> results),
     Result abortLesson(),
     @required Result orElse(),
   }) {

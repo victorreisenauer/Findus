@@ -22,8 +22,7 @@ class TestLessonRepository implements ILessonFacade {
     }
   }
 
-  Future<Either<LessonFailure, Unit>> saveResults(
-      ObjectList<Object> results) async {
+  Future<Either<LessonFailure, Unit>> saveResults(LessonResult result) async {
     return left(LessonFailure.unexpected());
   }
 }
