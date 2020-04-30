@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lrs_app_v3/infrastructure/sample_data/sample_exercise.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/models/exercise_model.dart';
-import 'package:lrs_app_v3/domain/lesson/exercise.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 
 main() {
   // exercise model builds correctly from json

@@ -5,9 +5,9 @@ import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/sample_data/sample_lesson.dart';
 
-@RegisterAs(ILessonFacade, env: Environment.test)
+@RegisterAs(LessonFacade, env: Environment.test)
 @lazySingleton
-class TestLessonRepository implements ILessonFacade {
+class TestLessonRepository implements LessonFacade {
   final SampleLessonGenerator sampler = SampleLessonGenerator();
 
   Future<Either<LessonFailure, Lesson>> getLessonById(UniqueId id) async {

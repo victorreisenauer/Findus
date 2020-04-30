@@ -1,4 +1,4 @@
-export 'i_lesson_facade.dart';
+export 'lesson_facade.dart';
 export 'lesson_failure.dart';
 export 'lesson.dart';
 export 'template/template_failure.dart';
