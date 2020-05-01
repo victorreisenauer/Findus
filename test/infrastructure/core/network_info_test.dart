@@ -6,12 +6,12 @@ import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
 class MockDataConnectionChecker extends Mock implements DataConnectionChecker {}
 
 void main() {
-  NetworkInfoRepository networkInfoRepo;
+  NetworkInfo networkInfoRepo;
   MockDataConnectionChecker mockDataConnectionChecker;
 
   setUp(() {
     mockDataConnectionChecker = MockDataConnectionChecker();
-    networkInfoRepo = NetworkInfoRepository(mockDataConnectionChecker);
+    networkInfoRepo = NetworkInfoImpl(mockDataConnectionChecker);
   });
 
   group('NetworkInfoRepository =>', () {

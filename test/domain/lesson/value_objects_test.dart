@@ -1,8 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/domain/core/value_objects.dart';
-import '../../../lib/domain/lesson/exercise.dart';
-import '../../../lib/domain/lesson/value_objects.dart';
+import '../../../lib/domain/lesson/lesson_barrel.dart';
 
 void main() {
   group('Unit Tests for ExerciseType ValueObject => ', () {

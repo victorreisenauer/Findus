@@ -1,13 +1,13 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
 
-abstract class NetworkInfoFacade {
+abstract class NetworkInfo {
   Future<bool> get isConnected;
 }
 
-class NetworkInfoRepository implements NetworkInfoFacade {
+class NetworkInfoImpl implements NetworkInfo {
   final DataConnectionChecker connectionChecker;
 
-  const NetworkInfoRepository(this.connectionChecker);
+  const NetworkInfoImpl(this.connectionChecker);
 
   @override
   Future<bool> get isConnected => connectionChecker.hasConnection;

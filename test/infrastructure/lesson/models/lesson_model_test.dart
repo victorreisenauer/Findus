@@ -15,6 +15,6 @@ main() {
   // rebuilds correctly into json
   LessonModel rebuiltModel = LessonModel.fromDomain(lesson);
   String rebuiltJson = jsonEncode(rebuiltModel);
-  print(rebuiltJson);
+  //print(rebuiltJson);
   // ids can change because server uses internal ids
 }

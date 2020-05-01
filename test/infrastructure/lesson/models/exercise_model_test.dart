@@ -8,11 +8,11 @@ main() {
   // exercise model builds correctly from json
   SampleExerciseGenerator sampler = SampleExerciseGenerator();
   print(sampler.getSampleEncodedJson());
-  print(sampler.getSampleSerializableList());
+  //print(sampler.getSampleSerializableList());
 
   Map json = jsonDecode(sampler.getSampleEncodedJson());
   ExerciseModel model = ExerciseModel.fromJson(json);
-  print(model);
+  //print(model);
 
   // convert to exercise
   Exercise exercise = model.toDomain();
@@ -20,5 +20,8 @@ main() {
 
   // convert back to model
   ExerciseModel rebuiltModel = ExerciseModel.fromDomain(exercise);
-  print(rebuiltModel);
+  //print(rebuiltModel);
+
+  // convert back to json
+  print(rebuiltModel.toJson());
 }

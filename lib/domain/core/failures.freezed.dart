@@ -82,30 +82,27 @@ mixin _$ValueFailure<T> {
 
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required
-        Result exceedingLength(@required T failedValue, @required int max),
-    @required Result empty(@required T failedValue),
-    @required Result multiline(@required T failedValue),
-    @required Result numberTooLarge(@required T failedValue, @required num max),
-    @required Result listTooLong(@required T failedValue, @required int max),
-    @required Result invalidEmail(@required T failedValue),
-    @required Result shortPassword(@required T failedValue),
-    @required Result invalidPhotoUrl(@required T failedValue),
-    @required
-        Result notOfObjectType(
-            @required T failedValue, @required Type validType),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result invalidPhotoUrl(T failedValue),
+    @required Result notOfObjectType(T failedValue, Type validType),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result exceedingLength(@required T failedValue, @required int max),
-    Result empty(@required T failedValue),
-    Result multiline(@required T failedValue),
-    Result numberTooLarge(@required T failedValue, @required num max),
-    Result listTooLong(@required T failedValue, @required int max),
-    Result invalidEmail(@required T failedValue),
-    Result shortPassword(@required T failedValue),
-    Result invalidPhotoUrl(@required T failedValue),
-    Result notOfObjectType(@required T failedValue, @required Type validType),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result numberTooLarge(T failedValue, num max),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result invalidPhotoUrl(T failedValue),
+    Result notOfObjectType(T failedValue, Type validType),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -245,18 +242,15 @@ class _$ExceedingLength<T>
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required
-        Result exceedingLength(@required T failedValue, @required int max),
-    @required Result empty(@required T failedValue),
-    @required Result multiline(@required T failedValue),
-    @required Result numberTooLarge(@required T failedValue, @required num max),
-    @required Result listTooLong(@required T failedValue, @required int max),
-    @required Result invalidEmail(@required T failedValue),
-    @required Result shortPassword(@required T failedValue),
-    @required Result invalidPhotoUrl(@required T failedValue),
-    @required
-        Result notOfObjectType(
-            @required T failedValue, @required Type validType),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result invalidPhotoUrl(T failedValue),
+    @required Result notOfObjectType(T failedValue, Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -273,15 +267,15 @@ class _$ExceedingLength<T>
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result exceedingLength(@required T failedValue, @required int max),
-    Result empty(@required T failedValue),
-    Result multiline(@required T failedValue),
-    Result numberTooLarge(@required T failedValue, @required num max),
-    Result listTooLong(@required T failedValue, @required int max),
-    Result invalidEmail(@required T failedValue),
-    Result shortPassword(@required T failedValue),
-    Result invalidPhotoUrl(@required T failedValue),
-    Result notOfObjectType(@required T failedValue, @required Type validType),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result numberTooLarge(T failedValue, num max),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result invalidPhotoUrl(T failedValue),
+    Result notOfObjectType(T failedValue, Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -415,18 +409,15 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required
-        Result exceedingLength(@required T failedValue, @required int max),
-    @required Result empty(@required T failedValue),
-    @required Result multiline(@required T failedValue),
-    @required Result numberTooLarge(@required T failedValue, @required num max),
-    @required Result listTooLong(@required T failedValue, @required int max),
-    @required Result invalidEmail(@required T failedValue),
-    @required Result shortPassword(@required T failedValue),
-    @required Result invalidPhotoUrl(@required T failedValue),
-    @required
-        Result notOfObjectType(
-            @required T failedValue, @required Type validType),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result invalidPhotoUrl(T failedValue),
+    @required Result notOfObjectType(T failedValue, Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -443,15 +434,15 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result exceedingLength(@required T failedValue, @required int max),
-    Result empty(@required T failedValue),
-    Result multiline(@required T failedValue),
-    Result numberTooLarge(@required T failedValue, @required num max),
-    Result listTooLong(@required T failedValue, @required int max),
-    Result invalidEmail(@required T failedValue),
-    Result shortPassword(@required T failedValue),
-    Result invalidPhotoUrl(@required T failedValue),
-    Result notOfObjectType(@required T failedValue, @required Type validType),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result numberTooLarge(T failedValue, num max),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result invalidPhotoUrl(T failedValue),
+    Result notOfObjectType(T failedValue, Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -586,18 +577,15 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required
-        Result exceedingLength(@required T failedValue, @required int max),
-    @required Result empty(@required T failedValue),
-    @required Result multiline(@required T failedValue),
-    @required Result numberTooLarge(@required T failedValue, @required num max),
-    @required Result listTooLong(@required T failedValue, @required int max),
-    @required Result invalidEmail(@required T failedValue),
-    @required Result shortPassword(@required T failedValue),
-    @required Result invalidPhotoUrl(@required T failedValue),
-    @required
-        Result notOfObjectType(
-            @required T failedValue, @required Type validType),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result invalidPhotoUrl(T failedValue),
+    @required Result notOfObjectType(T failedValue, Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -614,15 +602,15 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result exceedingLength(@required T failedValue, @required int max),
-    Result empty(@required T failedValue),
-    Result multiline(@required T failedValue),
-    Result numberTooLarge(@required T failedValue, @required num max),
-    Result listTooLong(@required T failedValue, @required int max),
-    Result invalidEmail(@required T failedValue),
-    Result shortPassword(@required T failedValue),
-    Result invalidPhotoUrl(@required T failedValue),
-    Result notOfObjectType(@required T failedValue, @required Type validType),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result numberTooLarge(T failedValue, num max),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result invalidPhotoUrl(T failedValue),
+    Result notOfObjectType(T failedValue, Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -770,18 +758,15 @@ class _$NumberTooLarge<T>
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required
-        Result exceedingLength(@required T failedValue, @required int max),
-    @required Result empty(@required T failedValue),
-    @required Result multiline(@required T failedValue),
-    @required Result numberTooLarge(@required T failedValue, @required num max),
-    @required Result listTooLong(@required T failedValue, @required int max),
-    @required Result invalidEmail(@required T failedValue),
-    @required Result shortPassword(@required T failedValue),
-    @required Result invalidPhotoUrl(@required T failedValue),
-    @required
-        Result notOfObjectType(
-            @required T failedValue, @required Type validType),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result invalidPhotoUrl(T failedValue),
+    @required Result notOfObjectType(T failedValue, Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -798,15 +783,15 @@ class _$NumberTooLarge<T>
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result exceedingLength(@required T failedValue, @required int max),
-    Result empty(@required T failedValue),
-    Result multiline(@required T failedValue),
-    Result numberTooLarge(@required T failedValue, @required num max),
-    Result listTooLong(@required T failedValue, @required int max),
-    Result invalidEmail(@required T failedValue),
-    Result shortPassword(@required T failedValue),
-    Result invalidPhotoUrl(@required T failedValue),
-    Result notOfObjectType(@required T failedValue, @required Type validType),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result numberTooLarge(T failedValue, num max),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result invalidPhotoUrl(T failedValue),
+    Result notOfObjectType(T failedValue, Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -954,18 +939,15 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required
-        Result exceedingLength(@required T failedValue, @required int max),
-    @required Result empty(@required T failedValue),
-    @required Result multiline(@required T failedValue),
-    @required Result numberTooLarge(@required T failedValue, @required num max),
-    @required Result listTooLong(@required T failedValue, @required int max),
-    @required Result invalidEmail(@required T failedValue),
-    @required Result shortPassword(@required T failedValue),
-    @required Result invalidPhotoUrl(@required T failedValue),
-    @required
-        Result notOfObjectType(
-            @required T failedValue, @required Type validType),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result invalidPhotoUrl(T failedValue),
+    @required Result notOfObjectType(T failedValue, Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -982,15 +964,15 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result exceedingLength(@required T failedValue, @required int max),
-    Result empty(@required T failedValue),
-    Result multiline(@required T failedValue),
-    Result numberTooLarge(@required T failedValue, @required num max),
-    Result listTooLong(@required T failedValue, @required int max),
-    Result invalidEmail(@required T failedValue),
-    Result shortPassword(@required T failedValue),
-    Result invalidPhotoUrl(@required T failedValue),
-    Result notOfObjectType(@required T failedValue, @required Type validType),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result numberTooLarge(T failedValue, num max),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result invalidPhotoUrl(T failedValue),
+    Result notOfObjectType(T failedValue, Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1130,18 +1112,15 @@ class _$InvalidEmail<T>
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required
-        Result exceedingLength(@required T failedValue, @required int max),
-    @required Result empty(@required T failedValue),
-    @required Result multiline(@required T failedValue),
-    @required Result numberTooLarge(@required T failedValue, @required num max),
-    @required Result listTooLong(@required T failedValue, @required int max),
-    @required Result invalidEmail(@required T failedValue),
-    @required Result shortPassword(@required T failedValue),
-    @required Result invalidPhotoUrl(@required T failedValue),
-    @required
-        Result notOfObjectType(
-            @required T failedValue, @required Type validType),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result invalidPhotoUrl(T failedValue),
+    @required Result notOfObjectType(T failedValue, Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1158,15 +1137,15 @@ class _$InvalidEmail<T>
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result exceedingLength(@required T failedValue, @required int max),
-    Result empty(@required T failedValue),
-    Result multiline(@required T failedValue),
-    Result numberTooLarge(@required T failedValue, @required num max),
-    Result listTooLong(@required T failedValue, @required int max),
-    Result invalidEmail(@required T failedValue),
-    Result shortPassword(@required T failedValue),
-    Result invalidPhotoUrl(@required T failedValue),
-    Result notOfObjectType(@required T failedValue, @required Type validType),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result numberTooLarge(T failedValue, num max),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result invalidPhotoUrl(T failedValue),
+    Result notOfObjectType(T failedValue, Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1304,18 +1283,15 @@ class _$ShortPassword<T>
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required
-        Result exceedingLength(@required T failedValue, @required int max),
-    @required Result empty(@required T failedValue),
-    @required Result multiline(@required T failedValue),
-    @required Result numberTooLarge(@required T failedValue, @required num max),
-    @required Result listTooLong(@required T failedValue, @required int max),
-    @required Result invalidEmail(@required T failedValue),
-    @required Result shortPassword(@required T failedValue),
-    @required Result invalidPhotoUrl(@required T failedValue),
-    @required
-        Result notOfObjectType(
-            @required T failedValue, @required Type validType),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result invalidPhotoUrl(T failedValue),
+    @required Result notOfObjectType(T failedValue, Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1332,15 +1308,15 @@ class _$ShortPassword<T>
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result exceedingLength(@required T failedValue, @required int max),
-    Result empty(@required T failedValue),
-    Result multiline(@required T failedValue),
-    Result numberTooLarge(@required T failedValue, @required num max),
-    Result listTooLong(@required T failedValue, @required int max),
-    Result invalidEmail(@required T failedValue),
-    Result shortPassword(@required T failedValue),
-    Result invalidPhotoUrl(@required T failedValue),
-    Result notOfObjectType(@required T failedValue, @required Type validType),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result numberTooLarge(T failedValue, num max),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result invalidPhotoUrl(T failedValue),
+    Result notOfObjectType(T failedValue, Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1478,18 +1454,15 @@ class _$InvalidPhotoUrl<T>
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required
-        Result exceedingLength(@required T failedValue, @required int max),
-    @required Result empty(@required T failedValue),
-    @required Result multiline(@required T failedValue),
-    @required Result numberTooLarge(@required T failedValue, @required num max),
-    @required Result listTooLong(@required T failedValue, @required int max),
-    @required Result invalidEmail(@required T failedValue),
-    @required Result shortPassword(@required T failedValue),
-    @required Result invalidPhotoUrl(@required T failedValue),
-    @required
-        Result notOfObjectType(
-            @required T failedValue, @required Type validType),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result invalidPhotoUrl(T failedValue),
+    @required Result notOfObjectType(T failedValue, Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1506,15 +1479,15 @@ class _$InvalidPhotoUrl<T>
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result exceedingLength(@required T failedValue, @required int max),
-    Result empty(@required T failedValue),
-    Result multiline(@required T failedValue),
-    Result numberTooLarge(@required T failedValue, @required num max),
-    Result listTooLong(@required T failedValue, @required int max),
-    Result invalidEmail(@required T failedValue),
-    Result shortPassword(@required T failedValue),
-    Result invalidPhotoUrl(@required T failedValue),
-    Result notOfObjectType(@required T failedValue, @required Type validType),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result numberTooLarge(T failedValue, num max),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result invalidPhotoUrl(T failedValue),
+    Result notOfObjectType(T failedValue, Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1665,18 +1638,15 @@ class _$NotOfObjectType<T>
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required
-        Result exceedingLength(@required T failedValue, @required int max),
-    @required Result empty(@required T failedValue),
-    @required Result multiline(@required T failedValue),
-    @required Result numberTooLarge(@required T failedValue, @required num max),
-    @required Result listTooLong(@required T failedValue, @required int max),
-    @required Result invalidEmail(@required T failedValue),
-    @required Result shortPassword(@required T failedValue),
-    @required Result invalidPhotoUrl(@required T failedValue),
-    @required
-        Result notOfObjectType(
-            @required T failedValue, @required Type validType),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result invalidPhotoUrl(T failedValue),
+    @required Result notOfObjectType(T failedValue, Type validType),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1693,15 +1663,15 @@ class _$NotOfObjectType<T>
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result exceedingLength(@required T failedValue, @required int max),
-    Result empty(@required T failedValue),
-    Result multiline(@required T failedValue),
-    Result numberTooLarge(@required T failedValue, @required num max),
-    Result listTooLong(@required T failedValue, @required int max),
-    Result invalidEmail(@required T failedValue),
-    Result shortPassword(@required T failedValue),
-    Result invalidPhotoUrl(@required T failedValue),
-    Result notOfObjectType(@required T failedValue, @required Type validType),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result numberTooLarge(T failedValue, num max),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result invalidPhotoUrl(T failedValue),
+    Result notOfObjectType(T failedValue, Type validType),
     @required Result orElse(),
   }) {
     assert(orElse != null);

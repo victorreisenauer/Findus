@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lrs_app_v3/application/lesson/exercise/exercise_bloc.dart';
 import 'package:lrs_app_v3/infrastructure/sample_data/sample_exercise.dart';
-import 'package:lrs_app_v3/domain/lesson/exercise.dart';
-import 'package:lrs_app_v3/domain/lesson/value_objects.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/presentation/pages/exercise/templates/template.dart';
 import 'package:lrs_app_v3/presentation/pages/exercise/templates/template_0002/template_0002.dart';
+import 'package:lrs_app_v3/domain/core/value_objects.dart';
 
 void main() {
   group('LessonBloc => ', () {
@@ -25,7 +25,7 @@ void main() {
         'emits states [Initial, ExerciseBuilt(Widget builtExercise)] on successful BuildExercise Event',
         () {
       final bloc = ExerciseBloc(exerciseList: sampleExerciseList);
-      bloc.add(ExerciseEvent.buildExercise());
+      bloc.add(ExerciseEvent.buildNextExercise());
       expectLater(
           bloc,
           emitsInOrder([
@@ -37,8 +37,8 @@ void main() {
     });
     test('emits states [Initial, ] on StartExercise Event', () {
       final bloc = ExerciseBloc(exerciseList: sampleExerciseList);
-      bloc.add(ExerciseEvent.buildExercise());
-      bloc.add(ExerciseEvent.buildExercise());
+      bloc.add(ExerciseEvent.buildFirstExercise());
+      bloc.add(ExerciseEvent.buildFirstExercise());
       expectLater(
           bloc,
           emitsInOrder([

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
+import 'package:injectable/injectable.dart';
 
 import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
@@ -8,8 +9,10 @@ import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 
 import '../core/exceptions.dart';
 
+@RegisterAs(LessonFacade, env: Environment.prod)
+@lazySingleton
 class LessonRepository implements LessonFacade {
-  final NetworkInfoFacade networkInfo;
+  final NetworkInfo networkInfo;
   final LocalLessonDataSource localData;
   final RemoteLessonDataSource remoteData;
 
@@ -26,7 +29,7 @@ class LessonRepository implements LessonFacade {
   }
 
   Future<Either<LessonFailure, Lesson>> getLessonById(UniqueId id) async {
-    LessonModel model = await localData.getLessonById(id);
+    LessonModel model = await localData.getLessonModelById(id);
     return right(model.toDomain());
   }
 
@@ -37,21 +40,23 @@ class LessonRepository implements LessonFacade {
 
   Future<void> update() async {
     if (await networkInfo.isConnected && await remoteData.isAvailable) {
-      List<LessonModel> lessonModels =
-          await remoteData.getAvailableLessonData();
-      for (LessonModel model in lessonModels) {
-        // cache lessons from remoteData into localData
-        localData.cacheLesson(model);
-
-        // push new Results from localData to remoteData
-        try {
-          remoteData.pushResults(await localData.getUnpushedResults());
-        } catch (e) {
-          throw Exception(e);
-        }
+      final lessonModelsStream = remoteData.getAvailableLessonData();
+      lessonModelsStream.listen((lessonModel) {
+        localData.cacheLessonModel(lessonModel);
+      });
+      try {
+        remoteData.pushResults(await localData.getUnpushedLessonResults());
+      } catch (e) {
+        throw Exception(e);
       }
+      _close();
     } else {
-      throw ServerException();
+      throw ServerException(); // failure?
     }
+  }
+
+  void _close() {
+    remoteData.close();
+    localData.close();
   }
 }

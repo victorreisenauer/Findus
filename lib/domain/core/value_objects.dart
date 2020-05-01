@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:dartz/dartz.dart';
 import 'package:uuid/uuid.dart';
@@ -61,17 +63,16 @@ class UniqueId extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  // We cannot let a simple String be passed in. This would allow for possible non-unique IDs.
   factory UniqueId() {
     return UniqueId._(
       right(Uuid().v1()),
     );
   }
 
-  factory UniqueId.fromApiId(String apiId) {
-    assert(apiId != null);
+  factory UniqueId.fromUniqueId(String id) {
+    assert(id != null);
     return UniqueId._(
-      right(apiId),
+      right(id),
     );
   }
 
