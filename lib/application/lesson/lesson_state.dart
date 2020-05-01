@@ -6,7 +6,7 @@ abstract class LessonState with _$LessonState {
   const factory LessonState.lessonLoading() = LessonLoading;
   const factory LessonState.lessonLoaded(Lesson lesson) = LessonLoaded;
   const factory LessonState.lessonError(LessonFailure error) = LessonError;
-  const factory LessonState.allLessonIdsLoaded(List<UniqueId> ids) =
+  const factory LessonState.lessonIdStreamLoaded(Stream<UniqueId> ids) =
       AllLessonIdsLoaded;
   const factory LessonState.lessonStarted(ObjectList<Exercise> exerciseList) =
       LessonStarted;

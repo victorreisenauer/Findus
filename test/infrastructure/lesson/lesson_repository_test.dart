@@ -126,17 +126,17 @@ main() {
 
       test('should go through cache and get lesson by id on getLessonById', () {
         //arrange
-        when(mockLocalLessonDataSource.getLessonById(_id))
+        when(mockLocalLessonDataSource.getLessonModelById(_id))
             .thenAnswer((_) async => _lessonModel);
         //act
         final response = repository.getLessonById(_id);
         //assert
-        verify(mockLocalLessonDataSource.getLessonById(any));
+        verify(mockLocalLessonDataSource.getLessonModelById(any));
         expect(response, _lessonModel.toDomain());
       });
       test('should throw failure is id is not awailableon getLessonById', () {
         //arrange
-        when(mockLocalLessonDataSource.getLessonById(any))
+        when(mockLocalLessonDataSource.getLessonModelById(any))
             .thenAnswer((_) => throw Exception());
         // TODO: what happens if id is not found?
         //act

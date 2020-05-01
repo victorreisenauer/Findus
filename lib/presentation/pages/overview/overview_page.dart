@@ -38,26 +38,6 @@ class OverviewPage extends StatelessWidget {
                 if (state is AllLessonIdsLoaded) {
                   return SizedBox.expand(
                       child: _OverviewPageBody(ids: state.ids));
-                  /*ListView.builder(
-                    padding: const EdgeInsets.all(8),
-                    itemCount: state.ids.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return FlatButton(
-                        color: Colors.blue,
-                        child: Center(
-                          child: Text(
-                            "Lektion ${index + 1}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ),
-                        onPressed: () {
-                          return context
-                              .bloc<LessonBloc>()
-                              .add(StartLesson(state.ids[index]));
-                        },
-                      );
-                    },
-                  );*/
                 }
                 return LayoutBuilder(builder: (context, constrains) {
                   return Stack(

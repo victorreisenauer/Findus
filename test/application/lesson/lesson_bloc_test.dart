@@ -37,9 +37,7 @@ void main() {
           emitsInOrder([
             LessonState.initial(),
             LessonState.lessonLoading(),
-            LessonState.allLessonIdsLoaded(sampleLessonListIds),
-            LessonState.allLessonIdsLoaded(sampleLessonListIds),
-            LessonState.allLessonIdsLoaded(sampleLessonListIds),
+            //LessonState.lessonIdStreamLoaded(),
           ]));
     });
 
