@@ -1,3 +1,4 @@
+import 'package:kt_dart/collection.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter/foundation.dart';
 
@@ -15,6 +16,6 @@ abstract class LessonResult with _$LessonResult implements IEntity {
   const factory LessonResult({
     @required UniqueId id,
     // required: timestamp
-    @required List<ExerciseResult> results,
+    @required KtList<ExerciseResult> resultList,
   }) = _LessonResult;
 }

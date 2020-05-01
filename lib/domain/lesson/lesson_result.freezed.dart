@@ -13,10 +13,10 @@ class _$LessonResultTearOff {
   const _$LessonResultTearOff();
 
   _LessonResult call(
-      {@required UniqueId id, @required List<ExerciseResult> results}) {
+      {@required UniqueId id, @required KtList<ExerciseResult> resultList}) {
     return _LessonResult(
       id: id,
-      results: results,
+      resultList: resultList,
     );
   }
 }
@@ -26,7 +26,7 @@ const $LessonResult = _$LessonResultTearOff();
 
 mixin _$LessonResult {
   UniqueId get id;
-  List<ExerciseResult> get results;
+  KtList<ExerciseResult> get resultList;
 
   $LessonResultCopyWith<LessonResult> get copyWith;
 }
@@ -35,7 +35,7 @@ abstract class $LessonResultCopyWith<$Res> {
   factory $LessonResultCopyWith(
           LessonResult value, $Res Function(LessonResult) then) =
       _$LessonResultCopyWithImpl<$Res>;
-  $Res call({UniqueId id, List<ExerciseResult> results});
+  $Res call({UniqueId id, KtList<ExerciseResult> resultList});
 }
 
 class _$LessonResultCopyWithImpl<$Res> implements $LessonResultCopyWith<$Res> {
@@ -48,12 +48,13 @@ class _$LessonResultCopyWithImpl<$Res> implements $LessonResultCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
-    Object results = freezed,
+    Object resultList = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
-      results:
-          results == freezed ? _value.results : results as List<ExerciseResult>,
+      resultList: resultList == freezed
+          ? _value.resultList
+          : resultList as KtList<ExerciseResult>,
     ));
   }
 }
@@ -64,7 +65,7 @@ abstract class _$LessonResultCopyWith<$Res>
           _LessonResult value, $Res Function(_LessonResult) then) =
       __$LessonResultCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, List<ExerciseResult> results});
+  $Res call({UniqueId id, KtList<ExerciseResult> resultList});
 }
 
 class __$LessonResultCopyWithImpl<$Res> extends _$LessonResultCopyWithImpl<$Res>
@@ -79,29 +80,30 @@ class __$LessonResultCopyWithImpl<$Res> extends _$LessonResultCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
-    Object results = freezed,
+    Object resultList = freezed,
   }) {
     return _then(_LessonResult(
       id: id == freezed ? _value.id : id as UniqueId,
-      results:
-          results == freezed ? _value.results : results as List<ExerciseResult>,
+      resultList: resultList == freezed
+          ? _value.resultList
+          : resultList as KtList<ExerciseResult>,
     ));
   }
 }
 
 class _$_LessonResult with DiagnosticableTreeMixin implements _LessonResult {
-  const _$_LessonResult({@required this.id, @required this.results})
+  const _$_LessonResult({@required this.id, @required this.resultList})
       : assert(id != null),
-        assert(results != null);
+        assert(resultList != null);
 
   @override
   final UniqueId id;
   @override
-  final List<ExerciseResult> results;
+  final KtList<ExerciseResult> resultList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LessonResult(id: $id, results: $results)';
+    return 'LessonResult(id: $id, resultList: $resultList)';
   }
 
   @override
@@ -110,7 +112,7 @@ class _$_LessonResult with DiagnosticableTreeMixin implements _LessonResult {
     properties
       ..add(DiagnosticsProperty('type', 'LessonResult'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('results', results));
+      ..add(DiagnosticsProperty('resultList', resultList));
   }
 
   @override
@@ -119,15 +121,16 @@ class _$_LessonResult with DiagnosticableTreeMixin implements _LessonResult {
         (other is _LessonResult &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.results, results) ||
-                const DeepCollectionEquality().equals(other.results, results)));
+            (identical(other.resultList, resultList) ||
+                const DeepCollectionEquality()
+                    .equals(other.resultList, resultList)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(results);
+      const DeepCollectionEquality().hash(resultList);
 
   @override
   _$LessonResultCopyWith<_LessonResult> get copyWith =>
@@ -137,12 +140,12 @@ class _$_LessonResult with DiagnosticableTreeMixin implements _LessonResult {
 abstract class _LessonResult implements LessonResult {
   const factory _LessonResult(
       {@required UniqueId id,
-      @required List<ExerciseResult> results}) = _$_LessonResult;
+      @required KtList<ExerciseResult> resultList}) = _$_LessonResult;
 
   @override
   UniqueId get id;
   @override
-  List<ExerciseResult> get results;
+  KtList<ExerciseResult> get resultList;
   @override
   _$LessonResultCopyWith<_LessonResult> get copyWith;
 }

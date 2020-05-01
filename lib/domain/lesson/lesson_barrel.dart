@@ -6,3 +6,4 @@ export 'exercise/exercise.dart';
 export 'exercise/validated_value_objects.dart';
 export 'exercise/exercise_result.dart';
 export 'lesson_result.dart';
+export 'exercise/calculated_value_objects.dart';

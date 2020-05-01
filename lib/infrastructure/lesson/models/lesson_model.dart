@@ -17,29 +17,29 @@ abstract class LessonModel with _$LessonModel {
     @required List<ExerciseModel> exerciseList,
   }) = _LessonModel;
 
-  // turns Lesson into LessonModel
+  /// turns Json into [LessonModel]
+  factory LessonModel.fromJson(Map<String, dynamic> json) =>
+      _$LessonModelFromJson(json);
+
+  /// turns [Lesson] into [LessonModel]
   factory LessonModel.fromDomain(Lesson lesson) {
     return LessonModel(
         id: lesson.id.getOrCrash(),
         exerciseList: lesson.exerciseList
             .getOrCrash()
-            .mapIndexed((index, exerciseModel) =>
-                ExerciseModel.fromDomain(exerciseModel))
+            .mapIndexed((index, exercise) => ExerciseModel.fromDomain(exercise))
             .asList());
   }
-
-  // turns Json into LessonModel
-  factory LessonModel.fromJson(Map<String, dynamic> json) =>
-      _$LessonModelFromJson(json);
 }
 
+/// turns [LessonModel] into [Lesson]
 extension LessonModelX on LessonModel {
-  // turns LessonModel into Lesson
   Lesson toDomain() {
     return Lesson(
-      id: UniqueId(),
+      id: UniqueId.fromUniqueId(id),
       exerciseList: ObjectList<Exercise>(
-          exerciseList.map((eModel) => eModel.toDomain()).toImmutableList()),
+        exerciseList.map((eModel) => eModel.toDomain()).toImmutableList(),
+      ),
     );
   }
 }
