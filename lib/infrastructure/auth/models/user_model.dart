@@ -1,0 +1,39 @@
+import 'package:meta/meta.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
+import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
+
+part 'user_model.freezed.dart';
+part 'user_model.g.dart';
+
+@freezed
+abstract class UserModel with _$UserModel {
+  const factory UserModel({
+    @required String userId,
+    @required String email,
+  }) = _UserModel;
+
+  /// turns Json into [UserModel]
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
+
+  /// turns [User] into [UserModel]
+  factory UserModel.fromDomain(User user) {
+    return UserModel(
+        userId: user.id.getOrCrash(), email: user.emailAddress.getOrCrash());
+  }
+}
+
+/// turns [ExerciseModel] into [Exercise]
+extension UserModelX on UserModel {
+  User toDomain(firstName, lastName) {
+    return User(
+        id: UniqueId.fromUniqueId(userId),
+        firstName: StringSingleLine(firstName),
+        lastName: StringSingleLine(lastName),
+        emailAddress: EmailAddress(email));
+  }
+}

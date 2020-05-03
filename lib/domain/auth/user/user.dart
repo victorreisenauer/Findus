@@ -16,21 +16,15 @@ part 'user.freezed.dart';
 abstract class User with _$User implements IEntity {
   const factory User({
     @required UniqueId id,
-    @required StringSingleLine name,
+    @required StringSingleLine firstName,
+    @required StringSingleLine lastName,
     @required EmailAddress emailAddress,
   }) = _User;
 
   factory User.empty() => User(
         id: UniqueId(),
-        name: StringSingleLine(''),
+        firstName: StringSingleLine(''),
+        lastName: StringSingleLine(''),
         emailAddress: EmailAddress.empty(),
       );
-}
-
-extension UserX on User {
-  Option<ValueFailure<dynamic>> get failureOption {
-    return name.failureOrUnit
-        .andThen(emailAddress.failureOrUnit)
-        .fold((l) => some(l), (r) => none());
-  }
 }

@@ -14,6 +14,8 @@ abstract class RemoteLessonDataSource {
   Future<void> close();
 }
 
+@RegisterAs(RemoteLessonDataSource, env: Environment.prod)
+@injectable
 class RemoteLessonDataSourceImpl implements RemoteLessonDataSource {
   final Api _api;
   RemoteLessonDataSourceImpl(this._api);

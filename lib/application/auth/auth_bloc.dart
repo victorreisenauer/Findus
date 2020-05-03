@@ -24,9 +24,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Stream<AuthState> mapEventToState(AuthEvent event) async* {
     yield* event.map(
       authCheckRequested: (e) async* {
-        final userOption = await _authFacade.getSignedInUser();
+        final userOption = await _authFacade.getUser();
         yield userOption.fold(
-          () => AuthState.unauthenticated(emptyUser: User.empty()),
+          (failure) => AuthState.unauthenticated(),
           (user) => AuthState.authenticated(user),
         );
       },

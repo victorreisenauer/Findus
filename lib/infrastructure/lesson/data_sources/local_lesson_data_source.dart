@@ -15,6 +15,8 @@ abstract class LocalLessonDataSource {
   Future<void> close();
 }
 
+@RegisterAs(LocalLessonDataSource, env: Environment.prod)
+@lazySingleton
 class LocalLessonDataSourceImpl implements LocalLessonDataSource {
   final Box _lessonBox;
   final Box _resultBox;
@@ -50,6 +52,8 @@ class LocalLessonDataSourceImpl implements LocalLessonDataSource {
   }
 }
 
+@RegisterAs(LocalLessonDataSource, env: Environment.test)
+@lazySingleton
 class TestLocalLessonDataSourceImpl implements LocalLessonDataSource {
   final Box _lessonBox;
   final Box _resultBox;

@@ -1739,3 +1739,497 @@ abstract class NotOfObjectType<T> implements ValueFailure<T> {
   @override
   $NotOfObjectTypeCopyWith<T, NotOfObjectType<T>> get copyWith;
 }
+
+class _$ServerFailureTearOff {
+  const _$ServerFailureTearOff();
+
+  DeviceOffline deviceOffline() {
+    return const DeviceOffline();
+  }
+
+  ApiUnreachable apiUnreachable() {
+    return const ApiUnreachable();
+  }
+
+  NoSession noSession() {
+    return const NoSession();
+  }
+
+  InvalidSession invalidSession() {
+    return const InvalidSession();
+  }
+}
+
+// ignore: unused_element
+const $ServerFailure = _$ServerFailureTearOff();
+
+mixin _$ServerFailure {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result deviceOffline(),
+    @required Result apiUnreachable(),
+    @required Result noSession(),
+    @required Result invalidSession(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result deviceOffline(),
+    Result apiUnreachable(),
+    Result noSession(),
+    Result invalidSession(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result deviceOffline(DeviceOffline value),
+    @required Result apiUnreachable(ApiUnreachable value),
+    @required Result noSession(NoSession value),
+    @required Result invalidSession(InvalidSession value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result deviceOffline(DeviceOffline value),
+    Result apiUnreachable(ApiUnreachable value),
+    Result noSession(NoSession value),
+    Result invalidSession(InvalidSession value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $ServerFailureCopyWith<$Res> {
+  factory $ServerFailureCopyWith(
+          ServerFailure value, $Res Function(ServerFailure) then) =
+      _$ServerFailureCopyWithImpl<$Res>;
+}
+
+class _$ServerFailureCopyWithImpl<$Res>
+    implements $ServerFailureCopyWith<$Res> {
+  _$ServerFailureCopyWithImpl(this._value, this._then);
+
+  final ServerFailure _value;
+  // ignore: unused_field
+  final $Res Function(ServerFailure) _then;
+}
+
+abstract class $DeviceOfflineCopyWith<$Res> {
+  factory $DeviceOfflineCopyWith(
+          DeviceOffline value, $Res Function(DeviceOffline) then) =
+      _$DeviceOfflineCopyWithImpl<$Res>;
+}
+
+class _$DeviceOfflineCopyWithImpl<$Res>
+    extends _$ServerFailureCopyWithImpl<$Res>
+    implements $DeviceOfflineCopyWith<$Res> {
+  _$DeviceOfflineCopyWithImpl(
+      DeviceOffline _value, $Res Function(DeviceOffline) _then)
+      : super(_value, (v) => _then(v as DeviceOffline));
+
+  @override
+  DeviceOffline get _value => super._value as DeviceOffline;
+}
+
+class _$DeviceOffline with DiagnosticableTreeMixin implements DeviceOffline {
+  const _$DeviceOffline();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ServerFailure.deviceOffline()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ServerFailure.deviceOffline'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is DeviceOffline);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result deviceOffline(),
+    @required Result apiUnreachable(),
+    @required Result noSession(),
+    @required Result invalidSession(),
+  }) {
+    assert(deviceOffline != null);
+    assert(apiUnreachable != null);
+    assert(noSession != null);
+    assert(invalidSession != null);
+    return deviceOffline();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result deviceOffline(),
+    Result apiUnreachable(),
+    Result noSession(),
+    Result invalidSession(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deviceOffline != null) {
+      return deviceOffline();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result deviceOffline(DeviceOffline value),
+    @required Result apiUnreachable(ApiUnreachable value),
+    @required Result noSession(NoSession value),
+    @required Result invalidSession(InvalidSession value),
+  }) {
+    assert(deviceOffline != null);
+    assert(apiUnreachable != null);
+    assert(noSession != null);
+    assert(invalidSession != null);
+    return deviceOffline(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result deviceOffline(DeviceOffline value),
+    Result apiUnreachable(ApiUnreachable value),
+    Result noSession(NoSession value),
+    Result invalidSession(InvalidSession value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deviceOffline != null) {
+      return deviceOffline(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeviceOffline implements ServerFailure {
+  const factory DeviceOffline() = _$DeviceOffline;
+}
+
+abstract class $ApiUnreachableCopyWith<$Res> {
+  factory $ApiUnreachableCopyWith(
+          ApiUnreachable value, $Res Function(ApiUnreachable) then) =
+      _$ApiUnreachableCopyWithImpl<$Res>;
+}
+
+class _$ApiUnreachableCopyWithImpl<$Res>
+    extends _$ServerFailureCopyWithImpl<$Res>
+    implements $ApiUnreachableCopyWith<$Res> {
+  _$ApiUnreachableCopyWithImpl(
+      ApiUnreachable _value, $Res Function(ApiUnreachable) _then)
+      : super(_value, (v) => _then(v as ApiUnreachable));
+
+  @override
+  ApiUnreachable get _value => super._value as ApiUnreachable;
+}
+
+class _$ApiUnreachable with DiagnosticableTreeMixin implements ApiUnreachable {
+  const _$ApiUnreachable();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ServerFailure.apiUnreachable()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ServerFailure.apiUnreachable'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ApiUnreachable);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result deviceOffline(),
+    @required Result apiUnreachable(),
+    @required Result noSession(),
+    @required Result invalidSession(),
+  }) {
+    assert(deviceOffline != null);
+    assert(apiUnreachable != null);
+    assert(noSession != null);
+    assert(invalidSession != null);
+    return apiUnreachable();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result deviceOffline(),
+    Result apiUnreachable(),
+    Result noSession(),
+    Result invalidSession(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (apiUnreachable != null) {
+      return apiUnreachable();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result deviceOffline(DeviceOffline value),
+    @required Result apiUnreachable(ApiUnreachable value),
+    @required Result noSession(NoSession value),
+    @required Result invalidSession(InvalidSession value),
+  }) {
+    assert(deviceOffline != null);
+    assert(apiUnreachable != null);
+    assert(noSession != null);
+    assert(invalidSession != null);
+    return apiUnreachable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result deviceOffline(DeviceOffline value),
+    Result apiUnreachable(ApiUnreachable value),
+    Result noSession(NoSession value),
+    Result invalidSession(InvalidSession value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (apiUnreachable != null) {
+      return apiUnreachable(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApiUnreachable implements ServerFailure {
+  const factory ApiUnreachable() = _$ApiUnreachable;
+}
+
+abstract class $NoSessionCopyWith<$Res> {
+  factory $NoSessionCopyWith(NoSession value, $Res Function(NoSession) then) =
+      _$NoSessionCopyWithImpl<$Res>;
+}
+
+class _$NoSessionCopyWithImpl<$Res> extends _$ServerFailureCopyWithImpl<$Res>
+    implements $NoSessionCopyWith<$Res> {
+  _$NoSessionCopyWithImpl(NoSession _value, $Res Function(NoSession) _then)
+      : super(_value, (v) => _then(v as NoSession));
+
+  @override
+  NoSession get _value => super._value as NoSession;
+}
+
+class _$NoSession with DiagnosticableTreeMixin implements NoSession {
+  const _$NoSession();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ServerFailure.noSession()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ServerFailure.noSession'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoSession);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result deviceOffline(),
+    @required Result apiUnreachable(),
+    @required Result noSession(),
+    @required Result invalidSession(),
+  }) {
+    assert(deviceOffline != null);
+    assert(apiUnreachable != null);
+    assert(noSession != null);
+    assert(invalidSession != null);
+    return noSession();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result deviceOffline(),
+    Result apiUnreachable(),
+    Result noSession(),
+    Result invalidSession(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noSession != null) {
+      return noSession();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result deviceOffline(DeviceOffline value),
+    @required Result apiUnreachable(ApiUnreachable value),
+    @required Result noSession(NoSession value),
+    @required Result invalidSession(InvalidSession value),
+  }) {
+    assert(deviceOffline != null);
+    assert(apiUnreachable != null);
+    assert(noSession != null);
+    assert(invalidSession != null);
+    return noSession(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result deviceOffline(DeviceOffline value),
+    Result apiUnreachable(ApiUnreachable value),
+    Result noSession(NoSession value),
+    Result invalidSession(InvalidSession value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noSession != null) {
+      return noSession(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoSession implements ServerFailure {
+  const factory NoSession() = _$NoSession;
+}
+
+abstract class $InvalidSessionCopyWith<$Res> {
+  factory $InvalidSessionCopyWith(
+          InvalidSession value, $Res Function(InvalidSession) then) =
+      _$InvalidSessionCopyWithImpl<$Res>;
+}
+
+class _$InvalidSessionCopyWithImpl<$Res>
+    extends _$ServerFailureCopyWithImpl<$Res>
+    implements $InvalidSessionCopyWith<$Res> {
+  _$InvalidSessionCopyWithImpl(
+      InvalidSession _value, $Res Function(InvalidSession) _then)
+      : super(_value, (v) => _then(v as InvalidSession));
+
+  @override
+  InvalidSession get _value => super._value as InvalidSession;
+}
+
+class _$InvalidSession with DiagnosticableTreeMixin implements InvalidSession {
+  const _$InvalidSession();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ServerFailure.invalidSession()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ServerFailure.invalidSession'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is InvalidSession);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result deviceOffline(),
+    @required Result apiUnreachable(),
+    @required Result noSession(),
+    @required Result invalidSession(),
+  }) {
+    assert(deviceOffline != null);
+    assert(apiUnreachable != null);
+    assert(noSession != null);
+    assert(invalidSession != null);
+    return invalidSession();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result deviceOffline(),
+    Result apiUnreachable(),
+    Result noSession(),
+    Result invalidSession(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidSession != null) {
+      return invalidSession();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result deviceOffline(DeviceOffline value),
+    @required Result apiUnreachable(ApiUnreachable value),
+    @required Result noSession(NoSession value),
+    @required Result invalidSession(InvalidSession value),
+  }) {
+    assert(deviceOffline != null);
+    assert(apiUnreachable != null);
+    assert(noSession != null);
+    assert(invalidSession != null);
+    return invalidSession(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result deviceOffline(DeviceOffline value),
+    Result apiUnreachable(ApiUnreachable value),
+    Result noSession(NoSession value),
+    Result invalidSession(InvalidSession value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidSession != null) {
+      return invalidSession(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidSession implements ServerFailure {
+  const factory InvalidSession() = _$InvalidSession;
+}

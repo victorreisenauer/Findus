@@ -60,3 +60,13 @@ class LessonRepository implements LessonFacade {
     localData.close();
   }
 }
+
+@RegisterAs(LessonFacade, env: Environment.test)
+@lazySingleton
+class TestLessonRepository implements LessonFacade {
+  //final SampleLessonGenerator sampler = SampleLessonGenerator();
+  Either<LessonFailure, Stream<UniqueId>> getUserLessonIds() {}
+  Future<Either<LessonFailure, Lesson>> getLessonById(UniqueId id) {}
+  Future<void> update() {}
+  Future<void> saveResult(LessonResult result) {}
+}
