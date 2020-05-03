@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:auto_route/auto_route.dart';
 
 import '../../../../application/auth/auth_bloc.dart';
 import 'package:lrs_app_v3/presentation/routes/router.gr.dart';
@@ -12,8 +13,8 @@ class LogoutButton extends StatelessWidget {
         state.map(
           initial: (_) {},
           authenticated: (_) {},
-          unauthenticated: (_) =>
-              Router.navigator.pushReplacementNamed(Router.welcomePage),
+          unauthenticated: (_) => ExtendedNavigator.ofRouter<Router>()
+              .pushNamed(Routes.welcomePage),
         );
       },
       builder: (context, state) {

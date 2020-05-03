@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:auto_route/auto_route.dart';
 
 import 'package:lrs_app_v3/application/auth/auth_bloc.dart';
 import 'package:lrs_app_v3/presentation/routes/router.gr.dart';
@@ -99,7 +100,7 @@ class WelcomePage extends StatelessWidget {
             ),
             color: Colors.green[500],
             onPressed: () {
-              Router.navigator.pushReplacementNamed(Router.overviewPage);
+              ExtendedNavigator.ofRouter<Router>().pushOverviewPage();
             },
             child: Text(
               "Los Gehts!",
@@ -146,7 +147,7 @@ class WelcomePage extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Router.navigator.pushReplacementNamed(Router.signInPage);
+          ExtendedNavigator.ofRouter().pushSignInPage();
         },
       ),
     );

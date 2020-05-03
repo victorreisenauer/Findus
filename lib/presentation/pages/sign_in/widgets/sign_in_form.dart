@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flushbar/flushbar_helper.dart';
@@ -34,7 +35,7 @@ class SignInForm extends StatelessWidget {
 
             // if authentication was successful
             (_) {
-              Router.navigator.pushReplacementNamed(Router.welcomePage);
+              ExtendedNavigator.of(context).pushWelcomePage();
               context
                   .bloc<AuthBloc>()
                   .add(const AuthEvent.authCheckRequested());

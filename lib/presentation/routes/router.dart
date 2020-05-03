@@ -5,7 +5,7 @@ import 'package:lrs_app_v3/presentation/pages/overview/overview_page.dart';
 import 'package:lrs_app_v3/presentation/pages/exercise/exercise_page.dart';
 import 'package:lrs_app_v3/presentation/pages/welcome/welcome_page.dart';
 
-@MaterialAutoRouter()
+@MaterialAutoRouter(generateNavigationHelperExtension: true)
 class $Router {
   @initial
   WelcomePage welcomePage;

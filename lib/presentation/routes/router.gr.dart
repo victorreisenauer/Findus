@@ -72,3 +72,20 @@ class ExercisePageArguments {
   final ObjectList<Exercise> exerciseList;
   ExercisePageArguments({this.key, @required this.exerciseList});
 }
+
+//**************************************************************************
+// Navigation helper methods extension
+//***************************************************************************
+
+extension RouterNavigationHelperMethods on ExtendedNavigatorState {
+  Future pushWelcomePage() => pushNamed(Routes.welcomePage);
+  Future pushSignInPage() => pushNamed(Routes.signInPage);
+  Future pushOverviewPage() => pushNamed(Routes.overviewPage);
+  Future pushExercisePage({
+    Key key,
+    @required ObjectList<Exercise> exerciseList,
+  }) =>
+      pushNamed(Routes.exercisePage,
+          arguments:
+              ExercisePageArguments(key: key, exerciseList: exerciseList));
+}

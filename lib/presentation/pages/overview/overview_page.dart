@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
@@ -21,9 +22,9 @@ class OverviewPage extends StatelessWidget {
             child: BlocConsumer<LessonBloc, LessonState>(
               listener: (context, state) {
                 if (state is LessonStarted) {
-                  Router.navigator.pushNamed(Router.exercisePage,
-                      arguments: ExercisePageArguments(
-                          exerciseList: state.exerciseList));
+                  // add router here
+                  ExtendedNavigator.of(context)
+                      .pushExercisePage(exerciseList: state.exerciseList);
                 }
               },
               builder: (context, state) {

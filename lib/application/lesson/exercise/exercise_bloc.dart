@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:lrs_app_v3/presentation/pages/exercise/templates/template_0001/template_0001.dart';
 import 'package:lrs_app_v3/presentation/pages/exercise/templates/template_0002/template_0002.dart';
@@ -76,12 +77,13 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
           );
         } else {
           getIt<LessonBloc>().add(LessonEvent.finishLesson(this._results));
-          Router.navigator.pushNamed(Router.overviewPage);
+          ExtendedNavigator.ofRouter<Router>().pushOverviewPage();
           yield ExerciseState.allExercisesCompleted();
         }
       },
       abortExercise: (_) async* {
-        Router.navigator.pushNamed(Router.overviewPage);
+        ExtendedNavigator.ofRouter<Router>().pushOverviewPage();
+        ;
       },
       finishExercise: (e) async* {
         this._results.add(e.result);
