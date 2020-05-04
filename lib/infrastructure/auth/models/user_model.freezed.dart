@@ -15,9 +15,9 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 class _$UserModelTearOff {
   const _$UserModelTearOff();
 
-  _UserModel call({@required String userId, @required String email}) {
+  _UserModel call({@required int id, @required String email}) {
     return _UserModel(
-      userId: userId,
+      id: id,
       email: email,
     );
   }
@@ -27,7 +27,7 @@ class _$UserModelTearOff {
 const $UserModel = _$UserModelTearOff();
 
 mixin _$UserModel {
-  String get userId;
+  int get id;
   String get email;
 
   Map<String, dynamic> toJson();
@@ -37,7 +37,7 @@ mixin _$UserModel {
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
-  $Res call({String userId, String email});
+  $Res call({int id, String email});
 }
 
 class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
@@ -49,11 +49,11 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
 
   @override
   $Res call({
-    Object userId = freezed,
+    Object id = freezed,
     Object email = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: userId == freezed ? _value.userId : userId as String,
+      id: id == freezed ? _value.id : id as int,
       email: email == freezed ? _value.email : email as String,
     ));
   }
@@ -64,7 +64,7 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
           _UserModel value, $Res Function(_UserModel) then) =
       __$UserModelCopyWithImpl<$Res>;
   @override
-  $Res call({String userId, String email});
+  $Res call({int id, String email});
 }
 
 class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
@@ -77,11 +77,11 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object userId = freezed,
+    Object id = freezed,
     Object email = freezed,
   }) {
     return _then(_UserModel(
-      userId: userId == freezed ? _value.userId : userId as String,
+      id: id == freezed ? _value.id : id as int,
       email: email == freezed ? _value.email : email as String,
     ));
   }
@@ -89,29 +89,29 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_UserModel implements _UserModel {
-  const _$_UserModel({@required this.userId, @required this.email})
-      : assert(userId != null),
+  const _$_UserModel({@required this.id, @required this.email})
+      : assert(id != null),
         assert(email != null);
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$_$_UserModelFromJson(json);
 
   @override
-  final String userId;
+  final int id;
   @override
   final String email;
 
   @override
   String toString() {
-    return 'UserModel(userId: $userId, email: $email)';
+    return 'UserModel(id: $id, email: $email)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _UserModel &&
-            (identical(other.userId, userId) ||
-                const DeepCollectionEquality().equals(other.userId, userId)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)));
   }
@@ -119,7 +119,7 @@ class _$_UserModel implements _UserModel {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(userId) ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(email);
 
   @override
@@ -133,14 +133,14 @@ class _$_UserModel implements _UserModel {
 }
 
 abstract class _UserModel implements UserModel {
-  const factory _UserModel({@required String userId, @required String email}) =
+  const factory _UserModel({@required int id, @required String email}) =
       _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
 
   @override
-  String get userId;
+  int get id;
   @override
   String get email;
   @override

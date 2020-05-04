@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:mockito/mockito.dart';
 import 'package:get_it/get_it.dart';
 import 'package:lrs_data_client/lrs_api.dart';
 import 'package:hive/hive.dart';

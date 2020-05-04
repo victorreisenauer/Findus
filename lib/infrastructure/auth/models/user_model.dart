@@ -12,7 +12,7 @@ part 'user_model.g.dart';
 @freezed
 abstract class UserModel with _$UserModel {
   const factory UserModel({
-    @required String userId,
+    @required int id,
     @required String email,
   }) = _UserModel;
 
@@ -23,7 +23,8 @@ abstract class UserModel with _$UserModel {
   /// turns [User] into [UserModel]
   factory UserModel.fromDomain(User user) {
     return UserModel(
-        userId: user.id.getOrCrash(), email: user.emailAddress.getOrCrash());
+        id: int.parse(user.id.getOrCrash()),
+        email: user.emailAddress.getOrCrash());
   }
 }
 
@@ -31,7 +32,7 @@ abstract class UserModel with _$UserModel {
 extension UserModelX on UserModel {
   User toDomain(firstName, lastName) {
     return User(
-        id: UniqueId.fromUniqueId(userId),
+        id: UniqueId.fromUniqueId(id.toString()),
         firstName: StringSingleLine(firstName),
         lastName: StringSingleLine(lastName),
         emailAddress: EmailAddress(email));

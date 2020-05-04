@@ -13,7 +13,7 @@ import '../core/exceptions.dart';
 
 @RegisterAs(AuthFacade, env: Environment.test)
 @lazySingleton
-class TestAuthRepository extends Mock implements AuthFacade {}
+class MockAuthRepository extends Mock implements AuthFacade {}
 
 @RegisterAs(AuthFacade, env: Environment.prod)
 @injectable

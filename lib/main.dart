@@ -10,10 +10,10 @@ import 'package:lrs_app_v3/simple_bloc_delegate.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   BlocSupervisor.delegate = SimpleBlocDelegate();
-  configureInjection(Environment.prod);
   final appDocumentDirectory =
       await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
+  configureInjection(Environment.prod);
 
   runApp(LrsApp());
 }

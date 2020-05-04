@@ -39,10 +39,14 @@ void $initGetIt(GetIt g, {String environment}) {
 
   //Register test Dependencies --------
   if (environment == 'test') {
-    g.registerLazySingleton<AuthFacade>(() => TestAuthRepository());
+    g.registerLazySingleton<AuthFacade>(() => MockAuthRepository());
     g.registerLazySingleton<LessonFacade>(() => TestLessonRepository());
+    g.registerLazySingleton<LocalAuthDataSource>(
+        () => TestLocalAuthDataSourceImpl());
     g.registerLazySingleton<LocalLessonDataSource>(() =>
         TestLocalLessonDataSourceImpl(g<Box<dynamic>>(), g<Box<dynamic>>()));
+    g.registerLazySingleton<RemoteAuthDataSource>(
+        () => TestRemoteAuthDataSourceImpl());
   }
 
   //Register prod Dependencies --------
