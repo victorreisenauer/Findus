@@ -16,9 +16,11 @@ abstract class ExerciseModel with _$ExerciseModel {
     @required Map data,
   }) = _ExerciseModel;
 
+  /// turns Json into [ExerciseModel]
   factory ExerciseModel.fromJson(Map<String, dynamic> json) =>
       _$ExerciseModelFromJson(json);
 
+  /// turns [Exercise] into [ExerciseModel]
   factory ExerciseModel.fromDomain(Exercise exercise) {
     return ExerciseModel(
         id: exercise.id.getOrCrash(),
@@ -27,10 +29,11 @@ abstract class ExerciseModel with _$ExerciseModel {
   }
 }
 
+/// turns [ExerciseModel] into [Exercise]
 extension ExerciseModelX on ExerciseModel {
   Exercise toDomain() {
     return Exercise(
-      id: UniqueId(),
+      id: UniqueId.fromUniqueId(id),
       type: ExerciseType(type),
       data: ExerciseData(data),
     );

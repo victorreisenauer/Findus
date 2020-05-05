@@ -14,37 +14,45 @@ import 'package:lrs_app_v3/presentation/pages/exercise/exercise_page.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/domain/lesson/exercise/exercise.dart';
 
-class Router {
+abstract class Routes {
   static const welcomePage = '/';
   static const signInPage = '/sign-in-page';
   static const overviewPage = '/overview-page';
   static const exercisePage = '/exercise-page';
-  static final navigator = ExtendedNavigator();
-  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+}
+
+class Router extends RouterBase {
+  //This will probably be removed in future versions
+  //you should call ExtendedNavigator.ofRouter<Router>() directly
+  static ExtendedNavigatorState get navigator =>
+      ExtendedNavigator.ofRouter<Router>();
+
+  @override
+  Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
-      case Router.welcomePage:
+      case Routes.welcomePage:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => WelcomePage(),
+          builder: (context) => WelcomePage(),
           settings: settings,
         );
-      case Router.signInPage:
+      case Routes.signInPage:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => SignInPage(),
+          builder: (context) => SignInPage(),
           settings: settings,
         );
-      case Router.overviewPage:
+      case Routes.overviewPage:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => OverviewPage(),
+          builder: (context) => OverviewPage(),
           settings: settings,
         );
-      case Router.exercisePage:
+      case Routes.exercisePage:
         if (hasInvalidArgs<ExercisePageArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<ExercisePageArguments>(args);
         }
         final typedArgs = args as ExercisePageArguments;
         return MaterialPageRoute<dynamic>(
-          builder: (_) => ExercisePage(
+          builder: (context) => ExercisePage(
               key: typedArgs.key, exerciseList: typedArgs.exerciseList),
           settings: settings,
         );

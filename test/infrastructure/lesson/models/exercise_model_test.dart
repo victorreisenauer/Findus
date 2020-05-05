@@ -2,17 +2,17 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lrs_app_v3/infrastructure/sample_data/sample_exercise.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/models/exercise_model.dart';
-import 'package:lrs_app_v3/domain/lesson/exercise.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 
 main() {
   // exercise model builds correctly from json
   SampleExerciseGenerator sampler = SampleExerciseGenerator();
   print(sampler.getSampleEncodedJson());
-  print(sampler.getSampleSerializableList());
+  //print(sampler.getSampleSerializableList());
 
   Map json = jsonDecode(sampler.getSampleEncodedJson());
   ExerciseModel model = ExerciseModel.fromJson(json);
-  print(model);
+  //print(model);
 
   // convert to exercise
   Exercise exercise = model.toDomain();
@@ -20,5 +20,8 @@ main() {
 
   // convert back to model
   ExerciseModel rebuiltModel = ExerciseModel.fromDomain(exercise);
-  print(rebuiltModel);
+  //print(rebuiltModel);
+
+  // convert back to json
+  print(rebuiltModel.toJson());
 }

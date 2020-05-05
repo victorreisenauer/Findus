@@ -27,6 +27,8 @@ dependencies:
   path_provider:
   draggable_scrollbar:
   audioplayers:
+  data_connection_checker:
+  hive:
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +40,7 @@ dev_dependencies:
   bloc_test:
   test:
   json_serializable:
+  hive_generator:
 
 flutter:
   uses-material-design: true

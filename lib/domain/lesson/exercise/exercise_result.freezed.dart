@@ -13,7 +13,7 @@ class _$ExerciseResultTearOff {
   const _$ExerciseResultTearOff();
 
   _ExerciseResult call(
-      {@required UniqueId id, @required Map<dynamic, dynamic> data}) {
+      {@required UniqueId id, @required ExerciseResultData data}) {
     return _ExerciseResult(
       id: id,
       data: data,
@@ -26,7 +26,7 @@ const $ExerciseResult = _$ExerciseResultTearOff();
 
 mixin _$ExerciseResult {
   UniqueId get id;
-  Map<dynamic, dynamic> get data;
+  ExerciseResultData get data;
 
   $ExerciseResultCopyWith<ExerciseResult> get copyWith;
 }
@@ -35,7 +35,7 @@ abstract class $ExerciseResultCopyWith<$Res> {
   factory $ExerciseResultCopyWith(
           ExerciseResult value, $Res Function(ExerciseResult) then) =
       _$ExerciseResultCopyWithImpl<$Res>;
-  $Res call({UniqueId id, Map<dynamic, dynamic> data});
+  $Res call({UniqueId id, ExerciseResultData data});
 }
 
 class _$ExerciseResultCopyWithImpl<$Res>
@@ -53,7 +53,7 @@ class _$ExerciseResultCopyWithImpl<$Res>
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
-      data: data == freezed ? _value.data : data as Map<dynamic, dynamic>,
+      data: data == freezed ? _value.data : data as ExerciseResultData,
     ));
   }
 }
@@ -64,7 +64,7 @@ abstract class _$ExerciseResultCopyWith<$Res>
           _ExerciseResult value, $Res Function(_ExerciseResult) then) =
       __$ExerciseResultCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, Map<dynamic, dynamic> data});
+  $Res call({UniqueId id, ExerciseResultData data});
 }
 
 class __$ExerciseResultCopyWithImpl<$Res>
@@ -84,7 +84,7 @@ class __$ExerciseResultCopyWithImpl<$Res>
   }) {
     return _then(_ExerciseResult(
       id: id == freezed ? _value.id : id as UniqueId,
-      data: data == freezed ? _value.data : data as Map<dynamic, dynamic>,
+      data: data == freezed ? _value.data : data as ExerciseResultData,
     ));
   }
 }
@@ -100,7 +100,7 @@ class _$_ExerciseResult
   @override
   final UniqueId id;
   @override
-  final Map<dynamic, dynamic> data;
+  final ExerciseResultData data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -140,12 +140,12 @@ class _$_ExerciseResult
 abstract class _ExerciseResult implements ExerciseResult {
   const factory _ExerciseResult(
       {@required UniqueId id,
-      @required Map<dynamic, dynamic> data}) = _$_ExerciseResult;
+      @required ExerciseResultData data}) = _$_ExerciseResult;
 
   @override
   UniqueId get id;
   @override
-  Map<dynamic, dynamic> get data;
+  ExerciseResultData get data;
   @override
   _$ExerciseResultCopyWith<_ExerciseResult> get copyWith;
 }

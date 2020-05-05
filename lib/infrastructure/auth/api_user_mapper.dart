@@ -10,7 +10,7 @@ class ApiUserMapper {
     return _user == null
         ? null
         : User(
-            id: UniqueId.fromApiId(_user.id.toString()),
+            id: UniqueId.fromUniqueId(_user.id.toString()),
             name: StringSingleLine(_user.name),
             emailAddress: EmailAddress(_user.email),
           );
