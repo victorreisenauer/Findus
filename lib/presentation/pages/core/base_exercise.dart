@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lrs_app_v3/application/lesson/exercise/core/base_template_bloc.dart';
 import 'package:lrs_app_v3/presentation/pages/core/background.dart';
+import 'package:lrs_app_v3/presentation/pages/core/progressBar.dart';
 
 class BaseExercise extends StatelessWidget {
   final String help;
@@ -74,9 +75,13 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
                       children: <Widget>[
                         Align(
                           alignment: Alignment.topCenter,
-                          child: Container(
-                            // TODO create ProgressBar
-                            child: Text('ProgressBar placeholder'),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 15,
+                              width: 300,
+                              child: CustomProgressBar(),
+                            ),
                           ),
                         ),
                         Align(
