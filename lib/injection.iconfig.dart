@@ -33,12 +33,19 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<ProgressBloc>(() => ProgressBloc());
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<AuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<AuthFacade>()));
+  g.registerLazySingleton<AuthRepository>(() => AuthRepository(
+        g<LocalAuthDataSource>(),
+        g<RemoteAuthDataSource>(),
+        g<NetworkInfo>(),
+      ));
   g.registerFactory<LessonBloc>(() => LessonBloc(g<LessonFacade>()));
 
   //Register test Dependencies --------
   if (environment == 'test') {
     g.registerLazySingleton<AuthFacade>(() => MockAuthRepository());
     g.registerLazySingleton<LessonFacade>(() => TestLessonRepository());
+    g.registerLazySingleton<LocalAuthDataSource>(
+        () => MockLocalAuthDataSourceImpl());
     g.registerLazySingleton<LocalLessonDataSource>(() =>
         TestLocalLessonDataSourceImpl(g<Box<dynamic>>(), g<Box<dynamic>>()));
     g.registerLazySingleton<RemoteAuthDataSource>(
@@ -55,16 +62,17 @@ void $initGetIt(GetIt g, {String environment}) {
         () => RemoteAuthDataSourceImpl(g<Api>()));
     g.registerFactory<RemoteLessonDataSource>(
         () => RemoteLessonDataSourceImpl(g<Api>()));
-    g.registerFactory<AuthFacade>(() => AuthRepository(
-          g<LocalAuthDataSource>(),
-          g<RemoteAuthDataSource>(),
-          g<NetworkInfo>(),
-        ));
     g.registerLazySingleton<LessonFacade>(() => LessonRepository(
           networkInfo: g<NetworkInfo>(),
           localData: g<LocalLessonDataSource>(),
           remoteData: g<RemoteLessonDataSource>(),
         ));
+  }
+
+  //Register dev Dependencies --------
+  if (environment == 'dev') {
+    g.registerLazySingleton<LocalAuthDataSource>(
+        () => DevLocalAuthDataSourceImpl());
   }
 }
 

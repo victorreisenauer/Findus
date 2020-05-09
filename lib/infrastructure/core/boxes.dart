@@ -1,14 +1,20 @@
 import 'package:hive/hive.dart';
+import 'package:injectable/injectable.dart';
 
-/// class for accessing storage boxes
-abstract class Boxes {
-  static Future<Box> get sessionBox => Hive.openBox("sessionBox");
-  static Future<Box> get userBox => Hive.openBox("userBox");
-  static Future<Box> get personalBox => Hive.openBox("personalBox");
+abstract class ProdBoxes {
+  static Future<Box> get sessionBox => Hive.openBox("prodSessionBox");
+  static Future<Box> get userBox => Hive.openBox("ProdUserBox");
+  static Future<Box> get personalBox => Hive.openBox("prodPersonalBox");
 }
 
-abstract class SampleBoxes {
-  static Future<Box> get sessionBox => Hive.openBox("sessionBox");
-  static Future<Box> get userBox => Hive.openBox("userBox");
-  static Future<Box> get personalBox => Hive.openBox("personalBox");
+abstract class DevBoxes {
+  static Future<Box> get sessionBox => Hive.openBox("devSessionBox");
+  static Future<Box> get userBox => Hive.openBox("devUserBox");
+  static Future<Box> get personalBox => Hive.openBox("sevPersonalBox");
+}
+
+abstract class TestBoxes {
+  static Future<Box> get sessionBox => Hive.openBox("testSessionBox");
+  static Future<Box> get userBox => Hive.openBox("testUserBox");
+  static Future<Box> get personalBox => Hive.openBox("testPersonalBox");
 }

@@ -106,7 +106,7 @@ main() {
     group('on signInWithEmailAndPassword => ', () {
       group('if online => ', () {
         test('on correct login, signs in user', () {
-          when(remoteData.signIn(username: any, password: any))
+          when(remoteData.signIn(username: "test", password: "test"))
               .thenAnswer((realInvocation) => null);
         });
         test('on InvalidCredentialsException, returns authfailure option', () {

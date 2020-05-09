@@ -35,7 +35,7 @@ main() {
 
         await testLocalData.cacheUserModel(sampleUserModel);
 
-        var box = await Boxes.userBox;
+        var box = await TestBoxes.personalBox;
         Map userModelJson = box.get(sampleUserModel.id);
 
         expect(UserModel.fromJson(userModelJson.cast<String, dynamic>()),
@@ -65,7 +65,7 @@ main() {
       test('if successful, session gets cached', () async {
         await testLocalData.cacheSession(userId, sampleSession);
 
-        var box = await Boxes.sessionBox;
+        var box = await TestBoxes.sessionBox;
 
         expect(box.get(userId), sampleSession);
       });
@@ -90,7 +90,7 @@ main() {
       test('if successful, PersonalData gets cached', () async {
         await testLocalData.cachePersonalData(userId, samplePersonalData);
 
-        var box = await Boxes.personalBox;
+        var box = await TestBoxes.personalBox;
 
         expect(box.get(userId), samplePersonalData.toJson());
       });

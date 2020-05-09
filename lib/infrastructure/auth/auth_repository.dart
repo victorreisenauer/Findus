@@ -15,8 +15,7 @@ import '../core/exceptions.dart';
 @lazySingleton
 class MockAuthRepository extends Mock implements AuthFacade {}
 
-@RegisterAs(AuthFacade, env: Environment.prod)
-@injectable
+@lazySingleton
 class AuthRepository implements AuthFacade {
   final LocalAuthDataSource _localData;
   final RemoteAuthDataSource _remoteData;
