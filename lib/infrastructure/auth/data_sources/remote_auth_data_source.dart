@@ -17,6 +17,7 @@ import '../../core/exceptions.dart';
 /// authentication.
 abstract class RemoteAuthDataSource {
   Future<UserModel> getCurrentUser();
+  Future<String> get session;
   Future<void> signOut();
   Future<void> signIn({@required String username, @required String password});
 }
@@ -32,6 +33,8 @@ class RemoteAuthDataSourceImpl implements RemoteAuthDataSource {
   Api _api;
 
   RemoteAuthDataSourceImpl(this._api);
+
+  Future<String> get session async => _api.session;
 
   Future<bool> get _sessionIsValid async =>
       _api.session != null && await _api.validateSession();

@@ -14,6 +14,7 @@ abstract class UserModel with _$UserModel {
   const factory UserModel({
     @required int id,
     @required String email,
+    bool active,
   }) = _UserModel;
 
   /// turns Json into [UserModel]
@@ -21,20 +22,22 @@ abstract class UserModel with _$UserModel {
       _$UserModelFromJson(json);
 
   /// turns [User] into [UserModel]
-  factory UserModel.fromDomain(User user) {
+  factory UserModel.fromDomain(User user, bool active) {
     return UserModel(
-        id: int.parse(user.id.getOrCrash()),
-        email: user.emailAddress.getOrCrash());
+      id: int.parse(user.id.getOrCrash()),
+      email: user.emailAddress.getOrCrash(),
+      active: active,
+    );
   }
 }
 
-/// turns [ExerciseModel] into [Exercise]
+/// turns [UserModel] into [User]
 extension UserModelX on UserModel {
-  User toDomain(firstName, lastName) {
+  User toDomain(PersonalData data) {
     return User(
-        id: UniqueId.fromUniqueId(id.toString()),
-        firstName: StringSingleLine(firstName),
-        lastName: StringSingleLine(lastName),
-        emailAddress: EmailAddress(email));
+      id: UniqueId.fromUniqueId(id.toString()),
+      personalData: data,
+      emailAddress: EmailAddress(email),
+    );
   }
 }

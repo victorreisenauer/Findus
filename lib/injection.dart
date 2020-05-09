@@ -21,6 +21,5 @@ void configureInjection(String env) => $initGetIt(getIt, environment: env);
 abstract class RegisterModule {
   @lazySingleton
   Api get api => Api('https://api.lrs.hndrk.xyz/');
-  Box box(String name) => Hive.box(name);
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
 }

@@ -28,25 +28,67 @@ class AuthRepository implements AuthFacade {
 
   Future<Either<AuthFailure, User>> getUser() async {
     if (await _deviceIsOnline) {
-      _remoteData
+      return _remoteData
           .getCurrentUser()
-          .then((v) async {
-            UserModel model = await _remoteData.getCurrentUser();
-            // get first and last name for userId from cache
-            //return model.toDomain(firstName, lastName)
+          .then((model) async {
+            _localData.cacheSession(
+                model.id.toString(), await _remoteData.session);
+            try {
+              PersonalDataModel data =
+                  await _localData.getPersonalData(model.id.toString());
+              return right<AuthFailure, User>(model.toDomain(data.toDomain()));
+            } on KeyNotFoundException {
+              return right<AuthFailure, User>(
+                  model.toDomain(PersonalData.empty()));
+            }
           })
-          .catchError(() => AuthFailure.serverError(),
+          .catchError((_) => left<AuthFailure, User>(AuthFailure.serverError()),
               test: (e) => e is ServerNotReachableException)
-          .catchError(() => AuthFailure.loginRequired(),
+          .catchError(
+              (_) => left<AuthFailure, User>(AuthFailure.loginRequired()),
               test: (e) => e is InvalidSessionException);
     } else {
-      // work with cache
+      List<UserModel> models = await _localData
+          .getAllUserModels()
+          .where((model) => model.active != null)
+          .where((model) => model.active)
+          .toList();
+      if (models.isEmpty) return right(User.empty());
+      UserModel model = models.first;
+      _localData.getSession(model.id.toString());
+      PersonalDataModel data =
+          await _localData.getPersonalData(model.id.toString());
+      User user = model.toDomain(data.toDomain());
+      return right(user);
+      // catch KeyNotFoundException
     }
   }
 
   Future<Option<AuthFailure>> signInWithEmailAndPassword({
     @required EmailAddress emailAddress,
     @required Password password,
-  }) async {}
-  Future<Option<AuthFailure>> signOut() async {}
+  }) async {
+    if (await _deviceIsOnline) {
+      _remoteData
+          .signIn(
+              username: emailAddress.getOrCrash(),
+              password: password.getOrCrash())
+          .catchError(
+              () => optionOf(AuthFailure.invalidEmailAndPasswordCombination()),
+              test: (e) => e is InvalidSessionException);
+      // TODO: solve if logins are via userid or emailaddress
+      return none();
+    } else {
+      return optionOf(AuthFailure.serverError());
+    }
+  }
+
+  Future<Option<AuthFailure>> signOut() async {
+    if (await _deviceIsOnline) {
+      _remoteData.signOut();
+      return none();
+    } else {
+      return optionOf(AuthFailure.serverError());
+    }
+  }
 }

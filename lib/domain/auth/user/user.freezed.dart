@@ -14,13 +14,11 @@ class _$UserTearOff {
 
   _User call(
       {@required UniqueId id,
-      @required StringSingleLine firstName,
-      @required StringSingleLine lastName,
+      @required PersonalData personalData,
       @required EmailAddress emailAddress}) {
     return _User(
       id: id,
-      firstName: firstName,
-      lastName: lastName,
+      personalData: personalData,
       emailAddress: emailAddress,
     );
   }
@@ -31,8 +29,7 @@ const $User = _$UserTearOff();
 
 mixin _$User {
   UniqueId get id;
-  StringSingleLine get firstName;
-  StringSingleLine get lastName;
+  PersonalData get personalData;
   EmailAddress get emailAddress;
 
   $UserCopyWith<User> get copyWith;
@@ -42,10 +39,9 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call(
-      {UniqueId id,
-      StringSingleLine firstName,
-      StringSingleLine lastName,
-      EmailAddress emailAddress});
+      {UniqueId id, PersonalData personalData, EmailAddress emailAddress});
+
+  $PersonalDataCopyWith<$Res> get personalData;
 }
 
 class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
@@ -58,21 +54,28 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
-    Object firstName = freezed,
-    Object lastName = freezed,
+    Object personalData = freezed,
     Object emailAddress = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
-      firstName: firstName == freezed
-          ? _value.firstName
-          : firstName as StringSingleLine,
-      lastName:
-          lastName == freezed ? _value.lastName : lastName as StringSingleLine,
+      personalData: personalData == freezed
+          ? _value.personalData
+          : personalData as PersonalData,
       emailAddress: emailAddress == freezed
           ? _value.emailAddress
           : emailAddress as EmailAddress,
     ));
+  }
+
+  @override
+  $PersonalDataCopyWith<$Res> get personalData {
+    if (_value.personalData == null) {
+      return null;
+    }
+    return $PersonalDataCopyWith<$Res>(_value.personalData, (value) {
+      return _then(_value.copyWith(personalData: value));
+    });
   }
 }
 
@@ -81,10 +84,10 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$UserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {UniqueId id,
-      StringSingleLine firstName,
-      StringSingleLine lastName,
-      EmailAddress emailAddress});
+      {UniqueId id, PersonalData personalData, EmailAddress emailAddress});
+
+  @override
+  $PersonalDataCopyWith<$Res> get personalData;
 }
 
 class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
@@ -98,17 +101,14 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
-    Object firstName = freezed,
-    Object lastName = freezed,
+    Object personalData = freezed,
     Object emailAddress = freezed,
   }) {
     return _then(_User(
       id: id == freezed ? _value.id : id as UniqueId,
-      firstName: firstName == freezed
-          ? _value.firstName
-          : firstName as StringSingleLine,
-      lastName:
-          lastName == freezed ? _value.lastName : lastName as StringSingleLine,
+      personalData: personalData == freezed
+          ? _value.personalData
+          : personalData as PersonalData,
       emailAddress: emailAddress == freezed
           ? _value.emailAddress
           : emailAddress as EmailAddress,
@@ -119,26 +119,22 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 class _$_User with DiagnosticableTreeMixin implements _User {
   const _$_User(
       {@required this.id,
-      @required this.firstName,
-      @required this.lastName,
+      @required this.personalData,
       @required this.emailAddress})
       : assert(id != null),
-        assert(firstName != null),
-        assert(lastName != null),
+        assert(personalData != null),
         assert(emailAddress != null);
 
   @override
   final UniqueId id;
   @override
-  final StringSingleLine firstName;
-  @override
-  final StringSingleLine lastName;
+  final PersonalData personalData;
   @override
   final EmailAddress emailAddress;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, firstName: $firstName, lastName: $lastName, emailAddress: $emailAddress)';
+    return 'User(id: $id, personalData: $personalData, emailAddress: $emailAddress)';
   }
 
   @override
@@ -147,8 +143,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
     properties
       ..add(DiagnosticsProperty('type', 'User'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('firstName', firstName))
-      ..add(DiagnosticsProperty('lastName', lastName))
+      ..add(DiagnosticsProperty('personalData', personalData))
       ..add(DiagnosticsProperty('emailAddress', emailAddress));
   }
 
@@ -158,12 +153,9 @@ class _$_User with DiagnosticableTreeMixin implements _User {
         (other is _User &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.firstName, firstName) ||
+            (identical(other.personalData, personalData) ||
                 const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
-            (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
+                    .equals(other.personalData, personalData)) &&
             (identical(other.emailAddress, emailAddress) ||
                 const DeepCollectionEquality()
                     .equals(other.emailAddress, emailAddress)));
@@ -173,8 +165,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(firstName) ^
-      const DeepCollectionEquality().hash(lastName) ^
+      const DeepCollectionEquality().hash(personalData) ^
       const DeepCollectionEquality().hash(emailAddress);
 
   @override
@@ -185,16 +176,13 @@ class _$_User with DiagnosticableTreeMixin implements _User {
 abstract class _User implements User {
   const factory _User(
       {@required UniqueId id,
-      @required StringSingleLine firstName,
-      @required StringSingleLine lastName,
+      @required PersonalData personalData,
       @required EmailAddress emailAddress}) = _$_User;
 
   @override
   UniqueId get id;
   @override
-  StringSingleLine get firstName;
-  @override
-  StringSingleLine get lastName;
+  PersonalData get personalData;
   @override
   EmailAddress get emailAddress;
   @override

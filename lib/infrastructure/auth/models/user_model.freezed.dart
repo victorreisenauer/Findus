@@ -15,10 +15,11 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 class _$UserModelTearOff {
   const _$UserModelTearOff();
 
-  _UserModel call({@required int id, @required String email}) {
+  _UserModel call({@required int id, @required String email, bool active}) {
     return _UserModel(
       id: id,
       email: email,
+      active: active,
     );
   }
 }
@@ -29,6 +30,7 @@ const $UserModel = _$UserModelTearOff();
 mixin _$UserModel {
   int get id;
   String get email;
+  bool get active;
 
   Map<String, dynamic> toJson();
   $UserModelCopyWith<UserModel> get copyWith;
@@ -37,7 +39,7 @@ mixin _$UserModel {
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
-  $Res call({int id, String email});
+  $Res call({int id, String email, bool active});
 }
 
 class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
@@ -51,10 +53,12 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
   $Res call({
     Object id = freezed,
     Object email = freezed,
+    Object active = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as int,
       email: email == freezed ? _value.email : email as String,
+      active: active == freezed ? _value.active : active as bool,
     ));
   }
 }
@@ -64,7 +68,7 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
           _UserModel value, $Res Function(_UserModel) then) =
       __$UserModelCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String email});
+  $Res call({int id, String email, bool active});
 }
 
 class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
@@ -79,17 +83,19 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
   $Res call({
     Object id = freezed,
     Object email = freezed,
+    Object active = freezed,
   }) {
     return _then(_UserModel(
       id: id == freezed ? _value.id : id as int,
       email: email == freezed ? _value.email : email as String,
+      active: active == freezed ? _value.active : active as bool,
     ));
   }
 }
 
 @JsonSerializable()
 class _$_UserModel implements _UserModel {
-  const _$_UserModel({@required this.id, @required this.email})
+  const _$_UserModel({@required this.id, @required this.email, this.active})
       : assert(id != null),
         assert(email != null);
 
@@ -100,10 +106,12 @@ class _$_UserModel implements _UserModel {
   final int id;
   @override
   final String email;
+  @override
+  final bool active;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email)';
+    return 'UserModel(id: $id, email: $email, active: $active)';
   }
 
   @override
@@ -113,14 +121,17 @@ class _$_UserModel implements _UserModel {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)));
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.active, active) ||
+                const DeepCollectionEquality().equals(other.active, active)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(email);
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(active);
 
   @override
   _$UserModelCopyWith<_UserModel> get copyWith =>
@@ -133,8 +144,8 @@ class _$_UserModel implements _UserModel {
 }
 
 abstract class _UserModel implements UserModel {
-  const factory _UserModel({@required int id, @required String email}) =
-      _$_UserModel;
+  const factory _UserModel(
+      {@required int id, @required String email, bool active}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -143,6 +154,8 @@ abstract class _UserModel implements UserModel {
   int get id;
   @override
   String get email;
+  @override
+  bool get active;
   @override
   _$UserModelCopyWith<_UserModel> get copyWith;
 }
