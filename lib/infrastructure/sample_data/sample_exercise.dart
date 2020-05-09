@@ -17,17 +17,13 @@ class SampleExerciseGenerator implements SamplesGenerator {
     'sampleType4'
   ];
   final List<Map> jsonData = [
-    jerryJsonData,
+    template0001Sample,
     {
       "1": "someotherdata",
       "2": [1, 2, 3, 5],
       "3": {"3.1": "and eggs"}
     },
-    {
-      "1": "someotherdata",
-      "2": [1, 2, 3, 5],
-      "3": {"3.1": "and eggs"}
-    },
+    template0003Sample
   ];
 
   String getSampleEncodedJson() =>
@@ -59,7 +55,7 @@ class SampleExerciseGenerator implements SamplesGenerator {
       ObjectList([getSampleObject(), getSampleObject()].toImmutableList());
 }
 
-Map jerryJsonData = {
+Map template0001Sample = {
   "1": [
     'Renato ',
     'und ',
@@ -248,4 +244,20 @@ Map jerryJsonData = {
   ],
   "4": ['heit', 'keit'],
   "5": [1, 1, 1, 0, 0, 1]
+};
+
+Map template0003Sample = {
+  "1":
+      "Anna stand an diesem Morgen früh auf. Sie wollte spazieren gehen, um sich die aufgehende Sonne anzuschauen und Fotos zu schießen. Als sie schon fünfzehn Minuten unterwegs war, fiel ihr auf, dass sie ihre Kamera vergessen hatte! Der Sonnenaufgang war allerdings so schön, dass sie ihn auch ohne Foto nicht mehr so schnell vergas.",
+  "2": [
+    "Was wollte sich Anna anschauen?",
+    "Was hat Anna zu Hause vergessen?",
+    "Anna hat den Sonnenaufgang schnell wieder vergessen."
+  ],
+  "3": [
+    ["Sonnenuntergang", "Sonnenaufgang"],
+    ["Kamera", "Jacke"],
+    ["wahr", "falsch"]
+  ],
+  "4": [1, 0, 1],
 };

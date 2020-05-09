@@ -116,7 +116,6 @@ main() {
         });
       });
       group('if offline => ', () {});
-      // if online, tries to log in online
       test('sets active to true', () {
         testAuthRepo.signInWithEmailAndPassword(
             emailAddress: null, password: null);
