@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
+import 'package:lrs_app_v3/injection.dart';
 import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,6 +17,8 @@ class LessonRepository implements LessonFacade {
   final NetworkInfo networkInfo;
   final LocalLessonDataSource localData;
   final RemoteLessonDataSource remoteData;
+  final Future<Either<AuthFailure, User>> currentUser =
+      getIt<AuthFacade>().getUser();
 
   LessonRepository({
     @required this.networkInfo,
@@ -24,8 +28,17 @@ class LessonRepository implements LessonFacade {
 
   @override
   Either<LessonFailure, Stream<UniqueId>> getUserLessonIds() {
-    // TODO: pass back a lesson failure, if ids could not be obtained
-    return right(localData.getUserLessonIds());
+    /*
+    Either<AuthFailure, User> failureOrUser =
+        await currentUser.then((either) => either);
+    return failureOrUser.fold((failure) => left(LessonFailure.unexpected()),
+        (user) {
+      Stream stream = localData.getUserLessonIds(user.id);
+      // catch errors
+      return right(stream);
+    });
+    */
+    return null;
   }
 
   Future<Either<LessonFailure, Lesson>> getLessonById(UniqueId id) async {
@@ -39,7 +52,8 @@ class LessonRepository implements LessonFacade {
   }
 
   Future<void> update() async {
-    if (await networkInfo.isConnected && await remoteData.isAvailable) {
+    if (await networkInfo.isConnected) {
+      // TODO
       final lessonModelsStream = remoteData.getAvailableLessonData();
       lessonModelsStream.listen((lessonModel) {
         localData.cacheLessonModel(lessonModel);

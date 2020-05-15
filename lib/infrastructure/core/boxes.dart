@@ -33,15 +33,20 @@ class DevBoxes implements Boxes {
   Future<Box> get resultBox => Hive.openBox("devResultBox");
 }
 
-@RegisterAs(Boxes, env: Environment.test)
-@injectable
 class TestBoxes implements Boxes {
-  Future<Box> get sessionBox async => MockBox();
-  Future<Box> get userBox async => MockBox();
-  Future<Box> get personalBox async => MockBox();
+  // make sure getters call same box instances
+  Box _userBox = MockBox();
+  Box _personalBox = MockBox();
+  Box _sessionBox = MockBox();
+  Box _resultBox = MockBox();
+  Box _lessonBox = MockBox();
 
-  Future<Box> get lessonBox async => MockBox();
-  Future<Box> get resultBox async => MockBox();
+  Future<Box> get sessionBox async => _sessionBox;
+  Future<Box> get userBox async => _userBox;
+  Future<Box> get personalBox async => _personalBox;
+
+  Future<Box> get lessonBox async => _resultBox;
+  Future<Box> get resultBox async => _lessonBox;
 }
 
 // mocked boxes for test environment

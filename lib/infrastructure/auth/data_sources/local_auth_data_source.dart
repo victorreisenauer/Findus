@@ -1,12 +1,12 @@
-import 'package:injectable/injectable.dart';
-import 'package:mockito/mockito.dart';
 import 'package:hive/hive.dart';
+import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/infrastructure/core/exceptions.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
+import 'package:lrs_app_v3/infrastructure/core/exceptions.dart';
+import 'package:mockito/mockito.dart';
 
 abstract class LocalAuthDataSource {
-  Future<void> cacheUserModel(UserModel model);
+  Future<void> cacheUserModel(String userId, UserModel model);
   Future<void> cachePersonalData(String userId, PersonalDataModel data);
   Future<void> cacheSession(String userId, String session);
   Future<UserModel> getUserModel(String userId);
@@ -19,40 +19,34 @@ abstract class LocalAuthDataSource {
   Future<void> close();
 }
 
-@RegisterAs(LocalAuthDataSource, env: Environment.test)
-@lazySingleton
-class MockLocalAuthDataSourceImpl extends Mock implements LocalAuthDataSource {
-  final Future<Box> userBox = TestBoxes.userBox;
-  final Future<Box> sessionBox = TestBoxes.sessionBox;
-  final Future<Box> personalBox = TestBoxes.personalBox;
-}
-
 @RegisterAs(LocalAuthDataSource, env: Environment.prod)
 @lazySingleton
 class LocalAuthDataSourceImpl implements LocalAuthDataSource {
-  final Future<Box> _userBox = ProdBoxes.userBox;
-  final Future<Box> _sessionBox = ProdBoxes.sessionBox;
-  final Future<Box> _personalBox = ProdBoxes.personalBox;
+  final Boxes boxes;
+  LocalAuthDataSourceImpl(this.boxes);
 
   /// store [UserModel] in cache. IMPORTANT: use 'await' keyword when
   /// caching to make sure cache is complete before box is accessed again.
-  Future<void> cacheUserModel(UserModel model) async {
-    _userBox.then((box) => box.put(model.id.toString(), model.toJson()));
+  Future<void> cacheUserModel(String userId, UserModel model) async {
+    boxes.userBox.then((box) => box.put(userId, model.toJson()));
   }
 
   Future<UserModel> getUserModel(String userId) async {
-    Map json = await _userBox.then((box) => box.get(userId));
+    Map json = await boxes.userBox.then((box) {
+      _validateBoxNotEmpty(box);
+      return box.get(userId);
+    });
     if (json == null)
       throw KeyNotFoundException(
           failedValue: userId,
-          failedSource: await _userBox.then((box) => box.toString()));
+          failedSource: await boxes.userBox.then((box) => box.toString()));
     return UserModel.fromJson(json.cast<String, dynamic>());
   }
 
   Stream<UserModel> getAllUserModels() async* {
-    Box userBox = await _userBox;
-    if (userBox.isEmpty) throw CacheEmptyException();
-    for (int i; i < userBox.length; i++) {
+    Box userBox = await boxes.userBox;
+    _validateBoxNotEmpty(userBox);
+    for (int i = 0; i < userBox.length; i++) {
       Map json = userBox.getAt(i);
       yield UserModel.fromJson(json.cast<String, dynamic>());
     }
@@ -61,25 +55,25 @@ class LocalAuthDataSourceImpl implements LocalAuthDataSource {
   /// store Session in cache. IMPORTANT: use 'await' keyword when
   /// caching to make sure cache is complete before box is accessed again.
   Future<void> cacheSession(String userId, String session) async {
-    await _sessionBox.then((box) => box.put(userId, session));
+    await boxes.sessionBox.then((box) => box.put(userId, session));
   }
 
   Future<String> getSession(userId) async {
-    String session = await _sessionBox.then((box) => box.get(userId));
+    String session = await boxes.sessionBox.then((box) => box.get(userId));
     if (session == null) throw KeyNotFoundException(failedValue: userId);
     return session;
   }
 
   Future<void> cachePersonalData(String userId, PersonalDataModel data) async {
-    await _personalBox.then((box) => box.put(userId, data.toJson()));
+    await boxes.personalBox.then((box) => box.put(userId, data.toJson()));
   }
 
   Future<PersonalDataModel> getPersonalData(String userId) async {
-    Map json = await _personalBox.then((box) => box.get(userId));
+    Map json = await boxes.personalBox.then((box) => box.get(userId));
     if (json == null)
       throw KeyNotFoundException(
         failedValue: userId,
-        failedSource: await _personalBox.then((box) => box.toString()),
+        failedSource: await boxes.personalBox.then((box) => box.toString()),
       );
     return PersonalDataModel.fromJson(json.cast<String, dynamic>());
   }
@@ -87,98 +81,50 @@ class LocalAuthDataSourceImpl implements LocalAuthDataSource {
   /// close all boxes needed to store authentication data. Boxes are automatically
   /// reopened, when calling any method of [LocalAuthDataSource] class.
   Future<void> close() async {
-    _sessionBox.then((box) => box.close());
-    _personalBox.then((box) => box.close());
-    _userBox.then((box) => box.close());
+    boxes.sessionBox.then((box) => box.close());
+    boxes.personalBox.then((box) => box.close());
+    boxes.userBox.then((box) => box.close());
   }
 
   Future<void> removeSession(String userId) async {
-    _sessionBox.then((box) => box.delete(userId));
+    boxes.sessionBox.then((box) => box.delete(userId));
   }
 
   Future<void> removePersonalData(String userId) async {
-    _personalBox.then((box) => box.delete(userId));
+    boxes.personalBox.then((box) => box.delete(userId));
   }
 
   Future<void> removeUserModel(String userId) async {
-    _userBox.then((box) => box.delete(userId));
+    boxes.userBox.then((box) => box.delete(userId));
+  }
+
+  _validateBoxNotEmpty(Box box) {
+    if (box.isEmpty) throw CacheEmptyException(failedSource: box.toString());
   }
 }
 
 @RegisterAs(LocalAuthDataSource, env: Environment.dev)
 @lazySingleton
-class DevLocalAuthDataSourceImpl implements LocalAuthDataSource {
-  final Future<Box> _userBox = DevBoxes.userBox;
-  final Future<Box> _sessionBox = DevBoxes.sessionBox;
-  final Future<Box> _personalBox = DevBoxes.personalBox;
+class DevLocalAuthDataSourceImpl extends LocalAuthDataSourceImpl {
+  final Boxes boxes;
+  DevLocalAuthDataSourceImpl(this.boxes) : super(boxes);
+}
 
-  /// store [UserModel] in cache. IMPORTANT: use 'await' keyword when
-  /// caching to make sure cache is complete before box is accessed again.
-  Future<void> cacheUserModel(UserModel model) async {
-    _userBox.then((box) => box.put(model.id.toString(), model.toJson()));
-  }
+@RegisterAs(LocalAuthDataSource, env: Environment.test)
+@lazySingleton
+class MockLocalAuthDataSourceImpl extends Mock implements LocalAuthDataSource {
+  final Boxes boxes;
 
-  Future<UserModel> getUserModel(String userId) async {
-    Map json = await _userBox.then((box) => box.get(userId));
-    if (json == null)
-      throw KeyNotFoundException(
-          failedValue: userId,
-          failedSource: await _userBox.then((box) => box.toString()));
-    return UserModel.fromJson(json.cast<String, dynamic>());
-  }
+  MockLocalAuthDataSourceImpl(this.boxes);
+
+  UserModel model = UserModel(email: "test@test.com", id: 0002, active: true);
+  UserModel model2 = UserModel(email: "test@test.com", id: 0003, active: false);
+  UserModel model3 = UserModel(email: "test@test.com", id: 0004);
 
   Stream<UserModel> getAllUserModels() async* {
-    Box userBox = await _userBox;
-    if (userBox.isEmpty) throw CacheEmptyException();
-    for (int i; i < userBox.length; i++) {
-      Map json = userBox.getAt(i);
-      yield UserModel.fromJson(json.cast<String, dynamic>());
+    List models = [model, model2, model3];
+    for (int i = 0; i < models.length; i++) {
+      yield models[i];
     }
-  }
-
-  /// store Session in cache. IMPORTANT: use 'await' keyword when
-  /// caching to make sure cache is complete before box is accessed again.
-  Future<void> cacheSession(String userId, String session) async {
-    await _sessionBox.then((box) => box.put(userId, session));
-  }
-
-  Future<String> getSession(userId) async {
-    String session = await _sessionBox.then((box) => box.get(userId));
-    if (session == null) throw KeyNotFoundException(failedValue: userId);
-    return session;
-  }
-
-  Future<void> cachePersonalData(String userId, PersonalDataModel data) async {
-    await _personalBox.then((box) => box.put(userId, data.toJson()));
-  }
-
-  Future<PersonalDataModel> getPersonalData(String userId) async {
-    Map json = await _personalBox.then((box) => box.get(userId));
-    if (json == null)
-      throw KeyNotFoundException(
-        failedValue: userId,
-        failedSource: await _personalBox.then((box) => box.toString()),
-      );
-    return PersonalDataModel.fromJson(json.cast<String, dynamic>());
-  }
-
-  /// close all boxes needed to store authentication data. Boxes are automatically
-  /// reopened, when calling any method of [LocalAuthDataSource] class.
-  Future<void> close() async {
-    _sessionBox.then((box) => box.close());
-    _personalBox.then((box) => box.close());
-    _userBox.then((box) => box.close());
-  }
-
-  Future<void> removeSession(String userId) async {
-    _sessionBox.then((box) => box.delete(userId));
-  }
-
-  Future<void> removePersonalData(String userId) async {
-    _personalBox.then((box) => box.delete(userId));
-  }
-
-  Future<void> removeUserModel(String userId) async {
-    _userBox.then((box) => box.delete(userId));
   }
 }

@@ -15,6 +15,7 @@ import '../core/exceptions.dart';
 @lazySingleton
 class MockAuthRepository extends Mock implements AuthFacade {}
 
+@RegisterAs(AuthFacade, env: Environment.prod)
 @lazySingleton
 class AuthRepository implements AuthFacade {
   final LocalAuthDataSource _localData;
@@ -68,15 +69,20 @@ class AuthRepository implements AuthFacade {
     @required Password password,
   }) async {
     if (await _deviceIsOnline) {
-      _remoteData
-          .signIn(
-              username: emailAddress.getOrCrash(),
-              password: password.getOrCrash())
-          .catchError(
-              () => optionOf(AuthFailure.invalidEmailAndPasswordCombination()),
-              test: (e) => e is InvalidSessionException);
-      // TODO: solve if logins are via userid or emailaddress
-      return none();
+      try {
+        await _remoteData.signIn(
+            username: emailAddress.getOrCrash(),
+            password: password.getOrCrash());
+        return none<AuthFailure>();
+      } catch (e) {
+        if (e is InvalidSessionException) {
+          return optionOf(AuthFailure.loginRequired());
+        } else if (e is InvalidLoginDetailsException) {
+          return optionOf(AuthFailure.invalidEmailAndPasswordCombination());
+        } else {
+          throw Exception(e.toString());
+        }
+      }
     } else {
       return optionOf(AuthFailure.serverError());
     }

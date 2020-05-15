@@ -5,6 +5,8 @@ import 'package:lrs_app_v3/injection.iconfig.dart';
 import 'package:lrs_data_client/lrs_api.dart';
 import 'package:mockito/mockito.dart';
 
+import 'infrastructure/core/boxes.dart';
+
 // Builds instance of GetIt to use for entire project.
 final GetIt getIt = GetIt.instance;
 
@@ -44,6 +46,8 @@ abstract class DevModules {
 // registers mocked external classes for injection in test environment
 @registerModule
 abstract class TestModules {
+  @test
+  Boxes get boxes => TestBoxes();
   @test
   @lazySingleton
   Api get api => MockApi();

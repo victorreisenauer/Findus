@@ -42,4 +42,9 @@ extension LessonModelX on LessonModel {
       ),
     );
   }
+
+  Map<String, dynamic> toJsonDeep() => <String, dynamic>{
+        "id": id,
+        "exerciseList": exerciseList.map((exModel) => exModel.toJson())
+      };
 }

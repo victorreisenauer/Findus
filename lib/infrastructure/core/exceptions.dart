@@ -6,6 +6,8 @@ class ServerNotReachableException extends ServerException {}
 
 class InvalidSessionException extends ServerException {}
 
+class InvalidLoginDetailsException extends ServerException {}
+
 class CacheException implements Exception {}
 
 class CacheEmptyException implements CacheException {
