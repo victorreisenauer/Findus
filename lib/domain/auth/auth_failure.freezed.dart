@@ -39,6 +39,14 @@ class _$AuthFailureTearOff {
   AccountNotFound accountNotFound() {
     return const AccountNotFound();
   }
+
+  WeakPassword weakPassword() {
+    return const WeakPassword();
+  }
+
+  InvalidEmail invalidEmail() {
+    return const InvalidEmail();
+  }
 }
 
 // ignore: unused_element
@@ -54,6 +62,8 @@ mixin _$AuthFailure {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result deviceOffline(),
     @required Result accountNotFound(),
+    @required Result weakPassword(),
+    @required Result invalidEmail(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -64,6 +74,8 @@ mixin _$AuthFailure {
     Result invalidEmailAndPasswordCombination(),
     Result deviceOffline(),
     Result accountNotFound(),
+    Result weakPassword(),
+    Result invalidEmail(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -77,6 +89,8 @@ mixin _$AuthFailure {
             InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result invalidEmail(InvalidEmail value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -88,6 +102,8 @@ mixin _$AuthFailure {
         InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
+    Result weakPassword(WeakPassword value),
+    Result invalidEmail(InvalidEmail value),
     @required Result orElse(),
   });
 }
@@ -148,6 +164,8 @@ class _$LoginRequired implements LoginRequired {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result deviceOffline(),
     @required Result accountNotFound(),
+    @required Result weakPassword(),
+    @required Result invalidEmail(),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -156,6 +174,8 @@ class _$LoginRequired implements LoginRequired {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return loginRequired();
   }
 
@@ -169,6 +189,8 @@ class _$LoginRequired implements LoginRequired {
     Result invalidEmailAndPasswordCombination(),
     Result deviceOffline(),
     Result accountNotFound(),
+    Result weakPassword(),
+    Result invalidEmail(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -190,6 +212,8 @@ class _$LoginRequired implements LoginRequired {
             InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result invalidEmail(InvalidEmail value),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -198,6 +222,8 @@ class _$LoginRequired implements LoginRequired {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return loginRequired(this);
   }
 
@@ -212,6 +238,8 @@ class _$LoginRequired implements LoginRequired {
         InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
+    Result weakPassword(WeakPassword value),
+    Result invalidEmail(InvalidEmail value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -269,6 +297,8 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result deviceOffline(),
     @required Result accountNotFound(),
+    @required Result weakPassword(),
+    @required Result invalidEmail(),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -277,6 +307,8 @@ class _$CancelledByUser implements CancelledByUser {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return cancelledByUser();
   }
 
@@ -290,6 +322,8 @@ class _$CancelledByUser implements CancelledByUser {
     Result invalidEmailAndPasswordCombination(),
     Result deviceOffline(),
     Result accountNotFound(),
+    Result weakPassword(),
+    Result invalidEmail(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -311,6 +345,8 @@ class _$CancelledByUser implements CancelledByUser {
             InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result invalidEmail(InvalidEmail value),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -319,6 +355,8 @@ class _$CancelledByUser implements CancelledByUser {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return cancelledByUser(this);
   }
 
@@ -333,6 +371,8 @@ class _$CancelledByUser implements CancelledByUser {
         InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
+    Result weakPassword(WeakPassword value),
+    Result invalidEmail(InvalidEmail value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -389,6 +429,8 @@ class _$ServerError implements ServerError {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result deviceOffline(),
     @required Result accountNotFound(),
+    @required Result weakPassword(),
+    @required Result invalidEmail(),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -397,6 +439,8 @@ class _$ServerError implements ServerError {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return serverError();
   }
 
@@ -410,6 +454,8 @@ class _$ServerError implements ServerError {
     Result invalidEmailAndPasswordCombination(),
     Result deviceOffline(),
     Result accountNotFound(),
+    Result weakPassword(),
+    Result invalidEmail(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -431,6 +477,8 @@ class _$ServerError implements ServerError {
             InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result invalidEmail(InvalidEmail value),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -439,6 +487,8 @@ class _$ServerError implements ServerError {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return serverError(this);
   }
 
@@ -453,6 +503,8 @@ class _$ServerError implements ServerError {
         InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
+    Result weakPassword(WeakPassword value),
+    Result invalidEmail(InvalidEmail value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -510,6 +562,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result deviceOffline(),
     @required Result accountNotFound(),
+    @required Result weakPassword(),
+    @required Result invalidEmail(),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -518,6 +572,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return emailAlreadyInUse();
   }
 
@@ -531,6 +587,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result invalidEmailAndPasswordCombination(),
     Result deviceOffline(),
     Result accountNotFound(),
+    Result weakPassword(),
+    Result invalidEmail(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -552,6 +610,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
             InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result invalidEmail(InvalidEmail value),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -560,6 +620,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return emailAlreadyInUse(this);
   }
 
@@ -574,6 +636,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
         InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
+    Result weakPassword(WeakPassword value),
+    Result invalidEmail(InvalidEmail value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -636,6 +700,8 @@ class _$InvalidEmailAndPasswordCombination
     @required Result invalidEmailAndPasswordCombination(),
     @required Result deviceOffline(),
     @required Result accountNotFound(),
+    @required Result weakPassword(),
+    @required Result invalidEmail(),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -644,6 +710,8 @@ class _$InvalidEmailAndPasswordCombination
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return invalidEmailAndPasswordCombination();
   }
 
@@ -657,6 +725,8 @@ class _$InvalidEmailAndPasswordCombination
     Result invalidEmailAndPasswordCombination(),
     Result deviceOffline(),
     Result accountNotFound(),
+    Result weakPassword(),
+    Result invalidEmail(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -678,6 +748,8 @@ class _$InvalidEmailAndPasswordCombination
             InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result invalidEmail(InvalidEmail value),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -686,6 +758,8 @@ class _$InvalidEmailAndPasswordCombination
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return invalidEmailAndPasswordCombination(this);
   }
 
@@ -700,6 +774,8 @@ class _$InvalidEmailAndPasswordCombination
         InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
+    Result weakPassword(WeakPassword value),
+    Result invalidEmail(InvalidEmail value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -757,6 +833,8 @@ class _$DeviceOffline implements DeviceOffline {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result deviceOffline(),
     @required Result accountNotFound(),
+    @required Result weakPassword(),
+    @required Result invalidEmail(),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -765,6 +843,8 @@ class _$DeviceOffline implements DeviceOffline {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return deviceOffline();
   }
 
@@ -778,6 +858,8 @@ class _$DeviceOffline implements DeviceOffline {
     Result invalidEmailAndPasswordCombination(),
     Result deviceOffline(),
     Result accountNotFound(),
+    Result weakPassword(),
+    Result invalidEmail(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -799,6 +881,8 @@ class _$DeviceOffline implements DeviceOffline {
             InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result invalidEmail(InvalidEmail value),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -807,6 +891,8 @@ class _$DeviceOffline implements DeviceOffline {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return deviceOffline(this);
   }
 
@@ -821,6 +907,8 @@ class _$DeviceOffline implements DeviceOffline {
         InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
+    Result weakPassword(WeakPassword value),
+    Result invalidEmail(InvalidEmail value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -878,6 +966,8 @@ class _$AccountNotFound implements AccountNotFound {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result deviceOffline(),
     @required Result accountNotFound(),
+    @required Result weakPassword(),
+    @required Result invalidEmail(),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -886,6 +976,8 @@ class _$AccountNotFound implements AccountNotFound {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return accountNotFound();
   }
 
@@ -899,6 +991,8 @@ class _$AccountNotFound implements AccountNotFound {
     Result invalidEmailAndPasswordCombination(),
     Result deviceOffline(),
     Result accountNotFound(),
+    Result weakPassword(),
+    Result invalidEmail(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -920,6 +1014,8 @@ class _$AccountNotFound implements AccountNotFound {
             InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result invalidEmail(InvalidEmail value),
   }) {
     assert(loginRequired != null);
     assert(cancelledByUser != null);
@@ -928,6 +1024,8 @@ class _$AccountNotFound implements AccountNotFound {
     assert(invalidEmailAndPasswordCombination != null);
     assert(deviceOffline != null);
     assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
     return accountNotFound(this);
   }
 
@@ -942,6 +1040,8 @@ class _$AccountNotFound implements AccountNotFound {
         InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
+    Result weakPassword(WeakPassword value),
+    Result invalidEmail(InvalidEmail value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -954,4 +1054,268 @@ class _$AccountNotFound implements AccountNotFound {
 
 abstract class AccountNotFound implements AuthFailure {
   const factory AccountNotFound() = _$AccountNotFound;
+}
+
+abstract class $WeakPasswordCopyWith<$Res> {
+  factory $WeakPasswordCopyWith(
+          WeakPassword value, $Res Function(WeakPassword) then) =
+      _$WeakPasswordCopyWithImpl<$Res>;
+}
+
+class _$WeakPasswordCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements $WeakPasswordCopyWith<$Res> {
+  _$WeakPasswordCopyWithImpl(
+      WeakPassword _value, $Res Function(WeakPassword) _then)
+      : super(_value, (v) => _then(v as WeakPassword));
+
+  @override
+  WeakPassword get _value => super._value as WeakPassword;
+}
+
+class _$WeakPassword implements WeakPassword {
+  const _$WeakPassword();
+
+  @override
+  String toString() {
+    return 'AuthFailure.weakPassword()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is WeakPassword);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result loginRequired(),
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result deviceOffline(),
+    @required Result accountNotFound(),
+    @required Result weakPassword(),
+    @required Result invalidEmail(),
+  }) {
+    assert(loginRequired != null);
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(deviceOffline != null);
+    assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
+    return weakPassword();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result loginRequired(),
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result deviceOffline(),
+    Result accountNotFound(),
+    Result weakPassword(),
+    Result invalidEmail(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (weakPassword != null) {
+      return weakPassword();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result loginRequired(LoginRequired value),
+    @required Result cancelledByUser(CancelledByUser value),
+    @required Result serverError(ServerError value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            InvalidEmailAndPasswordCombination value),
+    @required Result deviceOffline(DeviceOffline value),
+    @required Result accountNotFound(AccountNotFound value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result invalidEmail(InvalidEmail value),
+  }) {
+    assert(loginRequired != null);
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(deviceOffline != null);
+    assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
+    return weakPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result loginRequired(LoginRequired value),
+    Result cancelledByUser(CancelledByUser value),
+    Result serverError(ServerError value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        InvalidEmailAndPasswordCombination value),
+    Result deviceOffline(DeviceOffline value),
+    Result accountNotFound(AccountNotFound value),
+    Result weakPassword(WeakPassword value),
+    Result invalidEmail(InvalidEmail value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (weakPassword != null) {
+      return weakPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WeakPassword implements AuthFailure {
+  const factory WeakPassword() = _$WeakPassword;
+}
+
+abstract class $InvalidEmailCopyWith<$Res> {
+  factory $InvalidEmailCopyWith(
+          InvalidEmail value, $Res Function(InvalidEmail) then) =
+      _$InvalidEmailCopyWithImpl<$Res>;
+}
+
+class _$InvalidEmailCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements $InvalidEmailCopyWith<$Res> {
+  _$InvalidEmailCopyWithImpl(
+      InvalidEmail _value, $Res Function(InvalidEmail) _then)
+      : super(_value, (v) => _then(v as InvalidEmail));
+
+  @override
+  InvalidEmail get _value => super._value as InvalidEmail;
+}
+
+class _$InvalidEmail implements InvalidEmail {
+  const _$InvalidEmail();
+
+  @override
+  String toString() {
+    return 'AuthFailure.invalidEmail()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is InvalidEmail);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result loginRequired(),
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result deviceOffline(),
+    @required Result accountNotFound(),
+    @required Result weakPassword(),
+    @required Result invalidEmail(),
+  }) {
+    assert(loginRequired != null);
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(deviceOffline != null);
+    assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
+    return invalidEmail();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result loginRequired(),
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result deviceOffline(),
+    Result accountNotFound(),
+    Result weakPassword(),
+    Result invalidEmail(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidEmail != null) {
+      return invalidEmail();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result loginRequired(LoginRequired value),
+    @required Result cancelledByUser(CancelledByUser value),
+    @required Result serverError(ServerError value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            InvalidEmailAndPasswordCombination value),
+    @required Result deviceOffline(DeviceOffline value),
+    @required Result accountNotFound(AccountNotFound value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result invalidEmail(InvalidEmail value),
+  }) {
+    assert(loginRequired != null);
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(deviceOffline != null);
+    assert(accountNotFound != null);
+    assert(weakPassword != null);
+    assert(invalidEmail != null);
+    return invalidEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result loginRequired(LoginRequired value),
+    Result cancelledByUser(CancelledByUser value),
+    Result serverError(ServerError value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        InvalidEmailAndPasswordCombination value),
+    Result deviceOffline(DeviceOffline value),
+    Result accountNotFound(AccountNotFound value),
+    Result weakPassword(WeakPassword value),
+    Result invalidEmail(InvalidEmail value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidEmail != null) {
+      return invalidEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidEmail implements AuthFailure {
+  const factory InvalidEmail() = _$InvalidEmail;
 }

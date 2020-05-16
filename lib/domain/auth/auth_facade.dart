@@ -3,6 +3,8 @@ import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/domain/auth/auth_failure.dart';
 import 'package:meta/meta.dart';
 
+/// provides all authentication methods to application layer
+/// IMPORTANT: Missing implementation for offline use!
 abstract class AuthFacade {
   Future<Either<AuthFailure, User>> getUser();
   Future<Option<AuthFailure>> signInWithEmailAndPassword({
@@ -10,4 +12,8 @@ abstract class AuthFacade {
     @required Password password,
   });
   Future<void> signOut();
+  Future<Option<AuthFailure>> signUpWithEmailAndPassword({
+    @required EmailAddress emailAddress,
+    @required Password password,
+  });
 }

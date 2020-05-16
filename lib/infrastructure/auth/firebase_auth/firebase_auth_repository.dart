@@ -17,6 +17,33 @@ class FirebaseAuthRepository implements AuthFacade {
   FirebaseAuthRepository(
       this._firebaseAuth, this._networkInfo, this._userMapper);
 
+  Future<Option<AuthFailure>> signUpWithEmailAndPassword({
+    @required EmailAddress emailAddress,
+    @required Password password,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        _firebaseAuth.createUserWithEmailAndPassword(
+          email: emailAddress.getOrCrash(),
+          password: password.getOrCrash(),
+        );
+        return none();
+      } on PlatformException catch (e) {
+        if (e.code == 'ERROR_WEAK_PASSWORD') {
+          return optionOf(AuthFailure.weakPassword());
+        }
+        if (e.code == 'ERROR_INVALID_EMAIL') {
+          return optionOf(AuthFailure.invalidEmail());
+        }
+        if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+          return optionOf(AuthFailure.emailAlreadyInUse());
+        }
+      }
+    } else {
+      return optionOf(AuthFailure.deviceOffline());
+    }
+  }
+
   Future<Either<AuthFailure, User>> getUser() async {
     if (await _networkInfo.isConnected) {
       return _firebaseAuth.currentUser().then((user) {
@@ -28,7 +55,7 @@ class FirebaseAuthRepository implements AuthFacade {
         }
       });
     } else {
-      throw Exception("device is offline - FireBase repo is problem");
+      return left(AuthFailure.deviceOffline());
     }
   }
 

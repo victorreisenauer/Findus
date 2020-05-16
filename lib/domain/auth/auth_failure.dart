@@ -16,4 +16,6 @@ abstract class AuthFailure with _$AuthFailure {
       InvalidEmailAndPasswordCombination;
   const factory AuthFailure.deviceOffline() = DeviceOffline;
   const factory AuthFailure.accountNotFound() = AccountNotFound;
+  const factory AuthFailure.weakPassword() = WeakPassword;
+  const factory AuthFailure.invalidEmail() = InvalidEmail;
 }

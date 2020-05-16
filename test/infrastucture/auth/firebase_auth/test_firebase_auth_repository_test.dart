@@ -44,7 +44,93 @@ main() {
 
   // Tests
   group('[Env: test]FireBaseAuthRepository => ', () {
-    group('on getUser', () {
+    group('on registerWithEmailAndPassword => ', () {
+      group('if online => ', () {
+        setUp(() {
+          when(networkInfo.isConnected)
+              .thenAnswer((realInvocation) async => true);
+        });
+        test('if successful, registers a new user', () async {
+          when(firebaseAuth.createUserWithEmailAndPassword(
+                  email: anyNamed("email"), password: anyNamed("password")))
+              .thenAnswer((realInvocation) async => MockAuthResult());
+
+          // create a new user with email and password
+          var response = await testAuthRepo.signUpWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+
+          // verify correct calls are made and option none() is returned
+          verify(firebaseAuth.createUserWithEmailAndPassword(
+              email: anyNamed("email"), password: anyNamed("password")));
+          expect(response.fold(() => null, (a) => a), null);
+        });
+        test(
+            'if email is already in use, returns AuthFailure.emailAlreadyInUse',
+            () async {
+          when(firebaseAuth.createUserWithEmailAndPassword(
+                  email: anyNamed("email"), password: anyNamed("password")))
+              .thenThrow(PlatformException(code: 'ERROR_EMAIL_ALREADY_IN_USE'));
+
+          var response = await testAuthRepo.signUpWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+          var failure = response.fold(() => null, (a) => a);
+
+          // verify correct calls are made and option none() is returned
+          verify(firebaseAuth.createUserWithEmailAndPassword(
+              email: anyNamed("email"), password: anyNamed("password")));
+          expect(failure, isA<EmailAlreadyInUse>());
+        });
+
+        test('if password is too weak, returns AuthFailure.weakPassword',
+            () async {
+          when(firebaseAuth.createUserWithEmailAndPassword(
+                  email: anyNamed("email"), password: anyNamed("password")))
+              .thenThrow(PlatformException(code: 'ERROR_WEAK_PASSWORD'));
+
+          var response = await testAuthRepo.signUpWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+          var failure = response.fold(() => null, (a) => a);
+
+          // verify correct calls are made and option none() is returned
+          verify(firebaseAuth.createUserWithEmailAndPassword(
+              email: anyNamed("email"), password: anyNamed("password")));
+          expect(failure, isA<WeakPassword>());
+        });
+
+        test('if email is invalid, returns AuthFailure.invalidEmail', () async {
+          when(firebaseAuth.createUserWithEmailAndPassword(
+                  email: anyNamed("email"), password: anyNamed("password")))
+              .thenThrow(PlatformException(code: 'ERROR_INVALID_EMAIL'));
+
+          var response = await testAuthRepo.signUpWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+          var failure = response.fold(() => null, (a) => a);
+
+          // verify correct calls are made and option none() is returned
+          verify(firebaseAuth.createUserWithEmailAndPassword(
+              email: anyNamed("email"), password: anyNamed("password")));
+          expect(failure, isA<InvalidEmail>());
+        });
+      });
+      group('if offline => ', () {
+        setUp(() {
+          when(networkInfo.isConnected)
+              .thenAnswer((realInvocation) async => false);
+        });
+
+        test('returns an AuthFailure.deviceOffline', () async {
+          testAuthRepo.signUpWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+
+          var response = await testAuthRepo.signUpWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+          var failure = response.fold(() => null, (a) => a);
+
+          expect(failure, isA<DeviceOffline>());
+        });
+      });
+    });
+    group('on getUser => ', () {
       group('if device is online => ', () {
         setUp(() {
           when(networkInfo.isConnected).thenAnswer((_) async => true);
@@ -73,31 +159,39 @@ main() {
               .getUser()
               .then((value) => value.fold((l) => l, (r) => r));
           // expect repo to return a failure
-          expect(response, isA<AuthFailure>());
+          expect(response, isA<LoginRequired>());
         });
       });
+      group('if device is offline =>', () {
+        setUp(() {
+          when(networkInfo.isConnected).thenAnswer((_) async => false);
+        });
+        test('returns an AuthFailure.deviceOffline', () async {
+          var response = await testAuthRepo.getUser();
+          var failure = response.fold((failure) => failure, (a) => a);
 
-      group('if device is offline', () {});
+          expect(failure, isA<DeviceOffline>());
+        });
+      });
     });
-    group('on signInWithEmailAndPassword', () {
-      group('when device is offline', () {
+    group('on signInWithEmailAndPassword => ', () {
+      group('if device is offline =>', () {
         test('returns AuthFailure.deviceOffline', () async {
           when(networkInfo.isConnected).thenAnswer((_) async => false);
           var response = await testAuthRepo.signInWithEmailAndPassword(
               emailAddress: testEmail, password: testPassword);
 
           verify(networkInfo.isConnected);
-          expect(response.fold(() => null, (a) => a), isA<AuthFailure>());
-          //print(response.fold(() => null, (a) => a));
+          expect(response.fold(() => null, (a) => a), isA<DeviceOffline>());
         });
       });
-      group('if online', () {
+      group('if device is online =>', () {
         setUp(() {
           when(networkInfo.isConnected).thenAnswer((_) async => true);
         });
 
         test(
-            'if wrong email and password combination, return AuthFailure.wrongEmailAndPasswordCombination',
+            'if wrong email and password combination => return AuthFailure.wrongEmailAndPasswordCombination',
             () async {
           // case 1: invalid email
           when(firebaseAuth.signInWithEmailAndPassword(
@@ -111,8 +205,7 @@ main() {
 
           verify(firebaseAuth.signInWithEmailAndPassword(
               email: anyNamed("email"), password: anyNamed("password")));
-          expect(failure, isA<AuthFailure>());
-          //print(failure);
+          expect(failure, isA<InvalidEmailAndPasswordCombination>());
 
           //case 2: invalid password
           when(firebaseAuth.signInWithEmailAndPassword(
@@ -126,8 +219,7 @@ main() {
 
           verify(firebaseAuth.signInWithEmailAndPassword(
               email: anyNamed("email"), password: anyNamed("password")));
-          expect(failure, isA<AuthFailure>());
-          //print(failure);
+          expect(failure, isA<InvalidEmailAndPasswordCombination>());
         });
 
         test(
@@ -143,8 +235,7 @@ main() {
               email: anyNamed("email"), password: anyNamed("password")));
           var failure = response.fold(() => null, (a) => a);
 
-          expect(failure, isA<AuthFailure>());
-          //print(failure);
+          expect(failure, isA<AccountNotFound>());
         });
         test('if successful, user is signed in and returns none', () async {
           when(firebaseAuth.signInWithEmailAndPassword(
@@ -157,11 +248,10 @@ main() {
           verify(firebaseAuth.signInWithEmailAndPassword(
               email: anyNamed("email"), password: anyNamed("password")));
           expect(response.isNone(), true);
-          //print(failure);
         });
       });
     });
-    group('on signOut', () {
+    group('on signOut => ', () {
       test('if successful, signs out user from all sources and returns none',
           () {
         when(firebaseAuth.signOut()).thenAnswer((realInvocation) async => null);

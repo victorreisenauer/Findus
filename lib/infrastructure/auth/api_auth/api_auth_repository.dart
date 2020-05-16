@@ -22,6 +22,15 @@ class AuthRepository implements AuthFacade {
 
   Future<bool> get _deviceIsOnline => _networkInfo.isConnected;
 
+  /// still needs implementation
+  Future<Option<AuthFailure>> signUpWithEmailAndPassword({
+    @required EmailAddress emailAddress,
+    @required Password password,
+  }) {
+    // needs implementation
+    return null;
+  }
+
   Future<Either<AuthFailure, User>> getUser() async {
     if (await _deviceIsOnline) {
       return _remoteData
