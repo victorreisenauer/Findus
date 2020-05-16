@@ -27,8 +27,8 @@ import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
   final testModules = _$TestModules();
-  final prodModules = _$ProdModules();
   final devModules = _$DevModules();
+  final prodModules = _$ProdModules();
   g.registerFactory<ProgressBloc>(() => ProgressBloc());
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<AuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<AuthFacade>()));
@@ -49,6 +49,22 @@ void $initGetIt(GetIt g, {String environment}) {
     g.registerFactory<NetworkInfo>(() => TestNetworkInfoImpl());
     g.registerLazySingleton<RemoteAuthDataSource>(
         () => TestRemoteAuthDataSourceImpl());
+  }
+
+  //Register dev Dependencies --------
+  if (environment == 'dev') {
+    g.registerLazySingleton<Api>(() => devModules.api);
+    g.registerFactory<Boxes>(() => DevBoxes());
+    g.registerFactory<DataConnectionChecker>(
+        () => devModules.dataConnectionChecker());
+    g.registerLazySingleton<FirebaseAuth>(() => devModules.firebaseAuth);
+    g.registerFactory<FirebaseUserMapper>(() => DevFirebaseUserMapperImpl());
+    g.registerLazySingleton<LocalAuthDataSource>(
+        () => DevLocalAuthDataSourceImpl(g<Boxes>()));
+    g.registerFactory<NetworkInfo>(
+        () => DevNetworkInfoImpl(g<DataConnectionChecker>()));
+    g.registerLazySingleton<RemoteAuthDataSource>(
+        () => DevRemoteAuthDataSourceImpl(g<Api>()));
   }
 
   //Register prod Dependencies --------
@@ -80,26 +96,10 @@ void $initGetIt(GetIt g, {String environment}) {
           remoteData: g<RemoteLessonDataSource>(),
         ));
   }
-
-  //Register dev Dependencies --------
-  if (environment == 'dev') {
-    g.registerLazySingleton<Api>(() => devModules.api);
-    g.registerFactory<Boxes>(() => DevBoxes());
-    g.registerFactory<DataConnectionChecker>(
-        () => devModules.dataConnectionChecker());
-    g.registerLazySingleton<FirebaseAuth>(() => devModules.firebaseAuth);
-    g.registerFactory<FirebaseUserMapper>(() => DevFirebaseUserMapperImpl());
-    g.registerLazySingleton<LocalAuthDataSource>(
-        () => DevLocalAuthDataSourceImpl(g<Boxes>()));
-    g.registerFactory<NetworkInfo>(
-        () => DevNetworkInfoImpl(g<DataConnectionChecker>()));
-    g.registerLazySingleton<RemoteAuthDataSource>(
-        () => DevRemoteAuthDataSourceImpl(g<Api>()));
-  }
 }
 
 class _$TestModules extends TestModules {}
 
-class _$ProdModules extends ProdModules {}
-
 class _$DevModules extends DevModules {}
+
+class _$ProdModules extends ProdModules {}
