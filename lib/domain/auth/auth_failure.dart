@@ -10,9 +10,10 @@ part 'auth_failure.freezed.dart';
 abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.loginRequired() = LoginRequired;
   const factory AuthFailure.cancelledByUser() = CancelledByUser;
-  // Serves as a "catch all" failure if we don't know what exactly went wrong
   const factory AuthFailure.serverError() = ServerError;
   const factory AuthFailure.emailAlreadyInUse() = EmailAlreadyInUse;
   const factory AuthFailure.invalidEmailAndPasswordCombination() =
       InvalidEmailAndPasswordCombination;
+  const factory AuthFailure.deviceOffline() = DeviceOffline;
+  const factory AuthFailure.accountNotFound() = AccountNotFound;
 }

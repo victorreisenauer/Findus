@@ -1,15 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mockito/mockito.dart';
-
 import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
+import 'package:lrs_app_v3/infrastructure/core/exceptions.dart';
 import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
-import 'package:lrs_app_v3/domain/core/failures.dart';
-
-import '../../domain/core/failures.dart';
-import '../core/exceptions.dart';
+import 'package:meta/meta.dart';
+import 'package:mockito/mockito.dart';
 
 @RegisterAs(AuthFacade, env: Environment.test)
 @lazySingleton

@@ -1,5 +1,5 @@
-import 'package:injectable/injectable.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:injectable/injectable.dart';
 import 'package:mockito/mockito.dart';
 
 abstract class NetworkInfo {
@@ -23,9 +23,6 @@ class DevNetworkInfoImpl extends NetworkInfoImpl {
   final DataConnectionChecker connectionChecker;
 
   const DevNetworkInfoImpl(this.connectionChecker) : super(connectionChecker);
-
-  @override
-  Future<bool> get isConnected => connectionChecker.hasConnection;
 }
 
 @RegisterAs(NetworkInfo, env: Environment.test)

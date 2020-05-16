@@ -1,4 +1,5 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/injection.iconfig.dart';
@@ -30,6 +31,9 @@ abstract class ProdModules {
   @lazySingleton
   Api get api => Api('https://api.lrs.hndrk.xyz/');
   @prod
+  @lazySingleton
+  FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+  @prod
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
 }
 
@@ -40,6 +44,9 @@ abstract class DevModules {
   @lazySingleton
   Api get api => Api('https://api.lrs.hndrk.xyz/');
   @dev
+  @lazySingleton
+  FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+  @dev
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
 }
 
@@ -47,15 +54,20 @@ abstract class DevModules {
 @registerModule
 abstract class TestModules {
   @test
-  Boxes get boxes => TestBoxes();
-  @test
   @lazySingleton
   Api get api => MockApi();
+  @test
+  @lazySingleton
+  FirebaseAuth get firebaseAuth => MockFirebaseAuth();
+  @test
+  Boxes get boxes => TestBoxes();
   @test
   DataConnectionChecker dataConnectionChecker() => MockDataConnectionChecker();
 }
 
 // mocked external classes for test environment
 class MockApi extends Mock implements Api {}
+
+class MockFirebaseAuth extends Mock implements FirebaseAuth {}
 
 class MockDataConnectionChecker extends Mock implements DataConnectionChecker {}
