@@ -25,16 +25,14 @@ class ProgressBloc extends Bloc<ProgressEvent, ProgressState> {
     yield* event.map(startProgress: (e) async* {
       _answersTracker = [];
       _lessonLength = e.lessonLength;
-      yield ProgressState.progressUpdated(
-          _answersTracker.length / _lessonLength);
+      yield ProgressState.progressUpdated(_lessonLength, _answersTracker);
     }, updateProgress: (e) async* {
       if (e.correct) {
         _answersTracker.add(true);
       } else {
         _answersTracker.add(false);
       }
-      yield ProgressState.progressUpdated(
-          _answersTracker.length / _lessonLength);
+      yield ProgressState.progressUpdated(_lessonLength, _answersTracker);
     });
   }
 }
