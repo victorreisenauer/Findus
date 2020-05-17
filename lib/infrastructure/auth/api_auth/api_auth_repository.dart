@@ -1,11 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/exceptions.dart';
 import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
 import 'package:meta/meta.dart';
-import 'package:mockito/mockito.dart';
+
+/*
+
+// this should not be injected, because we are currently working only with firebase auth
+
 
 @RegisterAs(AuthFacade, env: Environment.test)
 @lazySingleton
@@ -13,6 +16,8 @@ class MockAuthRepository extends Mock implements AuthFacade {}
 
 @RegisterAs(AuthFacade, env: Environment.prod)
 @lazySingleton
+
+*/
 class AuthRepository implements AuthFacade {
   final LocalAuthDataSource _localData;
   final RemoteAuthDataSource _remoteData;

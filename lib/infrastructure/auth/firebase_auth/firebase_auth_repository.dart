@@ -10,6 +10,7 @@ import 'package:meta/meta.dart';
 import 'package:mockito/mockito.dart';
 
 @RegisterAs(AuthFacade, env: Environment.prod)
+@lazySingleton
 class FirebaseAuthRepository implements AuthFacade {
   final FirebaseAuth _firebaseAuth;
   final NetworkInfo _networkInfo;
