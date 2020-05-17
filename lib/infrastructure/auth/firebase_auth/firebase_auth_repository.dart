@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
+import 'package:lrs_app_v3/dev_env_sample_data.dart';
 import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/auth/firebase_auth/firebase_user_mapper.dart';
 import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
@@ -37,7 +38,8 @@ class FirebaseAuthRepository implements AuthFacade {
         }
         if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
           return optionOf(AuthFailure.emailAlreadyInUse());
-        }
+        } else
+          return optionOf(AuthFailure.serverError());
       }
     } else {
       return optionOf(AuthFailure.deviceOffline());
@@ -99,6 +101,24 @@ class DevFirebaseAuthRepository extends FirebaseAuthRepository {
   DevFirebaseAuthRepository(
       this._firebaseAuth, this._networkInfo, this._userMapper)
       : super(_firebaseAuth, _networkInfo, _userMapper);
+
+  @override
+  Future<Option<AuthFailure>> signInWithEmailAndPassword(
+      {EmailAddress emailAddress, Password password}) {
+    final EmailAddress devEmail = DevData.devUser.emailAddress;
+    final Password devPassword = DevData.devUserPassword;
+    return super.signInWithEmailAndPassword(
+        emailAddress: devEmail, password: devPassword);
+  }
+
+  @override
+  Future<Option<AuthFailure>> signUpWithEmailAndPassword(
+      {EmailAddress emailAddress, Password password}) {
+    final EmailAddress devEmail = DevData.devUser.emailAddress;
+    final Password devPassword = DevData.devUserPassword;
+    return super.signUpWithEmailAndPassword(
+        emailAddress: devEmail, password: devPassword);
+  }
 }
 
 @RegisterAs(AuthFacade, env: Environment.test)

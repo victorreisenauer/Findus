@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "530377493966",
+    "firebase_url": "https://finduskids-28380.firebaseio.com",
+    "project_id": "finduskids-28380",
+    "storage_bucket": "finduskids-28380.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:530377493966:android:f7a77a3304a2f4b1e6ef9f",
+        "android_client_info": {
+          "package_name": "io.findus.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "530377493966-8qqe1tlg90nulrv1re4bakdnc7n13olj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQIMarFutPlEZhleOo3CCmv5VUyCuSHqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "530377493966-8qqe1tlg90nulrv1re4bakdnc7n13olj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
