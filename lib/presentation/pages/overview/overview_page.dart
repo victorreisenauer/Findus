@@ -64,7 +64,7 @@ class OverviewPage extends StatelessWidget {
 }
 
 class _OverviewPageBody extends StatelessWidget {
-  List<UniqueId> ids;
+  Stream<UniqueId> ids;
 
   _OverviewPageBody({this.ids});
 
@@ -72,29 +72,32 @@ class _OverviewPageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constrains) {
-        return SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Container(
-                height: 125,
-                width: constrains.maxWidth,
-                child: CustomPaint(
-                  painter: _TopCloudPainter(),
+        return StreamBuilder(
+          stream: ids,
+                  builder: (context, snapshot) {return SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 125,
+                  width: constrains.maxWidth,
+                  child: CustomPaint(
+                    painter: _TopCloudPainter(),
+                  ),
                 ),
-              ),
-              _getCloudRowWithLessons(
-                  ids, BlocProvider.of<LessonBloc>(context)),
-              /*Container(
-                color: Colors.blue,
-                height: 400,
-                width: constrains.maxWidth,
-                child: CustomPaint(
-                  painter: _BottomPainter(),
-                ),
-              ),*/
-              Image.asset('assets/images/BottomOverview.jpg'),
-            ],
-          ),
+                _getCloudRowWithLessons(
+                    snapshot.data, BlocProvider.of<LessonBloc>(context)),
+                /*Container(
+                  color: Colors.blue,
+                  height: 400,
+                  width: constrains.maxWidth,
+                  child: CustomPaint(
+                    painter: _BottomPainter(),
+                  ),
+                ),*/
+                Image.asset('assets/images/BottomOverview.jpg'),
+              ],
+            ),
+          );}
         );
       },
     );

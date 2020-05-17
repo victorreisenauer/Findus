@@ -1,17 +1,13 @@
 import 'dart:convert';
 
-import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
 import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:lrs_data_client/lrs_api.dart';
-import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
-import 'package:lrs_app_v3/domain/core/failures.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 
-import '../../core/exceptions.dart';
+import 'package:lrs_app_v3/infrastructure/core/exceptions.dart';
 
 /// RemoteAuthDataSource handles all api interaction related to
 /// authentication.
@@ -22,15 +18,10 @@ abstract class RemoteAuthDataSource {
   Future<void> signIn({@required String username, @required String password});
 }
 
-@RegisterAs(RemoteAuthDataSource, env: Environment.test)
-@lazySingleton
-class TestRemoteAuthDataSourceImpl extends Mock
-    implements RemoteAuthDataSource {}
-
 @RegisterAs(RemoteAuthDataSource, env: Environment.prod)
 @lazySingleton
 class RemoteAuthDataSourceImpl implements RemoteAuthDataSource {
-  Api _api;
+  final Api _api;
 
   RemoteAuthDataSourceImpl(this._api);
 
@@ -65,7 +56,7 @@ class RemoteAuthDataSourceImpl implements RemoteAuthDataSource {
           if (e is UnhandledEndpointException) {
             throw UnhandledEndpointException(e.cause);
           } else if (e is InvalidCredentialsException) {
-            throw (InvalidCredentialsException());
+            throw (InvalidLoginDetailsException());
           } else {
             throw e;
           }
@@ -79,3 +70,16 @@ class RemoteAuthDataSourceImpl implements RemoteAuthDataSource {
       throw ServerNotReachableException();
   }
 }
+
+@RegisterAs(RemoteAuthDataSource, env: Environment.dev)
+@lazySingleton
+class DevRemoteAuthDataSourceImpl extends RemoteAuthDataSourceImpl {
+  final Api _api;
+
+  DevRemoteAuthDataSourceImpl(this._api) : super(_api);
+}
+
+@RegisterAs(RemoteAuthDataSource, env: Environment.test)
+@lazySingleton
+class TestRemoteAuthDataSourceImpl extends Mock
+    implements RemoteAuthDataSource {}

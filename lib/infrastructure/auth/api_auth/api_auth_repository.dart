@@ -1,22 +1,18 @@
 import 'package:dartz/dartz.dart';
-import 'package:meta/meta.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mockito/mockito.dart';
-
 import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
+import 'package:lrs_app_v3/infrastructure/core/exceptions.dart';
 import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
-import 'package:lrs_app_v3/domain/core/failures.dart';
-
-import '../../domain/core/failures.dart';
-import '../core/exceptions.dart';
+import 'package:meta/meta.dart';
+import 'package:mockito/mockito.dart';
 
 @RegisterAs(AuthFacade, env: Environment.test)
 @lazySingleton
 class MockAuthRepository extends Mock implements AuthFacade {}
 
 @RegisterAs(AuthFacade, env: Environment.prod)
-@injectable
+@lazySingleton
 class AuthRepository implements AuthFacade {
   final LocalAuthDataSource _localData;
   final RemoteAuthDataSource _remoteData;
@@ -25,6 +21,15 @@ class AuthRepository implements AuthFacade {
   AuthRepository(this._localData, this._remoteData, this._networkInfo);
 
   Future<bool> get _deviceIsOnline => _networkInfo.isConnected;
+
+  /// still needs implementation
+  Future<Option<AuthFailure>> signUpWithEmailAndPassword({
+    @required EmailAddress emailAddress,
+    @required Password password,
+  }) {
+    // needs implementation
+    return null;
+  }
 
   Future<Either<AuthFailure, User>> getUser() async {
     if (await _deviceIsOnline) {
@@ -69,15 +74,20 @@ class AuthRepository implements AuthFacade {
     @required Password password,
   }) async {
     if (await _deviceIsOnline) {
-      _remoteData
-          .signIn(
-              username: emailAddress.getOrCrash(),
-              password: password.getOrCrash())
-          .catchError(
-              () => optionOf(AuthFailure.invalidEmailAndPasswordCombination()),
-              test: (e) => e is InvalidSessionException);
-      // TODO: solve if logins are via userid or emailaddress
-      return none();
+      try {
+        await _remoteData.signIn(
+            username: emailAddress.getOrCrash(),
+            password: password.getOrCrash());
+        return none<AuthFailure>();
+      } catch (e) {
+        if (e is InvalidSessionException) {
+          return optionOf(AuthFailure.loginRequired());
+        } else if (e is InvalidLoginDetailsException) {
+          return optionOf(AuthFailure.invalidEmailAndPasswordCombination());
+        } else {
+          throw Exception(e.toString());
+        }
+      }
     } else {
       return optionOf(AuthFailure.serverError());
     }

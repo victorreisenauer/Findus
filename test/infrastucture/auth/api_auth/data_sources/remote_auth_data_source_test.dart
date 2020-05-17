@@ -1,14 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lrs_data_client/lrs_api.dart';
-import 'package:mockito/mockito.dart';
-
-import 'package:lrs_app_v3/injection.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/exceptions.dart';
-
-class MockApi extends Mock implements Api {}
+import 'package:lrs_app_v3/injection.dart';
+import 'package:lrs_data_client/lrs_api.dart';
+import 'package:mockito/mockito.dart';
 
 main() {
   // on getCurrentUser =>

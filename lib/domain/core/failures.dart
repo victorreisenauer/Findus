@@ -1,5 +1,5 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'failures.freezed.dart';
 
@@ -41,15 +41,4 @@ abstract class ValueFailure<T> extends Failure with _$ValueFailure<T> {
     @required T failedValue,
     @required Type validType,
   }) = NotOfObjectType<T>;
-}
-
-@freezed
-
-/// Failure to handle Exceptions regarding Server and connectivity
-/// Examples: device is Offline, api is not reachable, there is no active session
-abstract class ServerFailure extends Failure with _$ServerFailure {
-  const factory ServerFailure.deviceOffline() = DeviceOffline;
-  const factory ServerFailure.apiUnreachable() = ApiUnreachable;
-  const factory ServerFailure.noSession() = NoSession;
-  const factory ServerFailure.invalidSession() = InvalidSession;
 }
