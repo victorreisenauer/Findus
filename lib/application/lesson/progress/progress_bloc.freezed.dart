@@ -300,9 +300,10 @@ class _$ProgressStateTearOff {
     return const Initial();
   }
 
-  ProgressUpdated progressUpdated(double currentProgress) {
+  ProgressUpdated progressUpdated(int totalExercises, List<bool> alreadyDone) {
     return ProgressUpdated(
-      currentProgress,
+      totalExercises,
+      alreadyDone,
     );
   }
 }
@@ -314,12 +315,13 @@ mixin _$ProgressState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result progressUpdated(double currentProgress),
+    @required
+        Result progressUpdated(int totalExercises, List<bool> alreadyDone),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result progressUpdated(double currentProgress),
+    Result progressUpdated(int totalExercises, List<bool> alreadyDone),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -384,7 +386,8 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result progressUpdated(double currentProgress),
+    @required
+        Result progressUpdated(int totalExercises, List<bool> alreadyDone),
   }) {
     assert(initial != null);
     assert(progressUpdated != null);
@@ -395,7 +398,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result progressUpdated(double currentProgress),
+    Result progressUpdated(int totalExercises, List<bool> alreadyDone),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -439,7 +442,7 @@ abstract class $ProgressUpdatedCopyWith<$Res> {
   factory $ProgressUpdatedCopyWith(
           ProgressUpdated value, $Res Function(ProgressUpdated) then) =
       _$ProgressUpdatedCopyWithImpl<$Res>;
-  $Res call({double currentProgress});
+  $Res call({int totalExercises, List<bool> alreadyDone});
 }
 
 class _$ProgressUpdatedCopyWithImpl<$Res>
@@ -454,41 +457,48 @@ class _$ProgressUpdatedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object currentProgress = freezed,
+    Object totalExercises = freezed,
+    Object alreadyDone = freezed,
   }) {
     return _then(ProgressUpdated(
-      currentProgress == freezed
-          ? _value.currentProgress
-          : currentProgress as double,
+      totalExercises == freezed ? _value.totalExercises : totalExercises as int,
+      alreadyDone == freezed ? _value.alreadyDone : alreadyDone as List<bool>,
     ));
   }
 }
 
 class _$ProgressUpdated implements ProgressUpdated {
-  const _$ProgressUpdated(this.currentProgress)
-      : assert(currentProgress != null);
+  const _$ProgressUpdated(this.totalExercises, this.alreadyDone)
+      : assert(totalExercises != null),
+        assert(alreadyDone != null);
 
   @override
-  final double currentProgress;
+  final int totalExercises;
+  @override
+  final List<bool> alreadyDone;
 
   @override
   String toString() {
-    return 'ProgressState.progressUpdated(currentProgress: $currentProgress)';
+    return 'ProgressState.progressUpdated(totalExercises: $totalExercises, alreadyDone: $alreadyDone)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ProgressUpdated &&
-            (identical(other.currentProgress, currentProgress) ||
+            (identical(other.totalExercises, totalExercises) ||
                 const DeepCollectionEquality()
-                    .equals(other.currentProgress, currentProgress)));
+                    .equals(other.totalExercises, totalExercises)) &&
+            (identical(other.alreadyDone, alreadyDone) ||
+                const DeepCollectionEquality()
+                    .equals(other.alreadyDone, alreadyDone)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(currentProgress);
+      const DeepCollectionEquality().hash(totalExercises) ^
+      const DeepCollectionEquality().hash(alreadyDone);
 
   @override
   $ProgressUpdatedCopyWith<ProgressUpdated> get copyWith =>
@@ -498,23 +508,24 @@ class _$ProgressUpdated implements ProgressUpdated {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result progressUpdated(double currentProgress),
+    @required
+        Result progressUpdated(int totalExercises, List<bool> alreadyDone),
   }) {
     assert(initial != null);
     assert(progressUpdated != null);
-    return progressUpdated(currentProgress);
+    return progressUpdated(totalExercises, alreadyDone);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result progressUpdated(double currentProgress),
+    Result progressUpdated(int totalExercises, List<bool> alreadyDone),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (progressUpdated != null) {
-      return progressUpdated(currentProgress);
+      return progressUpdated(totalExercises, alreadyDone);
     }
     return orElse();
   }
@@ -546,8 +557,10 @@ class _$ProgressUpdated implements ProgressUpdated {
 }
 
 abstract class ProgressUpdated implements ProgressState {
-  const factory ProgressUpdated(double currentProgress) = _$ProgressUpdated;
+  const factory ProgressUpdated(int totalExercises, List<bool> alreadyDone) =
+      _$ProgressUpdated;
 
-  double get currentProgress;
+  int get totalExercises;
+  List<bool> get alreadyDone;
   $ProgressUpdatedCopyWith<ProgressUpdated> get copyWith;
 }

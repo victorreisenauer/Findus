@@ -9,7 +9,7 @@ class CustomProgressBar extends StatelessWidget {
     return BlocBuilder<ProgressBloc, ProgressState>(builder: (context, state) {
       if (state is ProgressUpdated) {
         print("Progress Updated");
-        return _CustomProgressBar(state.currentProgress);
+        return _CustomProgressBar(state.totalExercises, state.alreadyDone);
       }
       return LinearProgressIndicator();
     });
@@ -17,8 +17,9 @@ class CustomProgressBar extends StatelessWidget {
 }
 
 class _CustomProgressBar extends StatefulWidget {
-  double currentProgress;
-  _CustomProgressBar(this.currentProgress);
+  int totalExercises;
+  List<bool> alreadyDone;
+  _CustomProgressBar(this.totalExercises, this.alreadyDone);
 
   @override
   State<StatefulWidget> createState() {
@@ -47,7 +48,7 @@ class _CustomProgressBarState extends State<_CustomProgressBar>
 
     progressTween = Tween<double>(
       begin: 0,
-      end: widget.currentProgress,
+      end: 1,
     );
 
     _controller.forward();
@@ -57,14 +58,16 @@ class _CustomProgressBarState extends State<_CustomProgressBar>
   void didUpdateWidget(_CustomProgressBar oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (this.widget.currentProgress != oldWidget.currentProgress) {
-      double beginValue = this.progressTween?.evaluate(curve) ??
-          oldWidget?.currentProgress ??
-          0;
+    print(this.widget.alreadyDone.length);
+    print(oldWidget.alreadyDone.length);
+    print("New Animation request");
+
+    if (this.widget.alreadyDone.length != oldWidget.alreadyDone.length) {
+      print("New Animation");
 
       progressTween = Tween<double>(
-        begin: beginValue,
-        end: widget.currentProgress ?? 1,
+        begin: 0,
+        end: 1,
       );
 
       _controller
@@ -86,19 +89,27 @@ class _CustomProgressBarState extends State<_CustomProgressBar>
         child: Container(),
         builder: (context, child) {
           return CustomPaint(
-            painter: _CustomProgressBarPainter(progressTween.evaluate(curve)),
+            painter: _CustomProgressBarPainter(this.widget.totalExercises,
+                this.widget.alreadyDone, progressTween.evaluate(curve)),
           );
         });
   }
 }
 
 class _CustomProgressBarPainter extends CustomPainter {
-  final double progress;
+  final int totalExercises;
+  final List<bool> alreadyDone;
+  final double animate;
 
-  _CustomProgressBarPainter(this.progress);
+  _CustomProgressBarPainter(
+      this.totalExercises, this.alreadyDone, this.animate);
 
   @override
   void paint(Canvas canvas, Size size) {
+    /*print("TotalExercises: " + totalExercises.toString());
+    print("AlreadyDone: " + alreadyDone.toString());
+    print("Animate: " + animate.toString());*/
+
     Paint basePaintOutline = Paint()
       ..color = Color.fromRGBO(66, 76, 86, 1)
       ..style = PaintingStyle.stroke
@@ -117,7 +128,7 @@ class _CustomProgressBarPainter extends CustomPainter {
     Rect baseRect = Rect.fromLTRB(0, 0, size.width, size.height);
     RRect baseRRect = RRect.fromRectAndRadius(baseRect, Radius.circular(10.0));
 
-    Rect progressRect = Rect.fromLTRB(0, 0, size.width * progress, size.height);
+    Rect progressRect = Rect.fromLTRB(0, 0, size.width * animate, size.height);
     RRect progressRRect =
         RRect.fromRectAndRadius(progressRect, Radius.circular(10.0));
 
@@ -129,6 +140,6 @@ class _CustomProgressBarPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
     final oldPainter = (oldDelegate as _CustomProgressBarPainter);
-    return oldPainter.progress != this.progress;
+    return oldPainter.animate != this.animate;
   }
 }
