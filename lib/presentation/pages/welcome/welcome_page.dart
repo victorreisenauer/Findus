@@ -14,7 +14,7 @@ class WelcomePage extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           if (state is Authenticated) {
-            var valueOrFailure = state.user.name.value.fold(
+            var valueOrFailure = state.user.personalData.firstName.value.fold(
               (f) => f,
               (v) => v,
             );

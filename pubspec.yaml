@@ -21,7 +21,7 @@ dependencies:
   get_it:
   auto_route:
   mockito:
-  flushbar: 1.9.1
+  flushbar: 1.10.4
   equatable:
   google_fonts:
   path_provider:
