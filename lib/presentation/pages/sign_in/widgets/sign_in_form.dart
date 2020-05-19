@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flushbar/flushbar_helper.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flushbar/flushbar_helper.dart';
-
-import 'package:lrs_app_v3/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:lrs_app_v3/application/auth/auth_bloc.dart';
+import 'package:lrs_app_v3/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:lrs_app_v3/presentation/routes/router.gr.dart';
 
 class SignInForm extends StatelessWidget {
@@ -29,6 +28,11 @@ class SignInForm extends StatelessWidget {
                   emailAlreadyInUse: (_) => 'Email already in use',
                   invalidEmailAndPasswordCombination: (_) =>
                       'Invalid email and password combination',
+                  loginRequired: (_) => 'Login Required',
+                  invalidEmail: (_) => 'Invalid Email',
+                  accountNotFound: (_) => 'Accound not found',
+                  weakPassword: (_) => 'weak password',
+                  deviceOffline: (_) => 'device offline',
                 ),
               ).show(context);
             },

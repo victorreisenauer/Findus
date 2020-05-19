@@ -1,8 +1,7 @@
-import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
-
 import 'package:lrs_app_v3/domain/core/failures.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
+import 'package:meta/meta.dart';
 
 @immutable
 class EmailAddress extends ValueObject<String> {
@@ -11,10 +10,9 @@ class EmailAddress extends ValueObject<String> {
 
   factory EmailAddress(String input) {
     assert(input != null);
-    return EmailAddress._(right(input));
-    //return EmailAddress._(
-    //  validateEmailAddress(input),
-    //);
+    return EmailAddress._(
+      validateEmailAddress(input),
+    );
   }
 
   const EmailAddress._(this.value);
@@ -29,7 +27,7 @@ class Password extends ValueObject<String> {
 
   factory Password(String input) {
     assert(input != null);
-    return Password._(right(input));
+    return Password._(validatePassword(input));
   }
 
   const Password._(this.value);

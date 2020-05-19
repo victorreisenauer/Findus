@@ -1,18 +1,16 @@
 import 'dart:async';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
-import 'package:injectable/injectable.dart';
-
-import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:meta/meta.dart';
 
+part 'sign_in_form_bloc.freezed.dart';
 part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
-
-part 'sign_in_form_bloc.freezed.dart';
 
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
@@ -39,6 +37,16 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             password: Password(e.passwordStr),
             authFailureOrSuccessOption: none());
       },
+      signInWithEmailAndPasswordPressed: (e) async* {
+        yield* _performActionOnAuthFacadeWithEmailAndPassword(
+          _authFacade.signInWithEmailAndPassword,
+        );
+      },
+      registerWithEmailAndPasswordPressed: (e) async* {
+        yield* _performActionOnAuthFacadeWithEmailAndPassword(
+          _authFacade.signUpWithEmailAndPassword,
+        );
+      },
       signInWithGooglePressed: (e) async* {
         yield state.copyWith(
           isSubmitting: true,
@@ -49,7 +57,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   }
 
   Stream<SignInFormState> _performActionOnAuthFacadeWithEmailAndPassword(
-    Future<Either<AuthFailure, Unit>> Function({
+    Future<Option<AuthFailure>> Function({
       @required EmailAddress emailAddress,
       @required Password password,
     })
@@ -69,7 +77,9 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       failureOrSuccess = await forwardedCall(
         emailAddress: state.emailAddress,
         password: state.password,
-      );
+      ).then((call) {
+        return call.fold(() => right(unit), (a) => left(a));
+      });
     }
     yield state.copyWith(
       isSubmitting: false,
