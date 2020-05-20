@@ -3,10 +3,12 @@ import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/domain/auth/user/user.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
+import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:mockito/mockito.dart';
 
 abstract class FirebaseUserMapper {
   User toDomain(FirebaseUser user);
+  UserModel toUserModel(FirebaseUser user);
 }
 
 @RegisterAs(FirebaseUserMapper, env: Environment.prod)
@@ -19,6 +21,10 @@ class FirebaseUserMapperImpl implements FirebaseUserMapper {
             id: UniqueId.fromUniqueId(user.uid),
             personalData: PersonalData.empty(),
             emailAddress: EmailAddress(user.email));
+  }
+
+  UserModel toUserModel(FirebaseUser user) {
+    return user == null ? null : UserModel(id: user.uid, email: user.email);
   }
 }
 

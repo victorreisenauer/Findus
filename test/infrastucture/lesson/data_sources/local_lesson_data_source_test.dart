@@ -4,6 +4,7 @@ import 'package:kt_dart/collection.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
+import 'package:lrs_app_v3/infrastructure/lesson/api_lessons/data_sources/local_lesson_data_source.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/injection.dart';
 

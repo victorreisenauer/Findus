@@ -2,28 +2,14 @@ import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
-import 'package:lrs_app_v3/infrastructure/core/exceptions.dart';
+import 'package:lrs_app_v3/infrastructure/core/local_exceptions.dart';
 import 'package:mockito/mockito.dart';
 
-abstract class LocalAuthDataSource {
-  Future<void> cacheUserModel(String userId, UserModel model);
-  Future<void> cachePersonalData(String userId, PersonalDataModel data);
-  Future<void> cacheSession(String userId, String session);
-  Future<UserModel> getUserModel(String userId);
-  Stream<UserModel> getAllUserModels();
-  Future<String> getSession(String userId);
-  Future<PersonalDataModel> getPersonalData(String userId);
-  Future<void> removeSession(String userId);
-  Future<void> removePersonalData(String userId);
-  Future<void> removeUserModel(String userId);
-  Future<void> close();
-}
-
-@RegisterAs(LocalAuthDataSource, env: Environment.prod)
+@RegisterAs(LocalAuthDataSourceFacade, env: Environment.prod)
 @lazySingleton
-class LocalAuthDataSourceImpl implements LocalAuthDataSource {
+class LocalAuthDataSource implements LocalAuthDataSourceFacade {
   final Boxes boxes;
-  LocalAuthDataSourceImpl(this.boxes);
+  LocalAuthDataSource(this.boxes);
 
   /// store [UserModel] in cache. IMPORTANT: use 'await' keyword when
   /// caching to make sure cache is complete before box is accessed again.
@@ -103,23 +89,25 @@ class LocalAuthDataSourceImpl implements LocalAuthDataSource {
   }
 }
 
-@RegisterAs(LocalAuthDataSource, env: Environment.dev)
+@RegisterAs(LocalAuthDataSourceFacade, env: Environment.dev)
 @lazySingleton
-class DevLocalAuthDataSourceImpl extends LocalAuthDataSourceImpl {
+class DevLocalAuthDataSourceImpl extends LocalAuthDataSource {
   final Boxes boxes;
   DevLocalAuthDataSourceImpl(this.boxes) : super(boxes);
 }
 
-@RegisterAs(LocalAuthDataSource, env: Environment.test)
+@RegisterAs(LocalAuthDataSourceFacade, env: Environment.test)
 @lazySingleton
-class MockLocalAuthDataSourceImpl extends Mock implements LocalAuthDataSource {
+class MockLocalAuthDataSourceImpl extends Mock
+    implements LocalAuthDataSourceFacade {
   final Boxes boxes;
 
   MockLocalAuthDataSourceImpl(this.boxes);
 
-  UserModel model = UserModel(email: "test@test.com", id: 0002, active: true);
-  UserModel model2 = UserModel(email: "test@test.com", id: 0003, active: false);
-  UserModel model3 = UserModel(email: "test@test.com", id: 0004);
+  UserModel model = UserModel(email: "test@test.com", id: '0002', active: true);
+  UserModel model2 =
+      UserModel(email: "test@test.com", id: '0003', active: false);
+  UserModel model3 = UserModel(email: "test@test.com", id: '0004');
 
   Stream<UserModel> getAllUserModels() async* {
     List models = [model, model2, model3];

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/infrastructure/core/exceptions.dart';
+import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
 import 'package:lrs_app_v3/injection.dart';
 import 'package:lrs_data_client/lrs_api.dart';
 import 'package:mockito/mockito.dart';
@@ -16,7 +16,8 @@ main() {
   group('[Env: test] RemoteAuthDataSource => ', () {
     //configureInjection(Env.test);
     final Api api = MockApi();
-    final RemoteAuthDataSource testRemoteData = RemoteAuthDataSourceImpl(api);
+    final RemoteAuthDataSourceFacade testRemoteData =
+        RemoteApiAuthDataSource(api);
     final String sampleSession = "sampleSession"; // valid sample session
     group('on getCurrentUser =>', () {
       group('if api is available', () {
@@ -31,7 +32,7 @@ main() {
           when(api.session).thenAnswer((_) => sampleSession);
           when(api.validateSession()).thenAnswer((_) async => false);
           // expect exception to be thrown
-          expect(() => testRemoteData.getCurrentUser(),
+          expect(() => testRemoteData.getUser(),
               throwsA(isInstanceOf<InvalidSessionException>()));
         });
 
@@ -40,7 +41,7 @@ main() {
           when(api.session).thenAnswer((_) => null);
           when(api.validateSession()).thenAnswer((_) async => true);
           // expect Exception to be thrown
-          expect(() => testRemoteData.getCurrentUser(),
+          expect(() => testRemoteData.getUser(),
               throwsA(isInstanceOf<InvalidSessionException>()));
         });
         test(
@@ -60,7 +61,7 @@ main() {
           when(api.validateSession()).thenAnswer((_) async => true);
           when(api.currentUserJson).thenAnswer((_) async => json);
           // act
-          var response = await testRemoteData.getCurrentUser();
+          var response = await testRemoteData.getUser();
           // expect a userModel to be returned
           expect(response, isA<UserModel>());
         });
@@ -72,7 +73,7 @@ main() {
         test('throws ServerNotReachableException', () {
           // server could not be reached, either server fault or device is offline
           // device is offline is handled by repository
-          expect(() => testRemoteData.getCurrentUser(),
+          expect(() => testRemoteData.getUser(),
               throwsA(isInstanceOf<ServerNotReachableException>()));
         });
       });
@@ -88,7 +89,8 @@ main() {
           () {
         when(api.validateSession()).thenAnswer((_) async => true);
         expect(
-            () => testRemoteData.signIn(username: "Admin", password: "admin"),
+            () => testRemoteData.signInWithEmailAndPassword(
+                emailAddress: "Admin", password: "admin"),
             throwsA(isInstanceOf<AlreadyLoggedInException>()));
       });
       test('throws InvalidCredentialsException on incorrect login', () {
@@ -98,7 +100,8 @@ main() {
         when(api.login()).thenThrow(InvalidCredentialsException());
 
         expect(
-            () => testRemoteData.signIn(username: "Admin", password: "blabla"),
+            () => testRemoteData.signInWithEmailAndPassword(
+                emailAddress: "Admin", password: "blabla"),
             throwsA(isInstanceOf<InvalidCredentialsException>()));
       });
       test('throws ServerException(cause) on any other exceptions', () {
@@ -108,7 +111,8 @@ main() {
         when(api.login())
             .thenThrow(UnhandledEndpointException("something went wrong"));
         expect(
-            () => testRemoteData.signIn(username: "Admin", password: "admin"),
+            () => testRemoteData.signInWithEmailAndPassword(
+                emailAddress: "Admin", password: "admin"),
             throwsA(isInstanceOf<UnhandledEndpointException>()));
       });
     });
@@ -117,17 +121,20 @@ main() {
   group('[Env: prod] RemoteAuthDataSource => ', () {
     configureInjection(Env.prod);
     test('dependencies can be injected', () {
-      final RemoteAuthDataSource prodRemoteData = getIt<RemoteAuthDataSource>();
+      final RemoteAuthDataSourceFacade prodRemoteData =
+          getIt<RemoteApiAuthDataSource>();
       expect(prodRemoteData != null, true);
     });
 
     group('on getCurrentUser => ', () {
       Api api = Api("https://api.lrs.hndrk.xyz/");
-      final RemoteAuthDataSource prodRemoteData = RemoteAuthDataSourceImpl(api);
+      final RemoteAuthDataSourceFacade prodRemoteData =
+          RemoteApiAuthDataSource(api);
       test('UserModel is returned on valid session', () async {
         // logging in with valid credentials makes session valid
-        await prodRemoteData.signIn(username: "Admin", password: "admin");
-        var response = await prodRemoteData.getCurrentUser();
+        await prodRemoteData.signInWithEmailAndPassword(
+            emailAddress: "Admin", password: "admin");
+        var response = await prodRemoteData.getUser();
         // expect a userModel to be returned
         expect(response, isA<UserModel>());
       });

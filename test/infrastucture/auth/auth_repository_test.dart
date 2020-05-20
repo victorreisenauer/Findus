@@ -1,17 +1,17 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/infrastructure/auth/firebase_auth/firebase_user_mapper.dart';
 import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
+import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
 import 'package:lrs_app_v3/injection.dart';
 import 'package:mockito/mockito.dart';
 
 // set up mock classes and instances
 class MockFirebaseUser extends Mock implements FirebaseUser {}
 
-class MockUser extends Mock implements User {}
+class MockUserModel extends Mock implements UserModel {}
 
 class MockEmailAddress extends Mock implements EmailAddress {}
 
@@ -28,87 +28,90 @@ main() {
   configureInjection(Env.test);
 
   // Dependencies
-  FirebaseAuth firebaseAuth = getIt<FirebaseAuth>();
+  LocalAuthDataSourceFacade localData = getIt<LocalAuthDataSourceFacade>();
+  RemoteAuthDataSourceFacade remoteData = getIt<RemoteAuthDataSourceFacade>();
   NetworkInfo networkInfo = getIt<NetworkInfo>();
-  FirebaseUserMapper userMapper = getIt<FirebaseUserMapper>();
 
   // Production object with mocked dependencies
-  FirebaseAuthRepository testAuthRepo =
-      FirebaseAuthRepository(firebaseAuth, networkInfo, userMapper);
+  AuthFacade testAuthRepo = AuthRepository(localData, remoteData, networkInfo);
 
   // Instantiate objects for testing
-  MockFirebaseUser testFirebaseUser = MockFirebaseUser();
-  MockUser testUser = MockUser();
+  MockUserModel testUserModel = MockUserModel();
   MockEmailAddress testEmail = MockEmailAddress();
   MockPassword testPassword = MockPassword();
 
   // Tests
   group('[Env: test]FireBaseAuthRepository => ', () {
     group('on registerWithEmailAndPassword => ', () {
+      test('checks if device is online', () async {
+        when(networkInfo.isConnected)
+            .thenAnswer((realInvocation) async => true);
+        await testAuthRepo.signUpWithEmailAndPassword(
+            emailAddress: testEmail, password: testPassword);
+        verify(networkInfo.isConnected);
+      });
       group('if online => ', () {
         setUp(() {
           when(networkInfo.isConnected)
               .thenAnswer((realInvocation) async => true);
         });
-        test('if successful, registers a new user', () async {
-          when(firebaseAuth.createUserWithEmailAndPassword(
-                  email: anyNamed("email"), password: anyNamed("password")))
-              .thenAnswer((realInvocation) async => MockAuthResult());
 
-          // create a new user with email and password
-          var response = await testAuthRepo.signUpWithEmailAndPassword(
+        test('calls localData.signUpWithEmailAndPassword', () async {
+          await testAuthRepo.signUpWithEmailAndPassword(
               emailAddress: testEmail, password: testPassword);
 
-          // verify correct calls are made and option none() is returned
-          verify(firebaseAuth.createUserWithEmailAndPassword(
-              email: anyNamed("email"), password: anyNamed("password")));
-          expect(response.fold(() => null, (a) => a), null);
+          verify(remoteData.signUpWithEmailAndPassword(
+              emailAddress: anyNamed("emailAddress"),
+              password: anyNamed("password")));
+        });
+        group('if successful =>', () {
+          test('returns none() option', () async {
+            when(remoteData.signUpWithEmailAndPassword(
+                emailAddress: anyNamed("emailAddress"),
+                password: anyNamed("password")));
+            var response = await testAuthRepo.signUpWithEmailAndPassword(
+                emailAddress: testEmail, password: testPassword);
+            var option = response.fold(() => none(), (a) => a);
+            expect(option, isA<None>());
+          });
         });
         test(
-            'if email is already in use, returns AuthFailure.emailAlreadyInUse',
+            'on EmailAlreadyInUseException, returns AuthFailure.emailAlreadyInUse',
             () async {
-          when(firebaseAuth.createUserWithEmailAndPassword(
-                  email: anyNamed("email"), password: anyNamed("password")))
-              .thenThrow(PlatformException(code: 'ERROR_EMAIL_ALREADY_IN_USE'));
-
+          when(remoteData.signUpWithEmailAndPassword(
+                  emailAddress: anyNamed("emailAddress"),
+                  password: anyNamed("password")))
+              .thenThrow(EmailAlreadyInUseException());
           var response = await testAuthRepo.signUpWithEmailAndPassword(
               emailAddress: testEmail, password: testPassword);
           var failure = response.fold(() => null, (a) => a);
 
-          // verify correct calls are made and option none() is returned
-          verify(firebaseAuth.createUserWithEmailAndPassword(
-              email: anyNamed("email"), password: anyNamed("password")));
           expect(failure, isA<EmailAlreadyInUse>());
         });
 
-        test('if password is too weak, returns AuthFailure.weakPassword',
+        test('WeakPasswordException, returns AuthFailure.weakPassword',
             () async {
-          when(firebaseAuth.createUserWithEmailAndPassword(
-                  email: anyNamed("email"), password: anyNamed("password")))
-              .thenThrow(PlatformException(code: 'ERROR_WEAK_PASSWORD'));
-
+          when(remoteData.signUpWithEmailAndPassword(
+                  emailAddress: anyNamed("emailAddress"),
+                  password: anyNamed("password")))
+              .thenThrow(WeakPasswordException());
           var response = await testAuthRepo.signUpWithEmailAndPassword(
               emailAddress: testEmail, password: testPassword);
           var failure = response.fold(() => null, (a) => a);
 
-          // verify correct calls are made and option none() is returned
-          verify(firebaseAuth.createUserWithEmailAndPassword(
-              email: anyNamed("email"), password: anyNamed("password")));
           expect(failure, isA<WeakPassword>());
         });
 
-        test('if email is invalid, returns AuthFailure.invalidEmail', () async {
-          when(firebaseAuth.createUserWithEmailAndPassword(
-                  email: anyNamed("email"), password: anyNamed("password")))
-              .thenThrow(PlatformException(code: 'ERROR_INVALID_EMAIL'));
-
+        test('on InvalidEmailException, returns AuthFailure.invalidEmail',
+            () async {
+          when(remoteData.signUpWithEmailAndPassword(
+                  emailAddress: anyNamed("emailAddress"),
+                  password: anyNamed("password")))
+              .thenThrow(InvalidEmailException());
           var response = await testAuthRepo.signUpWithEmailAndPassword(
               emailAddress: testEmail, password: testPassword);
           var failure = response.fold(() => null, (a) => a);
 
-          // verify correct calls are made and option none() is returned
-          verify(firebaseAuth.createUserWithEmailAndPassword(
-              email: anyNamed("email"), password: anyNamed("password")));
           expect(failure, isA<InvalidEmail>());
         });
       });
@@ -136,24 +139,18 @@ main() {
           when(networkInfo.isConnected).thenAnswer((_) async => true);
         });
         test('if there is a user, return user', () async {
-          when(firebaseAuth.currentUser())
-              .thenAnswer((_) async => testFirebaseUser);
-          when(userMapper.toDomain(testFirebaseUser))
-              .thenAnswer((realInvocation) => testUser);
-
+          when(remoteData.getUser()).thenAnswer((_) async => testUserModel);
           // act
           var response = await testAuthRepo
               .getUser()
               .then((value) => value.fold((l) => l, (r) => r));
-          // verify onAuthStateChanged is called
-          verify(firebaseAuth.currentUser());
 
           // expect repo to return a user
           expect(response, isA<User>());
         });
         test('if there is no user, returns AuthFailure.loginRequired',
             () async {
-          when(firebaseAuth.currentUser()).thenAnswer((_) async => null);
+          when(remoteData.getUser()).thenThrow(NoLoggedInUserException());
           // act
           var response = await testAuthRepo
               .getUser()
@@ -193,60 +190,42 @@ main() {
         test(
             'if wrong email and password combination => return AuthFailure.wrongEmailAndPasswordCombination',
             () async {
-          // case 1: invalid email
-          when(firebaseAuth.signInWithEmailAndPassword(
-                  email: anyNamed("email"), password: anyNamed("password")))
-              .thenThrow(PlatformException(code: "ERROR_INVALID_EMAIL"));
+          when(remoteData.signInWithEmailAndPassword(
+                  emailAddress: anyNamed("email"),
+                  password: anyNamed("password")))
+              .thenThrow(InvalidEmailAndPasswordCombinationException());
 
           var response = await testAuthRepo.signInWithEmailAndPassword(
               emailAddress: testEmail, password: testPassword);
 
           var failure = response.fold(() => null, (a) => a);
 
-          verify(firebaseAuth.signInWithEmailAndPassword(
-              email: anyNamed("email"), password: anyNamed("password")));
-          expect(failure, isA<InvalidEmailAndPasswordCombination>());
-
-          //case 2: invalid password
-          when(firebaseAuth.signInWithEmailAndPassword(
-                  email: anyNamed("email"), password: anyNamed("password")))
-              .thenThrow(PlatformException(code: "ERROR_WRONG_PASSWORD"));
-
-          response = await testAuthRepo.signInWithEmailAndPassword(
-              emailAddress: testEmail, password: testPassword);
-
-          failure = response.fold(() => null, (a) => a);
-
-          verify(firebaseAuth.signInWithEmailAndPassword(
-              email: anyNamed("email"), password: anyNamed("password")));
           expect(failure, isA<InvalidEmailAndPasswordCombination>());
         });
 
         test(
             'if account for email does not exist, return AuthFailure.userNotFound',
             () async {
-          when(firebaseAuth.signInWithEmailAndPassword(
-                  email: anyNamed("email"), password: anyNamed("password")))
-              .thenThrow(PlatformException(code: 'ERROR_USER_NOT_FOUND'));
+          when(remoteData.signInWithEmailAndPassword(
+                  emailAddress: anyNamed("email"),
+                  password: anyNamed("password")))
+              .thenThrow(AccountNotFoundException());
           var response = await testAuthRepo.signInWithEmailAndPassword(
               emailAddress: testEmail, password: testPassword);
 
-          verify(firebaseAuth.signInWithEmailAndPassword(
-              email: anyNamed("email"), password: anyNamed("password")));
           var failure = response.fold(() => null, (a) => a);
 
           expect(failure, isA<AccountNotFound>());
         });
         test('if successful, user is signed in and returns none', () async {
-          when(firebaseAuth.signInWithEmailAndPassword(
-                  email: anyNamed("email"), password: anyNamed("password")))
-              .thenAnswer((_) async => MockAuthResult());
+          when(remoteData.signInWithEmailAndPassword(
+                  emailAddress: anyNamed("email"),
+                  password: anyNamed("password")))
+              .thenAnswer((_) async => MockUserModel());
 
           var response = await testAuthRepo.signInWithEmailAndPassword(
               emailAddress: testEmail, password: testPassword);
 
-          verify(firebaseAuth.signInWithEmailAndPassword(
-              email: anyNamed("email"), password: anyNamed("password")));
           expect(response.isNone(), true);
         });
       });
@@ -254,9 +233,9 @@ main() {
     group('on signOut => ', () {
       test('if successful, signs out user from all sources and returns none',
           () {
-        when(firebaseAuth.signOut()).thenAnswer((realInvocation) async => null);
+        when(remoteData.signOut()).thenAnswer((realInvocation) async => null);
         testAuthRepo.signOut();
-        verify(firebaseAuth.signOut());
+        verify(remoteData.signOut());
       });
     });
   });

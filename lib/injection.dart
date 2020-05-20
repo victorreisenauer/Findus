@@ -1,3 +1,4 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
@@ -35,6 +36,9 @@ abstract class ProdModules {
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
   @prod
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
+  @prod
+  @lazySingleton
+  CloudFunctions get httpscallable => CloudFunctions.instance;
 }
 
 // registers external classes for injection in dev environment
@@ -48,6 +52,9 @@ abstract class DevModules {
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
   @dev
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
+  @dev
+  @lazySingleton
+  CloudFunctions get httpscallable => CloudFunctions.instance;
 }
 
 // registers mocked external classes for injection in test environment
@@ -63,6 +70,9 @@ abstract class TestModules {
   Boxes get boxes => TestBoxes();
   @test
   DataConnectionChecker dataConnectionChecker() => MockDataConnectionChecker();
+  @test
+  @lazySingleton
+  CloudFunctions httpscallable() => MockCloudFunctions();
 }
 
 // mocked external classes for test environment
@@ -71,3 +81,5 @@ class MockApi extends Mock implements Api {}
 class MockFirebaseAuth extends Mock implements FirebaseAuth {}
 
 class MockDataConnectionChecker extends Mock implements DataConnectionChecker {}
+
+class MockCloudFunctions extends Mock implements CloudFunctions {}

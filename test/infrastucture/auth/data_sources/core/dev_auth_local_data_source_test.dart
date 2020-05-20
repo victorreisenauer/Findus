@@ -20,7 +20,7 @@ main() {
   configureInjection(Env.dev);
   Hive.init('/Users/victo/OneDrive/projects/lrs_app/db');
 
-  LocalAuthDataSource devLocalData = getIt<LocalAuthDataSource>();
+  LocalAuthDataSourceFacade devLocalData = getIt<LocalAuthDataSourceFacade>();
   Boxes boxes = getIt<Boxes>();
   group('[Env: dev] LocalAuthDataSource =>', () {
     group('on cacheUserModel => ', () {

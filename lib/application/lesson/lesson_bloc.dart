@@ -1,18 +1,17 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
-import 'package:injectable/injectable.dart';
+
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
-
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
-
-part 'lesson_event.dart';
-part 'lesson_state.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
+import 'package:meta/meta.dart';
 
 part 'lesson_bloc.freezed.dart';
+part 'lesson_event.dart';
+part 'lesson_state.dart';
 
 @injectable
 class LessonBloc extends Bloc<LessonEvent, LessonState> {
@@ -30,9 +29,9 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
   ) async* {
     yield* event.map(fetchAllLessonIds: (_) async* {
       yield const LessonState.lessonLoading();
-      yield _lessonFacade.getUserLessonIds().fold(
+      yield _lessonFacade.getUserLessonIds().then((either) => either.fold(
           (f) => LessonState.lessonError(f),
-          (idStream) => LessonState.lessonIdStreamLoaded(idStream));
+          (idStream) => LessonState.lessonIdStreamLoaded(idStream)));
     }, startLesson: (e) async* {
       yield LessonLoading();
       final failureOrLesson = await _lessonFacade.getLessonById(e.id);

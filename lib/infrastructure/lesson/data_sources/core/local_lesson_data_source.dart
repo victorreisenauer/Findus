@@ -5,18 +5,9 @@ import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 
-abstract class LocalLessonDataSource {
-  Stream<UniqueId> getUserLessonIds();
-  Future<LessonModel> getLessonModelById(UniqueId id);
-  Future<void> cacheLessonModel(LessonModel model);
-  Future<void> cacheLessonResultModel(LessonResultModel result);
-  Future<List<LessonResult>> getUnpushedLessonResults();
-  Future<void> close();
-}
-
-@RegisterAs(LocalLessonDataSource, env: Environment.prod)
+@RegisterAs(LocalLessonDataSourceFacade, env: Environment.prod)
 @lazySingleton
-class LocalLessonDataSourceImpl implements LocalLessonDataSource {
+class LocalLessonDataSourceImpl implements LocalLessonDataSourceFacade {
   final Boxes boxes;
 
   LocalLessonDataSourceImpl(this.boxes);

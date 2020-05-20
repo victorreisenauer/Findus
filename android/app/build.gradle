@@ -62,7 +62,10 @@ flutter {
 }
 
 dependencies {
+    // required for google firebase
+    implementation 'com.google.firebase:firebase-functions:19.0.2'
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    // other
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:multidex:1.0.3'
     testImplementation 'junit:junit:4.12'

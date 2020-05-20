@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
-import 'package:lrs_app_v3/infrastructure/core/exceptions.dart';
+import 'package:lrs_app_v3/infrastructure/core/local_exceptions.dart';
 import 'package:lrs_app_v3/injection.dart';
 import 'package:mockito/mockito.dart';
 
@@ -26,7 +26,7 @@ main() async {
   Boxes boxes = getIt<Boxes>();
 
   // Create production object with mocked dependencies
-  LocalAuthDataSource testLocalData = LocalAuthDataSourceImpl(boxes);
+  LocalAuthDataSourceFacade testLocalData = LocalAuthDataSource(boxes);
 
   // Instantiate objects for testing
   String testUserId = "sampleUserId";

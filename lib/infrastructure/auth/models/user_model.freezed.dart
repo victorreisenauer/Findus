@@ -15,7 +15,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 class _$UserModelTearOff {
   const _$UserModelTearOff();
 
-  _UserModel call({@required int id, @required String email, bool active}) {
+  _UserModel call({@required String id, @required String email, bool active}) {
     return _UserModel(
       id: id,
       email: email,
@@ -28,7 +28,7 @@ class _$UserModelTearOff {
 const $UserModel = _$UserModelTearOff();
 
 mixin _$UserModel {
-  int get id;
+  String get id;
   String get email;
   bool get active;
 
@@ -39,7 +39,7 @@ mixin _$UserModel {
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
-  $Res call({int id, String email, bool active});
+  $Res call({String id, String email, bool active});
 }
 
 class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
@@ -56,7 +56,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object active = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as int,
+      id: id == freezed ? _value.id : id as String,
       email: email == freezed ? _value.email : email as String,
       active: active == freezed ? _value.active : active as bool,
     ));
@@ -68,7 +68,7 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
           _UserModel value, $Res Function(_UserModel) then) =
       __$UserModelCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String email, bool active});
+  $Res call({String id, String email, bool active});
 }
 
 class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
@@ -86,7 +86,7 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object active = freezed,
   }) {
     return _then(_UserModel(
-      id: id == freezed ? _value.id : id as int,
+      id: id == freezed ? _value.id : id as String,
       email: email == freezed ? _value.email : email as String,
       active: active == freezed ? _value.active : active as bool,
     ));
@@ -103,7 +103,7 @@ class _$_UserModel implements _UserModel {
       _$_$_UserModelFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String email;
   @override
@@ -145,13 +145,15 @@ class _$_UserModel implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {@required int id, @required String email, bool active}) = _$_UserModel;
+      {@required String id,
+      @required String email,
+      bool active}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get email;
   @override
