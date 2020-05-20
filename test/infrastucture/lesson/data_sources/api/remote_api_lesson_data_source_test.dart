@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/infrastructure/lesson/api_lessons/data_sources/remote_lesson_data_source.dart';
 import 'package:lrs_app_v3/injection.dart';
 import 'package:lrs_data_client/lrs_api.dart';
 import 'package:mockito/mockito.dart';
@@ -12,9 +11,7 @@ main() {
   Api mockApi = MockApi();
 
   group('[Env: test] RemoteLessonDataSource =>', () {
-    setUp(() {
-      RemoteLessonDataSource remoteData = RemoteLessonDataSourceImpl(mockApi);
-    });
+    setUp(() {});
     group('on Get AvailableLessonData(user) =>', () {
       group('if api is available =>', () {
         test('if successful, returns lessonModels for users lessons', () {});

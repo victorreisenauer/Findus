@@ -1,16 +1,15 @@
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 
 @RegisterAs(LocalLessonDataSourceFacade, env: Environment.prod)
 @lazySingleton
-class LocalLessonDataSourceImpl implements LocalLessonDataSourceFacade {
+class LocalLessonDataSource implements LocalLessonDataSourceFacade {
   final Boxes boxes;
 
-  LocalLessonDataSourceImpl(this.boxes);
+  LocalLessonDataSource(this.boxes);
 
   Stream<UniqueId> getUserLessonIds() async* {
     Box box = await boxes.lessonBox.then((box) => box);
@@ -32,7 +31,7 @@ class LocalLessonDataSourceImpl implements LocalLessonDataSourceFacade {
     await boxes.resultBox.then((box) => box.add(result.toJson()));
   }
 
-  Future<List<LessonResult>> getUnpushedLessonResults() {
+  Future<List<LessonResultModel>> getUnpushedLessonResults() {
     // needs implementation
     return null;
   }

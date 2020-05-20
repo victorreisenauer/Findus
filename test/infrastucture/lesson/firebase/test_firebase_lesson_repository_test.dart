@@ -1,8 +1,8 @@
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
+import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/injection.dart';
-import 'package:mockito/mockito.dart';
 
 // set up mock classes and instances
 
@@ -15,11 +15,14 @@ main() {
   configureInjection(Env.test);
 
   // Injectable dependencies
-  CloudFunctions cloudFunctions = getIt<CloudFunctions>();
+  LocalLessonDataSourceFacade localData = getIt<LocalLessonDataSourceFacade>();
+  RemoteLessonDataSourceFacade remoteData =
+      getIt<RemoteLessonDataSourceFacade>();
+  NetworkInfo networkInfo = getIt<NetworkInfo>();
 
   // Production object with mocked dependencies
-  FirebaseLessonRepository testLessonRepo =
-      FirebaseLessonRepository(localData, remoteData);
+  LessonFacade testLessonRepo = LessonRepository(
+      localData: localData, remoteData: remoteData, networkInfo: networkInfo);
 
   // Objects for testing
 

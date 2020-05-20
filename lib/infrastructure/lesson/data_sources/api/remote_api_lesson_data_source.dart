@@ -1,16 +1,15 @@
 import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 import 'package:lrs_data_client/lrs_api.dart';
 
 @RegisterAs(RemoteLessonDataSourceFacade, env: Environment.prod)
 @injectable
-class RemoteLessonDataSourceImpl implements RemoteLessonDataSourceFacade {
+class RemoteApiLessonDataSource implements RemoteLessonDataSourceFacade {
   final Api _api;
-  RemoteLessonDataSourceImpl(this._api);
+  RemoteApiLessonDataSource(this._api);
 
   Future<bool> get isAvailable async {
     if (await _api.checkConnection()) {
@@ -30,7 +29,7 @@ class RemoteLessonDataSourceImpl implements RemoteLessonDataSourceFacade {
     }
   }
 
-  Future<void> pushResults(List<LessonResult> results) {
+  Future<void> pushResults(List<LessonResultModel> results) {
     // needs implementation
   }
 

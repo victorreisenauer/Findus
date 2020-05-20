@@ -1,8 +1,9 @@
-export 'data_sources/api/remote_lesson_data_source.dart';
+export 'data_sources/api/remote_api_lesson_data_source.dart';
 export 'data_sources/core/local_lesson_data_source.dart';
-export 'data_sources/firebase/remote_lesson_data_source.dart';
+export 'data_sources/firebase/remote_firebase_lesson_data_source.dart';
 export 'data_sources/local_lesson_data_source_facade.dart';
 export 'data_sources/remote_lesson_data_source_facade.dart';
+export 'lesson_repository.dart';
 export 'models/exercise_model.dart';
 export 'models/exercise_result_model.dart';
 export 'models/lesson_model.dart';

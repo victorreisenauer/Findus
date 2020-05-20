@@ -23,7 +23,7 @@ import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
 import 'package:lrs_app_v3/application/lesson/progress/progress_bloc.dart';
 import 'package:lrs_app_v3/infrastructure/auth/data_sources/firebase/remote_firebase_auth_data_source.dart';
 import 'package:lrs_app_v3/infrastructure/auth/data_sources/remote_auth_data_source_facade.dart';
-import 'package:lrs_app_v3/infrastructure/lesson/data_sources/api/remote_lesson_data_source.dart';
+import 'package:lrs_app_v3/infrastructure/lesson/data_sources/api/remote_api_lesson_data_source.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/data_sources/remote_lesson_data_source_facade.dart';
 import 'package:lrs_app_v3/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:lrs_app_v3/application/auth/auth_bloc.dart';
@@ -51,14 +51,14 @@ void $initGetIt(GetIt g, {String environment}) {
     g.registerLazySingleton<LocalAuthDataSourceFacade>(
         () => LocalAuthDataSource(g<Boxes>()));
     g.registerLazySingleton<LocalLessonDataSourceFacade>(
-        () => LocalLessonDataSourceImpl(g<Boxes>()));
+        () => LocalLessonDataSource(g<Boxes>()));
     g.registerFactory<NetworkInfo>(
         () => NetworkInfoImpl(g<DataConnectionChecker>()));
     g.registerLazySingleton<RemoteAuthDataSourceFacade>(() =>
         RemoteFirebaseAuthDataSource(
             g<FirebaseAuth>(), g<FirebaseUserMapper>()));
     g.registerFactory<RemoteLessonDataSourceFacade>(
-        () => RemoteLessonDataSourceImpl(g<Api>()));
+        () => RemoteApiLessonDataSource(g<Api>()));
     g.registerLazySingleton<AuthFacade>(() => AuthRepository(
           g<LocalAuthDataSourceFacade>(),
           g<RemoteAuthDataSourceFacade>(),
