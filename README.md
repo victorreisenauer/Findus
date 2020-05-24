@@ -82,3 +82,40 @@ used for connecting two or more interfaces into one unified interface. It is on 
 
 Freezed:
 Freezed is a package that helps create data classes (as known from Cotlin) to reduce boilerplate code. Run 'flutter pub run build_runner watch --delete-conflicting-outputs' to create/rebuild classes with the @freeze property. More on freeze here: https://resocoder.com/2020/02/11/freezed-data-class-union-in-one-dart-package/
+
+
+## Conventions:
+
+### Branches
+
+We are using the Gitflow Workflow as outlined here: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
+### Commits
+
+The general commit structure is as outlined in here: https://www.conventionalcommits.org/en/v1.0.0/
+
+The types we use:
+
+- feat: A new feature
+- fix: A bug fix
+- docs: Documentation only changes
+- style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- refactor: A code change that neither fixes a bug nor adds a feature
+- perf: A code change that improves performance
+- test: Adding missing tests
+- chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+
+## Linting
+
+We are linting like Google, as outlined here: https://github.com/dart-lang/pedantic
+Get yourself the pedantic package :)
+
+## Other conventions
+
+All other conventions follow the Dart recommendations. Please read them carefully here: https://dart.dev/guides/language/effective-dart/documentation
+
+
+
+
+
+
