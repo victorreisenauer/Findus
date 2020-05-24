@@ -38,7 +38,7 @@ abstract class ProdModules {
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
   @prod
   @lazySingleton
-  CloudFunctions get httpscallable => CloudFunctions.instance;
+  CloudFunctions get cloudFunctions => CloudFunctions.instance;
 }
 
 // registers external classes for injection in dev environment
@@ -54,7 +54,7 @@ abstract class DevModules {
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
   @dev
   @lazySingleton
-  CloudFunctions get httpscallable => CloudFunctions.instance;
+  CloudFunctions get cloudFunctions => CloudFunctions.instance;
 }
 
 // registers mocked external classes for injection in test environment
@@ -72,7 +72,7 @@ abstract class TestModules {
   DataConnectionChecker dataConnectionChecker() => MockDataConnectionChecker();
   @test
   @lazySingleton
-  CloudFunctions httpscallable() => MockCloudFunctions();
+  CloudFunctions get cloudFunctions => MockCloudFunctions();
 }
 
 // mocked external classes for test environment

@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
+import 'package:mockito/mockito.dart';
 
 @RegisterAs(LocalLessonDataSourceFacade, env: Environment.prod)
 @lazySingleton
@@ -18,9 +19,9 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
     }
   }
 
-  Future<LessonModel> getLessonModelById(UniqueId id) async {
+  Future<LessonModel> getLessonModelById(UniqueId userId) async {
     return LessonModel.fromJson(
-        await boxes.lessonBox.then((box) => box.get(id)));
+        await boxes.lessonBox.then((box) => box.get(userId)));
   }
 
   Future<void> cacheLessonModel(LessonModel model) async {
@@ -31,8 +32,12 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
     await boxes.resultBox.then((box) => box.add(result.toJson()));
   }
 
-  Future<List<LessonResultModel>> getUnpushedLessonResults() {
-    // needs implementation
+  Stream<LessonResultModel> getLessonResult(UniqueId userId) async* {
+    await boxes.resultBox.then((box) => box.get(userId));
+    yield null;
+  }
+
+  Future<void> removeLessonResultsModel() async {
     return null;
   }
 
@@ -41,3 +46,15 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
     boxes.resultBox.then((box) => box.close());
   }
 }
+
+@RegisterAs(LocalLessonDataSourceFacade, env: Environment.dev)
+@lazySingleton
+class DevLocalLessonDataSource extends LocalLessonDataSource {
+  final Boxes boxes;
+  DevLocalLessonDataSource(this.boxes) : super(boxes);
+}
+
+@RegisterAs(LocalLessonDataSourceFacade, env: Environment.test)
+@lazySingleton
+class TestLocalLessonDataSource extends Mock
+    implements LocalLessonDataSourceFacade {}

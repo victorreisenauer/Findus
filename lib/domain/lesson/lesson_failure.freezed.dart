@@ -19,6 +19,10 @@ class _$LessonFailureTearOff {
   UnableToUpdate unableToUpdate() {
     return const UnableToUpdate();
   }
+
+  DeviceOffline deviceOffline() {
+    return const DeviceOffline();
+  }
 }
 
 // ignore: unused_element
@@ -29,22 +33,26 @@ mixin _$LessonFailure {
   Result when<Result extends Object>({
     @required Result unexpected(),
     @required Result unableToUpdate(),
+    @required Result deviceOffline(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result unexpected(),
     Result unableToUpdate(),
+    Result deviceOffline(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result unexpected(Unexpected value),
     @required Result unableToUpdate(UnableToUpdate value),
+    @required Result deviceOffline(DeviceOffline value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result unexpected(Unexpected value),
     Result unableToUpdate(UnableToUpdate value),
+    Result deviceOffline(DeviceOffline value),
     @required Result orElse(),
   });
 }
@@ -100,9 +108,11 @@ class _$Unexpected implements Unexpected {
   Result when<Result extends Object>({
     @required Result unexpected(),
     @required Result unableToUpdate(),
+    @required Result deviceOffline(),
   }) {
     assert(unexpected != null);
     assert(unableToUpdate != null);
+    assert(deviceOffline != null);
     return unexpected();
   }
 
@@ -111,6 +121,7 @@ class _$Unexpected implements Unexpected {
   Result maybeWhen<Result extends Object>({
     Result unexpected(),
     Result unableToUpdate(),
+    Result deviceOffline(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -125,9 +136,11 @@ class _$Unexpected implements Unexpected {
   Result map<Result extends Object>({
     @required Result unexpected(Unexpected value),
     @required Result unableToUpdate(UnableToUpdate value),
+    @required Result deviceOffline(DeviceOffline value),
   }) {
     assert(unexpected != null);
     assert(unableToUpdate != null);
+    assert(deviceOffline != null);
     return unexpected(this);
   }
 
@@ -136,6 +149,7 @@ class _$Unexpected implements Unexpected {
   Result maybeMap<Result extends Object>({
     Result unexpected(Unexpected value),
     Result unableToUpdate(UnableToUpdate value),
+    Result deviceOffline(DeviceOffline value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -188,9 +202,11 @@ class _$UnableToUpdate implements UnableToUpdate {
   Result when<Result extends Object>({
     @required Result unexpected(),
     @required Result unableToUpdate(),
+    @required Result deviceOffline(),
   }) {
     assert(unexpected != null);
     assert(unableToUpdate != null);
+    assert(deviceOffline != null);
     return unableToUpdate();
   }
 
@@ -199,6 +215,7 @@ class _$UnableToUpdate implements UnableToUpdate {
   Result maybeWhen<Result extends Object>({
     Result unexpected(),
     Result unableToUpdate(),
+    Result deviceOffline(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -213,9 +230,11 @@ class _$UnableToUpdate implements UnableToUpdate {
   Result map<Result extends Object>({
     @required Result unexpected(Unexpected value),
     @required Result unableToUpdate(UnableToUpdate value),
+    @required Result deviceOffline(DeviceOffline value),
   }) {
     assert(unexpected != null);
     assert(unableToUpdate != null);
+    assert(deviceOffline != null);
     return unableToUpdate(this);
   }
 
@@ -224,6 +243,7 @@ class _$UnableToUpdate implements UnableToUpdate {
   Result maybeMap<Result extends Object>({
     Result unexpected(Unexpected value),
     Result unableToUpdate(UnableToUpdate value),
+    Result deviceOffline(DeviceOffline value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -236,4 +256,98 @@ class _$UnableToUpdate implements UnableToUpdate {
 
 abstract class UnableToUpdate implements LessonFailure {
   const factory UnableToUpdate() = _$UnableToUpdate;
+}
+
+abstract class $DeviceOfflineCopyWith<$Res> {
+  factory $DeviceOfflineCopyWith(
+          DeviceOffline value, $Res Function(DeviceOffline) then) =
+      _$DeviceOfflineCopyWithImpl<$Res>;
+}
+
+class _$DeviceOfflineCopyWithImpl<$Res>
+    extends _$LessonFailureCopyWithImpl<$Res>
+    implements $DeviceOfflineCopyWith<$Res> {
+  _$DeviceOfflineCopyWithImpl(
+      DeviceOffline _value, $Res Function(DeviceOffline) _then)
+      : super(_value, (v) => _then(v as DeviceOffline));
+
+  @override
+  DeviceOffline get _value => super._value as DeviceOffline;
+}
+
+class _$DeviceOffline implements DeviceOffline {
+  const _$DeviceOffline();
+
+  @override
+  String toString() {
+    return 'LessonFailure.deviceOffline()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is DeviceOffline);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result unableToUpdate(),
+    @required Result deviceOffline(),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(deviceOffline != null);
+    return deviceOffline();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result unableToUpdate(),
+    Result deviceOffline(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deviceOffline != null) {
+      return deviceOffline();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(Unexpected value),
+    @required Result unableToUpdate(UnableToUpdate value),
+    @required Result deviceOffline(DeviceOffline value),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(deviceOffline != null);
+    return deviceOffline(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(Unexpected value),
+    Result unableToUpdate(UnableToUpdate value),
+    Result deviceOffline(DeviceOffline value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deviceOffline != null) {
+      return deviceOffline(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeviceOffline implements LessonFailure {
+  const factory DeviceOffline() = _$DeviceOffline;
 }

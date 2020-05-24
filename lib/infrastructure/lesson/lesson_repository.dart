@@ -1,85 +1,64 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
-import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/injection.dart';
-import 'package:meta/meta.dart';
+import 'package:mockito/mockito.dart';
 
 @RegisterAs(LessonFacade, env: Environment.prod)
 @lazySingleton
 class LessonRepository implements LessonFacade {
-  final NetworkInfo networkInfo;
-  final LocalLessonDataSourceFacade localData;
-  final RemoteLessonDataSourceFacade remoteData;
+  final LocalLessonDataSourceFacade _localData;
+  final RemoteLessonDataSourceFacade _remoteData;
+  final NetworkInfo _networkInfo;
 
-  final Future<Either<AuthFailure, User>> currentUser =
-      getIt<AuthFacade>().getUser();
+  LessonRepository(this._localData, this._remoteData, this._networkInfo);
 
-  LessonRepository({
-    @required this.networkInfo,
-    @required this.localData,
-    @required this.remoteData,
-  });
-
-  @override
-  Future<Either<LessonFailure, Stream<UniqueId>>> getUserLessonIds() {
-    /*
-    Either<AuthFailure, User> failureOrUser =
-        await currentUser.then((either) => either);
-    return failureOrUser.fold((failure) => left(LessonFailure.unexpected()),
-        (user) {
-      Stream stream = localData.getUserLessonIds(user.id);
-      // catch errors
-      return right(stream);
-    });
-    */
-    return null;
-  }
+  Future<Either<LessonFailure, Stream<UniqueId>>> getUserLessonIds() async {}
 
   Future<Either<LessonFailure, Lesson>> getLessonById(UniqueId id) async {
-    LessonModel model = await localData.getLessonModelById(id);
-    return right(model.toDomain());
-  }
-
-  Future<void> saveResult(LessonResult result) {
     // needs implementation
     return null;
   }
 
-  Future<void> update() async {
-    if (await networkInfo.isConnected) {
-      // TODO
-      final lessonModelsStream = remoteData.getAvailableLessonData();
-      lessonModelsStream.listen((lessonModel) {
-        localData.cacheLessonModel(lessonModel);
+  Future<Option<LessonFailure>> update(UniqueId userId) async {
+    if (await _networkInfo.isConnected) {
+      _remoteData.getAvailableLessonData().forEach((model) {
+        _localData.cacheLessonModel(model);
       });
       try {
-        remoteData.pushResults(await localData.getUnpushedLessonResults());
+        _localData.getLessonResult(userId).forEach((resultModel) async {
+          await _remoteData.pushResult(resultModel);
+          _localData.removeLessonResultsModel(); // TODO: add userID
+        });
+
+        return none();
       } catch (e) {
-        throw Exception(e);
+        throw Exception(e.toString());
       }
-      _close();
     } else {
-      throw UnknownRemoteException(); // failure?
+      return optionOf(LessonFailure.deviceOffline());
     }
   }
 
-  void _close() {
-    remoteData.close();
-    localData.close();
+  Future<Option<LessonFailure>> saveResult(LessonResult result) async {
+    // needs implementation
+    return null;
   }
+}
+
+@RegisterAs(LessonFacade, env: Environment.dev)
+@lazySingleton
+class DevLessonRepository extends LessonRepository implements LessonFacade {
+  final LocalLessonDataSourceFacade _localData;
+  final RemoteLessonDataSourceFacade _remoteData;
+  final NetworkInfo _networkInfo;
+
+  DevLessonRepository(this._localData, this._remoteData, this._networkInfo)
+      : super(_localData, _remoteData, _networkInfo);
 }
 
 @RegisterAs(LessonFacade, env: Environment.test)
 @lazySingleton
-class TestLessonRepository implements LessonFacade {
-  //final SampleLessonGenerator sampler = SampleLessonGenerator();
-  Future<Either<LessonFailure, Stream<UniqueId>>> getUserLessonIds() {}
-  Future<Either<LessonFailure, Lesson>> getLessonById(UniqueId id) {}
-  Future<void> update() {}
-  Future<void> saveResult(LessonResult result) {}
-}
+class TestFirebaseLessonRepository extends Mock implements LessonFacade {}

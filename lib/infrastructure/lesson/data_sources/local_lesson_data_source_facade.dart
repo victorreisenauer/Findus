@@ -3,9 +3,10 @@ import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 
 abstract class LocalLessonDataSourceFacade {
   Stream<UniqueId> getUserLessonIds();
-  Future<LessonModel> getLessonModelById(UniqueId id);
+  Future<LessonModel> getLessonModelById(UniqueId lessonId);
   Future<void> cacheLessonModel(LessonModel model);
   Future<void> cacheLessonResultModel(LessonResultModel result);
-  Future<List<LessonResultModel>> getUnpushedLessonResults();
+  Stream<LessonResultModel> getLessonResult(UniqueId userId);
   Future<void> close();
+  Future<void> removeLessonResultsModel(); // needs work
 }

@@ -74,11 +74,11 @@ class RemoteFirebaseAuthDataSource implements RemoteAuthDataSourceFacade {
 
 @RegisterAs(RemoteAuthDataSourceFacade, env: Environment.dev)
 @lazySingleton
-class DevRemoteFirebaseLessonDataSource extends RemoteFirebaseAuthDataSource {
+class DevRemoteFirebaseAuthDataSource extends RemoteFirebaseAuthDataSource {
   final FirebaseAuth _firebaseAuth;
   final FirebaseUserMapper _userMapper;
 
-  DevRemoteFirebaseLessonDataSource(this._firebaseAuth, this._userMapper)
+  DevRemoteFirebaseAuthDataSource(this._firebaseAuth, this._userMapper)
       : super(_firebaseAuth, _userMapper);
 
   @override
@@ -102,5 +102,5 @@ class DevRemoteFirebaseLessonDataSource extends RemoteFirebaseAuthDataSource {
 
 @RegisterAs(RemoteAuthDataSourceFacade, env: Environment.test)
 @lazySingleton
-class TestRemoteFirebaseLessonDataSource extends Mock
+class TestRemoteFirebaseAuthDataSource extends Mock
     implements RemoteAuthDataSourceFacade {}
