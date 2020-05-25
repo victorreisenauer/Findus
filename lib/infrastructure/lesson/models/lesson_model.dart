@@ -1,11 +1,10 @@
-import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:kt_dart/collection.dart';
-
-import 'package:lrs_app_v3/infrastructure/lesson/models/exercise_model.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
+import 'package:lrs_app_v3/infrastructure/lesson/models/exercise_model.dart';
+import 'package:meta/meta.dart';
 
 part 'lesson_model.freezed.dart';
 part 'lesson_model.g.dart';
@@ -15,6 +14,7 @@ abstract class LessonModel with _$LessonModel {
   factory LessonModel({
     @required String id,
     @required List<ExerciseModel> exerciseList,
+    @required String assignedToUserId,
   }) = _LessonModel;
 
   /// turns Json into [LessonModel]
@@ -22,13 +22,15 @@ abstract class LessonModel with _$LessonModel {
       _$LessonModelFromJson(json);
 
   /// turns [Lesson] into [LessonModel]
-  factory LessonModel.fromDomain(Lesson lesson) {
+  factory LessonModel.fromDomain(Lesson lesson, UniqueId assignedToUserId) {
     return LessonModel(
-        id: lesson.id.getOrCrash(),
-        exerciseList: lesson.exerciseList
-            .getOrCrash()
-            .mapIndexed((index, exercise) => ExerciseModel.fromDomain(exercise))
-            .asList());
+      id: lesson.id.getOrCrash(),
+      exerciseList: lesson.exerciseList
+          .getOrCrash()
+          .mapIndexed((index, exercise) => ExerciseModel.fromDomain(exercise))
+          .asList(),
+      assignedToUserId: assignedToUserId.getOrCrash(),
+    );
   }
 }
 
