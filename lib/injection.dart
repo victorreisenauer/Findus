@@ -30,9 +30,6 @@ void configureInjection(String env) => $initGetIt(getIt, environment: env);
 abstract class ProdModules {
   @prod
   @lazySingleton
-  Api get api => Api('https://api.lrs.hndrk.xyz/');
-  @prod
-  @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
   @prod
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
@@ -46,9 +43,6 @@ abstract class ProdModules {
 abstract class DevModules {
   @dev
   @lazySingleton
-  Api get api => Api('https://api.lrs.hndrk.xyz/');
-  @dev
-  @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
   @dev
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
@@ -60,9 +54,6 @@ abstract class DevModules {
 // registers mocked external classes for injection in test environment
 @registerModule
 abstract class TestModules {
-  @test
-  @lazySingleton
-  Api get api => MockApi();
   @test
   @lazySingleton
   FirebaseAuth get firebaseAuth => MockFirebaseAuth();

@@ -1,5 +1,4 @@
 export 'auth_repository.dart';
-export 'data_sources/api/remote_api_auth_data_source.dart';
 export 'data_sources/core/local_auth_data_source.dart';
 export 'data_sources/firebase/firebase_user_mapper.dart';
 export 'data_sources/firebase/remote_firebase_auth_data_source.dart';

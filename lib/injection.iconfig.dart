@@ -4,11 +4,10 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-import 'package:lrs_data_client/src/api.dart';
-import 'package:lrs_app_v3/injection.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_repository.dart';
 import 'package:lrs_app_v3/domain/auth/auth_facade.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
+import 'package:lrs_app_v3/injection.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,17 +30,37 @@ import 'package:lrs_app_v3/application/lesson/lesson_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
-  final prodModules = _$ProdModules();
   final testModules = _$TestModules();
   final devModules = _$DevModules();
+  final prodModules = _$ProdModules();
   g.registerFactory<ProgressBloc>(() => ProgressBloc());
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<AuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<AuthFacade>()));
   g.registerFactory<LessonBloc>(() => LessonBloc(g<LessonFacade>()));
 
+  //Register test Dependencies --------
+  if (environment == 'test') {
+    g.registerLazySingleton<AuthFacade>(() => MockAuthRepository());
+    g.registerFactory<Boxes>(() => testModules.boxes);
+    g.registerLazySingleton<CloudFunctions>(() => testModules.cloudFunctions);
+    g.registerFactory<DataConnectionChecker>(
+        () => testModules.dataConnectionChecker());
+    g.registerLazySingleton<FirebaseAuth>(() => testModules.firebaseAuth);
+    g.registerFactory<FirebaseUserMapper>(() => MockFirebaseUserMapperImpl());
+    g.registerLazySingleton<LessonFacade>(() => TestFirebaseLessonRepository());
+    g.registerLazySingleton<LocalAuthDataSourceFacade>(
+        () => MockLocalAuthDataSourceImpl(g<Boxes>()));
+    g.registerLazySingleton<LocalLessonDataSourceFacade>(
+        () => TestLocalLessonDataSource());
+    g.registerFactory<NetworkInfo>(() => TestNetworkInfoImpl());
+    g.registerLazySingleton<RemoteAuthDataSourceFacade>(
+        () => TestRemoteFirebaseAuthDataSource());
+    g.registerLazySingleton<RemoteLessonDataSourceFacade>(
+        () => TestRemoteFirebaseLessonDataSource());
+  }
+
   //Register prod Dependencies --------
   if (environment == 'prod') {
-    g.registerLazySingleton<Api>(() => prodModules.api);
     g.registerFactory<Boxes>(() => ProdBoxes());
     g.registerLazySingleton<CloudFunctions>(() => prodModules.cloudFunctions);
     g.registerFactory<DataConnectionChecker>(
@@ -71,31 +90,8 @@ void $initGetIt(GetIt g, {String environment}) {
         ));
   }
 
-  //Register test Dependencies --------
-  if (environment == 'test') {
-    g.registerLazySingleton<Api>(() => testModules.api);
-    g.registerLazySingleton<AuthFacade>(() => MockAuthRepository());
-    g.registerFactory<Boxes>(() => testModules.boxes);
-    g.registerLazySingleton<CloudFunctions>(() => testModules.cloudFunctions);
-    g.registerFactory<DataConnectionChecker>(
-        () => testModules.dataConnectionChecker());
-    g.registerLazySingleton<FirebaseAuth>(() => testModules.firebaseAuth);
-    g.registerFactory<FirebaseUserMapper>(() => MockFirebaseUserMapperImpl());
-    g.registerLazySingleton<LessonFacade>(() => TestFirebaseLessonRepository());
-    g.registerLazySingleton<LocalAuthDataSourceFacade>(
-        () => MockLocalAuthDataSourceImpl(g<Boxes>()));
-    g.registerLazySingleton<LocalLessonDataSourceFacade>(
-        () => TestLocalLessonDataSource());
-    g.registerFactory<NetworkInfo>(() => TestNetworkInfoImpl());
-    g.registerLazySingleton<RemoteAuthDataSourceFacade>(
-        () => TestRemoteFirebaseAuthDataSource());
-    g.registerLazySingleton<RemoteLessonDataSourceFacade>(
-        () => TestRemoteFirebaseLessonDataSource());
-  }
-
   //Register dev Dependencies --------
   if (environment == 'dev') {
-    g.registerLazySingleton<Api>(() => devModules.api);
     g.registerFactory<Boxes>(() => DevBoxes());
     g.registerLazySingleton<CloudFunctions>(() => devModules.cloudFunctions);
     g.registerFactory<DataConnectionChecker>(
@@ -126,8 +122,8 @@ void $initGetIt(GetIt g, {String environment}) {
   }
 }
 
-class _$ProdModules extends ProdModules {}
-
 class _$TestModules extends TestModules {}
 
 class _$DevModules extends DevModules {}
+
+class _$ProdModules extends ProdModules {}

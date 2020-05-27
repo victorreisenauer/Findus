@@ -1,4 +1,3 @@
-export 'data_sources/api/remote_api_lesson_data_source.dart';
 export 'data_sources/core/local_lesson_data_source.dart';
 export 'data_sources/firebase/remote_firebase_lesson_data_source.dart';
 export 'data_sources/local_lesson_data_source_facade.dart';
