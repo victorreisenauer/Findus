@@ -1,13 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
-import 'package:lrs_app_v3/dev_env_sample_data.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
 import 'package:meta/meta.dart';
-import 'package:mockito/mockito.dart';
 
-@RegisterAs(RemoteAuthDataSourceFacade, env: Environment.prod)
+@RegisterAs(RemoteAuthDataSourceFacade)
 @lazySingleton
 class RemoteFirebaseAuthDataSource implements RemoteAuthDataSourceFacade {
   final FirebaseAuth _firebaseAuth;
@@ -71,36 +69,3 @@ class RemoteFirebaseAuthDataSource implements RemoteAuthDataSourceFacade {
     _firebaseAuth.signOut();
   }
 }
-
-@RegisterAs(RemoteAuthDataSourceFacade, env: Environment.dev)
-@lazySingleton
-class DevRemoteFirebaseAuthDataSource extends RemoteFirebaseAuthDataSource {
-  final FirebaseAuth _firebaseAuth;
-  final FirebaseUserMapper _userMapper;
-
-  DevRemoteFirebaseAuthDataSource(this._firebaseAuth, this._userMapper)
-      : super(_firebaseAuth, _userMapper);
-
-  @override
-  Future<void> signInWithEmailAndPassword(
-      {String emailAddress, String password}) {
-    final String devEmail = DevData.devUser.emailAddress.getOrCrash();
-    final String devPassword = DevData.devUserPassword.getOrCrash();
-    return super.signInWithEmailAndPassword(
-        emailAddress: devEmail, password: devPassword);
-  }
-
-  @override
-  Future<void> signUpWithEmailAndPassword(
-      {String emailAddress, String password}) {
-    final String devEmail = DevData.devUser.emailAddress.getOrCrash();
-    final String devPassword = DevData.devUserPassword.getOrCrash();
-    return super.signUpWithEmailAndPassword(
-        emailAddress: devEmail, password: devPassword);
-  }
-}
-
-@RegisterAs(RemoteAuthDataSourceFacade, env: Environment.test)
-@lazySingleton
-class TestRemoteFirebaseAuthDataSource extends Mock
-    implements RemoteAuthDataSourceFacade {}

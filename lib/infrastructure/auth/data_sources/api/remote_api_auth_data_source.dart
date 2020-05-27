@@ -4,12 +4,11 @@ import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
 import 'package:lrs_data_client/lrs_api.dart';
 import 'package:meta/meta.dart';
-import 'package:mockito/mockito.dart';
 
 /*
 commented out, because we are currently using the firebase data source
 
-@RegisterAs(RemoteAuthDataSourceFacade, env: Environment.prod)
+@RegisterAs(RemoteAuthDataSourceFacade)
 @lazySingleton
 */
 
@@ -69,24 +68,3 @@ class RemoteApiAuthDataSource implements RemoteAuthDataSourceFacade {
     // needs implementation
   }
 }
-
-/*
-commented out, because we are currently using the firebase data source
-
-@RegisterAs(RemoteAuthDataSourceFacade, env: Environment.dev)
-@lazySingleton
-*/
-class DevRemoteAuthDataSource extends RemoteApiAuthDataSource {
-  final Api _api;
-
-  DevRemoteAuthDataSource(this._api) : super(_api);
-}
-
-/*
-commented out, because we are currently using the firebase data source
-
-@RegisterAs(RemoteAuthDataSourceFacade, env: Environment.test)
-@lazySingleton
-*/
-class TestRemoteAuthDataSource extends Mock
-    implements RemoteAuthDataSourceFacade {}

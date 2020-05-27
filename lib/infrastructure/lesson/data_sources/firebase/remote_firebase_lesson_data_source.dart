@@ -4,9 +4,8 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/data_sources/remote_lesson_data_source_facade.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
-import 'package:mockito/mockito.dart';
 
-@RegisterAs(RemoteLessonDataSourceFacade, env: Environment.prod)
+@RegisterAs(RemoteLessonDataSourceFacade)
 @lazySingleton
 class RemoteFirebaseLessonDataSource implements RemoteLessonDataSourceFacade {
   final CloudFunctions _cloudFunctions;
@@ -30,16 +29,3 @@ class RemoteFirebaseLessonDataSource implements RemoteLessonDataSourceFacade {
     return null;
   }
 }
-
-@RegisterAs(RemoteLessonDataSourceFacade, env: Environment.dev)
-@lazySingleton
-class DevRemoteFirebaseLessonDataSource extends RemoteFirebaseLessonDataSource {
-  final _cloudFunctions;
-  DevRemoteFirebaseLessonDataSource(this._cloudFunctions)
-      : super(_cloudFunctions);
-}
-
-@RegisterAs(RemoteLessonDataSourceFacade, env: Environment.test)
-@lazySingleton
-class TestRemoteFirebaseLessonDataSource extends Mock
-    implements RemoteLessonDataSourceFacade {}
