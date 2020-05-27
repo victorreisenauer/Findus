@@ -3,9 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
 import 'package:lrs_app_v3/infrastructure/core/local_exceptions.dart';
-import 'package:mockito/mockito.dart';
 
-@RegisterAs(LocalAuthDataSourceFacade, env: Environment.prod)
+@RegisterAs(LocalAuthDataSourceFacade)
 @lazySingleton
 class LocalAuthDataSource implements LocalAuthDataSourceFacade {
   final Boxes boxes;
@@ -86,33 +85,5 @@ class LocalAuthDataSource implements LocalAuthDataSourceFacade {
 
   _validateBoxNotEmpty(Box box) {
     if (box.isEmpty) throw CacheEmptyException(failedSource: box.toString());
-  }
-}
-
-@RegisterAs(LocalAuthDataSourceFacade, env: Environment.dev)
-@lazySingleton
-class DevLocalAuthDataSourceImpl extends LocalAuthDataSource {
-  final Boxes boxes;
-  DevLocalAuthDataSourceImpl(this.boxes) : super(boxes);
-}
-
-@RegisterAs(LocalAuthDataSourceFacade, env: Environment.test)
-@lazySingleton
-class MockLocalAuthDataSourceImpl extends Mock
-    implements LocalAuthDataSourceFacade {
-  final Boxes boxes;
-
-  MockLocalAuthDataSourceImpl(this.boxes);
-
-  UserModel model = UserModel(email: "test@test.com", id: '0002', active: true);
-  UserModel model2 =
-      UserModel(email: "test@test.com", id: '0003', active: false);
-  UserModel model3 = UserModel(email: "test@test.com", id: '0004');
-
-  Stream<UserModel> getAllUserModels() async* {
-    List models = [model, model2, model3];
-    for (int i = 0; i < models.length; i++) {
-      yield models[i];
-    }
   }
 }

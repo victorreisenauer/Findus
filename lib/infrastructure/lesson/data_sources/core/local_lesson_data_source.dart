@@ -3,9 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
-import 'package:mockito/mockito.dart';
 
-@RegisterAs(LocalLessonDataSourceFacade, env: Environment.prod)
+@RegisterAs(LocalLessonDataSourceFacade)
 @lazySingleton
 class LocalLessonDataSource implements LocalLessonDataSourceFacade {
   final Boxes boxes;
@@ -46,15 +45,3 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
     boxes.resultBox.then((box) => box.close());
   }
 }
-
-@RegisterAs(LocalLessonDataSourceFacade, env: Environment.dev)
-@lazySingleton
-class DevLocalLessonDataSource extends LocalLessonDataSource {
-  final Boxes boxes;
-  DevLocalLessonDataSource(this.boxes) : super(boxes);
-}
-
-@RegisterAs(LocalLessonDataSourceFacade, env: Environment.test)
-@lazySingleton
-class TestLocalLessonDataSource extends Mock
-    implements LocalLessonDataSourceFacade {}
