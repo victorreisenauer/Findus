@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/injection.dart';
 import 'package:lrs_app_v3/presentation/lrs_app.dart';
 import 'package:lrs_app_v3/simple_bloc_delegate.dart';
@@ -12,7 +11,7 @@ void main() async {
   final appDocumentDirectory =
       await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
-  configureInjection(Environment.dev);
+  configureInjection();
 
   runApp(LrsApp());
 }
