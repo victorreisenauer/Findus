@@ -40,11 +40,13 @@ main() {
 
   // Instantiate objects for testing
   MockUserModel testUserModel = MockUserModel();
+  UserModel userModelWithMockedData =
+      UserModel(email: "testEmailStr", id: "testIdStr", active: true);
   MockEmailAddress testEmail = MockEmailAddress();
   MockPassword testPassword = MockPassword();
 
   // Tests
-  group('[Env: test]FireBaseAuthRepository => ', () {
+  group('AuthRepository => ', () {
     group('on registerWithEmailAndPassword => ', () {
       test('checks if device is online', () async {
         when(networkInfo.isConnected)
@@ -56,7 +58,7 @@ main() {
       group('if online => ', () {
         setUp(() {
           when(networkInfo.isConnected)
-              .thenAnswer((realInvocation) async => true);
+              .thenAnswer((realInvocation) async => Future.value(true));
         });
 
         test('calls localData.signUpWithEmailAndPassword', () async {
@@ -70,8 +72,9 @@ main() {
         group('if successful =>', () {
           test('returns none() option', () async {
             when(remoteData.signUpWithEmailAndPassword(
-                emailAddress: anyNamed("emailAddress"),
-                password: anyNamed("password")));
+                    emailAddress: anyNamed("emailAddress"),
+                    password: anyNamed("password")))
+                .thenReturn(null);
             var response = await testAuthRepo.signUpWithEmailAndPassword(
                 emailAddress: testEmail, password: testPassword);
             var option = response.fold(() => none(), (a) => a);
@@ -137,29 +140,52 @@ main() {
       });
     });
     group('on getUser => ', () {
+      test('checks if device is online', () async {
+        when(networkInfo.isConnected)
+            .thenAnswer((realInvocation) async => true);
+        when(remoteData.getUser())
+            .thenAnswer((_) async => userModelWithMockedData);
+        await testAuthRepo.getUser();
+        verify(networkInfo.isConnected);
+      });
       group('if device is online => ', () {
         setUp(() {
           when(networkInfo.isConnected).thenAnswer((_) async => true);
         });
-        test('if there is a user, return user', () async {
-          when(remoteData.getUser()).thenAnswer((_) async => testUserModel);
-          // act
-          var response = await testAuthRepo
-              .getUser()
-              .then((value) => value.fold((l) => l, (r) => r));
 
-          // expect repo to return a user
-          expect(response, isA<User>());
-        });
-        test('if there is no user, returns AuthFailure.loginRequired',
-            () async {
-          when(remoteData.getUser()).thenThrow(NoLoggedInUserException());
+        test('remoteData.getUser is called', () async {
+          when(remoteData.getUser())
+              .thenAnswer((_) async => userModelWithMockedData);
           // act
-          var response = await testAuthRepo
-              .getUser()
-              .then((value) => value.fold((l) => l, (r) => r));
-          // expect repo to return a failure
-          expect(response, isA<LoginRequired>());
+          await testAuthRepo.getUser();
+          // verify remoteData.getUser is called
+          verify(remoteData.getUser());
+        });
+
+        group('if remoteData returns a user =>', () {
+          test('return user', () async {
+            when(remoteData.getUser())
+                .thenAnswer((_) async => userModelWithMockedData);
+            // act
+            var response = await testAuthRepo
+                .getUser()
+                .then((value) => value.fold((l) => l, (r) => r));
+
+            // expect repo to return a user
+            expect(response, isA<User>());
+          });
+        });
+
+        group('if remoteData throws a NoLoggedInUserException =>', () {
+          test('AuthFailure.loginRequired', () async {
+            when(remoteData.getUser()).thenThrow(NoLoggedInUserException());
+            // act
+            var response = await testAuthRepo
+                .getUser()
+                .then((value) => value.fold((l) => l, (r) => r));
+            // expect repo to return a failure
+            expect(response, isA<LoginRequired>());
+          });
         });
       });
       group('if device is offline =>', () {
@@ -175,9 +201,21 @@ main() {
       });
     });
     group('on signInWithEmailAndPassword => ', () {
+      test('checks if device is online', () async {
+        when(networkInfo.isConnected)
+            .thenAnswer((realInvocation) async => true);
+        when(remoteData.signInWithEmailAndPassword(
+                password: anyNamed("password"),
+                emailAddress: anyNamed("emailAddress")))
+            .thenAnswer((_) async => userModelWithMockedData);
+        await testAuthRepo.getUser();
+        verify(networkInfo.isConnected);
+      });
       group('if device is offline =>', () {
-        test('returns AuthFailure.deviceOffline', () async {
+        setUp(() {
           when(networkInfo.isConnected).thenAnswer((_) async => false);
+        });
+        test('returns AuthFailure.deviceOffline', () async {
           var response = await testAuthRepo.signInWithEmailAndPassword(
               emailAddress: testEmail, password: testPassword);
 
@@ -194,7 +232,7 @@ main() {
             'if wrong email and password combination => return AuthFailure.wrongEmailAndPasswordCombination',
             () async {
           when(remoteData.signInWithEmailAndPassword(
-                  emailAddress: anyNamed("email"),
+                  emailAddress: anyNamed("emailAddress"),
                   password: anyNamed("password")))
               .thenThrow(InvalidEmailAndPasswordCombinationException());
 
@@ -210,7 +248,7 @@ main() {
             'if account for email does not exist, return AuthFailure.userNotFound',
             () async {
           when(remoteData.signInWithEmailAndPassword(
-                  emailAddress: anyNamed("email"),
+                  emailAddress: anyNamed("emailAddress"),
                   password: anyNamed("password")))
               .thenThrow(AccountNotFoundException());
           var response = await testAuthRepo.signInWithEmailAndPassword(
@@ -222,7 +260,7 @@ main() {
         });
         test('if successful, user is signed in and returns none', () async {
           when(remoteData.signInWithEmailAndPassword(
-                  emailAddress: anyNamed("email"),
+                  emailAddress: anyNamed("emailAddress"),
                   password: anyNamed("password")))
               .thenAnswer((_) async => MockUserModel());
 
@@ -234,11 +272,15 @@ main() {
       });
     });
     group('on signOut => ', () {
+      setUp(() {
+        when(networkInfo.isConnected).thenAnswer((_) async => true);
+      });
       test('if successful, signs out user from all sources and returns none',
-          () {
+          () async {
         when(remoteData.signOut()).thenAnswer((realInvocation) async => null);
-        testAuthRepo.signOut();
+        var response = await testAuthRepo.signOut();
         verify(remoteData.signOut());
+        expect(response.fold(() => none(), (a) => a), isA<None>());
       });
     });
   });

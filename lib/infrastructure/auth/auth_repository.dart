@@ -2,13 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/infrastructure/core/local_exceptions.dart';
 import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
 import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
 import 'package:meta/meta.dart';
-import 'package:mockito/mockito.dart';
 
-@RegisterAs(AuthFacade, env: Environment.prod)
+@RegisterAs(AuthFacade)
 @lazySingleton
 class AuthRepository implements AuthFacade {
   final LocalAuthDataSourceFacade _localData;
@@ -41,30 +39,36 @@ class AuthRepository implements AuthFacade {
         }
       }
     } else {
-      throw Exception("device is offline");
+      return optionOf(AuthFailure.deviceOffline());
     }
   }
 
   Future<Either<AuthFailure, User>> getUser() async {
     if (await _deviceIsOnline) {
-      return _remoteData
-          .getUser()
-          .then((model) async {
+      try {
+        return _remoteData.getUser().then((model) async {
+          /*
             try {
               PersonalDataModel data =
                   await _localData.getPersonalData(model.id.toString());
               return right<AuthFailure, User>(model.toDomain(data.toDomain()));
             } on KeyNotFoundException {
-              return right<AuthFailure, User>(
-                  model.toDomain(PersonalData.empty()));
-            }
-          })
-          .catchError((_) => left<AuthFailure, User>(AuthFailure.serverError()),
-              test: (e) => e is ServerNotReachableException)
-          .catchError(
-              (_) => left<AuthFailure, User>(AuthFailure.loginRequired()),
-              test: (e) => e is InvalidSessionException);
+              */
+          return right<AuthFailure, User>(model.toDomain(PersonalData.empty()));
+          //}
+        });
+      } catch (e) {
+        if (e is ServerNotReachableException) {
+          return left<AuthFailure, User>(AuthFailure.serverError());
+        } else if (e is InvalidSessionException ||
+            e is NoLoggedInUserException) {
+          return left<AuthFailure, User>(AuthFailure.loginRequired());
+        }
+      }
     } else {
+      return left(AuthFailure.deviceOffline());
+
+      /*
       List<UserModel> models = await _localData
           .getAllUserModels()
           .where((model) => model.active != null)
@@ -78,6 +82,8 @@ class AuthRepository implements AuthFacade {
       User user = model.toDomain(data.toDomain());
       return right(user);
       // catch KeyNotFoundException
+
+      */
     }
   }
 
@@ -94,14 +100,16 @@ class AuthRepository implements AuthFacade {
       } catch (e) {
         if (e is InvalidSessionException) {
           return optionOf(AuthFailure.loginRequired());
-        } else if (e is InvalidLoginDetailsException) {
+        } else if (e is InvalidEmailAndPasswordCombinationException) {
           return optionOf(AuthFailure.invalidEmailAndPasswordCombination());
+        } else if (e is AccountNotFoundException) {
+          return optionOf(AuthFailure.accountNotFound());
         } else {
           throw Exception(e.toString());
         }
       }
     } else {
-      return optionOf(AuthFailure.serverError());
+      return optionOf(AuthFailure.deviceOffline());
     }
   }
 
@@ -162,18 +170,3 @@ on PlatformException catch (e) {
     }
   }
      */
-
-@RegisterAs(AuthFacade, env: Environment.dev)
-@lazySingleton
-class DevAuthRepository extends AuthRepository {
-  final LocalAuthDataSourceFacade _localData;
-  final RemoteAuthDataSourceFacade _remoteData;
-  final NetworkInfo _networkInfo;
-
-  DevAuthRepository(this._localData, this._remoteData, this._networkInfo)
-      : super(_localData, _remoteData, _networkInfo);
-}
-
-@RegisterAs(AuthFacade, env: Environment.test)
-@lazySingleton
-class MockAuthRepository extends Mock implements AuthFacade {}
