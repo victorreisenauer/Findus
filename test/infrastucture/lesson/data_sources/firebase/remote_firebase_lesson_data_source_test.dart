@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/injection.dart';
 import 'package:mockito/mockito.dart';
 
 // set up mock classes and instances
@@ -18,12 +17,8 @@ class MockHttpsResult extends Mock implements HttpsCallableResult {}
 // Data and inner workings are irrelevant for now. Those are tested in dev and prod environments.
 // Makes mostly use of 'verify()' tests.
 main() {
-  // setup environment
-  TestWidgetsFlutterBinding.ensureInitialized();
-  configureInjection(Env.test);
-
   // Dependencies
-  CloudFunctions cloudFunctions = getIt<CloudFunctions>();
+  CloudFunctions cloudFunctions = MockCloudFunctions();
 
   // Production object with mocked dependencies
   RemoteLessonDataSourceFacade testRemoteData =

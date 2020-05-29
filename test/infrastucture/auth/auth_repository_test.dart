@@ -5,7 +5,6 @@ import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
 import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
-import 'package:lrs_app_v3/injection.dart';
 import 'package:mockito/mockito.dart';
 
 // set up mock classes and instances
@@ -19,18 +18,22 @@ class MockPassword extends Mock implements Password {}
 
 class MockAuthResult extends Mock implements AuthResult {}
 
+class MockLocalAuthDataSource extends Mock
+    implements LocalAuthDataSourceFacade {}
+
+class MockRemoteAuthDataSource extends Mock
+    implements RemoteAuthDataSourceFacade {}
+
+class MockNetworkInfo extends Mock implements NetworkInfo {}
+
 // Specifically test that all calls are made correctly for FirebaseAuthRepository.
 // Data and inner workings are irrelevant for now. Those are tested in dev and prod environments.
 // Makes mostly use of 'verify()' tests.
 main() {
-  // setup environment
-  TestWidgetsFlutterBinding.ensureInitialized();
-  configureInjection(Env.test);
-
   // Dependencies
-  LocalAuthDataSourceFacade localData = getIt<LocalAuthDataSourceFacade>();
-  RemoteAuthDataSourceFacade remoteData = getIt<RemoteAuthDataSourceFacade>();
-  NetworkInfo networkInfo = getIt<NetworkInfo>();
+  LocalAuthDataSourceFacade localData = MockLocalAuthDataSource();
+  RemoteAuthDataSourceFacade remoteData = MockRemoteAuthDataSource();
+  NetworkInfo networkInfo = MockNetworkInfo();
 
   // Production object with mocked dependencies
   AuthFacade testAuthRepo = AuthRepository(localData, remoteData, networkInfo);

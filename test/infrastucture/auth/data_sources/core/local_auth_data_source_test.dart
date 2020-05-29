@@ -3,7 +3,6 @@ import 'package:hive/hive.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
 import 'package:lrs_app_v3/infrastructure/core/local_exceptions.dart';
-import 'package:lrs_app_v3/injection.dart';
 import 'package:mockito/mockito.dart';
 
 // set up mock classes and instances
@@ -13,17 +12,20 @@ class MockUserModel extends Mock implements UserModel {}
 
 class MockPersonalDataModel extends Mock implements PersonalDataModel {}
 
+class MockBoxes extends Mock implements Boxes {}
+
 // Specifically test that all calls are made correctly for LocalAuthDataSourceImpl
 // data and usability is irrelevant. Those are tested in dev and prod environments.
 // Makes mostly use of 'verify()' tests.
 main() async {
-  // setup Environment
-  TestWidgetsFlutterBinding.ensureInitialized();
-  configureInjection(Env.test);
-  Hive.init('/Users/victo/OneDrive/projects/lrs_app/db');
+  // set up boxes
 
-  // Get all dependencies
-  Boxes boxes = getIt<Boxes>();
+  Boxes boxes = MockBoxes();
+
+  setUpAll(() {
+    when(boxes.lessonBox).thenAnswer((_) async => MockBox());
+    when(boxes.resultBox).thenAnswer((_) async => MockBox());
+  });
 
   // Create production object with mocked dependencies
   LocalAuthDataSourceFacade testLocalData = LocalAuthDataSource(boxes);

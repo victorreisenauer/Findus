@@ -1,20 +1,20 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hive/hive.dart';
 import 'package:lrs_app_v3/infrastructure/core/boxes.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/injection.dart';
 import 'package:mockito/mockito.dart';
 
 // set up mock classes & instances
 
 class MockLessonModel extends Mock implements LessonModel {}
 
-main() {
-  // setup environment
-  TestWidgetsFlutterBinding.ensureInitialized();
-  configureInjection(Env.test);
+class MockBox extends Mock implements Box {}
 
+class MockBoxes extends Mock implements Boxes {}
+
+main() {
   // Dependencies
-  Boxes boxes = getIt<Boxes>();
+  Boxes boxes = MockBoxes();
 
   // Productioon object with mocked dependencies
   LocalLessonDataSourceFacade testLocalData = LocalLessonDataSource(boxes);
@@ -23,12 +23,17 @@ main() {
 
   LessonModel testLessonModel = MockLessonModel();
 
+  // set up boxes
+  setUpAll(() {
+    when(boxes.lessonBox).thenAnswer((_) async => MockBox());
+    when(boxes.resultBox).thenAnswer((_) async => MockBox());
+  });
+
   // Tests
   group('[Env: test] LocalLessonRepository => ', () {
     group('on cacheLessonModel =>', () {
       test('if successful, caches LessonModel by id', () async {
-        when(boxes.lessonBox.then((box) => box.get(any)))
-            .thenReturn(testLessonModel);
+        when(boxes.lessonBox.then((box) => box.get(any))).thenReturn(null);
       });
     });
     group('on getLessonModelIds =>', () {

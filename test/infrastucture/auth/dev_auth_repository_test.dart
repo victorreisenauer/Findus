@@ -23,7 +23,7 @@ class MockUserModel extends Mock implements UserModel {}
 main() {
   // setup environment
   TestWidgetsFlutterBinding.ensureInitialized();
-  configureInjection(Env.dev);
+  configureInjection();
 
   // Environment specific dependencies
   // Dependencies
