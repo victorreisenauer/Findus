@@ -11,7 +11,7 @@ abstract class AuthFacade {
     @required EmailAddress emailAddress,
     @required Password password,
   });
-  Future<void> signOut();
+  Future<Option<AuthFailure>> signOut();
   Future<Option<AuthFailure>> signUpWithEmailAndPassword({
     @required EmailAddress emailAddress,
     @required Password password,
