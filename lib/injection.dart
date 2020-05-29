@@ -10,7 +10,8 @@ final GetIt getIt = GetIt.instance;
 
 // Configures injection.
 @injectableInit
-void configureInjection(String env) => $initGetIt(getIt, environment: env);
+void configureInjection({String env = Environment.prod}) =>
+    $initGetIt(getIt, environment: env);
 
 // registers external classes for injection in prod environment
 @registerModule

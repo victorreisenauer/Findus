@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
-import 'package:lrs_app_v3/injection.dart';
 import 'package:mockito/mockito.dart';
 
 // set up mock classes and instances
@@ -18,17 +17,17 @@ class MockPassword extends Mock implements Password {}
 
 class MockAuthResult extends Mock implements AuthResult {}
 
+class MockFirebaseAuth extends Mock implements FirebaseAuth {}
+
+class MockFirebaseUserMapper extends Mock implements FirebaseUserMapper {}
+
 // Specifically test that all calls are made correctly for RemoteFirebaseAuthDataSource.
 // Data and inner workings are irrelevant for now. Those are tested in dev and prod environments.
 // Makes mostly use of 'verify()' tests.
 main() {
-  // setup environment
-  TestWidgetsFlutterBinding.ensureInitialized();
-  configureInjection(Env.test);
-
   // Dependencies
-  FirebaseAuth firebaseAuth = getIt<FirebaseAuth>();
-  FirebaseUserMapper userMapper = getIt<FirebaseUserMapper>();
+  FirebaseAuth firebaseAuth = MockFirebaseAuth();
+  FirebaseUserMapper userMapper = MockFirebaseUserMapper();
 
   // Production object with mocked dependencies
   RemoteFirebaseAuthDataSource testRemoteData =
@@ -42,7 +41,7 @@ main() {
   String testPassword = Password("testUser123").getOrCrash();
 
   // Tests
-  group('[Env: test] RemoteFirebaseAuthDataSource => ', () {
+  group('RemoteFirebaseAuthDataSource => ', () {
     group('on signUpWithEmailAndPassword => ', () {
       test('if successful, registers new user', () async {
         when(firebaseAuth.createUserWithEmailAndPassword(

@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/injection.dart';
 import 'package:mockito/mockito.dart';
 
 // set up mock classes and instances
@@ -11,19 +10,22 @@ class MockLessonModel extends Mock implements LessonModel {}
 
 class MockLessonResultModel extends Mock implements LessonResultModel {}
 
+class MockLocalLessonDataSource extends Mock
+    implements LocalLessonDataSourceFacade {}
+
+class MockRemoteLessonDataSource extends Mock
+    implements RemoteLessonDataSourceFacade {}
+
+class MockNetworkInfo extends Mock implements NetworkInfo {}
+
 // Specifically test that all calls are made correctly for FirebaseLessonRepository.
 // Data and inner workings are irrelevant for now. Those are tested in dev and prod environments.
 // Makes mostly use of 'verify()' tests.
 main() {
-  // setup environment
-  TestWidgetsFlutterBinding.ensureInitialized();
-  configureInjection(Env.test);
-
-  // Injectable dependencies
-  LocalLessonDataSourceFacade localData = getIt<LocalLessonDataSourceFacade>();
-  RemoteLessonDataSourceFacade remoteData =
-      getIt<RemoteLessonDataSourceFacade>();
-  NetworkInfo networkInfo = getIt<NetworkInfo>();
+  // Instantiate mocked dependencies
+  LocalLessonDataSourceFacade localData = MockLocalLessonDataSource();
+  RemoteLessonDataSourceFacade remoteData = MockRemoteLessonDataSource();
+  NetworkInfo networkInfo = MockNetworkInfo();
 
   // Production object with mocked dependencies
   LessonFacade testLessonRepo =
