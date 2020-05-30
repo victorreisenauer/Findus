@@ -61,7 +61,7 @@ class AuthRepository implements AuthFacade {
   Future<Either<AuthFailure, User>> getUser() async {
     if (await _deviceIsOnline) {
       try {
-        return _remoteData.getUser().then((model) async {
+        return await _remoteData.getUser().then((model) async {
           /*
             try {
               PersonalDataModel data =
