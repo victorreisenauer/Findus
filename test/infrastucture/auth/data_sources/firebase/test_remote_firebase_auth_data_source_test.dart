@@ -30,7 +30,7 @@ main() {
   FirebaseUserMapper userMapper = MockFirebaseUserMapper();
 
   // Production object with mocked dependencies
-  RemoteFirebaseAuthDataSource testRemoteData =
+  RemoteAuthDataSourceFacade testRemoteData =
       RemoteFirebaseAuthDataSource(firebaseAuth, userMapper);
 
   // Instantiate objects for testing
@@ -62,14 +62,16 @@ main() {
                 email: anyNamed("email"), password: anyNamed("password")))
             .thenThrow(PlatformException(code: 'ERROR_EMAIL_ALREADY_IN_USE'));
 
-        expect(
-            (_) => testRemoteData
-                .signUpWithEmailAndPassword(
-                    emailAddress: testEmail, password: testPassword)
-                .whenComplete(() => null),
-            throwsA(EmailAlreadyInUseException));
+        // make sure exception is thrown
+        try {
+          await testRemoteData.signUpWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+          fail("exception not thrown");
+        } catch (e) {
+          expect(e, isInstanceOf<EmailAlreadyInUseException>());
+        }
 
-        // verify correct calls are made and option none() is returned
+        // verify correct calls are made
         verify(firebaseAuth.createUserWithEmailAndPassword(
             email: anyNamed("email"), password: anyNamed("password")));
       });
@@ -79,11 +81,15 @@ main() {
                 email: anyNamed("email"), password: anyNamed("password")))
             .thenThrow(PlatformException(code: 'ERROR_WEAK_PASSWORD'));
 
-        expect(
-            testRemoteData.signUpWithEmailAndPassword(
-                emailAddress: testEmail, password: testPassword),
-            throwsA(WeakPasswordException));
+        try {
+          await testRemoteData.signUpWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+          fail("exception not thrown");
+        } catch (e) {
+          expect(e, isInstanceOf<WeakPasswordException>());
+        }
 
+        // verify correct calls are made
         verify(firebaseAuth.createUserWithEmailAndPassword(
             email: anyNamed("email"), password: anyNamed("password")));
       });
@@ -93,10 +99,13 @@ main() {
                 email: anyNamed("email"), password: anyNamed("password")))
             .thenThrow(PlatformException(code: 'ERROR_INVALID_EMAIL'));
 
-        expect(
-            testRemoteData.signUpWithEmailAndPassword(
-                emailAddress: testEmail, password: testPassword),
-            throwsA(InvalidEmailException));
+        try {
+          await testRemoteData.signUpWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+          fail("exception not thrown");
+        } catch (e) {
+          expect(e, isInstanceOf<InvalidEmailException>());
+        }
 
         // verify correct calls are made
         verify(firebaseAuth.createUserWithEmailAndPassword(
@@ -121,7 +130,14 @@ main() {
       test('if there is no user, throws NoLoggedInUserException', () async {
         when(firebaseAuth.currentUser()).thenAnswer((_) async => null);
 
-        expect(testRemoteData.getUser(), throwsA(NoLoggedInUserException));
+        try {
+          await testRemoteData.getUser();
+          fail("exception not thrown");
+        } catch (e) {
+          expect(e, isInstanceOf<NoLoggedInUserException>());
+        }
+
+        verify(firebaseAuth.currentUser());
       });
     });
     group('on signInWithEmailAndPassword => ', () {
@@ -133,10 +149,14 @@ main() {
                 email: anyNamed("email"), password: anyNamed("password")))
             .thenThrow(PlatformException(code: "ERROR_INVALID_EMAIL"));
 
-        expect(
-            testRemoteData.signInWithEmailAndPassword(
-                emailAddress: testEmail, password: testPassword),
-            throwsA(InvalidEmailException));
+        try {
+          await testRemoteData.signInWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+          fail("exception not thrown");
+        } catch (e) {
+          expect(
+              e, isInstanceOf<InvalidEmailAndPasswordCombinationException>());
+        }
 
         verify(firebaseAuth.signInWithEmailAndPassword(
             email: anyNamed("email"), password: anyNamed("password")));
@@ -146,10 +166,14 @@ main() {
                 email: anyNamed("email"), password: anyNamed("password")))
             .thenThrow(PlatformException(code: "ERROR_WRONG_PASSWORD"));
 
-        expect(
-            testRemoteData.signInWithEmailAndPassword(
-                emailAddress: testEmail, password: testPassword),
-            throwsA(InvalidEmailAndPasswordCombination()));
+        try {
+          await testRemoteData.signInWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+          fail("exception not thrown");
+        } catch (e) {
+          expect(
+              e, isInstanceOf<InvalidEmailAndPasswordCombinationException>());
+        }
 
         verify(firebaseAuth.signInWithEmailAndPassword(
             email: anyNamed("email"), password: anyNamed("password")));
@@ -161,31 +185,31 @@ main() {
         when(firebaseAuth.signInWithEmailAndPassword(
                 email: anyNamed("email"), password: anyNamed("password")))
             .thenThrow(PlatformException(code: 'ERROR_USER_NOT_FOUND'));
-        expect(
-            testRemoteData.signInWithEmailAndPassword(
-                emailAddress: testEmail, password: testPassword),
-            throwsA(AccountNotFoundException));
+        try {
+          await testRemoteData.signInWithEmailAndPassword(
+              emailAddress: testEmail, password: testPassword);
+          fail("exception not thrown");
+        } catch (e) {
+          expect(e, isInstanceOf<AccountNotFoundException>());
+        }
 
         verify(firebaseAuth.signInWithEmailAndPassword(
             email: anyNamed("email"), password: anyNamed("password")));
       });
-      test('if successful, user is signed in and returns none', () async {
+      test('if successful, user is signed in', () async {
         when(firebaseAuth.signInWithEmailAndPassword(
                 email: anyNamed("email"), password: anyNamed("password")))
             .thenAnswer((_) async => MockAuthResult());
 
-        expect(
-            testRemoteData.signInWithEmailAndPassword(
-                emailAddress: testEmail, password: testPassword),
-            null);
+        await testRemoteData.signInWithEmailAndPassword(
+            emailAddress: testEmail, password: testPassword);
 
         verify(firebaseAuth.signInWithEmailAndPassword(
             email: anyNamed("email"), password: anyNamed("password")));
       });
     });
     group('on signOut => ', () {
-      test('if successful, signs out user from all sources and returns none',
-          () {
+      test('if successful, signs out user from all sources', () {
         when(firebaseAuth.signOut()).thenAnswer((realInvocation) async => null);
         testRemoteData.signOut();
         verify(firebaseAuth.signOut());
