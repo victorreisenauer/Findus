@@ -2,11 +2,15 @@ import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 
 abstract class LocalLessonDataSourceFacade {
-  Stream<UniqueId> getUserLessonIds();
-  Future<LessonModel> getLessonModelById(UniqueId lessonId);
-  Future<void> cacheLessonModel(LessonModel model);
-  Future<void> cacheLessonResultModel(LessonResultModel result);
-  Stream<LessonResultModel> getLessonResult(UniqueId userId);
+  Stream<UniqueId> getLessonIdsForUser(UniqueId userId);
+  Stream<UniqueId> getLessonResultIdsForUser(UniqueId userId);
+  Stream<LessonModel> getAllLessonsModels();
+  Stream<LessonResultModel> getAllLessonResultModels();
+  Future<LessonModel> getLessonModelById(UniqueId lessonModelId);
+  Future<LessonResultModel> getLessonResultModelById(UniqueId resultModelId);
+  Future<void> cacheLessonModel(LessonModel lessonModel);
+  Future<void> cacheLessonResultModel(LessonResultModel resultModel);
+  Future<void> removeLessonResultModelById(UniqueId resultModelId);
+  Future<void> removeLessonModelById(UniqueId lessonModelId);
   Future<void> close();
-  Future<void> removeLessonResultsModel(); // needs work
 }
