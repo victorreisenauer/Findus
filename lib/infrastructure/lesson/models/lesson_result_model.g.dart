@@ -14,6 +14,7 @@ _$_LessonResultModel _$_$_LessonResultModelFromJson(Map<String, dynamic> json) {
             ? null
             : ExerciseResultModel.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    assignedToUserId: json['assignedToUserId'] as String,
   );
 }
 
@@ -22,4 +23,5 @@ Map<String, dynamic> _$_$_LessonResultModelToJson(
     <String, dynamic>{
       'id': instance.id,
       'resultsList': instance.resultsList,
+      'assignedToUserId': instance.assignedToUserId,
     };

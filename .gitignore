@@ -29,6 +29,9 @@
 .pub-cache/
 .pub/
 /build/
+*.freezed.dart
+**/pubspec.lock
+*.g.dart
 
 # Injection related
 **/injection.iconfig.dart
