@@ -30,7 +30,7 @@
 .pub/
 /build/
 *.freezed.dart
-pubspec.lock
+**/pubspec.lock
 *.g.dart
 
 # Injection related
