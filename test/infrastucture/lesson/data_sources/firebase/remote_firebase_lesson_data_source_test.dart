@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
+import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 import 'package:mockito/mockito.dart';
 
@@ -13,9 +15,6 @@ class MockHttpsCallable extends Mock implements HttpsCallable {}
 
 class MockHttpsResult extends Mock implements HttpsCallableResult {}
 
-// Specifically test that all calls are made correctly for RemoteFirebaseLessonDataSource.
-// Data and inner workings are irrelevant for now. Those are tested in dev and prod environments.
-// Makes mostly use of 'verify()' tests.
 main() {
   // Dependencies
   CloudFunctions cloudFunctions = MockCloudFunctions();
@@ -25,33 +24,54 @@ main() {
       RemoteFirebaseLessonDataSource(cloudFunctions);
 
   // Instantiate objects for testing
-  Map testLessonData = LessonModel(exerciseList: [], id: "fakeId").toJson();
+  String testUserIdStr = "a4cdeb10-a285-11ea-bed0-ab5e0a04210d";
+  UniqueId testUserId = UniqueId.fromUniqueId(testUserIdStr);
+
+  Map testLessonData = LessonModel(
+    exerciseList: [],
+    id: "fakeId",
+    assignedToUserId: testUserIdStr,
+  ).toJson();
+
   MockHttpsCallable testHttpsCallable = MockHttpsCallable();
   MockHttpsResult testResult = MockHttpsResult();
 
   // Tests
-  group('[Env: test] RemoteFirebaseLessonDataSource =>', () {
+  group('RemoteFirebaseLessonDataSource =>', () {
     group('on getAvailableLessonData =>', () {
-      setUp(() {
-        when(cloudFunctions.getHttpsCallable(functionName: "getLessons"))
-            .thenAnswer((realInvocation) => testHttpsCallable);
-        when(testHttpsCallable.call()).thenAnswer((_) async => testResult);
-        when(testResult.data).thenReturn(jsonEncode(testLessonData));
-      });
-      test('calls cloud function to get lessons', () async {
-        await testRemoteData.getAvailableLessonData().toList();
-        verify(cloudFunctions.getHttpsCallable(functionName: "getLessons"));
-      });
+      group('if user is authenticated =>', () {
+        setUp(() {
+          when(cloudFunctions.getHttpsCallable(functionName: "getLessons"))
+              .thenAnswer((realInvocation) => testHttpsCallable);
+          when(testHttpsCallable.call()).thenAnswer((_) async => testResult);
+          when(testResult.data).thenReturn(jsonEncode(testLessonData));
+        });
+        test('calls cloud function to get lessons', () async {
+          await testRemoteData.getAvailableLessonData().toList();
+          verify(cloudFunctions.getHttpsCallable(functionName: "getLessons"));
+        });
 
-      test('returns lesson stream', () {
-        return testRemoteData.getAvailableLessonData().forEach((model) {
-          expect(model.toJson(), testLessonData);
+        test('returns lesson stream', () {
+          return testRemoteData.getAvailableLessonData().forEach((model) {
+            expect(model.toJson(), testLessonData);
+          });
         });
       });
-      test('on httpsError, throws "NoUserLoggedInException"', () {});
+
+      group('if user is not authenticated =>', () {
+        setUp(() {
+          when(cloudFunctions.getHttpsCallable(functionName: "getLessons"))
+              .thenThrow(Exception());
+          // Todo: throw HttpsError()
+        });
+        test('on httpsError, throws NoLoggedInUserException', () {
+          expect(testRemoteData.getAvailableLessonData(),
+              throwsA(NoLoggedInUserException));
+        });
+      });
     });
     group('on pushResults => ', () {
-      test('', () {});
+      test('if successful, pushes results', () {});
     });
     group('on close =>', () {
       test('closes connection to firebase server', () {});
