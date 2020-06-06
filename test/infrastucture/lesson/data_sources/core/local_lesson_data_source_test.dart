@@ -148,6 +148,44 @@ main() {
       });
     });
 
+    group('on getAllLessonModels', () {
+      test('if successful, returns stream with all LessonModels', () {
+        // populate cache with LessonModels
+        testLocalData.cacheLessonModel(testLessonModel1);
+        testLocalData.cacheLessonModel(testLessonModel2);
+        testLocalData.cacheLessonModel(testLessonModel3);
+
+        // expect all LessonModels to be fetched
+        expect(
+          testLocalData.getAllLessonModels(),
+          emitsInAnyOrder([
+            testLessonModel1,
+            testLessonModel2,
+            testLessonModel3,
+          ]),
+        );
+      });
+    });
+
+    group('on getAllLessonResultModels', () {
+      test('if successful, returns stream with all LessonResultModels', () {
+        // populate cache with LessonModels
+        testLocalData.cacheLessonResultModel(testLessonResultModel1);
+        testLocalData.cacheLessonResultModel(testLessonResultModel2);
+        testLocalData.cacheLessonResultModel(testLessonResultModel3);
+
+        // expect all LessonModels to be fetched
+        expect(
+          testLocalData.getAllLessonResultModels(),
+          emitsInAnyOrder([
+            testLessonResultModel1,
+            testLessonResultModel2,
+            testLessonResultModel3
+          ]),
+        );
+      });
+    });
+
     group('on getLessonModelById(lessonId) =>', () {
       test('if successful, returns LessonModel ', () async {
         await testLocalData.cacheLessonModel(testLessonModel1);
@@ -175,6 +213,7 @@ main() {
         });
       });
     });
+
     group('on getLessonResultModelById(lessonModelId) => ', () {
       test('if successful, returns LessonResultModel', () async {
         // populate cache
@@ -241,12 +280,44 @@ main() {
 
     group('on removeLessonModel(lessonModelId) => ', () {
       test('if successful, permanently deletes lessonModel entry', () {
-        print("test not implemented");
+        // populate cache with LessonModels
+        testLocalData.cacheLessonModel(testLessonModel1);
+        testLocalData.cacheLessonModel(testLessonModel2);
+        testLocalData.cacheLessonModel(testLessonModel3);
+
+        // delete an entry
+        testLocalData
+            .removeLessonModelById(UniqueId.fromUniqueId(testLessonModel1.id));
+
+        // expect only the two left overs to be in cache
+        expect(
+          testLocalData.getAllLessonModels(),
+          emitsInAnyOrder([
+            testLessonModel2,
+            testLessonModel3,
+          ]),
+        );
       });
     });
     group('on removeLessonResultModel => ', () {
       test('if successful, permanently deletes lessonResultModel entry', () {
-        print("test not implemented");
+        // populate cache with LessonModels
+        testLocalData.cacheLessonResultModel(testLessonResultModel1);
+        testLocalData.cacheLessonResultModel(testLessonResultModel2);
+        testLocalData.cacheLessonResultModel(testLessonResultModel3);
+
+        // delete an entry
+        testLocalData.removeLessonModelById(
+            UniqueId.fromUniqueId(testLessonResultModel1.id));
+
+        // expect only the two left overs to be in cach
+        expect(
+          testLocalData.getAllLessonResultModels(),
+          emitsInAnyOrder([
+            testLessonResultModel2,
+            testLessonResultModel3,
+          ]),
+        );
       });
     });
   });

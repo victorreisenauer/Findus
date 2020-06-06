@@ -4,7 +4,7 @@ import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 abstract class LocalLessonDataSourceFacade {
   Stream<UniqueId> getLessonIdsForUser(UniqueId userId);
   Stream<UniqueId> getLessonResultIdsForUser(UniqueId userId);
-  Stream<LessonModel> getAllLessonsModels();
+  Stream<LessonModel> getAllLessonModels();
   Stream<LessonResultModel> getAllLessonResultModels();
   Future<LessonModel> getLessonModelById(UniqueId lessonModelId);
   Future<LessonResultModel> getLessonResultModelById(UniqueId resultModelId);

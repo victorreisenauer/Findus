@@ -105,20 +105,20 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
     }
   }
 
-  /// Fetches all LessonModels in cache.
-  ///
-  /// Untested! Needs implementation!
-  Stream<LessonModel> getAllLessonsModels() {
-    // needs implementation
-    return null;
+  /// Fetches all LessonModels from cache.
+  Stream<LessonModel> getAllLessonModels() async* {
+    Box box = await boxes.lessonBox.then((value) => value);
+    for (int i = 0; i < box.length; i++) {
+      yield LessonModel.fromJson(box.getAt(i));
+    }
   }
 
-  /// Fetches all LessonResultModels in cache.
-  ///
-  /// Untested! Needs implementation!
-  Stream<LessonResultModel> getAllLessonResultModels() {
-    // needs implementation
-    return null;
+  /// Fetches all LessonResultModels from cache.
+  Stream<LessonResultModel> getAllLessonResultModels() async* {
+    Box box = await boxes.resultBox.then((value) => value);
+    for (int i = 0; i < box.length; i++) {
+      yield LessonResultModel.fromJson(box.getAt(i));
+    }
   }
 
   /// Caches a [lessonModel] by its own id.
@@ -140,23 +140,20 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
   }
 
   /// Permanently removes a LessonResultModel by its [resultModelId].
-  ///
-  /// Untested! Needs implementation!
-  Future<void> removeLessonResultModelById(UniqueId resultModelId) async {
-    return null;
+  Future<void> removeLessonModelById(UniqueId lessonModelId) async {
+    return await boxes.lessonBox.then((box) async {
+      await box.delete(lessonModelId.getOrCrash());
+    });
   }
 
   /// Permanently removes a LessonResultModel by its [resultModelId].
-  ///
-  /// Untested! Needs implementation!
-  Future<void> removeLessonModelById(UniqueId lessonModelId) {
-    // needs implementation
-    return null;
+  Future<void> removeLessonResultModelById(UniqueId resultModelId) async {
+    return await boxes.resultBox.then((box) async {
+      await box.delete(resultModelId.getOrCrash());
+    });
   }
 
   /// Closes all open connections to caches.
-  ///
-  /// Untested!
   Future<void> close() async {
     await boxes.lessonBox.then((box) => box.close());
     await boxes.resultBox.then((box) => box.close());
