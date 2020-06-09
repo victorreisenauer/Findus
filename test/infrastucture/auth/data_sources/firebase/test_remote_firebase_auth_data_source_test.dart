@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
+import 'package:lrs_app_v3/injection.dart';
 import 'package:mockito/mockito.dart';
 
 // set up mock classes and instances
@@ -32,6 +33,10 @@ main() {
   // Production object with mocked dependencies
   RemoteAuthDataSourceFacade testRemoteData =
       RemoteFirebaseAuthDataSource(firebaseAuth, userMapper);
+
+  // Production object with injected dependencies
+  RemoteAuthDataSourceFacade prodRemoteData =
+      getIt<RemoteFirebaseAuthDataSource>();
 
   // Instantiate objects for testing
   MockFirebaseUser testFirebaseUser = MockFirebaseUser();
@@ -142,7 +147,7 @@ main() {
     });
     group('on signInWithEmailAndPassword => ', () {
       test(
-          'if wrong email and password combination => return AuthFailure.invalidEmailAndPasswordCombination',
+          'if wrong email and password combination => throw InvalidEmailAndPasswordCombinationException',
           () async {
         // case 1: invalid email
         when(firebaseAuth.signInWithEmailAndPassword(
@@ -178,6 +183,8 @@ main() {
         verify(firebaseAuth.signInWithEmailAndPassword(
             email: anyNamed("email"), password: anyNamed("password")));
       });
+
+      test('[prod Injections] if wrong email or password, ', () {});
 
       test(
           'if account for email does not exist, throws AccountNotFoundException',

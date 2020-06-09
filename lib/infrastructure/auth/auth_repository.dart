@@ -34,7 +34,7 @@ class AuthRepository implements AuthFacade {
   }) async {
     if (await _networkInfo.isConnected) {
       try {
-        _remoteData.signUpWithEmailAndPassword(
+        await _remoteData.signUpWithEmailAndPassword(
             emailAddress: emailAddress.getOrCrash(),
             password: password.getOrCrash());
         return none();
@@ -143,7 +143,7 @@ class AuthRepository implements AuthFacade {
   /// Next time, the user will need to sign in again to continue.
   Future<Option<AuthFailure>> signOut() async {
     if (await _deviceIsOnline) {
-      _remoteData.signOut();
+      await _remoteData.signOut();
       return none();
     } else {
       return optionOf(AuthFailure.serverError());

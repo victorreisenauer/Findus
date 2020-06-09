@@ -29,8 +29,9 @@ class RemoteFirebaseAuthDataSource implements RemoteAuthDataSourceFacade {
         throw InvalidEmailException();
       } else if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
         throw EmailAlreadyInUseException();
-      } else
+      } else {
         throw UnknownRemoteException();
+      }
     }
   }
 
@@ -50,7 +51,7 @@ class RemoteFirebaseAuthDataSource implements RemoteAuthDataSourceFacade {
     @required String password,
   }) async {
     try {
-      _firebaseAuth.signInWithEmailAndPassword(
+      await _firebaseAuth.signInWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
@@ -60,12 +61,12 @@ class RemoteFirebaseAuthDataSource implements RemoteAuthDataSourceFacade {
       } else if (e.code == 'ERROR_USER_NOT_FOUND') {
         throw AccountNotFoundException();
       } else {
-        throw UnknownRemoteException();
+        //throw UnknownRemoteException();
       }
     }
   }
 
   Future<void> signOut() async {
-    _firebaseAuth.signOut();
+    await _firebaseAuth.signOut();
   }
 }
