@@ -23,6 +23,16 @@ class _$LessonFailureTearOff {
   DeviceOffline deviceOffline() {
     return const DeviceOffline();
   }
+
+  NoCachedLessons noCachedLessons() {
+    return const NoCachedLessons();
+  }
+
+  LessonNotFound lessonNotFound({String failedId}) {
+    return LessonNotFound(
+      failedId: failedId,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -34,12 +44,16 @@ mixin _$LessonFailure {
     @required Result unexpected(),
     @required Result unableToUpdate(),
     @required Result deviceOffline(),
+    @required Result noCachedLessons(),
+    @required Result lessonNotFound(String failedId),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result unexpected(),
     Result unableToUpdate(),
     Result deviceOffline(),
+    Result noCachedLessons(),
+    Result lessonNotFound(String failedId),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -47,12 +61,16 @@ mixin _$LessonFailure {
     @required Result unexpected(Unexpected value),
     @required Result unableToUpdate(UnableToUpdate value),
     @required Result deviceOffline(DeviceOffline value),
+    @required Result noCachedLessons(NoCachedLessons value),
+    @required Result lessonNotFound(LessonNotFound value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result unexpected(Unexpected value),
     Result unableToUpdate(UnableToUpdate value),
     Result deviceOffline(DeviceOffline value),
+    Result noCachedLessons(NoCachedLessons value),
+    Result lessonNotFound(LessonNotFound value),
     @required Result orElse(),
   });
 }
@@ -109,10 +127,14 @@ class _$Unexpected implements Unexpected {
     @required Result unexpected(),
     @required Result unableToUpdate(),
     @required Result deviceOffline(),
+    @required Result noCachedLessons(),
+    @required Result lessonNotFound(String failedId),
   }) {
     assert(unexpected != null);
     assert(unableToUpdate != null);
     assert(deviceOffline != null);
+    assert(noCachedLessons != null);
+    assert(lessonNotFound != null);
     return unexpected();
   }
 
@@ -122,6 +144,8 @@ class _$Unexpected implements Unexpected {
     Result unexpected(),
     Result unableToUpdate(),
     Result deviceOffline(),
+    Result noCachedLessons(),
+    Result lessonNotFound(String failedId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -137,10 +161,14 @@ class _$Unexpected implements Unexpected {
     @required Result unexpected(Unexpected value),
     @required Result unableToUpdate(UnableToUpdate value),
     @required Result deviceOffline(DeviceOffline value),
+    @required Result noCachedLessons(NoCachedLessons value),
+    @required Result lessonNotFound(LessonNotFound value),
   }) {
     assert(unexpected != null);
     assert(unableToUpdate != null);
     assert(deviceOffline != null);
+    assert(noCachedLessons != null);
+    assert(lessonNotFound != null);
     return unexpected(this);
   }
 
@@ -150,6 +178,8 @@ class _$Unexpected implements Unexpected {
     Result unexpected(Unexpected value),
     Result unableToUpdate(UnableToUpdate value),
     Result deviceOffline(DeviceOffline value),
+    Result noCachedLessons(NoCachedLessons value),
+    Result lessonNotFound(LessonNotFound value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -203,10 +233,14 @@ class _$UnableToUpdate implements UnableToUpdate {
     @required Result unexpected(),
     @required Result unableToUpdate(),
     @required Result deviceOffline(),
+    @required Result noCachedLessons(),
+    @required Result lessonNotFound(String failedId),
   }) {
     assert(unexpected != null);
     assert(unableToUpdate != null);
     assert(deviceOffline != null);
+    assert(noCachedLessons != null);
+    assert(lessonNotFound != null);
     return unableToUpdate();
   }
 
@@ -216,6 +250,8 @@ class _$UnableToUpdate implements UnableToUpdate {
     Result unexpected(),
     Result unableToUpdate(),
     Result deviceOffline(),
+    Result noCachedLessons(),
+    Result lessonNotFound(String failedId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -231,10 +267,14 @@ class _$UnableToUpdate implements UnableToUpdate {
     @required Result unexpected(Unexpected value),
     @required Result unableToUpdate(UnableToUpdate value),
     @required Result deviceOffline(DeviceOffline value),
+    @required Result noCachedLessons(NoCachedLessons value),
+    @required Result lessonNotFound(LessonNotFound value),
   }) {
     assert(unexpected != null);
     assert(unableToUpdate != null);
     assert(deviceOffline != null);
+    assert(noCachedLessons != null);
+    assert(lessonNotFound != null);
     return unableToUpdate(this);
   }
 
@@ -244,6 +284,8 @@ class _$UnableToUpdate implements UnableToUpdate {
     Result unexpected(Unexpected value),
     Result unableToUpdate(UnableToUpdate value),
     Result deviceOffline(DeviceOffline value),
+    Result noCachedLessons(NoCachedLessons value),
+    Result lessonNotFound(LessonNotFound value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -297,10 +339,14 @@ class _$DeviceOffline implements DeviceOffline {
     @required Result unexpected(),
     @required Result unableToUpdate(),
     @required Result deviceOffline(),
+    @required Result noCachedLessons(),
+    @required Result lessonNotFound(String failedId),
   }) {
     assert(unexpected != null);
     assert(unableToUpdate != null);
     assert(deviceOffline != null);
+    assert(noCachedLessons != null);
+    assert(lessonNotFound != null);
     return deviceOffline();
   }
 
@@ -310,6 +356,8 @@ class _$DeviceOffline implements DeviceOffline {
     Result unexpected(),
     Result unableToUpdate(),
     Result deviceOffline(),
+    Result noCachedLessons(),
+    Result lessonNotFound(String failedId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -325,10 +373,14 @@ class _$DeviceOffline implements DeviceOffline {
     @required Result unexpected(Unexpected value),
     @required Result unableToUpdate(UnableToUpdate value),
     @required Result deviceOffline(DeviceOffline value),
+    @required Result noCachedLessons(NoCachedLessons value),
+    @required Result lessonNotFound(LessonNotFound value),
   }) {
     assert(unexpected != null);
     assert(unableToUpdate != null);
     assert(deviceOffline != null);
+    assert(noCachedLessons != null);
+    assert(lessonNotFound != null);
     return deviceOffline(this);
   }
 
@@ -338,6 +390,8 @@ class _$DeviceOffline implements DeviceOffline {
     Result unexpected(Unexpected value),
     Result unableToUpdate(UnableToUpdate value),
     Result deviceOffline(DeviceOffline value),
+    Result noCachedLessons(NoCachedLessons value),
+    Result lessonNotFound(LessonNotFound value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -350,4 +404,241 @@ class _$DeviceOffline implements DeviceOffline {
 
 abstract class DeviceOffline implements LessonFailure {
   const factory DeviceOffline() = _$DeviceOffline;
+}
+
+abstract class $NoCachedLessonsCopyWith<$Res> {
+  factory $NoCachedLessonsCopyWith(
+          NoCachedLessons value, $Res Function(NoCachedLessons) then) =
+      _$NoCachedLessonsCopyWithImpl<$Res>;
+}
+
+class _$NoCachedLessonsCopyWithImpl<$Res>
+    extends _$LessonFailureCopyWithImpl<$Res>
+    implements $NoCachedLessonsCopyWith<$Res> {
+  _$NoCachedLessonsCopyWithImpl(
+      NoCachedLessons _value, $Res Function(NoCachedLessons) _then)
+      : super(_value, (v) => _then(v as NoCachedLessons));
+
+  @override
+  NoCachedLessons get _value => super._value as NoCachedLessons;
+}
+
+class _$NoCachedLessons implements NoCachedLessons {
+  const _$NoCachedLessons();
+
+  @override
+  String toString() {
+    return 'LessonFailure.noCachedLessons()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoCachedLessons);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result unableToUpdate(),
+    @required Result deviceOffline(),
+    @required Result noCachedLessons(),
+    @required Result lessonNotFound(String failedId),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(deviceOffline != null);
+    assert(noCachedLessons != null);
+    assert(lessonNotFound != null);
+    return noCachedLessons();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result unableToUpdate(),
+    Result deviceOffline(),
+    Result noCachedLessons(),
+    Result lessonNotFound(String failedId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noCachedLessons != null) {
+      return noCachedLessons();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(Unexpected value),
+    @required Result unableToUpdate(UnableToUpdate value),
+    @required Result deviceOffline(DeviceOffline value),
+    @required Result noCachedLessons(NoCachedLessons value),
+    @required Result lessonNotFound(LessonNotFound value),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(deviceOffline != null);
+    assert(noCachedLessons != null);
+    assert(lessonNotFound != null);
+    return noCachedLessons(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(Unexpected value),
+    Result unableToUpdate(UnableToUpdate value),
+    Result deviceOffline(DeviceOffline value),
+    Result noCachedLessons(NoCachedLessons value),
+    Result lessonNotFound(LessonNotFound value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noCachedLessons != null) {
+      return noCachedLessons(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoCachedLessons implements LessonFailure {
+  const factory NoCachedLessons() = _$NoCachedLessons;
+}
+
+abstract class $LessonNotFoundCopyWith<$Res> {
+  factory $LessonNotFoundCopyWith(
+          LessonNotFound value, $Res Function(LessonNotFound) then) =
+      _$LessonNotFoundCopyWithImpl<$Res>;
+  $Res call({String failedId});
+}
+
+class _$LessonNotFoundCopyWithImpl<$Res>
+    extends _$LessonFailureCopyWithImpl<$Res>
+    implements $LessonNotFoundCopyWith<$Res> {
+  _$LessonNotFoundCopyWithImpl(
+      LessonNotFound _value, $Res Function(LessonNotFound) _then)
+      : super(_value, (v) => _then(v as LessonNotFound));
+
+  @override
+  LessonNotFound get _value => super._value as LessonNotFound;
+
+  @override
+  $Res call({
+    Object failedId = freezed,
+  }) {
+    return _then(LessonNotFound(
+      failedId: failedId == freezed ? _value.failedId : failedId as String,
+    ));
+  }
+}
+
+class _$LessonNotFound implements LessonNotFound {
+  const _$LessonNotFound({this.failedId});
+
+  @override
+  final String failedId;
+
+  @override
+  String toString() {
+    return 'LessonFailure.lessonNotFound(failedId: $failedId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is LessonNotFound &&
+            (identical(other.failedId, failedId) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedId, failedId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedId);
+
+  @override
+  $LessonNotFoundCopyWith<LessonNotFound> get copyWith =>
+      _$LessonNotFoundCopyWithImpl<LessonNotFound>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result unableToUpdate(),
+    @required Result deviceOffline(),
+    @required Result noCachedLessons(),
+    @required Result lessonNotFound(String failedId),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(deviceOffline != null);
+    assert(noCachedLessons != null);
+    assert(lessonNotFound != null);
+    return lessonNotFound(failedId);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result unableToUpdate(),
+    Result deviceOffline(),
+    Result noCachedLessons(),
+    Result lessonNotFound(String failedId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (lessonNotFound != null) {
+      return lessonNotFound(failedId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(Unexpected value),
+    @required Result unableToUpdate(UnableToUpdate value),
+    @required Result deviceOffline(DeviceOffline value),
+    @required Result noCachedLessons(NoCachedLessons value),
+    @required Result lessonNotFound(LessonNotFound value),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(deviceOffline != null);
+    assert(noCachedLessons != null);
+    assert(lessonNotFound != null);
+    return lessonNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(Unexpected value),
+    Result unableToUpdate(UnableToUpdate value),
+    Result deviceOffline(DeviceOffline value),
+    Result noCachedLessons(NoCachedLessons value),
+    Result lessonNotFound(LessonNotFound value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (lessonNotFound != null) {
+      return lessonNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LessonNotFound implements LessonFailure {
+  const factory LessonNotFound({String failedId}) = _$LessonNotFound;
+
+  String get failedId;
+  $LessonNotFoundCopyWith<LessonNotFound> get copyWith;
 }

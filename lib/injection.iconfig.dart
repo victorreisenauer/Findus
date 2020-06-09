@@ -10,8 +10,6 @@ import 'package:lrs_app_v3/injection.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lrs_app_v3/infrastructure/auth/data_sources/firebase/firebase_user_mapper.dart';
-import 'package:lrs_app_v3/infrastructure/lesson/lesson_repository.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_facade.dart';
 import 'package:lrs_app_v3/infrastructure/auth/data_sources/core/local_auth_data_source.dart';
 import 'package:lrs_app_v3/infrastructure/auth/data_sources/local_auth_data_source_facade.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/data_sources/core/local_lesson_data_source.dart';
@@ -24,9 +22,11 @@ import 'package:lrs_app_v3/infrastructure/lesson/data_sources/firebase/remote_fi
 import 'package:lrs_app_v3/infrastructure/lesson/data_sources/remote_lesson_data_source_facade.dart';
 import 'package:lrs_app_v3/infrastructure/auth/auth_repository.dart';
 import 'package:lrs_app_v3/domain/auth/auth_facade.dart';
-import 'package:lrs_app_v3/application/lesson/lesson_bloc.dart';
+import 'package:lrs_app_v3/infrastructure/lesson/lesson_repository.dart';
+import 'package:lrs_app_v3/domain/lesson/lesson_facade.dart';
 import 'package:lrs_app_v3/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:lrs_app_v3/application/auth/auth_bloc.dart';
+import 'package:lrs_app_v3/application/lesson/lesson_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
@@ -53,32 +53,14 @@ void $initGetIt(GetIt g, {String environment}) {
         g<RemoteAuthDataSourceFacade>(),
         g<NetworkInfo>(),
       ));
-  g.registerFactory<LessonBloc>(() => LessonBloc(g<LessonFacade>()));
+  g.registerLazySingleton<LessonFacade>(() => LessonRepository(
+        g<LocalLessonDataSourceFacade>(),
+        g<RemoteLessonDataSourceFacade>(),
+        g<NetworkInfo>(),
+      ));
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<AuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<AuthFacade>()));
-
-  //Register test Dependencies --------
-  if (environment == 'test') {
-    g.registerLazySingleton<LessonFacade>(() => TestFirebaseLessonRepository());
-  }
-
-  //Register prod Dependencies --------
-  if (environment == 'prod') {
-    g.registerLazySingleton<LessonFacade>(() => LessonRepository(
-          g<LocalLessonDataSourceFacade>(),
-          g<RemoteLessonDataSourceFacade>(),
-          g<NetworkInfo>(),
-        ));
-  }
-
-  //Register dev Dependencies --------
-  if (environment == 'dev') {
-    g.registerLazySingleton<LessonFacade>(() => DevLessonRepository(
-          g<LocalLessonDataSourceFacade>(),
-          g<RemoteLessonDataSourceFacade>(),
-          g<NetworkInfo>(),
-        ));
-  }
+  g.registerFactory<LessonBloc>(() => LessonBloc(g<LessonFacade>()));
 }
 
 class _$RegisterModules extends RegisterModules {}

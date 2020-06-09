@@ -25,7 +25,11 @@ main() {
       RemoteFirebaseLessonDataSource(cloudFunctions);
 
   // Instantiate objects for testing
-  Map testLessonData = LessonModel(exerciseList: [], id: "fakeId").toJson();
+  Map testLessonData = LessonModel(
+    exerciseList: [],
+    id: "fakeId",
+    assignedToUserId: "a4cdeb10-a285-11ea-bed0-ab5e0a04210d",
+  ).toJson();
   MockHttpsCallable testHttpsCallable = MockHttpsCallable();
   MockHttpsResult testResult = MockHttpsResult();
 

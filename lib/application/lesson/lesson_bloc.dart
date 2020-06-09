@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
+import 'package:lrs_app_v3/domain/auth/user/user.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:meta/meta.dart';
@@ -17,6 +18,7 @@ part 'lesson_state.dart';
 class LessonBloc extends Bloc<LessonEvent, LessonState> {
   final LessonFacade _lessonFacade;
   Lesson _currentLesson;
+  User _currentUser;
 
   LessonBloc(this._lessonFacade);
 
@@ -29,9 +31,9 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
   ) async* {
     yield* event.map(fetchAllLessonIds: (_) async* {
       yield const LessonState.lessonLoading();
-      yield _lessonFacade.getUserLessonIds().then((either) => either.fold(
-          (f) => LessonState.lessonError(f),
-          (idStream) => LessonState.lessonIdStreamLoaded(idStream)));
+      yield _lessonFacade.getLessonIdsForUser(_currentUser.id).then((either) =>
+          either.fold((f) => LessonState.lessonError(f),
+              (idStream) => LessonState.lessonIdStreamLoaded(idStream)));
     }, startLesson: (e) async* {
       yield LessonLoading();
       final failureOrLesson = await _lessonFacade.getLessonById(e.id);
@@ -43,7 +45,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
     }, finishLesson: (e) async* {
       LessonResult result = LessonResult(
           id: _currentLesson.id, resultList: e.results.toImmutableList());
-      _lessonFacade.saveResult(result);
+      await _lessonFacade.saveResult(result, _currentUser.id);
       yield LessonFinished();
     }, abortLesson: (e) async* {
       yield LessonAborted();
