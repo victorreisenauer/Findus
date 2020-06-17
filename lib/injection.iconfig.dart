@@ -57,6 +57,7 @@ void $initGetIt(GetIt g, {String environment}) {
         g<LocalLessonDataSourceFacade>(),
         g<RemoteLessonDataSourceFacade>(),
         g<NetworkInfo>(),
+        g<AuthFacade>(),
       ));
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<AuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<AuthFacade>()));

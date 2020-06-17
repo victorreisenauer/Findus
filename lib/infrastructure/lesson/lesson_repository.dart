@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/local_exceptions.dart';
@@ -12,8 +13,17 @@ class LessonRepository implements LessonFacade {
   final LocalLessonDataSourceFacade _localData;
   final RemoteLessonDataSourceFacade _remoteData;
   final NetworkInfo _networkInfo;
+  final AuthFacade _authFacade;
 
-  LessonRepository(this._localData, this._remoteData, this._networkInfo);
+  LessonRepository(
+    this._localData,
+    this._remoteData,
+    this._networkInfo,
+    this._authFacade,
+  );
+
+  Future<Either<AuthFailure, User>> get eitherUserOrFailure =>
+      _authFacade.getUser().then((response) => response);
 
   /// Fetches all available Lesson ids for user [userId].
   ///
@@ -22,23 +32,29 @@ class LessonRepository implements LessonFacade {
   /// remote data source is available in cache.
   ///
   /// Needs bugfix!
-  Future<Either<LessonFailure, Stream<UniqueId>>> getLessonIdsForUser(
-      UniqueId userId) async {
+  Future<Either<LessonFailure, Stream<UniqueId>>> getLessonIdsForUser() async {
+    UniqueId userId;
+    AuthFailure authFailure;
+
+    await eitherUserOrFailure.then((either) => either.fold((l) async {
+          authFailure = l;
+        }, (r) async {
+          userId = r.id;
+        }));
+
+    if (authFailure != null) {
+      return left(LessonFailure.unexpected());
+    }
+
     try {
-      return right(await _localData.getLessonIdsForUser(userId));
-      // shouldn't we use the .handleError here for catching exceptions?
-      // but how do we return the Either then?
-      // if we just return a left on handleError, then
-      // in this configuration the final returned value would be
-      // right(left(LessonFailure.noCachedLessons))
+      Stream<UniqueId> stream = await _localData.getLessonIdsForUser(userId);
+      return right(stream);
     } catch (e) {
       if (e is CacheEmptyException) {
         return left(LessonFailure.noCachedLessons());
+      } else {
+        return null;
       }
-      // actually only CacheEmptyExceptions are thrown
-      // so I dont understand, why they are not caught?
-      print(e);
-      return left(LessonFailure.unexpected());
     }
   }
 
@@ -56,10 +72,8 @@ class LessonRepository implements LessonFacade {
         return left(
             LessonFailure.lessonNotFound(failedId: lessonId.getOrCrash()));
       }
-      // again, actually a cacheemptyexception is thrown, but not caught from
-      // if state ment above?
-      print(e);
-      return left(LessonFailure.unexpected());
+
+      //return left(LessonFailure.unexpected());
     }
   }
 
@@ -67,7 +81,19 @@ class LessonRepository implements LessonFacade {
   ///
   /// Make sure to call this regularly, so app and server are always
   /// updated.
-  Future<Option<LessonFailure>> update(UniqueId userId) async {
+  Future<Option<LessonFailure>> update() async {
+    UniqueId userId;
+    AuthFailure authFailure;
+
+    await eitherUserOrFailure.then((either) => either.fold((l) async {
+          authFailure = l;
+        }, (r) async {
+          userId = r.id;
+        }));
+
+    if (authFailure != null) {
+      return optionOf(LessonFailure.unexpected());
+    }
     if (await _networkInfo.isConnected) {
       await _remoteData.getAvailableLessonData().forEach((model) async {
         await _localData.cacheLessonModel(model);
@@ -93,8 +119,19 @@ class LessonRepository implements LessonFacade {
   ///
   /// Be sure to call LessonRepository.update() at some point,
   /// to push results from cache to server.
-  Future<Option<LessonFailure>> saveResult(
-      LessonResult result, UniqueId userId) async {
+  Future<Option<LessonFailure>> saveResult(LessonResult result) async {
+    UniqueId userId;
+    AuthFailure authFailure;
+
+    await eitherUserOrFailure.then((either) => either.fold((l) async {
+          authFailure = l;
+        }, (r) async {
+          userId = r.id;
+        }));
+
+    if (authFailure != null) {
+      return optionOf(LessonFailure.unexpected());
+    }
     try {
       await _localData
           .cacheLessonResultModel(LessonResultModel.fromDomain(result, userId));
