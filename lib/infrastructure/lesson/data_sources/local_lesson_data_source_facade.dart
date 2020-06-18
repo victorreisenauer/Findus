@@ -2,6 +2,7 @@ import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
 
 abstract class LocalLessonDataSourceFacade {
+  Future<bool> isLessonCacheEmpty();
   Stream<UniqueId> getLessonIdsForUser(UniqueId userId);
   Stream<UniqueId> getLessonResultIdsForUser(UniqueId userId);
   Stream<LessonModel> getAllLessonModels();

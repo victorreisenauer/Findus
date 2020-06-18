@@ -46,15 +46,10 @@ class LessonRepository implements LessonFacade {
       return left(LessonFailure.unexpected());
     }
 
-    try {
-      Stream<UniqueId> stream = await _localData.getLessonIdsForUser(userId);
-      return right(stream);
-    } catch (e) {
-      if (e is CacheEmptyException) {
-        return left(LessonFailure.noCachedLessons());
-      } else {
-        return null;
-      }
+    if (await _localData.isLessonCacheEmpty()) {
+      return left(LessonFailure.noCachedLessons());
+    } else {
+      return right(await _localData.getLessonIdsForUser(userId));
     }
   }
 
