@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
+import 'package:lrs_app_v3/injection.dart';
 import 'package:mockito/mockito.dart';
 
 // set up mock classes and instances
@@ -13,16 +15,25 @@ class MockHttpsCallable extends Mock implements HttpsCallable {}
 
 class MockHttpsResult extends Mock implements HttpsCallableResult {}
 
-// Specifically test that all calls are made correctly for RemoteFirebaseLessonDataSource.
-// Data and inner workings are irrelevant for now. Those are tested in dev and prod environments.
-// Makes mostly use of 'verify()' tests.
 main() {
+  // Initialize flutter binding
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // configure dependency injection
+  configureInjection();
+
   // Dependencies
   CloudFunctions cloudFunctions = MockCloudFunctions();
 
   // Production object with mocked dependencies
   RemoteLessonDataSourceFacade testRemoteData =
       RemoteFirebaseLessonDataSource(cloudFunctions);
+
+  RemoteLessonDataSourceFacade prodRemoteData =
+      getIt<RemoteLessonDataSourceFacade>();
+
+  String testUserIdStr = "a4cdeb10-a285-11ea-bed0-ab5e0a04210d";
+  String lessonResultModelId = "fakeId";
 
   // Instantiate objects for testing
   Map testLessonData = LessonModel(
@@ -33,8 +44,13 @@ main() {
   MockHttpsCallable testHttpsCallable = MockHttpsCallable();
   MockHttpsResult testResult = MockHttpsResult();
 
+  LessonResultModel lessonResultModel = LessonResultModel(
+      assignedToUserId: testUserIdStr,
+      id: lessonResultModelId,
+      resultsList: []);
+
   // Tests
-  group('[Env: test] RemoteFirebaseLessonDataSource =>', () {
+  group('RemoteFirebaseLessonDataSource =>', () {
     group('on getAvailableLessonData =>', () {
       setUp(() {
         when(cloudFunctions.getHttpsCallable(functionName: "getLessons"))
@@ -53,12 +69,29 @@ main() {
         });
       });
       test('on httpsError, throws "NoUserLoggedInException"', () {});
+
+      /*
+      test('interaction works', () {
+        print(prodRemoteData.getAvailableLessonData().first);
+      });
+      */
     });
     group('on pushResults => ', () {
-      test('', () {});
-    });
-    group('on close =>', () {
-      test('closes connection to firebase server', () {});
+      setUp(() {
+        when(cloudFunctions.getHttpsCallable(functionName: "submitLesson"))
+            .thenAnswer((realInvocation) => testHttpsCallable);
+        when(testHttpsCallable.call()).thenAnswer((_) async => testResult);
+      });
+      test('calls cloud function', () async {
+        await testRemoteData.pushResult(lessonResultModel);
+        verify(cloudFunctions.getHttpsCallable(functionName: "submitLesson"));
+      });
+
+      /*
+      test('interaction works', () {
+        prodRemoteData.pushResult(lessonResultModel);
+      });
+      */
     });
   });
 }
