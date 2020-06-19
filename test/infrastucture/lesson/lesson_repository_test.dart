@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
+import 'package:lrs_app_v3/domain/core/validated_value_objects.dart';
 import 'package:lrs_app_v3/domain/core/value_objects.dart';
 import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
 import 'package:lrs_app_v3/infrastructure/core/local_exceptions.dart';
@@ -21,6 +23,8 @@ class MockRemoteLessonDataSource extends Mock
 
 class MockNetworkInfo extends Mock implements NetworkInfo {}
 
+class MockAuthFacade extends Mock implements AuthFacade {}
+
 // Specifically test that all calls are made correctly for FirebaseLessonRepository.
 // Data and inner workings are irrelevant for now. Those are tested in dev and prod environments.
 // Makes mostly use of 'verify()' tests.
@@ -29,14 +33,23 @@ main() {
   LocalLessonDataSourceFacade localData = MockLocalLessonDataSource();
   RemoteLessonDataSourceFacade remoteData = MockRemoteLessonDataSource();
   NetworkInfo networkInfo = MockNetworkInfo();
+  AuthFacade authFacade = MockAuthFacade();
 
   // Production object with mocked dependencies
   LessonFacade testLessonRepo =
-      LessonRepository(localData, remoteData, networkInfo);
+      LessonRepository(localData, remoteData, networkInfo, authFacade);
 
   // Objects for testing
   String testUserIdStr = "a4cdeb10-a285-11ea-bed0-ab5e0a04210d";
   UniqueId testUserId = UniqueId.fromUniqueId(testUserIdStr);
+
+  User testUser = User(
+    id: testUserId,
+    personalData: PersonalData(
+        firstName: StringSingleLine("testUser"),
+        lastName: StringSingleLine("testUser")),
+    emailAddress: EmailAddress("testUser@test.com"),
+  );
 
   String testLessonIdStr = "112ca4f0-a285-11ea-dd94-eb9bcd40b4a0";
   UniqueId testLessonId = UniqueId.fromUniqueId(testLessonIdStr);
@@ -52,6 +65,8 @@ main() {
 
   // Tests
   group('LessonRepository', () {
+    when(authFacade.getUser())
+        .thenAnswer((realInvocation) async => right(testUser));
     group('on update => ', () {
       setUp(() {
         when(remoteData.getAvailableLessonData())
@@ -74,7 +89,7 @@ main() {
       });
       test('checks if device is online', () {
         when(networkInfo.isConnected).thenAnswer((_) async => true);
-        testLessonRepo.update(testUserId);
+        testLessonRepo.update();
         verify(networkInfo.isConnected);
       });
       group('if online => ', () {
@@ -82,21 +97,32 @@ main() {
           when(networkInfo.isConnected)
               .thenAnswer((realInvocation) async => true);
         });
+
+        test('gets userId from LessonRepository', () {
+          verify(authFacade.getUser());
+        });
+
+        test(
+            'if fetching userId from LessonRepository fails, returns LessonFailure.authenticationRequired',
+            () {
+          when(authFacade.getUser()).thenAnswer(
+              (realInvocation) async => left(AuthFailure.invalidEmail()));
+        });
         test('gets all lessons from remote data', () async {
-          await testLessonRepo.update(testUserId);
+          await testLessonRepo.update();
 
           // should get data once
           verify(remoteData.getAvailableLessonData()).called(1);
         });
         test('stores them in cache one by one', () async {
-          await testLessonRepo.update(testUserId);
+          await testLessonRepo.update();
 
           // should be called 3 times, because remoteData.getAvailableLessonData
           // returns 3 lessonModelJsons (stubbed above)
           verify(localData.cacheLessonModel(any)).called(3);
         });
         test('gets results from cache', () async {
-          await testLessonRepo.update(testUserId);
+          await testLessonRepo.update();
 
           // should be called 1 time to get all lessonResultIds
           verify(localData.getLessonResultIdsForUser(testUserId)).called(1);
@@ -104,7 +130,7 @@ main() {
         test(
             'gets from cache, pushes to server, then deletes results one by one',
             () async {
-          await testLessonRepo.update(testUserId);
+          await testLessonRepo.update();
           // should be called 3 times, because localData.getLessonResultIdsForUser
           // returns 3 testLessonResultIds (stubbed above)
           // and each of those ids is used to get result from cache
@@ -116,7 +142,7 @@ main() {
         });
 
         test('if successful, returns none()', () async {
-          expect(await testLessonRepo.update(testUserId), isA<None>());
+          expect(await testLessonRepo.update(), isA<None>());
         });
       });
       group('if offline =>', () {
@@ -124,14 +150,28 @@ main() {
           when(networkInfo.isConnected)
               .thenAnswer((realInvocation) async => false);
 
-          var response = await testLessonRepo.update(testUserId);
+          var response = await testLessonRepo.update();
 
           var option = response.fold(() => null, (a) => a);
           expect(option, isInstanceOf<LessonFailure>());
         });
       });
     });
-    group('on getUserLessonIds => ', () {
+    group('on getLessonIdsForUser => ', () {
+      test('gets userId from LessonRepository', () {
+        when(authFacade.getUser()).thenAnswer(
+            (realInvocation) async => left(AuthFailure.invalidEmail()));
+        testLessonRepo.getLessonIdsForUser();
+        verify(authFacade.getUser());
+      });
+
+      test(
+          'if fetching userId from LessonRepository fails, returns LessonFailure.authenticationRequired',
+          () {
+        when(authFacade.getUser()).thenAnswer(
+            (realInvocation) async => left(AuthFailure.invalidEmail()));
+      });
+
       test('if there are any, should get Lesson Ids from cache', () async {
         when(localData.getLessonIdsForUser(testUserId)).thenAnswer((_) async* {
           for (int i = 0; i < 3; i++) {
@@ -139,7 +179,7 @@ main() {
           }
         });
 
-        var response = await testLessonRepo.getLessonIdsForUser(testUserId);
+        var response = await testLessonRepo.getLessonIdsForUser();
         response.fold(
             (l) => l,
             (r) => r.toList().then((value) {
@@ -152,7 +192,7 @@ main() {
         when(localData.getLessonIdsForUser(testUserId))
             .thenThrow(CacheEmptyException);
 
-        var response = await testLessonRepo.getLessonIdsForUser(testUserId);
+        var response = await testLessonRepo.getLessonIdsForUser();
 
         expect(response.fold((l) => l, (r) => r), isA<NoCachedLessons>());
       });
@@ -174,8 +214,8 @@ main() {
           () async {
         when(localData.cacheLessonResultModel(any)).thenAnswer((_) => null);
         // expect a none option to be returned
-        var response = await testLessonRepo.saveResult(
-            testLessonResultModel1.toDomain(), testUserId);
+        var response =
+            await testLessonRepo.saveResult(testLessonResultModel1.toDomain());
         expect(response.fold(() => none(), (a) => a), isA<None>());
 
         // make sure relevant calls are made

@@ -12,23 +12,23 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
 
   LocalLessonDataSource(this.boxes);
 
+  /// Checks if the lesson box is empty
+  Future<bool> isLessonCacheEmpty() async {
+    Box box = await boxes.lessonBox.then((box) => box);
+    if (box.isEmpty) return true;
+    return false;
+  }
+
   /// Fetches all ids from cached LessonModels for this [userId].
-  ///
-  /// Throws a CacheEmptyException, when cache is empty.
-  /// Be sure to call stream.catchError on stream to catch this Exception.
   Stream<UniqueId> getLessonIdsForUser(UniqueId userId) async* {
     Box box = await boxes.lessonBox.then((box) => box);
-    if (box.isEmpty) {
-      throw CacheEmptyException(failedSource: box.toString());
-    } else {
-      for (int i = 0; i < box.length; i++) {
-        // Get the model at index i.
-        LessonModel model = await LessonModel.fromJson(box.getAt(i));
-        UniqueId assignedUserId = UniqueId.fromUniqueId(model.assignedToUserId);
-        // Yield the model only, if the model has correct user assigned to it.
-        if (assignedUserId == userId) {
-          yield UniqueId.fromUniqueId(model.id);
-        }
+    for (int i = 0; i < box.length; i++) {
+      // Get the model at index i.
+      LessonModel model = await LessonModel.fromJson(box.getAt(i));
+      UniqueId assignedUserId = UniqueId.fromUniqueId(model.assignedToUserId);
+      // Yield the model only, if the model has correct user assigned to it.
+      if (assignedUserId == userId) {
+        yield UniqueId.fromUniqueId(model.id);
       }
     }
   }
