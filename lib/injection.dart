@@ -21,5 +21,5 @@ abstract class RegisterModules {
   @injectable
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
   @lazySingleton
-  CloudFunctions get cloudFunctions => CloudFunctions.instance;
+  CloudFunctions get cloudFunctions => CloudFunctions(region: 'europe-west1');
 }
