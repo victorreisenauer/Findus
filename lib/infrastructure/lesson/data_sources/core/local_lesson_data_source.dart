@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
@@ -25,7 +27,7 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
     for (int i = 0; i < box.length; i++) {
       // Get the model at index i.
       LessonModel model = await LessonModel.fromJson(box.getAt(i));
-      UniqueId assignedUserId = UniqueId.fromUniqueId(model.assignedToUserId);
+      UniqueId assignedUserId = UniqueId.fromUniqueId(model.id);
       // Yield the model only, if the model has correct user assigned to it.
       if (assignedUserId == userId) {
         yield UniqueId.fromUniqueId(model.id);
@@ -45,8 +47,7 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
     } else {
       for (int i = 0; i < box.length; i++) {
         // Get the model at index i.
-        LessonResultModel model =
-            await LessonResultModel.fromJson(box.getAt(i));
+        LessonResultModel model = await LessonResultModel.fromJson(box.getAt(i));
         UniqueId assignedUserId = UniqueId.fromUniqueId(model.assignedToUserId);
         // Yield the model only, if the model has correct user assigned to it.
         if (assignedUserId == userId) {
@@ -71,8 +72,7 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
     } else {
       var response = await box.get(lessonId.getOrCrash());
       if (response == null) {
-        throw KeyNotFoundException(
-            failedSource: box.toString(), failedValue: lessonId.getOrCrash());
+        throw KeyNotFoundException(failedSource: box.toString(), failedValue: lessonId.getOrCrash());
       } else {
         return LessonModel.fromJson(response);
       }
@@ -87,8 +87,7 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
   ///
   /// Failed source and failedValue relate to cache box and
   /// [resultModelId] (that was not found in cache box) respectively.
-  Future<LessonResultModel> getLessonResultModelById(
-      UniqueId resultModelId) async {
+  Future<LessonResultModel> getLessonResultModelById(UniqueId resultModelId) async {
     Box box = await boxes.resultBox.then((box) => box);
 
     if (box.isEmpty) {
@@ -96,9 +95,7 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
     } else {
       var response = await box.get(resultModelId.getOrCrash());
       if (response == null) {
-        throw KeyNotFoundException(
-            failedSource: box.toString(),
-            failedValue: resultModelId.getOrCrash());
+        throw KeyNotFoundException(failedSource: box.toString(), failedValue: resultModelId.getOrCrash());
       } else {
         return LessonResultModel.fromJson(response);
       }
@@ -126,8 +123,9 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
   /// Each model holds the id of the user it is assigned to under 'assignedToUserId'.
   /// This is neccessary to later fetch all LessonModels assigned to a specific user.
   Future<void> cacheLessonModel(LessonModel lessonModel) async {
-    await boxes.lessonBox
-        .then((box) => box.put(lessonModel.id, lessonModel.toJson()));
+    String lessonId = lessonModel.id;
+    Map jsonData = jsonDecode(jsonEncode(lessonModel.toJson()));
+    await boxes.lessonBox.then((box) => box.put(lessonId, jsonData));
   }
 
   /// Caches a [resultModel] by own id modelId.
@@ -135,8 +133,7 @@ class LocalLessonDataSource implements LocalLessonDataSourceFacade {
   /// Each model holds the id of the user it is assigned to under 'assignedToUserId'.
   /// This is neccessary to later fetch all LessonResultModels for a specific user.
   Future<void> cacheLessonResultModel(LessonResultModel resultModel) async {
-    await boxes.resultBox.then(
-        (box) async => await box.put(resultModel.id, resultModel.toJson()));
+    await boxes.resultBox.then((box) async => await box.put(resultModel.id, resultModel.toJson()));
   }
 
   /// Permanently removes a LessonResultModel by its [resultModelId].
