@@ -1,0 +1,59 @@
+name: Pull Request Tests
+
+on: pull_request
+
+jobs:
+  dartfmt:
+    runs-on: ubuntu-latest
+    container: google/dart:2
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Check if dartfmt is happy
+        run: bash .github/dartfmt.sh
+
+  dartanalyzer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - name: Check if dartanalyzer is happy
+        run: bash .github/dartanalyzer.sh
+
+  fluttertest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+#      - name: Download required packages
+#        run: flutter pub get
+      - name: Check if flutter test is happy
+        run: flutter test --coverage
+      - name: Generate html coverage data and send to server
+        run: bash .github/coverage.sh
+        env:
+          COVERAGE_KEY: ${{ secrets.COVERAGE_KEY }}
+      - name: Add comment to PR
+        env:
+          URL: ${{ github.event.pull_request.comments_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl \
+            -X POST \
+            $URL \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            --data "{ \"body\": \"[Coverage Analysis](https://lcov.hndrk.xyz/$COVERAGE_UUID) (${COVERAGE_COV}%)\" }"
+

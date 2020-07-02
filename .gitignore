@@ -46,3 +46,5 @@ ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
 ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+
+coverage

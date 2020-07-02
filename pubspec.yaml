@@ -9,42 +9,39 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
-  lrs_data_client:
-    git: git@git.hndrk.xyz:lrs-app/data-client.git
-  # automatically update versions. Change to static versions for compatibility once more developers work on this project.
-  dartz:
-  freezed_annotation:
-  flutter_bloc:
-  uuid:
-  kt_dart:
-  injectable:
-  get_it:
-  auto_route:
-  mockito:
+  dartz: 0.9.0
+  freezed_annotation: 0.7.1
+  flutter_bloc: 4.0.0
+  uuid: 2.0.4
+  kt_dart: 0.7.0+1
+  injectable: 0.3.0
+  get_it: 4.0.2
+  auto_route: 0.4.5
+  mockito: 4.1.1
   flushbar: 1.10.4
-  equatable:
-  google_fonts:
-  path_provider:
-  draggable_scrollbar:
-  audioplayers:
-  data_connection_checker:
-  hive:
-  firebase_auth:
-  cloud_firestore:
-  cloud_functions:
+  equatable: 1.1.1
+  google_fonts: 1.0.0
+  path_provider: 1.6.7
+  draggable_scrollbar: 0.0.4
+  audioplayers: 0.15.1
+  data_connection_checker: 0.3.4
+  hive: 1.4.1+1
+  firebase_auth: 0.16.0
+  cloud_firestore: 0.13.5
+  cloud_functions: 0.5.0
   pedantic: ^1.8.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner:
-  freezed:
-  injectable_generator:
-  auto_route_generator:
-  bloc_test:
-  test:
-  json_serializable:
-  hive_generator:
+  build_runner: 1.9.0
+  freezed: 0.10.7
+  injectable_generator: 0.3.5
+  auto_route_generator: 0.4.8
+  bloc_test: 5.0.0
+  test: 1.14.3
+  json_serializable: 3.3.0
+  hive_generator: 0.5.2
 
 flutter:
   uses-material-design: true
