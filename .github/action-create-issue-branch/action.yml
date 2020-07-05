@@ -1,0 +1,5 @@
+name: 'Create Issue Branch'
+description: 'Creates a new branch for each issue'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

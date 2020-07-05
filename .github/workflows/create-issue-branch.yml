@@ -1,0 +1,18 @@
+# The name of your workflow.
+name: Create Issue Branch
+
+# Trigger the workflow on push or pull request
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create issue branch
+        uses: ./.github/action-create-issue-branch
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
