@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
 
-import 'package:lrs_app_v3/injection.dart';
-import 'package:lrs_app_v3/application/lesson/exercise/exercise_bloc.dart';
-import 'package:lrs_app_v3/application/lesson/progress/progress_bloc.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/domain/core/value_objects.dart';
+import "../../../application/lesson/exercise/exercise_bloc.dart";
+import "../../../application/lesson/progress/progress_bloc.dart";
+import "../../../domain/core/value_objects.dart";
+import "../../../domain/lesson/lesson_barrel.dart";
+import "../../../injection.dart";
 
 class ExercisePage extends StatelessWidget {
   final ObjectList<Exercise> exerciseList;
@@ -18,12 +18,10 @@ class ExercisePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<ProgressBloc>()
-            ..add(ProgressEvent.startProgress(exerciseList.length)),
+          create: (context) => getIt<ProgressBloc>()..add(ProgressEvent.startProgress(exerciseList.length)),
         ),
         BlocProvider(
-          create: (context) => ExerciseBloc(exerciseList: exerciseList)
-            ..add(ExerciseEvent.buildFirstExercise()),
+          create: (context) => ExerciseBloc(exerciseList: exerciseList)..add(ExerciseEvent.buildFirstExercise()),
         )
       ],
       child: Scaffold(

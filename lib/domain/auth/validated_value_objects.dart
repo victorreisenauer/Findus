@@ -1,7 +1,8 @@
-import 'package:dartz/dartz.dart';
-import 'package:lrs_app_v3/domain/core/failures.dart';
-import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
-import 'package:meta/meta.dart';
+import "package:dartz/dartz.dart";
+import "package:meta/meta.dart";
+
+import "../core/failures.dart";
+import "../core/value_objects_barrel.dart";
 
 @immutable
 class EmailAddress extends ValueObject<String> {
@@ -17,7 +18,7 @@ class EmailAddress extends ValueObject<String> {
 
   const EmailAddress._(this.value);
 
-  factory EmailAddress.empty() => EmailAddress._(Right(''));
+  factory EmailAddress.empty() => EmailAddress._(Right(""));
 }
 
 @immutable

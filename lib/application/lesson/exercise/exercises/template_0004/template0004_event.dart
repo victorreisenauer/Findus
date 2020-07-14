@@ -1,4 +1,4 @@
-part of 'template0004_bloc.dart';
+part of "template0004_bloc.dart";
 
 @freezed
 abstract class Template0004Event with _$Template0004Event {

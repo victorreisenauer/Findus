@@ -15,8 +15,7 @@ PersonalDataModel _$PersonalDataModelFromJson(Map<String, dynamic> json) {
 class _$PersonalDataModelTearOff {
   const _$PersonalDataModelTearOff();
 
-  _PersonalDataModel call(
-      {@required String firstName, @required String lastName}) {
+  _PersonalDataModel call({@required String firstName, @required String lastName}) {
     return _PersonalDataModel(
       firstName: firstName,
       lastName: lastName,
@@ -36,14 +35,12 @@ mixin _$PersonalDataModel {
 }
 
 abstract class $PersonalDataModelCopyWith<$Res> {
-  factory $PersonalDataModelCopyWith(
-          PersonalDataModel value, $Res Function(PersonalDataModel) then) =
+  factory $PersonalDataModelCopyWith(PersonalDataModel value, $Res Function(PersonalDataModel) then) =
       _$PersonalDataModelCopyWithImpl<$Res>;
   $Res call({String firstName, String lastName});
 }
 
-class _$PersonalDataModelCopyWithImpl<$Res>
-    implements $PersonalDataModelCopyWith<$Res> {
+class _$PersonalDataModelCopyWithImpl<$Res> implements $PersonalDataModelCopyWith<$Res> {
   _$PersonalDataModelCopyWithImpl(this._value, this._then);
 
   final PersonalDataModel _value;
@@ -62,20 +59,16 @@ class _$PersonalDataModelCopyWithImpl<$Res>
   }
 }
 
-abstract class _$PersonalDataModelCopyWith<$Res>
-    implements $PersonalDataModelCopyWith<$Res> {
-  factory _$PersonalDataModelCopyWith(
-          _PersonalDataModel value, $Res Function(_PersonalDataModel) then) =
+abstract class _$PersonalDataModelCopyWith<$Res> implements $PersonalDataModelCopyWith<$Res> {
+  factory _$PersonalDataModelCopyWith(_PersonalDataModel value, $Res Function(_PersonalDataModel) then) =
       __$PersonalDataModelCopyWithImpl<$Res>;
   @override
   $Res call({String firstName, String lastName});
 }
 
-class __$PersonalDataModelCopyWithImpl<$Res>
-    extends _$PersonalDataModelCopyWithImpl<$Res>
+class __$PersonalDataModelCopyWithImpl<$Res> extends _$PersonalDataModelCopyWithImpl<$Res>
     implements _$PersonalDataModelCopyWith<$Res> {
-  __$PersonalDataModelCopyWithImpl(
-      _PersonalDataModel _value, $Res Function(_PersonalDataModel) _then)
+  __$PersonalDataModelCopyWithImpl(_PersonalDataModel _value, $Res Function(_PersonalDataModel) _then)
       : super(_value, (v) => _then(v as _PersonalDataModel));
 
   @override
@@ -95,13 +88,11 @@ class __$PersonalDataModelCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_PersonalDataModel implements _PersonalDataModel {
-  const _$_PersonalDataModel(
-      {@required this.firstName, @required this.lastName})
+  const _$_PersonalDataModel({@required this.firstName, @required this.lastName})
       : assert(firstName != null),
         assert(lastName != null);
 
-  factory _$_PersonalDataModel.fromJson(Map<String, dynamic> json) =>
-      _$_$_PersonalDataModelFromJson(json);
+  factory _$_PersonalDataModel.fromJson(Map<String, dynamic> json) => _$_$_PersonalDataModelFromJson(json);
 
   @override
   final String firstName;
@@ -118,11 +109,8 @@ class _$_PersonalDataModel implements _PersonalDataModel {
     return identical(this, other) ||
         (other is _PersonalDataModel &&
             (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
-            (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)));
+                const DeepCollectionEquality().equals(other.firstName, firstName)) &&
+            (identical(other.lastName, lastName) || const DeepCollectionEquality().equals(other.lastName, lastName)));
   }
 
   @override
@@ -142,12 +130,9 @@ class _$_PersonalDataModel implements _PersonalDataModel {
 }
 
 abstract class _PersonalDataModel implements PersonalDataModel {
-  const factory _PersonalDataModel(
-      {@required String firstName,
-      @required String lastName}) = _$_PersonalDataModel;
+  const factory _PersonalDataModel({@required String firstName, @required String lastName}) = _$_PersonalDataModel;
 
-  factory _PersonalDataModel.fromJson(Map<String, dynamic> json) =
-      _$_PersonalDataModel.fromJson;
+  factory _PersonalDataModel.fromJson(Map<String, dynamic> json) = _$_PersonalDataModel.fromJson;
 
   @override
   String get firstName;

@@ -1,16 +1,17 @@
-import 'dart:async';
+import "dart:async";
 
-import 'package:bloc/bloc.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
-import 'package:meta/meta.dart';
+import "package:bloc/bloc.dart";
+import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:google_fonts/google_fonts.dart";
+import "package:meta/meta.dart";
 
-part 'template_0001_event.dart';
-part 'template_0001_state.dart';
-part 'template_0001_bloc.freezed.dart';
+import "../../../../../domain/lesson/exercise/validated_value_objects.dart";
+
+part "template_0001_bloc.freezed.dart";
+part "template_0001_event.dart";
+part "template_0001_state.dart";
 
 class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
   ExerciseData exerciseData;
@@ -22,14 +23,11 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
   List<dynamic> lastAnswers;
 
   TextStyle defaultTextStyle = GoogleFonts.reemKufi(
-      fontSize: 18.0,
-      decoration: TextDecoration.none,
-      color: Colors.black87,
-      fontWeight: FontWeight.normal);
+      fontSize: 18.0, decoration: TextDecoration.none, color: Colors.black87, fontWeight: FontWeight.normal);
 
   Template0001Bloc({this.exerciseData}) {
     exerciseDataMap = exerciseData.value.getOrElse(null);
-    filledSuffix = List();
+    filledSuffix = [];
   }
 
   @override
@@ -42,19 +40,19 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
     yield* event.map(getExercise: (e) async* {
       // yield Exercise_1State.initial();
 
-      List<String> suffix = List();
-      List<Color> suffixColor = List();
+      var suffix = <String>[];
+      var suffixColor = <Color>[];
 
       exerciseDataMap["2"].forEach((f) {
-        suffix.add('_ _ _ _');
+        suffix.add("_ _ _ _");
         filledSuffix.add(null);
         suffixColor.add(Colors.black87);
       });
 
-      List<List> values = _dataToList(exerciseDataMap, suffix, suffixColor);
+      var values = _dataToList(exerciseDataMap, suffix, suffixColor);
 
-      List<dynamic> text = values[0];
-      List<dynamic> answers = values[1];
+      var text = values[0];
+      var answers = values[1];
 
       lastText = text;
       lastAnswers = answers;
@@ -63,16 +61,14 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
     }, droppedDraggable: (e) async* {
       filledSuffix[e.idTarget] = e.idDraggable;
 
-      List<String> suffix = List();
-      List<Color> suffixColor = List();
+      var suffix = <String>[];
+      var suffixColor = <Color>[];
 
-      for (int i = 0; i < exerciseDataMap["2"].length; i++) {
+      for (var i = 0; i < exerciseDataMap["2"].length; i++) {
         if (filledSuffix[i] != null) {
-          String suffixString = '-';
-          for (int j = 0;
-              j < exerciseDataMap["4"][filledSuffix[i]].length;
-              j++) {
-            suffixString += ' ';
+          var suffixString = "-";
+          for (var j = 0; j < exerciseDataMap["4"][filledSuffix[i]].length; j++) {
+            suffixString += " ";
             suffixString += exerciseDataMap["4"][filledSuffix[i]][j];
           }
           suffix.add(suffixString);
@@ -83,10 +79,10 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
         }
       }
 
-      List<List> values = _dataToList(exerciseDataMap, suffix, suffixColor);
+      var values = _dataToList(exerciseDataMap, suffix, suffixColor);
 
-      List<dynamic> text = values[0];
-      List<dynamic> answers = values[1];
+      var text = values[0];
+      var answers = values[1];
 
       lastText = text;
       lastAnswers = answers;
@@ -96,28 +92,22 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
       if (correctionPhase) {
         // TODO implement exercise done
       } else {
-        bool fieldsMissing = false;
-        List<String> suffix = List();
-        List<Color> suffixColor = List();
+        var fieldsMissing = false;
+        var suffix = <String>[];
+        var suffixColor = <Color>[];
 
-        for (int i = 0; i < filledSuffix.length; i++) {
+        for (var i = 0; i < filledSuffix.length; i++) {
           if (filledSuffix[i] == null) fieldsMissing = true;
         }
 
         if (fieldsMissing) {
-          yield Template0001State.showExercise(
-              lastText,
-              lastAnswers,
-              "fertig!",
-              false,
+          yield Template0001State.showExercise(lastText, lastAnswers, "fertig!", false,
               "Du musst alle Felder ausgefüllt haben, bevor du die Aufgabe beenden kannst");
         } else {
-          for (int i = 0; i < exerciseDataMap["2"].length; i++) {
-            String suffixString = '-';
-            for (int j = 0;
-                j < exerciseDataMap["4"][filledSuffix[i]].length;
-                j++) {
-              suffixString += ' ';
+          for (var i = 0; i < exerciseDataMap["2"].length; i++) {
+            var suffixString = "-";
+            for (var j = 0; j < exerciseDataMap["4"][filledSuffix[i]].length; j++) {
+              suffixString += " ";
               suffixString += exerciseDataMap["4"][filledSuffix[i]][j];
             }
             suffix.add(suffixString);
@@ -128,10 +118,10 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
             }
           }
 
-          List<List> values = _dataToList(exerciseDataMap, suffix, suffixColor);
+          var values = _dataToList(exerciseDataMap, suffix, suffixColor);
 
-          List<dynamic> text = values[0];
-          List<dynamic> answers = values[1];
+          var text = values[0];
+          var answers = values[1];
 
           lastText = text;
           lastAnswers = answers;
@@ -144,13 +134,12 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
     });
   }
 
-  List<List> _dataToList(
-      Map data, List<String> suffix, List<Color> suffixColor) {
-    List<dynamic> text = List();
-    List<dynamic> answers = List();
+  List<List> _dataToList(Map data, List<String> suffix, List<Color> suffixColor) {
+    var text = <dynamic>[];
+    var answers = <dynamic>[];
 
-    int normalListPos = 0;
-    int targetListPos = 0;
+    var normalListPos = 0;
+    var targetListPos = 0;
 
     List<dynamic> normalList = data["1"];
     List<dynamic> targetList = data["2"];
@@ -170,8 +159,8 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
         text.add([
           1,
           Row(
-            children: _dragTargetBuildWidget(targetList[targetListPos],
-                suffix[targetListPos], suffixColor[targetListPos]),
+            children:
+                _dragTargetBuildWidget(targetList[targetListPos], suffix[targetListPos], suffixColor[targetListPos]),
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -182,7 +171,7 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
       }
     });
 
-    int answerPos = 0;
+    var answerPos = 0;
 
     (data["4"]).forEach((f) {
       answers.add([
@@ -198,26 +187,23 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
     return [text, answers];
   }
 
-  List<Widget> _dragTargetBuildWidget(
-      String text, String suffix, Color suffixColor) {
-    List<Widget> widgets = List();
-    List<String> textParts = text.split('§suffix§');
+  List<Widget> _dragTargetBuildWidget(String text, String suffix, Color suffixColor) {
+    var widgets = <Widget>[];
+    var textParts = text.split("§suffix§");
     widgets.add(Text(
       textParts[0],
       style: defaultTextStyle,
     ));
     widgets.add(Text(
       suffix,
-      style: GoogleFonts.reemKufi(
-          textStyle: defaultTextStyle,
-          color: suffixColor,
-          fontWeight: FontWeight.w700),
+      style: GoogleFonts.reemKufi(textStyle: defaultTextStyle, color: suffixColor, fontWeight: FontWeight.w700),
     ));
-    if (textParts.length > 1)
+    if (textParts.length > 1) {
       widgets.add(Text(
         textParts[1],
         style: defaultTextStyle,
       ));
+    }
     return widgets;
   }
 }

@@ -12,10 +12,7 @@ T _$identity<T>(T value) => value;
 class _$ExerciseTearOff {
   const _$ExerciseTearOff();
 
-  _Exercise call(
-      {@required UniqueId id,
-      @required ExerciseType type,
-      @required ExerciseData data}) {
+  _Exercise call({@required UniqueId id, @required ExerciseType type, @required ExerciseData data}) {
     return _Exercise(
       id: id,
       type: type,
@@ -36,8 +33,7 @@ mixin _$Exercise {
 }
 
 abstract class $ExerciseCopyWith<$Res> {
-  factory $ExerciseCopyWith(Exercise value, $Res Function(Exercise) then) =
-      _$ExerciseCopyWithImpl<$Res>;
+  factory $ExerciseCopyWith(Exercise value, $Res Function(Exercise) then) = _$ExerciseCopyWithImpl<$Res>;
   $Res call({UniqueId id, ExerciseType type, ExerciseData data});
 }
 
@@ -63,14 +59,12 @@ class _$ExerciseCopyWithImpl<$Res> implements $ExerciseCopyWith<$Res> {
 }
 
 abstract class _$ExerciseCopyWith<$Res> implements $ExerciseCopyWith<$Res> {
-  factory _$ExerciseCopyWith(_Exercise value, $Res Function(_Exercise) then) =
-      __$ExerciseCopyWithImpl<$Res>;
+  factory _$ExerciseCopyWith(_Exercise value, $Res Function(_Exercise) then) = __$ExerciseCopyWithImpl<$Res>;
   @override
   $Res call({UniqueId id, ExerciseType type, ExerciseData data});
 }
 
-class __$ExerciseCopyWithImpl<$Res> extends _$ExerciseCopyWithImpl<$Res>
-    implements _$ExerciseCopyWith<$Res> {
+class __$ExerciseCopyWithImpl<$Res> extends _$ExerciseCopyWithImpl<$Res> implements _$ExerciseCopyWith<$Res> {
   __$ExerciseCopyWithImpl(_Exercise _value, $Res Function(_Exercise) _then)
       : super(_value, (v) => _then(v as _Exercise));
 
@@ -92,8 +86,7 @@ class __$ExerciseCopyWithImpl<$Res> extends _$ExerciseCopyWithImpl<$Res>
 }
 
 class _$_Exercise with DiagnosticableTreeMixin implements _Exercise {
-  const _$_Exercise(
-      {@required this.id, @required this.type, @required this.data})
+  const _$_Exercise({@required this.id, @required this.type, @required this.data})
       : assert(id != null),
         assert(type != null),
         assert(data != null);
@@ -124,12 +117,9 @@ class _$_Exercise with DiagnosticableTreeMixin implements _Exercise {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Exercise &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.type, type) || const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.data, data) || const DeepCollectionEquality().equals(other.data, data)));
   }
 
   @override
@@ -140,15 +130,12 @@ class _$_Exercise with DiagnosticableTreeMixin implements _Exercise {
       const DeepCollectionEquality().hash(data);
 
   @override
-  _$ExerciseCopyWith<_Exercise> get copyWith =>
-      __$ExerciseCopyWithImpl<_Exercise>(this, _$identity);
+  _$ExerciseCopyWith<_Exercise> get copyWith => __$ExerciseCopyWithImpl<_Exercise>(this, _$identity);
 }
 
 abstract class _Exercise implements Exercise {
-  const factory _Exercise(
-      {@required UniqueId id,
-      @required ExerciseType type,
-      @required ExerciseData data}) = _$_Exercise;
+  const factory _Exercise({@required UniqueId id, @required ExerciseType type, @required ExerciseData data}) =
+      _$_Exercise;
 
   @override
   UniqueId get id;

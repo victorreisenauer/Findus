@@ -54,13 +54,11 @@ mixin _$ProgressEvent {
 }
 
 abstract class $ProgressEventCopyWith<$Res> {
-  factory $ProgressEventCopyWith(
-          ProgressEvent value, $Res Function(ProgressEvent) then) =
+  factory $ProgressEventCopyWith(ProgressEvent value, $Res Function(ProgressEvent) then) =
       _$ProgressEventCopyWithImpl<$Res>;
 }
 
-class _$ProgressEventCopyWithImpl<$Res>
-    implements $ProgressEventCopyWith<$Res> {
+class _$ProgressEventCopyWithImpl<$Res> implements $ProgressEventCopyWith<$Res> {
   _$ProgressEventCopyWithImpl(this._value, this._then);
 
   final ProgressEvent _value;
@@ -69,17 +67,14 @@ class _$ProgressEventCopyWithImpl<$Res>
 }
 
 abstract class $UpdateProgressCopyWith<$Res> {
-  factory $UpdateProgressCopyWith(
-          UpdateProgress value, $Res Function(UpdateProgress) then) =
+  factory $UpdateProgressCopyWith(UpdateProgress value, $Res Function(UpdateProgress) then) =
       _$UpdateProgressCopyWithImpl<$Res>;
   $Res call({bool correct});
 }
 
-class _$UpdateProgressCopyWithImpl<$Res>
-    extends _$ProgressEventCopyWithImpl<$Res>
+class _$UpdateProgressCopyWithImpl<$Res> extends _$ProgressEventCopyWithImpl<$Res>
     implements $UpdateProgressCopyWith<$Res> {
-  _$UpdateProgressCopyWithImpl(
-      UpdateProgress _value, $Res Function(UpdateProgress) _then)
+  _$UpdateProgressCopyWithImpl(UpdateProgress _value, $Res Function(UpdateProgress) _then)
       : super(_value, (v) => _then(v as UpdateProgress));
 
   @override
@@ -110,13 +105,11 @@ class _$UpdateProgress implements UpdateProgress {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is UpdateProgress &&
-            (identical(other.correct, correct) ||
-                const DeepCollectionEquality().equals(other.correct, correct)));
+            (identical(other.correct, correct) || const DeepCollectionEquality().equals(other.correct, correct)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(correct);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(correct);
 
   @override
   $UpdateProgressCopyWith<UpdateProgress> get copyWith =>
@@ -181,17 +174,14 @@ abstract class UpdateProgress implements ProgressEvent {
 }
 
 abstract class $StartProgressCopyWith<$Res> {
-  factory $StartProgressCopyWith(
-          StartProgress value, $Res Function(StartProgress) then) =
+  factory $StartProgressCopyWith(StartProgress value, $Res Function(StartProgress) then) =
       _$StartProgressCopyWithImpl<$Res>;
   $Res call({int lessonLength});
 }
 
-class _$StartProgressCopyWithImpl<$Res>
-    extends _$ProgressEventCopyWithImpl<$Res>
+class _$StartProgressCopyWithImpl<$Res> extends _$ProgressEventCopyWithImpl<$Res>
     implements $StartProgressCopyWith<$Res> {
-  _$StartProgressCopyWithImpl(
-      StartProgress _value, $Res Function(StartProgress) _then)
+  _$StartProgressCopyWithImpl(StartProgress _value, $Res Function(StartProgress) _then)
       : super(_value, (v) => _then(v as StartProgress));
 
   @override
@@ -223,17 +213,14 @@ class _$StartProgress implements StartProgress {
     return identical(this, other) ||
         (other is StartProgress &&
             (identical(other.lessonLength, lessonLength) ||
-                const DeepCollectionEquality()
-                    .equals(other.lessonLength, lessonLength)));
+                const DeepCollectionEquality().equals(other.lessonLength, lessonLength)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(lessonLength);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(lessonLength);
 
   @override
-  $StartProgressCopyWith<StartProgress> get copyWith =>
-      _$StartProgressCopyWithImpl<StartProgress>(this, _$identity);
+  $StartProgressCopyWith<StartProgress> get copyWith => _$StartProgressCopyWithImpl<StartProgress>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -315,8 +302,7 @@ mixin _$ProgressState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required
-        Result progressUpdated(int totalExercises, List<bool> alreadyDone),
+    @required Result progressUpdated(int totalExercises, List<bool> alreadyDone),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -338,13 +324,11 @@ mixin _$ProgressState {
 }
 
 abstract class $ProgressStateCopyWith<$Res> {
-  factory $ProgressStateCopyWith(
-          ProgressState value, $Res Function(ProgressState) then) =
+  factory $ProgressStateCopyWith(ProgressState value, $Res Function(ProgressState) then) =
       _$ProgressStateCopyWithImpl<$Res>;
 }
 
-class _$ProgressStateCopyWithImpl<$Res>
-    implements $ProgressStateCopyWith<$Res> {
+class _$ProgressStateCopyWithImpl<$Res> implements $ProgressStateCopyWith<$Res> {
   _$ProgressStateCopyWithImpl(this._value, this._then);
 
   final ProgressState _value;
@@ -353,14 +337,11 @@ class _$ProgressStateCopyWithImpl<$Res>
 }
 
 abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) = _$InitialCopyWithImpl<$Res>;
 }
 
-class _$InitialCopyWithImpl<$Res> extends _$ProgressStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class _$InitialCopyWithImpl<$Res> extends _$ProgressStateCopyWithImpl<$Res> implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then) : super(_value, (v) => _then(v as Initial));
 
   @override
   Initial get _value => super._value as Initial;
@@ -386,8 +367,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required
-        Result progressUpdated(int totalExercises, List<bool> alreadyDone),
+    @required Result progressUpdated(int totalExercises, List<bool> alreadyDone),
   }) {
     assert(initial != null);
     assert(progressUpdated != null);
@@ -439,17 +419,14 @@ abstract class Initial implements ProgressState {
 }
 
 abstract class $ProgressUpdatedCopyWith<$Res> {
-  factory $ProgressUpdatedCopyWith(
-          ProgressUpdated value, $Res Function(ProgressUpdated) then) =
+  factory $ProgressUpdatedCopyWith(ProgressUpdated value, $Res Function(ProgressUpdated) then) =
       _$ProgressUpdatedCopyWithImpl<$Res>;
   $Res call({int totalExercises, List<bool> alreadyDone});
 }
 
-class _$ProgressUpdatedCopyWithImpl<$Res>
-    extends _$ProgressStateCopyWithImpl<$Res>
+class _$ProgressUpdatedCopyWithImpl<$Res> extends _$ProgressStateCopyWithImpl<$Res>
     implements $ProgressUpdatedCopyWith<$Res> {
-  _$ProgressUpdatedCopyWithImpl(
-      ProgressUpdated _value, $Res Function(ProgressUpdated) _then)
+  _$ProgressUpdatedCopyWithImpl(ProgressUpdated _value, $Res Function(ProgressUpdated) _then)
       : super(_value, (v) => _then(v as ProgressUpdated));
 
   @override
@@ -487,11 +464,9 @@ class _$ProgressUpdated implements ProgressUpdated {
     return identical(this, other) ||
         (other is ProgressUpdated &&
             (identical(other.totalExercises, totalExercises) ||
-                const DeepCollectionEquality()
-                    .equals(other.totalExercises, totalExercises)) &&
+                const DeepCollectionEquality().equals(other.totalExercises, totalExercises)) &&
             (identical(other.alreadyDone, alreadyDone) ||
-                const DeepCollectionEquality()
-                    .equals(other.alreadyDone, alreadyDone)));
+                const DeepCollectionEquality().equals(other.alreadyDone, alreadyDone)));
   }
 
   @override
@@ -508,8 +483,7 @@ class _$ProgressUpdated implements ProgressUpdated {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required
-        Result progressUpdated(int totalExercises, List<bool> alreadyDone),
+    @required Result progressUpdated(int totalExercises, List<bool> alreadyDone),
   }) {
     assert(initial != null);
     assert(progressUpdated != null);
@@ -557,8 +531,7 @@ class _$ProgressUpdated implements ProgressUpdated {
 }
 
 abstract class ProgressUpdated implements ProgressState {
-  const factory ProgressUpdated(int totalExercises, List<bool> alreadyDone) =
-      _$ProgressUpdated;
+  const factory ProgressUpdated(int totalExercises, List<bool> alreadyDone) = _$ProgressUpdated;
 
   int get totalExercises;
   List<bool> get alreadyDone;

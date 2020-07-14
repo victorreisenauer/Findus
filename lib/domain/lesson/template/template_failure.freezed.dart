@@ -23,13 +23,11 @@ const $TemplateFailure = _$TemplateFailureTearOff();
 mixin _$TemplateFailure {}
 
 abstract class $TemplateFailureCopyWith<$Res> {
-  factory $TemplateFailureCopyWith(
-          TemplateFailure value, $Res Function(TemplateFailure) then) =
+  factory $TemplateFailureCopyWith(TemplateFailure value, $Res Function(TemplateFailure) then) =
       _$TemplateFailureCopyWithImpl<$Res>;
 }
 
-class _$TemplateFailureCopyWithImpl<$Res>
-    implements $TemplateFailureCopyWith<$Res> {
+class _$TemplateFailureCopyWithImpl<$Res> implements $TemplateFailureCopyWith<$Res> {
   _$TemplateFailureCopyWithImpl(this._value, this._then);
 
   final TemplateFailure _value;
@@ -38,16 +36,13 @@ class _$TemplateFailureCopyWithImpl<$Res>
 }
 
 abstract class $TemplateNotFoundCopyWith<$Res> {
-  factory $TemplateNotFoundCopyWith(
-          TemplateNotFound value, $Res Function(TemplateNotFound) then) =
+  factory $TemplateNotFoundCopyWith(TemplateNotFound value, $Res Function(TemplateNotFound) then) =
       _$TemplateNotFoundCopyWithImpl<$Res>;
 }
 
-class _$TemplateNotFoundCopyWithImpl<$Res>
-    extends _$TemplateFailureCopyWithImpl<$Res>
+class _$TemplateNotFoundCopyWithImpl<$Res> extends _$TemplateFailureCopyWithImpl<$Res>
     implements $TemplateNotFoundCopyWith<$Res> {
-  _$TemplateNotFoundCopyWithImpl(
-      TemplateNotFound _value, $Res Function(TemplateNotFound) _then)
+  _$TemplateNotFoundCopyWithImpl(TemplateNotFound _value, $Res Function(TemplateNotFound) _then)
       : super(_value, (v) => _then(v as TemplateNotFound));
 
   @override

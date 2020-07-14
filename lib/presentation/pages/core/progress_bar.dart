@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lrs_app_v3/application/lesson/progress/progress_bloc.dart';
+import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+
+import "../../../application/lesson/progress/progress_bloc.dart";
 
 class CustomProgressBar extends StatelessWidget {
   @override
@@ -17,8 +18,8 @@ class CustomProgressBar extends StatelessWidget {
 }
 
 class _CustomProgressBar extends StatefulWidget {
-  int totalExercises;
-  List<bool> alreadyDone;
+  final int totalExercises;
+  final List<bool> alreadyDone;
   _CustomProgressBar(this.totalExercises, this.alreadyDone);
 
   @override
@@ -27,8 +28,7 @@ class _CustomProgressBar extends StatefulWidget {
   }
 }
 
-class _CustomProgressBarState extends State<_CustomProgressBar>
-    with SingleTickerProviderStateMixin {
+class _CustomProgressBarState extends State<_CustomProgressBar> with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
   Animation<double> curve;
@@ -38,8 +38,7 @@ class _CustomProgressBarState extends State<_CustomProgressBar>
   void initState() {
     super.initState();
 
-    _controller =
-        AnimationController(duration: Duration(milliseconds: 200), vsync: this);
+    _controller = AnimationController(duration: Duration(milliseconds: 200), vsync: this);
 
     curve = CurvedAnimation(
       parent: _controller,
@@ -58,11 +57,11 @@ class _CustomProgressBarState extends State<_CustomProgressBar>
   void didUpdateWidget(_CustomProgressBar oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    print(this.widget.alreadyDone.length);
+    print(widget.alreadyDone.length);
     print(oldWidget.alreadyDone.length);
     print("New Animation request");
 
-    if (this.widget.alreadyDone.length != oldWidget.alreadyDone.length) {
+    if (widget.alreadyDone.length != oldWidget.alreadyDone.length) {
       print("New Animation");
 
       progressTween = Tween<double>(
@@ -89,8 +88,8 @@ class _CustomProgressBarState extends State<_CustomProgressBar>
         child: Container(),
         builder: (context, child) {
           return CustomPaint(
-            painter: _CustomProgressBarPainter(this.widget.totalExercises,
-                this.widget.alreadyDone, progressTween.evaluate(curve)),
+            painter:
+                _CustomProgressBarPainter(widget.totalExercises, widget.alreadyDone, progressTween.evaluate(curve)),
           );
         });
   }
@@ -101,8 +100,7 @@ class _CustomProgressBarPainter extends CustomPainter {
   final List<bool> alreadyDone;
   final double animate;
 
-  _CustomProgressBarPainter(
-      this.totalExercises, this.alreadyDone, this.animate);
+  _CustomProgressBarPainter(this.totalExercises, this.alreadyDone, this.animate);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -110,27 +108,26 @@ class _CustomProgressBarPainter extends CustomPainter {
     print("AlreadyDone: " + alreadyDone.toString());
     print("Animate: " + animate.toString());*/
 
-    Paint basePaintOutline = Paint()
+    var basePaintOutline = Paint()
       ..color = Color.fromRGBO(66, 76, 86, 1)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
 
-    Paint basePaint = Paint()
+    var basePaint = Paint()
       ..color = Colors.white70
       ..style = PaintingStyle.fill
       ..strokeWidth = 1.0;
 
-    Paint progressPaint = Paint()
+    var progressPaint = Paint()
       ..color = Color.fromRGBO(28, 57, 86, 1)
       ..style = PaintingStyle.fill
       ..strokeWidth = 1.0;
 
-    Rect baseRect = Rect.fromLTRB(0, 0, size.width, size.height);
-    RRect baseRRect = RRect.fromRectAndRadius(baseRect, Radius.circular(10.0));
+    var baseRect = Rect.fromLTRB(0, 0, size.width, size.height);
+    var baseRRect = RRect.fromRectAndRadius(baseRect, Radius.circular(10.0));
 
-    Rect progressRect = Rect.fromLTRB(0, 0, size.width * animate, size.height);
-    RRect progressRRect =
-        RRect.fromRectAndRadius(progressRect, Radius.circular(10.0));
+    var progressRect = Rect.fromLTRB(0, 0, size.width * animate, size.height);
+    var progressRRect = RRect.fromRectAndRadius(progressRect, Radius.circular(10.0));
 
     canvas.drawRRect(baseRRect, basePaint);
     canvas.drawRRect(baseRRect, basePaintOutline);
@@ -140,6 +137,6 @@ class _CustomProgressBarPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
     final oldPainter = (oldDelegate as _CustomProgressBarPainter);
-    return oldPainter.animate != this.animate;
+    return oldPainter.animate != animate;
   }
 }

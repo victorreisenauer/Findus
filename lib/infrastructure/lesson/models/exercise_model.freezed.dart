@@ -15,10 +15,7 @@ ExerciseModel _$ExerciseModelFromJson(Map<String, dynamic> json) {
 class _$ExerciseModelTearOff {
   const _$ExerciseModelTearOff();
 
-  _ExerciseModel call(
-      {@required String id,
-      @required String type,
-      @required Map<dynamic, dynamic> data}) {
+  _ExerciseModel call({@required String id, @required String type, @required Map<dynamic, dynamic> data}) {
     return _ExerciseModel(
       id: id,
       type: type,
@@ -40,14 +37,12 @@ mixin _$ExerciseModel {
 }
 
 abstract class $ExerciseModelCopyWith<$Res> {
-  factory $ExerciseModelCopyWith(
-          ExerciseModel value, $Res Function(ExerciseModel) then) =
+  factory $ExerciseModelCopyWith(ExerciseModel value, $Res Function(ExerciseModel) then) =
       _$ExerciseModelCopyWithImpl<$Res>;
   $Res call({String id, String type, Map<dynamic, dynamic> data});
 }
 
-class _$ExerciseModelCopyWithImpl<$Res>
-    implements $ExerciseModelCopyWith<$Res> {
+class _$ExerciseModelCopyWithImpl<$Res> implements $ExerciseModelCopyWith<$Res> {
   _$ExerciseModelCopyWithImpl(this._value, this._then);
 
   final ExerciseModel _value;
@@ -68,20 +63,16 @@ class _$ExerciseModelCopyWithImpl<$Res>
   }
 }
 
-abstract class _$ExerciseModelCopyWith<$Res>
-    implements $ExerciseModelCopyWith<$Res> {
-  factory _$ExerciseModelCopyWith(
-          _ExerciseModel value, $Res Function(_ExerciseModel) then) =
+abstract class _$ExerciseModelCopyWith<$Res> implements $ExerciseModelCopyWith<$Res> {
+  factory _$ExerciseModelCopyWith(_ExerciseModel value, $Res Function(_ExerciseModel) then) =
       __$ExerciseModelCopyWithImpl<$Res>;
   @override
   $Res call({String id, String type, Map<dynamic, dynamic> data});
 }
 
-class __$ExerciseModelCopyWithImpl<$Res>
-    extends _$ExerciseModelCopyWithImpl<$Res>
+class __$ExerciseModelCopyWithImpl<$Res> extends _$ExerciseModelCopyWithImpl<$Res>
     implements _$ExerciseModelCopyWith<$Res> {
-  __$ExerciseModelCopyWithImpl(
-      _ExerciseModel _value, $Res Function(_ExerciseModel) _then)
+  __$ExerciseModelCopyWithImpl(_ExerciseModel _value, $Res Function(_ExerciseModel) _then)
       : super(_value, (v) => _then(v as _ExerciseModel));
 
   @override
@@ -103,14 +94,12 @@ class __$ExerciseModelCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_ExerciseModel implements _ExerciseModel {
-  const _$_ExerciseModel(
-      {@required this.id, @required this.type, @required this.data})
+  const _$_ExerciseModel({@required this.id, @required this.type, @required this.data})
       : assert(id != null),
         assert(type != null),
         assert(data != null);
 
-  factory _$_ExerciseModel.fromJson(Map<String, dynamic> json) =>
-      _$_$_ExerciseModelFromJson(json);
+  factory _$_ExerciseModel.fromJson(Map<String, dynamic> json) => _$_$_ExerciseModelFromJson(json);
 
   @override
   final String id;
@@ -128,12 +117,9 @@ class _$_ExerciseModel implements _ExerciseModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ExerciseModel &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.type, type) || const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.data, data) || const DeepCollectionEquality().equals(other.data, data)));
   }
 
   @override
@@ -154,13 +140,10 @@ class _$_ExerciseModel implements _ExerciseModel {
 }
 
 abstract class _ExerciseModel implements ExerciseModel {
-  const factory _ExerciseModel(
-      {@required String id,
-      @required String type,
-      @required Map<dynamic, dynamic> data}) = _$_ExerciseModel;
+  const factory _ExerciseModel({@required String id, @required String type, @required Map<dynamic, dynamic> data}) =
+      _$_ExerciseModel;
 
-  factory _ExerciseModel.fromJson(Map<String, dynamic> json) =
-      _$_ExerciseModel.fromJson;
+  factory _ExerciseModel.fromJson(Map<String, dynamic> json) = _$_ExerciseModel.fromJson;
 
   @override
   String get id;

@@ -1,16 +1,19 @@
-import 'dart:async';
+import "dart:async";
 
-import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
-import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
-import 'package:meta/meta.dart';
+import "package:bloc/bloc.dart";
+import "package:dartz/dartz.dart";
+import "package:flutter/foundation.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:injectable/injectable.dart";
+import "package:meta/meta.dart";
 
-part 'sign_in_form_bloc.freezed.dart';
-part 'sign_in_form_event.dart';
-part 'sign_in_form_state.dart';
+import "../../../domain/auth/auth_facade.dart";
+import "../../../domain/auth/auth_failure.dart";
+import "../../../domain/auth/validated_value_objects.dart";
+
+part "sign_in_form_bloc.freezed.dart";
+part "sign_in_form_event.dart";
+part "sign_in_form_state.dart";
 
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
@@ -33,9 +36,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         );
       },
       passwordChanged: (e) async* {
-        yield state.copyWith(
-            password: Password(e.passwordStr),
-            authFailureOrSuccessOption: none());
+        yield state.copyWith(password: Password(e.passwordStr), authFailureOrSuccessOption: none());
       },
       signInWithEmailAndPasswordPressed: (e) async* {
         yield* _performActionOnAuthFacadeWithEmailAndPassword(
@@ -78,7 +79,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         emailAddress: state.emailAddress,
         password: state.password,
       ).then((call) {
-        return call.fold(() => right(unit), (a) => left(a));
+        return call.fold(() => right(unit), left);
       });
     }
     yield state.copyWith(

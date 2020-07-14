@@ -1,15 +1,16 @@
-import 'dart:async';
+import "dart:async";
 
-import 'package:bloc/bloc.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
-import 'package:meta/meta.dart';
+import "package:bloc/bloc.dart";
+import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:meta/meta.dart";
 
-part 'template0004_event.dart';
-part 'template0004_state.dart';
-part 'template0004_bloc.freezed.dart';
+import "../../../../../domain/lesson/exercise/validated_value_objects.dart";
+
+part "template0004_bloc.freezed.dart";
+part "template0004_event.dart";
+part "template0004_state.dart";
 
 class Template0004Bloc extends Bloc<Template0004Event, Template0004State> {
   ExerciseData exerciseData;
@@ -28,7 +29,7 @@ class Template0004Bloc extends Bloc<Template0004Event, Template0004State> {
   ) async* {
     yield* event.map(
       startExercise: (e) async* {
-        List<Color> colors = List();
+        var colors = <Color>[];
         exerciseDataMap["2"].forEach((e) {
           colors.add(Colors.white);
         });

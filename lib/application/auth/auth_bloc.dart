@@ -1,15 +1,16 @@
-import 'dart:async';
-import 'package:injectable/injectable.dart';
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import "dart:async";
 
-import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
+import "package:bloc/bloc.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:injectable/injectable.dart";
+import "package:meta/meta.dart";
 
-part 'auth_event.dart';
-part 'auth_state.dart';
+import "../../domain/auth/auth_facade.dart";
+import "../../domain/auth/user/user.dart";
 
-part 'auth_bloc.freezed.dart';
+part "auth_bloc.freezed.dart";
+part "auth_event.dart";
+part "auth_state.dart";
 
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {

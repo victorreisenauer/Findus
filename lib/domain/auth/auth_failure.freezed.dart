@@ -84,9 +84,7 @@ mixin _$AuthFailure {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
     @required Result emailAlreadyInUse(EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
+    @required Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
     @required Result weakPassword(WeakPassword value),
@@ -98,8 +96,7 @@ mixin _$AuthFailure {
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
     Result emailAlreadyInUse(EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
+    Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
     Result weakPassword(WeakPassword value),
@@ -109,9 +106,7 @@ mixin _$AuthFailure {
 }
 
 abstract class $AuthFailureCopyWith<$Res> {
-  factory $AuthFailureCopyWith(
-          AuthFailure value, $Res Function(AuthFailure) then) =
-      _$AuthFailureCopyWithImpl<$Res>;
+  factory $AuthFailureCopyWith(AuthFailure value, $Res Function(AuthFailure) then) = _$AuthFailureCopyWithImpl<$Res>;
 }
 
 class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
@@ -123,15 +118,13 @@ class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
 }
 
 abstract class $LoginRequiredCopyWith<$Res> {
-  factory $LoginRequiredCopyWith(
-          LoginRequired value, $Res Function(LoginRequired) then) =
+  factory $LoginRequiredCopyWith(LoginRequired value, $Res Function(LoginRequired) then) =
       _$LoginRequiredCopyWithImpl<$Res>;
 }
 
 class _$LoginRequiredCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
     implements $LoginRequiredCopyWith<$Res> {
-  _$LoginRequiredCopyWithImpl(
-      LoginRequired _value, $Res Function(LoginRequired) _then)
+  _$LoginRequiredCopyWithImpl(LoginRequired _value, $Res Function(LoginRequired) _then)
       : super(_value, (v) => _then(v as LoginRequired));
 
   @override
@@ -207,9 +200,7 @@ class _$LoginRequired implements LoginRequired {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
     @required Result emailAlreadyInUse(EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
+    @required Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
     @required Result weakPassword(WeakPassword value),
@@ -234,8 +225,7 @@ class _$LoginRequired implements LoginRequired {
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
     Result emailAlreadyInUse(EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
+    Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
     Result weakPassword(WeakPassword value),
@@ -255,16 +245,13 @@ abstract class LoginRequired implements AuthFailure {
 }
 
 abstract class $CancelledByUserCopyWith<$Res> {
-  factory $CancelledByUserCopyWith(
-          CancelledByUser value, $Res Function(CancelledByUser) then) =
+  factory $CancelledByUserCopyWith(CancelledByUser value, $Res Function(CancelledByUser) then) =
       _$CancelledByUserCopyWithImpl<$Res>;
 }
 
-class _$CancelledByUserCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+class _$CancelledByUserCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
     implements $CancelledByUserCopyWith<$Res> {
-  _$CancelledByUserCopyWithImpl(
-      CancelledByUser _value, $Res Function(CancelledByUser) _then)
+  _$CancelledByUserCopyWithImpl(CancelledByUser _value, $Res Function(CancelledByUser) _then)
       : super(_value, (v) => _then(v as CancelledByUser));
 
   @override
@@ -340,9 +327,7 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
     @required Result emailAlreadyInUse(EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
+    @required Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
     @required Result weakPassword(WeakPassword value),
@@ -367,8 +352,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
     Result emailAlreadyInUse(EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
+    Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
     Result weakPassword(WeakPassword value),
@@ -388,15 +372,11 @@ abstract class CancelledByUser implements AuthFailure {
 }
 
 abstract class $ServerErrorCopyWith<$Res> {
-  factory $ServerErrorCopyWith(
-          ServerError value, $Res Function(ServerError) then) =
-      _$ServerErrorCopyWithImpl<$Res>;
+  factory $ServerErrorCopyWith(ServerError value, $Res Function(ServerError) then) = _$ServerErrorCopyWithImpl<$Res>;
 }
 
-class _$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
-    implements $ServerErrorCopyWith<$Res> {
-  _$ServerErrorCopyWithImpl(
-      ServerError _value, $Res Function(ServerError) _then)
+class _$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res> implements $ServerErrorCopyWith<$Res> {
+  _$ServerErrorCopyWithImpl(ServerError _value, $Res Function(ServerError) _then)
       : super(_value, (v) => _then(v as ServerError));
 
   @override
@@ -472,9 +452,7 @@ class _$ServerError implements ServerError {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
     @required Result emailAlreadyInUse(EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
+    @required Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
     @required Result weakPassword(WeakPassword value),
@@ -499,8 +477,7 @@ class _$ServerError implements ServerError {
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
     Result emailAlreadyInUse(EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
+    Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
     Result weakPassword(WeakPassword value),
@@ -520,16 +497,13 @@ abstract class ServerError implements AuthFailure {
 }
 
 abstract class $EmailAlreadyInUseCopyWith<$Res> {
-  factory $EmailAlreadyInUseCopyWith(
-          EmailAlreadyInUse value, $Res Function(EmailAlreadyInUse) then) =
+  factory $EmailAlreadyInUseCopyWith(EmailAlreadyInUse value, $Res Function(EmailAlreadyInUse) then) =
       _$EmailAlreadyInUseCopyWithImpl<$Res>;
 }
 
-class _$EmailAlreadyInUseCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+class _$EmailAlreadyInUseCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
     implements $EmailAlreadyInUseCopyWith<$Res> {
-  _$EmailAlreadyInUseCopyWithImpl(
-      EmailAlreadyInUse _value, $Res Function(EmailAlreadyInUse) _then)
+  _$EmailAlreadyInUseCopyWithImpl(EmailAlreadyInUse _value, $Res Function(EmailAlreadyInUse) _then)
       : super(_value, (v) => _then(v as EmailAlreadyInUse));
 
   @override
@@ -605,9 +579,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
     @required Result emailAlreadyInUse(EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
+    @required Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
     @required Result weakPassword(WeakPassword value),
@@ -632,8 +604,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
     Result emailAlreadyInUse(EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
+    Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
     Result weakPassword(WeakPassword value),
@@ -654,26 +625,21 @@ abstract class EmailAlreadyInUse implements AuthFailure {
 
 abstract class $InvalidEmailAndPasswordCombinationCopyWith<$Res> {
   factory $InvalidEmailAndPasswordCombinationCopyWith(
-          InvalidEmailAndPasswordCombination value,
-          $Res Function(InvalidEmailAndPasswordCombination) then) =
+          InvalidEmailAndPasswordCombination value, $Res Function(InvalidEmailAndPasswordCombination) then) =
       _$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>;
 }
 
-class _$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+class _$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
     implements $InvalidEmailAndPasswordCombinationCopyWith<$Res> {
   _$InvalidEmailAndPasswordCombinationCopyWithImpl(
-      InvalidEmailAndPasswordCombination _value,
-      $Res Function(InvalidEmailAndPasswordCombination) _then)
+      InvalidEmailAndPasswordCombination _value, $Res Function(InvalidEmailAndPasswordCombination) _then)
       : super(_value, (v) => _then(v as InvalidEmailAndPasswordCombination));
 
   @override
-  InvalidEmailAndPasswordCombination get _value =>
-      super._value as InvalidEmailAndPasswordCombination;
+  InvalidEmailAndPasswordCombination get _value => super._value as InvalidEmailAndPasswordCombination;
 }
 
-class _$InvalidEmailAndPasswordCombination
-    implements InvalidEmailAndPasswordCombination {
+class _$InvalidEmailAndPasswordCombination implements InvalidEmailAndPasswordCombination {
   const _$InvalidEmailAndPasswordCombination();
 
   @override
@@ -683,8 +649,7 @@ class _$InvalidEmailAndPasswordCombination
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is InvalidEmailAndPasswordCombination);
+    return identical(this, other) || (other is InvalidEmailAndPasswordCombination);
   }
 
   @override
@@ -743,9 +708,7 @@ class _$InvalidEmailAndPasswordCombination
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
     @required Result emailAlreadyInUse(EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
+    @required Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
     @required Result weakPassword(WeakPassword value),
@@ -770,8 +733,7 @@ class _$InvalidEmailAndPasswordCombination
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
     Result emailAlreadyInUse(EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
+    Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
     Result weakPassword(WeakPassword value),
@@ -787,20 +749,17 @@ class _$InvalidEmailAndPasswordCombination
 }
 
 abstract class InvalidEmailAndPasswordCombination implements AuthFailure {
-  const factory InvalidEmailAndPasswordCombination() =
-      _$InvalidEmailAndPasswordCombination;
+  const factory InvalidEmailAndPasswordCombination() = _$InvalidEmailAndPasswordCombination;
 }
 
 abstract class $DeviceOfflineCopyWith<$Res> {
-  factory $DeviceOfflineCopyWith(
-          DeviceOffline value, $Res Function(DeviceOffline) then) =
+  factory $DeviceOfflineCopyWith(DeviceOffline value, $Res Function(DeviceOffline) then) =
       _$DeviceOfflineCopyWithImpl<$Res>;
 }
 
 class _$DeviceOfflineCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
     implements $DeviceOfflineCopyWith<$Res> {
-  _$DeviceOfflineCopyWithImpl(
-      DeviceOffline _value, $Res Function(DeviceOffline) _then)
+  _$DeviceOfflineCopyWithImpl(DeviceOffline _value, $Res Function(DeviceOffline) _then)
       : super(_value, (v) => _then(v as DeviceOffline));
 
   @override
@@ -876,9 +835,7 @@ class _$DeviceOffline implements DeviceOffline {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
     @required Result emailAlreadyInUse(EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
+    @required Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
     @required Result weakPassword(WeakPassword value),
@@ -903,8 +860,7 @@ class _$DeviceOffline implements DeviceOffline {
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
     Result emailAlreadyInUse(EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
+    Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
     Result weakPassword(WeakPassword value),
@@ -924,16 +880,13 @@ abstract class DeviceOffline implements AuthFailure {
 }
 
 abstract class $AccountNotFoundCopyWith<$Res> {
-  factory $AccountNotFoundCopyWith(
-          AccountNotFound value, $Res Function(AccountNotFound) then) =
+  factory $AccountNotFoundCopyWith(AccountNotFound value, $Res Function(AccountNotFound) then) =
       _$AccountNotFoundCopyWithImpl<$Res>;
 }
 
-class _$AccountNotFoundCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+class _$AccountNotFoundCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
     implements $AccountNotFoundCopyWith<$Res> {
-  _$AccountNotFoundCopyWithImpl(
-      AccountNotFound _value, $Res Function(AccountNotFound) _then)
+  _$AccountNotFoundCopyWithImpl(AccountNotFound _value, $Res Function(AccountNotFound) _then)
       : super(_value, (v) => _then(v as AccountNotFound));
 
   @override
@@ -1009,9 +962,7 @@ class _$AccountNotFound implements AccountNotFound {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
     @required Result emailAlreadyInUse(EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
+    @required Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
     @required Result weakPassword(WeakPassword value),
@@ -1036,8 +987,7 @@ class _$AccountNotFound implements AccountNotFound {
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
     Result emailAlreadyInUse(EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
+    Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
     Result weakPassword(WeakPassword value),
@@ -1057,15 +1007,12 @@ abstract class AccountNotFound implements AuthFailure {
 }
 
 abstract class $WeakPasswordCopyWith<$Res> {
-  factory $WeakPasswordCopyWith(
-          WeakPassword value, $Res Function(WeakPassword) then) =
+  factory $WeakPasswordCopyWith(WeakPassword value, $Res Function(WeakPassword) then) =
       _$WeakPasswordCopyWithImpl<$Res>;
 }
 
-class _$WeakPasswordCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
-    implements $WeakPasswordCopyWith<$Res> {
-  _$WeakPasswordCopyWithImpl(
-      WeakPassword _value, $Res Function(WeakPassword) _then)
+class _$WeakPasswordCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res> implements $WeakPasswordCopyWith<$Res> {
+  _$WeakPasswordCopyWithImpl(WeakPassword _value, $Res Function(WeakPassword) _then)
       : super(_value, (v) => _then(v as WeakPassword));
 
   @override
@@ -1141,9 +1088,7 @@ class _$WeakPassword implements WeakPassword {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
     @required Result emailAlreadyInUse(EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
+    @required Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
     @required Result weakPassword(WeakPassword value),
@@ -1168,8 +1113,7 @@ class _$WeakPassword implements WeakPassword {
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
     Result emailAlreadyInUse(EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
+    Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
     Result weakPassword(WeakPassword value),
@@ -1189,15 +1133,12 @@ abstract class WeakPassword implements AuthFailure {
 }
 
 abstract class $InvalidEmailCopyWith<$Res> {
-  factory $InvalidEmailCopyWith(
-          InvalidEmail value, $Res Function(InvalidEmail) then) =
+  factory $InvalidEmailCopyWith(InvalidEmail value, $Res Function(InvalidEmail) then) =
       _$InvalidEmailCopyWithImpl<$Res>;
 }
 
-class _$InvalidEmailCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
-    implements $InvalidEmailCopyWith<$Res> {
-  _$InvalidEmailCopyWithImpl(
-      InvalidEmail _value, $Res Function(InvalidEmail) _then)
+class _$InvalidEmailCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res> implements $InvalidEmailCopyWith<$Res> {
+  _$InvalidEmailCopyWithImpl(InvalidEmail _value, $Res Function(InvalidEmail) _then)
       : super(_value, (v) => _then(v as InvalidEmail));
 
   @override
@@ -1273,9 +1214,7 @@ class _$InvalidEmail implements InvalidEmail {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
     @required Result emailAlreadyInUse(EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
+    @required Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     @required Result deviceOffline(DeviceOffline value),
     @required Result accountNotFound(AccountNotFound value),
     @required Result weakPassword(WeakPassword value),
@@ -1300,8 +1239,7 @@ class _$InvalidEmail implements InvalidEmail {
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
     Result emailAlreadyInUse(EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
+    Result invalidEmailAndPasswordCombination(InvalidEmailAndPasswordCombination value),
     Result deviceOffline(DeviceOffline value),
     Result accountNotFound(AccountNotFound value),
     Result weakPassword(WeakPassword value),

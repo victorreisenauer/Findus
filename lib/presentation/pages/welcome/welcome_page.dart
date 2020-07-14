@@ -1,9 +1,10 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lrs_app_v3/application/auth/auth_bloc.dart';
-import 'package:lrs_app_v3/presentation/pages/core/background_image.dart';
-import 'package:lrs_app_v3/presentation/routes/router.gr.dart';
+import "package:auto_route/auto_route.dart";
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+
+import "../../../application/auth/auth_bloc.dart";
+import "../../routes/router.gr.dart";
+import "../core/background_image.dart";
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -59,8 +60,7 @@ class WelcomePage extends StatelessWidget {
                       goButton(),
                     ]),
                   ),
-                  Expanded(
-                      flex: 1, child: signInOrChangeUserWidget("Anmelden")),
+                  Expanded(flex: 1, child: signInOrChangeUserWidget("Anmelden")),
                 ],
               ),
             );
@@ -113,7 +113,7 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-  Widget userProfileWidget(userImagePath) {
+  Widget userProfileWidget(String userImagePath) {
     return Positioned(
       top: 5,
       child: Container(

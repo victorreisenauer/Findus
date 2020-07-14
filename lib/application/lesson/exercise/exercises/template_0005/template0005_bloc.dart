@@ -1,13 +1,14 @@
-import 'dart:async';
+import "dart:async";
 
-import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
-import 'package:meta/meta.dart';
+import "package:bloc/bloc.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:meta/meta.dart";
 
-part 'template0005_event.dart';
-part 'template0005_state.dart';
-part 'template0005_bloc.freezed.dart';
+import "../../../../../domain/lesson/exercise/validated_value_objects.dart";
+
+part "template0005_bloc.freezed.dart";
+part "template0005_event.dart";
+part "template0005_state.dart";
 
 class Template0005Bloc extends Bloc<Template0005Event, Template0005State> {
   ExerciseData exerciseData;

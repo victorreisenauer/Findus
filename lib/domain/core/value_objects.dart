@@ -1,14 +1,11 @@
-import 'dart:typed_data';
+import "package:dartz/dartz.dart";
+import "package:flutter/material.dart";
+import "package:kt_dart/collection.dart";
+import "package:uuid/uuid.dart";
 
-import 'package:flutter/material.dart';
-import 'package:dartz/dartz.dart';
-import 'package:uuid/uuid.dart';
-import 'package:kt_dart/collection.dart';
-
-import 'package:lrs_app_v3/domain/core/failures.dart';
-import 'package:lrs_app_v3/domain/core/validators.dart';
-import 'package:lrs_app_v3/domain/core/errors.dart';
-import 'package:lrs_app_v3/domain/core/common_interfaces.dart';
+import "common_interfaces.dart";
+import "errors.dart";
+import "failures.dart";
 
 @immutable
 
@@ -31,7 +28,7 @@ abstract class ValueObject<T> implements IValidatable {
 
   Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
     return value.fold(
-      (l) => left(l),
+      left,
       (r) => right(unit),
     );
   }
@@ -53,7 +50,7 @@ abstract class ValueObject<T> implements IValidatable {
   int get hashCode => value.hashCode;
 
   @override
-  String toString() => 'Value($value)';
+  String toString() => "Value($value)";
 }
 
 /// ValueObject that represents uniqueIds for users in application,
@@ -89,5 +86,5 @@ class ObjectList<T> extends ValueObject<KtList<T>> {
 
   const ObjectList._(this.value);
 
-  int get length => value.getOrElse(() => emptyList()).size;
+  int get length => value.getOrElse(emptyList).size;
 }

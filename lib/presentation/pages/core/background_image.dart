@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class BackgroundImage extends StatelessWidget {
   final String imagePath;
@@ -15,7 +15,7 @@ class BackgroundImage extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-      child: this.child,
+      child: child,
     );
   }
 }

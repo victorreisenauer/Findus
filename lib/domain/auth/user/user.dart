@@ -1,14 +1,13 @@
-import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meta/meta.dart';
+import "package:flutter/foundation.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:meta/meta.dart";
 
-import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/domain/core/failures.dart';
-import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
-import 'package:lrs_app_v3/domain/core/entitiy.dart';
+import "../../core/entitiy.dart";
+import "../../core/value_objects_barrel.dart";
+import "../personal_data/personal_data.dart";
+import "../validated_value_objects.dart";
 
-part 'user.freezed.dart';
+part "user.freezed.dart";
 
 @freezed
 

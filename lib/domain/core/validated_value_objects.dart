@@ -1,7 +1,8 @@
-import 'package:dartz/dartz.dart';
+import "package:dartz/dartz.dart";
 
-import 'package:lrs_app_v3/domain/core/failures.dart';
-import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
+import "failures.dart";
+import "validators.dart";
+import "value_objects.dart";
 
 class StringSingleLine extends ValueObject<String> {
   @override

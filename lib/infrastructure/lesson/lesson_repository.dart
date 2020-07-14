@@ -1,11 +1,12 @@
-import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
-import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/infrastructure/core/local_exceptions.dart';
-import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
-import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
+import "package:dartz/dartz.dart";
+import "package:injectable/injectable.dart";
+
+import "../../domain/auth/auth_barrel.dart";
+import "../../domain/core/value_objects_barrel.dart";
+import "../../domain/lesson/lesson_barrel.dart";
+import "../core/local_exceptions.dart";
+import "../core/network_info.dart";
+import "lesson_barrel.dart";
 
 @RegisterAs(LessonFacade)
 @lazySingleton
@@ -22,8 +23,7 @@ class LessonRepository implements LessonFacade {
     this._authFacade,
   );
 
-  Future<Either<AuthFailure, User>> get eitherUserOrFailure =>
-      _authFacade.getUser().then((response) => response);
+  Future<Either<AuthFailure, User>> get eitherUserOrFailure => _authFacade.getUser().then((response) => response);
 
   /// Fetches all available Lesson ids for user [userId].
   ///
@@ -32,6 +32,7 @@ class LessonRepository implements LessonFacade {
   /// remote data source is available in cache.
   ///
   /// Needs bugfix!
+  @override
   Future<Either<LessonFailure, Stream<UniqueId>>> getLessonIdsForUser() async {
     UniqueId userId;
     AuthFailure authFailure;
@@ -56,16 +57,18 @@ class LessonRepository implements LessonFacade {
   /// Get a specific Lesson from cache by its [lessonId].
   ///
   /// Needs bugfix!
+  @override
+  // ignore: missing_return
   Future<Either<LessonFailure, Lesson>> getLessonById(UniqueId lessonId) async {
     try {
-      LessonModel model = await _localData.getLessonModelById(lessonId);
+      var model = await _localData.getLessonModelById(lessonId);
       return right(model.toDomain());
+      // ignore: avoid_catches_without_on_clauses
     } catch (e) {
       if (e is CacheEmptyException) {
         return left(LessonFailure.noCachedLessons());
       } else if (e is KeyNotFoundException) {
-        return left(
-            LessonFailure.lessonNotFound(failedId: lessonId.getOrCrash()));
+        return left(LessonFailure.lessonNotFound(failedId: lessonId.getOrCrash()));
       }
 
       //return left(LessonFailure.unexpected());
@@ -76,6 +79,7 @@ class LessonRepository implements LessonFacade {
   ///
   /// Make sure to call this regularly, so app and server are always
   /// updated.
+  @override
   Future<Option<LessonFailure>> update() async {
     UniqueId userId;
     AuthFailure authFailure;
@@ -94,14 +98,12 @@ class LessonRepository implements LessonFacade {
         await _localData.cacheLessonModel(model);
       });
       try {
-        return await _localData
-            .getLessonResultIdsForUser(userId)
-            .forEach((resultModelId) async {
-          LessonResultModel model =
-              await _localData.getLessonResultModelById(resultModelId);
+        return await _localData.getLessonResultIdsForUser(userId).forEach((resultModelId) async {
+          var model = await _localData.getLessonResultModelById(resultModelId);
           await _remoteData.pushResult(model);
           await _localData.removeLessonResultModelById(resultModelId);
         }).then((value) => none());
+        // ignore: avoid_catches_without_on_clauses
       } catch (e) {
         throw Exception(e.toString());
       }
@@ -114,6 +116,7 @@ class LessonRepository implements LessonFacade {
   ///
   /// Be sure to call LessonRepository.update() at some point,
   /// to push results from cache to server.
+  @override
   Future<Option<LessonFailure>> saveResult(LessonResult result) async {
     UniqueId userId;
     AuthFailure authFailure;
@@ -128,9 +131,9 @@ class LessonRepository implements LessonFacade {
       return optionOf(LessonFailure.unexpected());
     }
     try {
-      await _localData
-          .cacheLessonResultModel(LessonResultModel.fromDomain(result, userId));
+      await _localData.cacheLessonResultModel(LessonResultModel.fromDomain(result, userId));
       return none();
+      // ignore: avoid_catches_without_on_clauses
     } catch (e) {
       return optionOf(LessonFailure.unexpected());
     }

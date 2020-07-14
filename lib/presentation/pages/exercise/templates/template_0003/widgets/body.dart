@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lrs_app_v3/application/lesson/exercise/exercises/template_0003/template0003_bloc.dart';
-import 'package:lrs_app_v3/presentation/pages/core/base_exercise.dart';
-import 'package:lrs_app_v3/presentation/pages/core/cloud.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:google_fonts/google_fonts.dart";
+
+import "../../../../../../application/lesson/exercise/exercises/template_0003/template0003_bloc.dart";
+import "../../../../core/base_exercise.dart";
+import "../../../../core/cloud.dart";
 
 class Template0003Body extends StatefulWidget {
   @override
-  createState() {
+  _Template0003BodyState createState() {
     return _Template0003BodyState();
   }
 }
@@ -35,8 +36,7 @@ class _Template0003BodyState extends State<Template0003Body> {
         } else if (state is ShowQuestion) {
           _childWidget = _getQuestion(state.text, state.answers);
         } else if (state is ShowCorrection) {
-          _childWidget =
-              _getCorrection(state.text, state.answers, state.colors);
+          _childWidget = _getCorrection(state.text, state.answers, state.colors);
         }
         return BaseExercise(
           help: help,
@@ -52,11 +52,9 @@ class _Template0003BodyState extends State<Template0003Body> {
                       style: GoogleFonts.reemKufi(fontSize: 20.0),
                     ),
                     onPressed: () {
-                      BlocProvider.of<Template0003Bloc>(context)
-                          .add(Template0003Event.centerButtonPressed());
+                      BlocProvider.of<Template0003Bloc>(context).add(Template0003Event.centerButtonPressed());
                     },
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
                   ),
                 )
               : null,
@@ -76,8 +74,7 @@ class _Template0003BodyState extends State<Template0003Body> {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(
-              "Lese den folgenden Text einmal aufmerksam und beantworte dann Fragen dazu:",
+          child: Text("Lese den folgenden Text einmal aufmerksam und beantworte dann Fragen dazu:",
               textAlign: TextAlign.center,
               style: GoogleFonts.reemKufi(
                 fontSize: 23.0,
@@ -92,14 +89,11 @@ class _Template0003BodyState extends State<Template0003Body> {
               color: Color.fromRGBO(129, 210, 248, 1),
               margin: EdgeInsets.all(8.0),
               elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(text,
-                      style: GoogleFonts.reemKufi(
-                          fontSize: 20.0, fontWeight: FontWeight.w500)),
+                  child: Text(text, style: GoogleFonts.reemKufi(fontSize: 20.0, fontWeight: FontWeight.w500)),
                 ),
               )),
         ),
@@ -122,36 +116,29 @@ class _Template0003BodyState extends State<Template0003Body> {
                 child: Center(
                     child: Padding(
               padding: const EdgeInsets.all(25.0),
-              child: Text(text,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.reemKufi(fontSize: 24.0)),
+              child: Text(text, textAlign: TextAlign.center, style: GoogleFonts.reemKufi(fontSize: 24.0)),
             )))),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: _getAnswerButtons(
-              answers, BlocProvider.of<Template0003Bloc>(context)),
+          children: _getAnswerButtons(answers, BlocProvider.of<Template0003Bloc>(context)),
         )
       ],
     );
   }
 
-  List<Widget> _getAnswerButtons(List<String> answers, Template0003Bloc bloc,
-      {List<Color> colors}) {
-    List<Widget> widgets = List();
-    for (int i = 0; i < answers.length; i++) {
+  List<Widget> _getAnswerButtons(List<String> answers, Template0003Bloc bloc, {List<Color> colors}) {
+    var widgets = <Widget>[];
+    for (var i = 0; i < answers.length; i++) {
       widgets.add(Padding(
         padding: EdgeInsets.all(8.0),
         child: RaisedButton(
           color: colors != null ? colors[i] : Colors.white,
           elevation: 5.0,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(answers[i],
-                style: GoogleFonts.reemKufi(
-                    fontSize: 20.0, fontWeight: FontWeight.w400)),
+            child: Text(answers[i], style: GoogleFonts.reemKufi(fontSize: 20.0, fontWeight: FontWeight.w400)),
           ),
           onPressed: () {
             bloc.add(Template0003Event.answerSelected(i));
@@ -174,16 +161,12 @@ class _Template0003BodyState extends State<Template0003Body> {
                 child: Center(
                     child: Padding(
               padding: const EdgeInsets.all(25.0),
-              child: Text(text,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.reemKufi(fontSize: 24.0)),
+              child: Text(text, textAlign: TextAlign.center, style: GoogleFonts.reemKufi(fontSize: 24.0)),
             )))),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: _getAnswerButtons(
-              answers, BlocProvider.of<Template0003Bloc>(context),
-              colors: colors),
+          children: _getAnswerButtons(answers, BlocProvider.of<Template0003Bloc>(context), colors: colors),
         )
       ],
     );

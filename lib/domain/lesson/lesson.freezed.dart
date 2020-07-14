@@ -12,8 +12,7 @@ T _$identity<T>(T value) => value;
 class _$LessonTearOff {
   const _$LessonTearOff();
 
-  _Lesson call(
-      {@required UniqueId id, @required ObjectList<Exercise> exerciseList}) {
+  _Lesson call({@required UniqueId id, @required ObjectList<Exercise> exerciseList}) {
     return _Lesson(
       id: id,
       exerciseList: exerciseList,
@@ -32,8 +31,7 @@ mixin _$Lesson {
 }
 
 abstract class $LessonCopyWith<$Res> {
-  factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
-      _$LessonCopyWithImpl<$Res>;
+  factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) = _$LessonCopyWithImpl<$Res>;
   $Res call({UniqueId id, ObjectList<Exercise> exerciseList});
 }
 
@@ -51,24 +49,19 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
-      exerciseList: exerciseList == freezed
-          ? _value.exerciseList
-          : exerciseList as ObjectList<Exercise>,
+      exerciseList: exerciseList == freezed ? _value.exerciseList : exerciseList as ObjectList<Exercise>,
     ));
   }
 }
 
 abstract class _$LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
-  factory _$LessonCopyWith(_Lesson value, $Res Function(_Lesson) then) =
-      __$LessonCopyWithImpl<$Res>;
+  factory _$LessonCopyWith(_Lesson value, $Res Function(_Lesson) then) = __$LessonCopyWithImpl<$Res>;
   @override
   $Res call({UniqueId id, ObjectList<Exercise> exerciseList});
 }
 
-class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
-    implements _$LessonCopyWith<$Res> {
-  __$LessonCopyWithImpl(_Lesson _value, $Res Function(_Lesson) _then)
-      : super(_value, (v) => _then(v as _Lesson));
+class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res> implements _$LessonCopyWith<$Res> {
+  __$LessonCopyWithImpl(_Lesson _value, $Res Function(_Lesson) _then) : super(_value, (v) => _then(v as _Lesson));
 
   @override
   _Lesson get _value => super._value as _Lesson;
@@ -80,9 +73,7 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
   }) {
     return _then(_Lesson(
       id: id == freezed ? _value.id : id as UniqueId,
-      exerciseList: exerciseList == freezed
-          ? _value.exerciseList
-          : exerciseList as ObjectList<Exercise>,
+      exerciseList: exerciseList == freezed ? _value.exerciseList : exerciseList as ObjectList<Exercise>,
     ));
   }
 }
@@ -116,11 +107,9 @@ class _$_Lesson with DiagnosticableTreeMixin implements _Lesson {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Lesson &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.exerciseList, exerciseList) ||
-                const DeepCollectionEquality()
-                    .equals(other.exerciseList, exerciseList)));
+                const DeepCollectionEquality().equals(other.exerciseList, exerciseList)));
   }
 
   @override
@@ -130,14 +119,11 @@ class _$_Lesson with DiagnosticableTreeMixin implements _Lesson {
       const DeepCollectionEquality().hash(exerciseList);
 
   @override
-  _$LessonCopyWith<_Lesson> get copyWith =>
-      __$LessonCopyWithImpl<_Lesson>(this, _$identity);
+  _$LessonCopyWith<_Lesson> get copyWith => __$LessonCopyWithImpl<_Lesson>(this, _$identity);
 }
 
 abstract class _Lesson implements Lesson {
-  const factory _Lesson(
-      {@required UniqueId id,
-      @required ObjectList<Exercise> exerciseList}) = _$_Lesson;
+  const factory _Lesson({@required UniqueId id, @required ObjectList<Exercise> exerciseList}) = _$_Lesson;
 
   @override
   UniqueId get id;

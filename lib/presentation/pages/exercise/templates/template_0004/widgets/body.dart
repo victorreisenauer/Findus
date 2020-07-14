@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lrs_app_v3/application/lesson/exercise/exercises/template_0004/template0004_bloc.dart';
-import 'package:lrs_app_v3/presentation/pages/core/base_exercise.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:google_fonts/google_fonts.dart";
+
+import "../../../../../../application/lesson/exercise/exercises/template_0004/template0004_bloc.dart";
+import "../../../../core/base_exercise.dart";
 
 class Template0004Body extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class Template0004Body extends StatefulWidget {
 
 class _Template0004BodyState extends State<Template0004Body> {
   static const String help =
-      'Schau dir das Wort genau an und entscheide wie viele Silben es hat. Klicke auf die richtige Nummer.';
+      "Schau dir das Wort genau an und entscheide wie viele Silben es hat. Klicke auf die richtige Nummer.";
 
   @override
   void initState() {
@@ -29,10 +30,7 @@ class _Template0004BodyState extends State<Template0004Body> {
         if (state == ShowExercise) {
           return BaseExercise(
               help: help,
-              child: _ShowQuestion(
-                  word: state.word,
-                  answers: state.answers,
-                  colors: state.colors),
+              child: _ShowQuestion(word: state.word, answers: state.answers, colors: state.colors),
               onAbort: () {
                 print("onAbort pressed");
               });
@@ -44,12 +42,11 @@ class _Template0004BodyState extends State<Template0004Body> {
 }
 
 class _ShowQuestion extends StatelessWidget {
-  String word;
-  List<String> answers;
-  List<Color> colors;
+  final String word;
+  final List<String> answers;
+  final List<Color> colors;
 
-  _ShowQuestion(
-      {@required this.word, @required this.answers, @required this.colors});
+  _ShowQuestion({@required this.word, @required this.answers, @required this.colors});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +55,7 @@ class _ShowQuestion extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Text(
-          'Wie viele Silben hat das folgende Wort?',
+          "Wie viele Silben hat das folgende Wort?",
           textAlign: TextAlign.center,
           style: GoogleFonts.reemKufi(fontSize: 30.0),
         ),
@@ -82,12 +79,11 @@ class _ShowQuestion extends StatelessWidget {
     );
   }
 
-  List<Widget> _getAnswerChildren(
-      List<String> answers, List<Color> colors, BuildContext context) {
+  List<Widget> _getAnswerChildren(List<String> answers, List<Color> colors, BuildContext context) {
     List<Widget> widgets;
-    double size = 50.0;
+    var size = 50.0;
 
-    for (int i = 0; i < answers.length; i++) {
+    for (var i = 0; i < answers.length; i++) {
       widgets.add(InkResponse(
         onTap: () {
           BlocProvider.of<Template0004Bloc>(context).add(AnswerSelected(i));
@@ -103,5 +99,6 @@ class _ShowQuestion extends StatelessWidget {
         ),
       ));
     }
+    return widgets;
   }
 }
