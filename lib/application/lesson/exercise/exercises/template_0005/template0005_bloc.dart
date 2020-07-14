@@ -13,12 +13,9 @@ class Template0005Bloc extends Bloc<Template0005Event, Template0005State> {
   ExerciseData exerciseData;
   Map exerciseDataMap;
 
-  Template0005Bloc({@required this.exerciseData}) {
+  Template0005Bloc({@required this.exerciseData}) : super(Template0005State.initial()) {
     exerciseDataMap = exerciseData.value.getOrElse(null);
   }
-
-  @override
-  Template0005State get initialState => Template0005State.initial();
 
   @override
   Stream<Template0005State> mapEventToState(

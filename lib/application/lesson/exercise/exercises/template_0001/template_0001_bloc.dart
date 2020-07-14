@@ -22,18 +22,12 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
   List<dynamic> lastAnswers;
 
   TextStyle defaultTextStyle = GoogleFonts.reemKufi(
-      fontSize: 18.0,
-      decoration: TextDecoration.none,
-      color: Colors.black87,
-      fontWeight: FontWeight.normal);
+      fontSize: 18.0, decoration: TextDecoration.none, color: Colors.black87, fontWeight: FontWeight.normal);
 
-  Template0001Bloc({this.exerciseData}) {
+  Template0001Bloc({this.exerciseData}) : super(Template0001State.initial()) {
     exerciseDataMap = exerciseData.value.getOrElse(null);
     filledSuffix = List();
   }
-
-  @override
-  Template0001State get initialState => Template0001State.initial();
 
   @override
   Stream<Template0001State> mapEventToState(
@@ -69,9 +63,7 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
       for (int i = 0; i < exerciseDataMap["2"].length; i++) {
         if (filledSuffix[i] != null) {
           String suffixString = '-';
-          for (int j = 0;
-              j < exerciseDataMap["4"][filledSuffix[i]].length;
-              j++) {
+          for (int j = 0; j < exerciseDataMap["4"][filledSuffix[i]].length; j++) {
             suffixString += ' ';
             suffixString += exerciseDataMap["4"][filledSuffix[i]][j];
           }
@@ -105,18 +97,12 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
         }
 
         if (fieldsMissing) {
-          yield Template0001State.showExercise(
-              lastText,
-              lastAnswers,
-              "fertig!",
-              false,
+          yield Template0001State.showExercise(lastText, lastAnswers, "fertig!", false,
               "Du musst alle Felder ausgefüllt haben, bevor du die Aufgabe beenden kannst");
         } else {
           for (int i = 0; i < exerciseDataMap["2"].length; i++) {
             String suffixString = '-';
-            for (int j = 0;
-                j < exerciseDataMap["4"][filledSuffix[i]].length;
-                j++) {
+            for (int j = 0; j < exerciseDataMap["4"][filledSuffix[i]].length; j++) {
               suffixString += ' ';
               suffixString += exerciseDataMap["4"][filledSuffix[i]][j];
             }
@@ -144,8 +130,7 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
     });
   }
 
-  List<List> _dataToList(
-      Map data, List<String> suffix, List<Color> suffixColor) {
+  List<List> _dataToList(Map data, List<String> suffix, List<Color> suffixColor) {
     List<dynamic> text = List();
     List<dynamic> answers = List();
 
@@ -170,8 +155,8 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
         text.add([
           1,
           Row(
-            children: _dragTargetBuildWidget(targetList[targetListPos],
-                suffix[targetListPos], suffixColor[targetListPos]),
+            children:
+                _dragTargetBuildWidget(targetList[targetListPos], suffix[targetListPos], suffixColor[targetListPos]),
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -198,8 +183,7 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
     return [text, answers];
   }
 
-  List<Widget> _dragTargetBuildWidget(
-      String text, String suffix, Color suffixColor) {
+  List<Widget> _dragTargetBuildWidget(String text, String suffix, Color suffixColor) {
     List<Widget> widgets = List();
     List<String> textParts = text.split('§suffix§');
     widgets.add(Text(
@@ -208,10 +192,7 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
     ));
     widgets.add(Text(
       suffix,
-      style: GoogleFonts.reemKufi(
-          textStyle: defaultTextStyle,
-          color: suffixColor,
-          fontWeight: FontWeight.w700),
+      style: GoogleFonts.reemKufi(textStyle: defaultTextStyle, color: suffixColor, fontWeight: FontWeight.w700),
     ));
     if (textParts.length > 1)
       widgets.add(Text(

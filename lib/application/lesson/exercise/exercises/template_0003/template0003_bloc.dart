@@ -16,12 +16,9 @@ class Template0003Bloc extends Bloc<Template0003Event, Template0003State> {
   Map exerciseDataMap;
   int currentState = 0;
 
-  Template0003Bloc({@required this.exerciseData}) {
+  Template0003Bloc({@required this.exerciseData}) : super(Template0003State.initial()) {
     exerciseDataMap = exerciseData.value.getOrElse(null);
   }
-
-  @override
-  Template0003State get initialState => Template0003State.initial();
 
   @override
   Stream<Template0003State> mapEventToState(
@@ -53,8 +50,7 @@ class Template0003Bloc extends Bloc<Template0003Event, Template0003State> {
         exerciseDataMap["3"][currentState].forEach((e) {
           answersCorrection.add(e);
         });
-        ShowCorrection correction = ShowCorrection(
-            exerciseDataMap["2"][currentState], answersCorrection, colors);
+        ShowCorrection correction = ShowCorrection(exerciseDataMap["2"][currentState], answersCorrection, colors);
         print(correction);
         yield correction;
         await Future.delayed(Duration(milliseconds: 1000));

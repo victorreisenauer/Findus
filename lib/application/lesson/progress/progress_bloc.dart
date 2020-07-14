@@ -15,8 +15,7 @@ class ProgressBloc extends Bloc<ProgressEvent, ProgressState> {
   int _lessonLength;
   List<bool> _answersTracker = [];
 
-  @override
-  ProgressState get initialState => ProgressState.initial();
+  ProgressBloc() : super(ProgressState.initial());
 
   @override
   Stream<ProgressState> mapEventToState(

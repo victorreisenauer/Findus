@@ -17,13 +17,10 @@ class Template0002Bloc extends Bloc<Template0002Event, Template0002State> {
   Map exerciseDataMap;
   AudioCache player;
 
-  Template0002Bloc({this.exerciseData}) {
+  Template0002Bloc({this.exerciseData}) : super(Template0002State.initial()) {
     exerciseDataMap = exerciseData.value.getOrElse(null);
     player = AudioCache(prefix: 'sounds/');
   }
-
-  @override
-  Template0002State get initialState => Template0002State.initial();
 
   @override
   Stream<Template0002State> mapEventToState(
@@ -32,8 +29,7 @@ class Template0002Bloc extends Bloc<Template0002Event, Template0002State> {
     yield* event.map(startExercise: (e) async* {
       List<Color> colors = List();
       for (int i = 0; i < 3; i++) colors.add(Colors.white);
-      yield Template0002State.showExercise(
-          exerciseDataMap["2"], colors, exerciseDataMap["4"], false);
+      yield Template0002State.showExercise(exerciseDataMap["2"], colors, exerciseDataMap["4"], false);
     }, playSound: (e) async* {
       player.play(exerciseDataMap["1"]);
     }, answerSelected: (e) async* {
@@ -41,8 +37,7 @@ class Template0002Bloc extends Bloc<Template0002Event, Template0002State> {
       for (int i = 0; i < 3; i++) {
         colors.add(i == exerciseDataMap["3"] ? Colors.green : Colors.red);
       }
-      yield Template0002State.showExercise(
-          exerciseDataMap["2"], colors, exerciseDataMap["4"], true);
+      yield Template0002State.showExercise(exerciseDataMap["2"], colors, exerciseDataMap["4"], true);
     }, nextButtonPressed: (e) async* {
       print("Next Pressed");
     });

@@ -16,10 +16,7 @@ part 'sign_in_form_state.dart';
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final AuthFacade _authFacade;
 
-  SignInFormBloc(this._authFacade);
-
-  @override
-  SignInFormState get initialState => SignInFormState.initial();
+  SignInFormBloc(this._authFacade) : super(SignInFormState.initial());
 
   @override
   Stream<SignInFormState> mapEventToState(
@@ -33,9 +30,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         );
       },
       passwordChanged: (e) async* {
-        yield state.copyWith(
-            password: Password(e.passwordStr),
-            authFailureOrSuccessOption: none());
+        yield state.copyWith(password: Password(e.passwordStr), authFailureOrSuccessOption: none());
       },
       signInWithEmailAndPasswordPressed: (e) async* {
         yield* _performActionOnAuthFacadeWithEmailAndPassword(

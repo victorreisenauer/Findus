@@ -18,10 +18,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
   final LessonFacade _lessonFacade;
   Lesson _currentLesson;
 
-  LessonBloc(this._lessonFacade);
-
-  @override
-  LessonState get initialState => LessonState.initial();
+  LessonBloc(this._lessonFacade) : super(LessonState.initial());
 
   @override
   Stream<LessonState> mapEventToState(
@@ -31,8 +28,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
       yield const LessonState.lessonLoading();
       await _lessonFacade.update();
       yield await _lessonFacade.getLessonIdsForUser().then((either) =>
-          either.fold((f) => LessonState.lessonError(f),
-              (idStream) => LessonState.lessonIdStreamLoaded(idStream)));
+          either.fold((f) => LessonState.lessonError(f), (idStream) => LessonState.lessonIdStreamLoaded(idStream)));
     }, startLesson: (e) async* {
       yield LessonLoading();
       final failureOrLesson = await _lessonFacade.getLessonById(e.id);
@@ -42,8 +38,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
         return LessonStarted(exerciseList);
       });
     }, finishLesson: (e) async* {
-      LessonResult result = LessonResult(
-          id: _currentLesson.id, resultList: e.results.toImmutableList());
+      LessonResult result = LessonResult(id: _currentLesson.id, resultList: e.results.toImmutableList());
       await _lessonFacade.saveResult(result);
       yield LessonFinished();
     }, abortLesson: (e) async* {
