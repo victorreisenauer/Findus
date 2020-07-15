@@ -27,10 +27,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   int _index = 0;
   List<ExerciseResult> _results;
 
-  ExerciseBloc({@required this.exerciseList});
-
-  @override
-  ExerciseState get initialState => ExerciseState.initial();
+  ExerciseBloc({@required this.exerciseList}) : super(ExerciseState.initial());
 
   // TODO: this template lookup needs some serious work
   // this is unstable, because there can be multiple with the same type, there could be none of that type,

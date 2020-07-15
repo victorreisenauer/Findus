@@ -24,10 +24,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
   final LessonFacade _lessonFacade;
   Lesson _currentLesson;
 
-  LessonBloc(this._lessonFacade);
-
-  @override
-  LessonState get initialState => LessonState.initial();
+  LessonBloc(this._lessonFacade) : super(LessonState.initial());
 
   @override
   Stream<LessonState> mapEventToState(

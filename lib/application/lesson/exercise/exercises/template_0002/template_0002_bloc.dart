@@ -18,13 +18,10 @@ class Template0002Bloc extends Bloc<Template0002Event, Template0002State> {
   Map exerciseDataMap;
   AudioCache player;
 
-  Template0002Bloc({this.exerciseData}) {
+  Template0002Bloc({this.exerciseData}) : super(Template0002State.initial()) {
     exerciseDataMap = exerciseData.value.getOrElse(null);
     player = AudioCache(prefix: "sounds/");
   }
-
-  @override
-  Template0002State get initialState => Template0002State.initial();
 
   @override
   Stream<Template0002State> mapEventToState(
