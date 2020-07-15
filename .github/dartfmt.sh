@@ -1,6 +1,9 @@
 #!/bin/bash
 
 readarray -t NEEDS_CORRECTION_RAW < <(dartfmt -l 120 -n lib)
+if [ ${#NEEDS_CORRECTION_RAW[@]} -eq 0 ]; then
+  exit 0
+fi
 readarray -t NEEDS_CORRECTION < <(printf '%s\n' "${NEEDS_CORRECTION_RAW[@]}" | grep -Ev "(\.g\.dart)|(\.freezed\.dart)")
 
 if [ ${#NEEDS_CORRECTION[@]} -gt 0 ]; then
