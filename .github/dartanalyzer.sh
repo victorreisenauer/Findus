@@ -11,6 +11,12 @@ while IFS= read -r line; do
   if [[ "$line" == *".freezed.dart"* ]]; then
     continue
   fi
+  if [[ "$line" == *"injection.iconfig.dart"* ]]; then
+    continue
+  fi
+  if [[ "$line" == *"router.gr.dart"* ]]; then
+    continue
+  fi
   if [ -z "$line" ]; then
     continue
   fi
