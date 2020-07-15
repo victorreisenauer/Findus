@@ -1,21 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lrs_app_v3/application/lesson/exercise/exercises/template_0002/template_0002_bloc.dart';
-import 'package:lrs_app_v3/presentation/pages/core/base_exercise.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:google_fonts/google_fonts.dart";
 
-class Template_2Body extends StatefulWidget {
+import "../../../../../../application/lesson/exercise/exercises/template_0002/template_0002_bloc.dart";
+import "../../../../core/base_exercise.dart";
+
+class Template0002Body extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _Template_2BodyState();
+    return _Template0002BodyState();
   }
 }
 
-class _Template_2BodyState extends State<Template_2Body> {
+class _Template0002BodyState extends State<Template0002Body> {
   @override
   void initState() {
-    BlocProvider.of<Template0002Bloc>(context)
-        .add(Template0002Event.startExercise());
+    super.initState();
+    BlocProvider.of<Template0002Bloc>(context).add(Template0002Event.startExercise());
   }
 
   @override
@@ -31,16 +32,12 @@ class _Template_2BodyState extends State<Template_2Body> {
                     padding: const EdgeInsets.symmetric(horizontal: 40.0),
                     child: RaisedButton(
                       onPressed: () {
-                        BlocProvider.of<Template0002Bloc>(context)
-                            .add(NextPressed());
+                        BlocProvider.of<Template0002Bloc>(context).add(NextPressed());
                       },
                       child: Text(
                         "weiter",
                         style: GoogleFonts.reemKufi(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
-                            color: Colors.white,
-                            letterSpacing: 10.0),
+                            fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.white, letterSpacing: 10.0),
                       ),
                       color: Colors.green,
                       elevation: 5.0,
@@ -51,7 +48,7 @@ class _Template_2BodyState extends State<Template_2Body> {
                   )
                 : Container(),
             onAbort: () {
-              print('On Abort pressed');
+              print("On Abort pressed");
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +58,7 @@ class _Template_2BodyState extends State<Template_2Body> {
                   height: 15.0,
                 ),
                 Text(
-                  'Welchen Buchstaben\n hörst du?',
+                  "Welchen Buchstaben\n hörst du?",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.reemKufi(
                     fontSize: 35.0,
@@ -73,14 +70,12 @@ class _Template_2BodyState extends State<Template_2Body> {
                 ),
                 Card(
                   color: Color.fromRGBO(166, 223, 249, 1),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100.0)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.0)),
                   elevation: 0.0,
                   child: InkWell(
                     borderRadius: BorderRadius.circular(100.0),
                     onTap: () {
-                      BlocProvider.of<Template0002Bloc>(context)
-                          .add(Template0002Event.playSound());
+                      BlocProvider.of<Template0002Bloc>(context).add(Template0002Event.playSound());
                     },
                     child: SizedBox(
                       height: 155,
@@ -114,16 +109,16 @@ class _Template_2BodyState extends State<Template_2Body> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     getAnswerButton(state.answers[0], () {
-                      BlocProvider.of<Template0002Bloc>(context).add(
-                          Template0002Event.answerSelected(selectedAnswer: 0));
+                      BlocProvider.of<Template0002Bloc>(context)
+                          .add(Template0002Event.answerSelected(selectedAnswer: 0));
                     }, state.colors[0]),
                     getAnswerButton(state.answers[1], () {
-                      BlocProvider.of<Template0002Bloc>(context).add(
-                          Template0002Event.answerSelected(selectedAnswer: 1));
+                      BlocProvider.of<Template0002Bloc>(context)
+                          .add(Template0002Event.answerSelected(selectedAnswer: 1));
                     }, state.colors[1]),
                     getAnswerButton(state.answers[2], () {
-                      BlocProvider.of<Template0002Bloc>(context).add(
-                          Template0002Event.answerSelected(selectedAnswer: 2));
+                      BlocProvider.of<Template0002Bloc>(context)
+                          .add(Template0002Event.answerSelected(selectedAnswer: 2));
                     }, state.colors[2])
                   ],
                 )

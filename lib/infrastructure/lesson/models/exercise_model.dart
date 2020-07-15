@@ -1,12 +1,12 @@
-import 'package:meta/meta.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:json_annotation/json_annotation.dart";
+import "package:meta/meta.dart";
 
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/domain/core/value_objects.dart';
+import "../../../domain/core/value_objects.dart";
+import "../../../domain/lesson/lesson_barrel.dart";
 
-part 'exercise_model.freezed.dart';
-part 'exercise_model.g.dart';
+part "exercise_model.freezed.dart";
+part "exercise_model.g.dart";
 
 @freezed
 abstract class ExerciseModel with _$ExerciseModel {
@@ -17,15 +17,12 @@ abstract class ExerciseModel with _$ExerciseModel {
   }) = _ExerciseModel;
 
   /// turns Json into [ExerciseModel]
-  factory ExerciseModel.fromJson(Map<String, dynamic> json) =>
-      _$ExerciseModelFromJson(json);
+  factory ExerciseModel.fromJson(Map<String, dynamic> json) => _$ExerciseModelFromJson(json);
 
   /// turns [Exercise] into [ExerciseModel]
   factory ExerciseModel.fromDomain(Exercise exercise) {
     return ExerciseModel(
-        id: exercise.id.getOrCrash(),
-        type: exercise.type.getOrCrash(),
-        data: exercise.data.getOrCrash());
+        id: exercise.id.getOrCrash(), type: exercise.type.getOrCrash(), data: exercise.data.getOrCrash());
   }
 }
 

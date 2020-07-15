@@ -1,12 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lrs_app_v3/application/lesson/exercise/exercises/template_0001/template_0001_bloc.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/presentation/pages/exercise/templates/template.dart';
-import 'package:lrs_app_v3/presentation/pages/exercise/templates/template_0001/widgets/body.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+
+import "../../../../../application/lesson/exercise/exercises/template_0001/template_0001_bloc.dart";
+import "../../../../../domain/lesson/lesson_barrel.dart";
+import "../template.dart";
+import "widgets/body.dart";
 
 class Template0001 extends Template {
-  final ExerciseType type = ExerciseType('sampleType1');
+  @override
+  final ExerciseType type = ExerciseType("sampleType1");
+  @override
   final ExerciseData exerciseData;
 
   Template0001({this.exerciseData});
@@ -15,7 +18,7 @@ class Template0001 extends Template {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => Template0001Bloc(exerciseData: exerciseData),
-      child: Template_1Body(),
+      child: Template0001Body(),
     );
   }
 }

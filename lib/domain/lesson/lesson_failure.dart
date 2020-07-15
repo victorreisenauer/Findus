@@ -1,6 +1,6 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-part 'lesson_failure.freezed.dart';
+part "lesson_failure.freezed.dart";
 
 @freezed
 abstract class LessonFailure with _$LessonFailure {
@@ -9,6 +9,5 @@ abstract class LessonFailure with _$LessonFailure {
   const factory LessonFailure.deviceOffline() = DeviceOffline;
   const factory LessonFailure.noCachedLessons() = NoCachedLessons;
 
-  const factory LessonFailure.lessonNotFound({String failedId}) =
-      LessonNotFound;
+  const factory LessonFailure.lessonNotFound({String failedId}) = LessonNotFound;
 }

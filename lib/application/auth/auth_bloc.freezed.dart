@@ -50,8 +50,7 @@ mixin _$AuthEvent {
 }
 
 abstract class $AuthEventCopyWith<$Res> {
-  factory $AuthEventCopyWith(AuthEvent value, $Res Function(AuthEvent) then) =
-      _$AuthEventCopyWithImpl<$Res>;
+  factory $AuthEventCopyWith(AuthEvent value, $Res Function(AuthEvent) then) = _$AuthEventCopyWithImpl<$Res>;
 }
 
 class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
@@ -63,16 +62,13 @@ class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
 }
 
 abstract class $AuthCheckRequestedCopyWith<$Res> {
-  factory $AuthCheckRequestedCopyWith(
-          AuthCheckRequested value, $Res Function(AuthCheckRequested) then) =
+  factory $AuthCheckRequestedCopyWith(AuthCheckRequested value, $Res Function(AuthCheckRequested) then) =
       _$AuthCheckRequestedCopyWithImpl<$Res>;
 }
 
-class _$AuthCheckRequestedCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res>
+class _$AuthCheckRequestedCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
     implements $AuthCheckRequestedCopyWith<$Res> {
-  _$AuthCheckRequestedCopyWithImpl(
-      AuthCheckRequested _value, $Res Function(AuthCheckRequested) _then)
+  _$AuthCheckRequestedCopyWithImpl(AuthCheckRequested _value, $Res Function(AuthCheckRequested) _then)
       : super(_value, (v) => _then(v as AuthCheckRequested));
 
   @override
@@ -151,12 +147,10 @@ abstract class AuthCheckRequested implements AuthEvent {
 }
 
 abstract class $SignedOutCopyWith<$Res> {
-  factory $SignedOutCopyWith(SignedOut value, $Res Function(SignedOut) then) =
-      _$SignedOutCopyWithImpl<$Res>;
+  factory $SignedOutCopyWith(SignedOut value, $Res Function(SignedOut) then) = _$SignedOutCopyWithImpl<$Res>;
 }
 
-class _$SignedOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements $SignedOutCopyWith<$Res> {
+class _$SignedOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res> implements $SignedOutCopyWith<$Res> {
   _$SignedOutCopyWithImpl(SignedOut _value, $Res Function(SignedOut) _then)
       : super(_value, (v) => _then(v as SignedOut));
 
@@ -288,8 +282,7 @@ mixin _$AuthState {
 }
 
 abstract class $AuthStateCopyWith<$Res> {
-  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
-      _$AuthStateCopyWithImpl<$Res>;
+  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) = _$AuthStateCopyWithImpl<$Res>;
 }
 
 class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
@@ -301,14 +294,11 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
 }
 
 abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) = _$InitialCopyWithImpl<$Res>;
 }
 
-class _$InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class _$InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res> implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then) : super(_value, (v) => _then(v as Initial));
 
   @override
   Initial get _value => super._value as Initial;
@@ -392,18 +382,15 @@ abstract class Initial implements AuthState {
 }
 
 abstract class $AuthenticatedCopyWith<$Res> {
-  factory $AuthenticatedCopyWith(
-          Authenticated value, $Res Function(Authenticated) then) =
+  factory $AuthenticatedCopyWith(Authenticated value, $Res Function(Authenticated) then) =
       _$AuthenticatedCopyWithImpl<$Res>;
   $Res call({User user});
 
   $UserCopyWith<$Res> get user;
 }
 
-class _$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $AuthenticatedCopyWith<$Res> {
-  _$AuthenticatedCopyWithImpl(
-      Authenticated _value, $Res Function(Authenticated) _then)
+class _$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res> implements $AuthenticatedCopyWith<$Res> {
+  _$AuthenticatedCopyWithImpl(Authenticated _value, $Res Function(Authenticated) _then)
       : super(_value, (v) => _then(v as Authenticated));
 
   @override
@@ -444,17 +431,14 @@ class _$Authenticated implements Authenticated {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Authenticated &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)));
+            (identical(other.user, user) || const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
 
   @override
-  $AuthenticatedCopyWith<Authenticated> get copyWith =>
-      _$AuthenticatedCopyWithImpl<Authenticated>(this, _$identity);
+  $AuthenticatedCopyWith<Authenticated> get copyWith => _$AuthenticatedCopyWithImpl<Authenticated>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -521,8 +505,7 @@ abstract class Authenticated implements AuthState {
 }
 
 abstract class $UnauthenticatedCopyWith<$Res> {
-  factory $UnauthenticatedCopyWith(
-          Unauthenticated value, $Res Function(Unauthenticated) then) =
+  factory $UnauthenticatedCopyWith(Unauthenticated value, $Res Function(Unauthenticated) then) =
       _$UnauthenticatedCopyWithImpl<$Res>;
   $Res call({User emptyUser});
 
@@ -531,8 +514,7 @@ abstract class $UnauthenticatedCopyWith<$Res> {
 
 class _$UnauthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
     implements $UnauthenticatedCopyWith<$Res> {
-  _$UnauthenticatedCopyWithImpl(
-      Unauthenticated _value, $Res Function(Unauthenticated) _then)
+  _$UnauthenticatedCopyWithImpl(Unauthenticated _value, $Res Function(Unauthenticated) _then)
       : super(_value, (v) => _then(v as Unauthenticated));
 
   @override
@@ -574,13 +556,11 @@ class _$Unauthenticated implements Unauthenticated {
     return identical(this, other) ||
         (other is Unauthenticated &&
             (identical(other.emptyUser, emptyUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.emptyUser, emptyUser)));
+                const DeepCollectionEquality().equals(other.emptyUser, emptyUser)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(emptyUser);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(emptyUser);
 
   @override
   $UnauthenticatedCopyWith<Unauthenticated> get copyWith =>

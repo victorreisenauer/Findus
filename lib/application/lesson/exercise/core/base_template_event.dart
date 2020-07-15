@@ -1,4 +1,4 @@
-part of 'base_template_bloc.dart';
+part of "base_template_bloc.dart";
 
 @freezed
 abstract class BaseTemplateEvent with _$BaseTemplateEvent {

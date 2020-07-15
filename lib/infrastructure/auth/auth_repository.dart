@@ -1,10 +1,11 @@
-import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
-import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/infrastructure/core/network_info.dart';
-import 'package:lrs_app_v3/infrastructure/core/remote_exceptions.dart';
-import 'package:meta/meta.dart';
+import "package:dartz/dartz.dart";
+import "package:injectable/injectable.dart";
+import "package:meta/meta.dart";
+
+import "../../domain/auth/auth_barrel.dart";
+import "../core/network_info.dart";
+import "../core/remote_exceptions.dart";
+import "auth_barrel.dart";
 
 /// Acts as the single source of authentication data.
 ///
@@ -21,6 +22,9 @@ class AuthRepository implements AuthFacade {
 
   Future<bool> get _deviceIsOnline => _networkInfo.isConnected;
 
+  /// just to use [_localData]
+  LocalAuthDataSourceFacade get localData => _localData;
+
   /// Registers and authenticates a new user.
   ///
   /// When online, this will try to use [emailAddress] and [password] to authenticate user
@@ -28,6 +32,7 @@ class AuthRepository implements AuthFacade {
   ///
   /// NOTE: Authentication is not possible when offline.
   /// An AuthFailure will be returned then.
+  @override
   Future<Option<AuthFailure>> signUpWithEmailAndPassword({
     @required EmailAddress emailAddress,
     @required Password password,
@@ -35,9 +40,9 @@ class AuthRepository implements AuthFacade {
     if (await _networkInfo.isConnected) {
       try {
         await _remoteData.signUpWithEmailAndPassword(
-            emailAddress: emailAddress.getOrCrash(),
-            password: password.getOrCrash());
+            emailAddress: emailAddress.getOrCrash(), password: password.getOrCrash());
         return none();
+        // ignore: avoid_catches_without_on_clauses
       } catch (e) {
         if (e is EmailAlreadyInUseException) {
           return optionOf(AuthFailure.emailAlreadyInUse());
@@ -58,6 +63,7 @@ class AuthRepository implements AuthFacade {
   ///
   /// If there is currently no authenticated user, the user
   /// will have to log in again.
+  @override
   Future<Either<AuthFailure, User>> getUser() async {
     if (await _deviceIsOnline) {
       try {
@@ -72,11 +78,11 @@ class AuthRepository implements AuthFacade {
           return right<AuthFailure, User>(model.toDomain(PersonalData.empty()));
           //}
         });
+        // ignore: avoid_catches_without_on_clauses
       } catch (e) {
         if (e is ServerNotReachableException) {
           return left<AuthFailure, User>(AuthFailure.serverError());
-        } else if (e is InvalidSessionException ||
-            e is NoLoggedInUserException) {
+        } else if (e is InvalidSessionException || e is NoLoggedInUserException) {
           return left<AuthFailure, User>(AuthFailure.loginRequired());
         } else {
           return null;
@@ -111,6 +117,7 @@ class AuthRepository implements AuthFacade {
   ///
   /// When device is offline, this will authenticate the user using [emailAddress] and [password].
   /// A failure is returned, if the device is offline.
+  @override
   Future<Option<AuthFailure>> signInWithEmailAndPassword({
     @required EmailAddress emailAddress,
     @required Password password,
@@ -118,9 +125,9 @@ class AuthRepository implements AuthFacade {
     if (await _deviceIsOnline) {
       try {
         await _remoteData.signInWithEmailAndPassword(
-            emailAddress: emailAddress.getOrCrash(),
-            password: password.getOrCrash());
+            emailAddress: emailAddress.getOrCrash(), password: password.getOrCrash());
         return none<AuthFailure>();
+        // ignore: avoid_catches_without_on_clauses
       } catch (e) {
         if (e is InvalidSessionException) {
           return optionOf(AuthFailure.loginRequired());
@@ -141,6 +148,7 @@ class AuthRepository implements AuthFacade {
   ///
   /// This signs out user from our remote DataSources.
   /// Next time, the user will need to sign in again to continue.
+  @override
   Future<Option<AuthFailure>> signOut() async {
     if (await _deviceIsOnline) {
       await _remoteData.signOut();

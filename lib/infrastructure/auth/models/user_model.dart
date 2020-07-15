@@ -1,11 +1,12 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
-import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
-import 'package:meta/meta.dart';
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:json_annotation/json_annotation.dart";
+import "package:meta/meta.dart";
 
-part 'user_model.freezed.dart';
-part 'user_model.g.dart';
+import "../../../domain/auth/auth_barrel.dart";
+import "../../../domain/core/value_objects_barrel.dart";
+
+part "user_model.freezed.dart";
+part "user_model.g.dart";
 
 @freezed
 abstract class UserModel with _$UserModel {
@@ -16,10 +17,10 @@ abstract class UserModel with _$UserModel {
   }) = _UserModel;
 
   /// turns Json into [UserModel]
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
 
   /// turns [User] into [UserModel]
+  // ignore: avoid_positional_boolean_parameters
   factory UserModel.fromDomain(User user, bool active) {
     return UserModel(
       id: user.id.getOrCrash(),

@@ -1,8 +1,8 @@
-import 'package:dartz/dartz.dart';
+import "package:dartz/dartz.dart";
 
-import 'package:lrs_app_v3/domain/core/value_objects.dart';
-import 'package:lrs_app_v3/domain/core/failures.dart';
-import 'package:lrs_app_v3/domain/core/validators.dart';
+import "../../core/failures.dart";
+import "../../core/validators.dart";
+import "../../core/value_objects.dart";
 
 class ExerciseType extends ValueObject<String> {
   @override

@@ -1,14 +1,13 @@
-import 'dart:async';
+import "dart:async";
 
-import 'package:bloc/bloc.dart';
-import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import "package:bloc/bloc.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:injectable/injectable.dart";
+import "package:meta/meta.dart";
 
-part 'progress_event.dart';
-part 'progress_state.dart';
-
-part 'progress_bloc.freezed.dart';
+part "progress_bloc.freezed.dart";
+part "progress_event.dart";
+part "progress_state.dart";
 
 @injectable
 class ProgressBloc extends Bloc<ProgressEvent, ProgressState> {

@@ -76,13 +76,11 @@ mixin _$LessonFailure {
 }
 
 abstract class $LessonFailureCopyWith<$Res> {
-  factory $LessonFailureCopyWith(
-          LessonFailure value, $Res Function(LessonFailure) then) =
+  factory $LessonFailureCopyWith(LessonFailure value, $Res Function(LessonFailure) then) =
       _$LessonFailureCopyWithImpl<$Res>;
 }
 
-class _$LessonFailureCopyWithImpl<$Res>
-    implements $LessonFailureCopyWith<$Res> {
+class _$LessonFailureCopyWithImpl<$Res> implements $LessonFailureCopyWith<$Res> {
   _$LessonFailureCopyWithImpl(this._value, this._then);
 
   final LessonFailure _value;
@@ -91,13 +89,10 @@ class _$LessonFailureCopyWithImpl<$Res>
 }
 
 abstract class $UnexpectedCopyWith<$Res> {
-  factory $UnexpectedCopyWith(
-          Unexpected value, $Res Function(Unexpected) then) =
-      _$UnexpectedCopyWithImpl<$Res>;
+  factory $UnexpectedCopyWith(Unexpected value, $Res Function(Unexpected) then) = _$UnexpectedCopyWithImpl<$Res>;
 }
 
-class _$UnexpectedCopyWithImpl<$Res> extends _$LessonFailureCopyWithImpl<$Res>
-    implements $UnexpectedCopyWith<$Res> {
+class _$UnexpectedCopyWithImpl<$Res> extends _$LessonFailureCopyWithImpl<$Res> implements $UnexpectedCopyWith<$Res> {
   _$UnexpectedCopyWithImpl(Unexpected _value, $Res Function(Unexpected) _then)
       : super(_value, (v) => _then(v as Unexpected));
 
@@ -195,16 +190,13 @@ abstract class Unexpected implements LessonFailure {
 }
 
 abstract class $UnableToUpdateCopyWith<$Res> {
-  factory $UnableToUpdateCopyWith(
-          UnableToUpdate value, $Res Function(UnableToUpdate) then) =
+  factory $UnableToUpdateCopyWith(UnableToUpdate value, $Res Function(UnableToUpdate) then) =
       _$UnableToUpdateCopyWithImpl<$Res>;
 }
 
-class _$UnableToUpdateCopyWithImpl<$Res>
-    extends _$LessonFailureCopyWithImpl<$Res>
+class _$UnableToUpdateCopyWithImpl<$Res> extends _$LessonFailureCopyWithImpl<$Res>
     implements $UnableToUpdateCopyWith<$Res> {
-  _$UnableToUpdateCopyWithImpl(
-      UnableToUpdate _value, $Res Function(UnableToUpdate) _then)
+  _$UnableToUpdateCopyWithImpl(UnableToUpdate _value, $Res Function(UnableToUpdate) _then)
       : super(_value, (v) => _then(v as UnableToUpdate));
 
   @override
@@ -301,16 +293,13 @@ abstract class UnableToUpdate implements LessonFailure {
 }
 
 abstract class $DeviceOfflineCopyWith<$Res> {
-  factory $DeviceOfflineCopyWith(
-          DeviceOffline value, $Res Function(DeviceOffline) then) =
+  factory $DeviceOfflineCopyWith(DeviceOffline value, $Res Function(DeviceOffline) then) =
       _$DeviceOfflineCopyWithImpl<$Res>;
 }
 
-class _$DeviceOfflineCopyWithImpl<$Res>
-    extends _$LessonFailureCopyWithImpl<$Res>
+class _$DeviceOfflineCopyWithImpl<$Res> extends _$LessonFailureCopyWithImpl<$Res>
     implements $DeviceOfflineCopyWith<$Res> {
-  _$DeviceOfflineCopyWithImpl(
-      DeviceOffline _value, $Res Function(DeviceOffline) _then)
+  _$DeviceOfflineCopyWithImpl(DeviceOffline _value, $Res Function(DeviceOffline) _then)
       : super(_value, (v) => _then(v as DeviceOffline));
 
   @override
@@ -407,16 +396,13 @@ abstract class DeviceOffline implements LessonFailure {
 }
 
 abstract class $NoCachedLessonsCopyWith<$Res> {
-  factory $NoCachedLessonsCopyWith(
-          NoCachedLessons value, $Res Function(NoCachedLessons) then) =
+  factory $NoCachedLessonsCopyWith(NoCachedLessons value, $Res Function(NoCachedLessons) then) =
       _$NoCachedLessonsCopyWithImpl<$Res>;
 }
 
-class _$NoCachedLessonsCopyWithImpl<$Res>
-    extends _$LessonFailureCopyWithImpl<$Res>
+class _$NoCachedLessonsCopyWithImpl<$Res> extends _$LessonFailureCopyWithImpl<$Res>
     implements $NoCachedLessonsCopyWith<$Res> {
-  _$NoCachedLessonsCopyWithImpl(
-      NoCachedLessons _value, $Res Function(NoCachedLessons) _then)
+  _$NoCachedLessonsCopyWithImpl(NoCachedLessons _value, $Res Function(NoCachedLessons) _then)
       : super(_value, (v) => _then(v as NoCachedLessons));
 
   @override
@@ -513,17 +499,14 @@ abstract class NoCachedLessons implements LessonFailure {
 }
 
 abstract class $LessonNotFoundCopyWith<$Res> {
-  factory $LessonNotFoundCopyWith(
-          LessonNotFound value, $Res Function(LessonNotFound) then) =
+  factory $LessonNotFoundCopyWith(LessonNotFound value, $Res Function(LessonNotFound) then) =
       _$LessonNotFoundCopyWithImpl<$Res>;
   $Res call({String failedId});
 }
 
-class _$LessonNotFoundCopyWithImpl<$Res>
-    extends _$LessonFailureCopyWithImpl<$Res>
+class _$LessonNotFoundCopyWithImpl<$Res> extends _$LessonFailureCopyWithImpl<$Res>
     implements $LessonNotFoundCopyWith<$Res> {
-  _$LessonNotFoundCopyWithImpl(
-      LessonNotFound _value, $Res Function(LessonNotFound) _then)
+  _$LessonNotFoundCopyWithImpl(LessonNotFound _value, $Res Function(LessonNotFound) _then)
       : super(_value, (v) => _then(v as LessonNotFound));
 
   @override
@@ -554,14 +537,11 @@ class _$LessonNotFound implements LessonNotFound {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is LessonNotFound &&
-            (identical(other.failedId, failedId) ||
-                const DeepCollectionEquality()
-                    .equals(other.failedId, failedId)));
+            (identical(other.failedId, failedId) || const DeepCollectionEquality().equals(other.failedId, failedId)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedId);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedId);
 
   @override
   $LessonNotFoundCopyWith<LessonNotFound> get copyWith =>

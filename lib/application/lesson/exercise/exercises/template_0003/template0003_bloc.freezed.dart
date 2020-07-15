@@ -60,13 +60,11 @@ mixin _$Template0003Event {
 }
 
 abstract class $Template0003EventCopyWith<$Res> {
-  factory $Template0003EventCopyWith(
-          Template0003Event value, $Res Function(Template0003Event) then) =
+  factory $Template0003EventCopyWith(Template0003Event value, $Res Function(Template0003Event) then) =
       _$Template0003EventCopyWithImpl<$Res>;
 }
 
-class _$Template0003EventCopyWithImpl<$Res>
-    implements $Template0003EventCopyWith<$Res> {
+class _$Template0003EventCopyWithImpl<$Res> implements $Template0003EventCopyWith<$Res> {
   _$Template0003EventCopyWithImpl(this._value, this._then);
 
   final Template0003Event _value;
@@ -75,16 +73,13 @@ class _$Template0003EventCopyWithImpl<$Res>
 }
 
 abstract class $StartExerciseCopyWith<$Res> {
-  factory $StartExerciseCopyWith(
-          StartExercise value, $Res Function(StartExercise) then) =
+  factory $StartExerciseCopyWith(StartExercise value, $Res Function(StartExercise) then) =
       _$StartExerciseCopyWithImpl<$Res>;
 }
 
-class _$StartExerciseCopyWithImpl<$Res>
-    extends _$Template0003EventCopyWithImpl<$Res>
+class _$StartExerciseCopyWithImpl<$Res> extends _$Template0003EventCopyWithImpl<$Res>
     implements $StartExerciseCopyWith<$Res> {
-  _$StartExerciseCopyWithImpl(
-      StartExercise _value, $Res Function(StartExercise) _then)
+  _$StartExerciseCopyWithImpl(StartExercise _value, $Res Function(StartExercise) _then)
       : super(_value, (v) => _then(v as StartExercise));
 
   @override
@@ -102,8 +97,7 @@ class _$StartExercise with DiagnosticableTreeMixin implements StartExercise {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Template0003Event.startExercise'));
+    properties..add(DiagnosticsProperty('type', 'Template0003Event.startExercise'));
   }
 
   @override
@@ -176,25 +170,20 @@ abstract class StartExercise implements Template0003Event {
 }
 
 abstract class $CenterButtonPressedCopyWith<$Res> {
-  factory $CenterButtonPressedCopyWith(
-          CenterButtonPressed value, $Res Function(CenterButtonPressed) then) =
+  factory $CenterButtonPressedCopyWith(CenterButtonPressed value, $Res Function(CenterButtonPressed) then) =
       _$CenterButtonPressedCopyWithImpl<$Res>;
 }
 
-class _$CenterButtonPressedCopyWithImpl<$Res>
-    extends _$Template0003EventCopyWithImpl<$Res>
+class _$CenterButtonPressedCopyWithImpl<$Res> extends _$Template0003EventCopyWithImpl<$Res>
     implements $CenterButtonPressedCopyWith<$Res> {
-  _$CenterButtonPressedCopyWithImpl(
-      CenterButtonPressed _value, $Res Function(CenterButtonPressed) _then)
+  _$CenterButtonPressedCopyWithImpl(CenterButtonPressed _value, $Res Function(CenterButtonPressed) _then)
       : super(_value, (v) => _then(v as CenterButtonPressed));
 
   @override
   CenterButtonPressed get _value => super._value as CenterButtonPressed;
 }
 
-class _$CenterButtonPressed
-    with DiagnosticableTreeMixin
-    implements CenterButtonPressed {
+class _$CenterButtonPressed with DiagnosticableTreeMixin implements CenterButtonPressed {
   const _$CenterButtonPressed();
 
   @override
@@ -205,9 +194,7 @@ class _$CenterButtonPressed
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'Template0003Event.centerButtonPressed'));
+    properties..add(DiagnosticsProperty('type', 'Template0003Event.centerButtonPressed'));
   }
 
   @override
@@ -280,17 +267,14 @@ abstract class CenterButtonPressed implements Template0003Event {
 }
 
 abstract class $AnswerSelectedCopyWith<$Res> {
-  factory $AnswerSelectedCopyWith(
-          AnswerSelected value, $Res Function(AnswerSelected) then) =
+  factory $AnswerSelectedCopyWith(AnswerSelected value, $Res Function(AnswerSelected) then) =
       _$AnswerSelectedCopyWithImpl<$Res>;
   $Res call({int index});
 }
 
-class _$AnswerSelectedCopyWithImpl<$Res>
-    extends _$Template0003EventCopyWithImpl<$Res>
+class _$AnswerSelectedCopyWithImpl<$Res> extends _$Template0003EventCopyWithImpl<$Res>
     implements $AnswerSelectedCopyWith<$Res> {
-  _$AnswerSelectedCopyWithImpl(
-      AnswerSelected _value, $Res Function(AnswerSelected) _then)
+  _$AnswerSelectedCopyWithImpl(AnswerSelected _value, $Res Function(AnswerSelected) _then)
       : super(_value, (v) => _then(v as AnswerSelected));
 
   @override
@@ -329,13 +313,11 @@ class _$AnswerSelected with DiagnosticableTreeMixin implements AnswerSelected {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is AnswerSelected &&
-            (identical(other.index, index) ||
-                const DeepCollectionEquality().equals(other.index, index)));
+            (identical(other.index, index) || const DeepCollectionEquality().equals(other.index, index)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
 
   @override
   $AnswerSelectedCopyWith<AnswerSelected> get copyWith =>
@@ -425,8 +407,7 @@ class _$Template0003StateTearOff {
     );
   }
 
-  ShowCorrection showCorrection(
-      String text, List<String> answers, List<Color> colors) {
+  ShowCorrection showCorrection(String text, List<String> answers, List<Color> colors) {
     return ShowCorrection(
       text,
       answers,
@@ -448,9 +429,7 @@ mixin _$Template0003State {
     @required Result initial(),
     @required Result showText(String text),
     @required Result showQuestion(String text, List<String> answers),
-    @required
-        Result showCorrection(
-            String text, List<String> answers, List<Color> colors),
+    @required Result showCorrection(String text, List<String> answers, List<Color> colors),
     @required Result exerciseFinished(),
   });
   @optionalTypeArgs
@@ -458,8 +437,7 @@ mixin _$Template0003State {
     Result initial(),
     Result showText(String text),
     Result showQuestion(String text, List<String> answers),
-    Result showCorrection(
-        String text, List<String> answers, List<Color> colors),
+    Result showCorrection(String text, List<String> answers, List<Color> colors),
     Result exerciseFinished(),
     @required Result orElse(),
   });
@@ -483,13 +461,11 @@ mixin _$Template0003State {
 }
 
 abstract class $Template0003StateCopyWith<$Res> {
-  factory $Template0003StateCopyWith(
-          Template0003State value, $Res Function(Template0003State) then) =
+  factory $Template0003StateCopyWith(Template0003State value, $Res Function(Template0003State) then) =
       _$Template0003StateCopyWithImpl<$Res>;
 }
 
-class _$Template0003StateCopyWithImpl<$Res>
-    implements $Template0003StateCopyWith<$Res> {
+class _$Template0003StateCopyWithImpl<$Res> implements $Template0003StateCopyWith<$Res> {
   _$Template0003StateCopyWithImpl(this._value, this._then);
 
   final Template0003State _value;
@@ -498,14 +474,11 @@ class _$Template0003StateCopyWithImpl<$Res>
 }
 
 abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) = _$InitialCopyWithImpl<$Res>;
 }
 
-class _$InitialCopyWithImpl<$Res> extends _$Template0003StateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class _$InitialCopyWithImpl<$Res> extends _$Template0003StateCopyWithImpl<$Res> implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then) : super(_value, (v) => _then(v as Initial));
 
   @override
   Initial get _value => super._value as Initial;
@@ -539,9 +512,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result initial(),
     @required Result showText(String text),
     @required Result showQuestion(String text, List<String> answers),
-    @required
-        Result showCorrection(
-            String text, List<String> answers, List<Color> colors),
+    @required Result showCorrection(String text, List<String> answers, List<Color> colors),
     @required Result exerciseFinished(),
   }) {
     assert(initial != null);
@@ -558,8 +529,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result initial(),
     Result showText(String text),
     Result showQuestion(String text, List<String> answers),
-    Result showCorrection(
-        String text, List<String> answers, List<Color> colors),
+    Result showCorrection(String text, List<String> answers, List<Color> colors),
     Result exerciseFinished(),
     @required Result orElse(),
   }) {
@@ -610,15 +580,12 @@ abstract class Initial implements Template0003State {
 }
 
 abstract class $ShowTextCopyWith<$Res> {
-  factory $ShowTextCopyWith(ShowText value, $Res Function(ShowText) then) =
-      _$ShowTextCopyWithImpl<$Res>;
+  factory $ShowTextCopyWith(ShowText value, $Res Function(ShowText) then) = _$ShowTextCopyWithImpl<$Res>;
   $Res call({String text});
 }
 
-class _$ShowTextCopyWithImpl<$Res> extends _$Template0003StateCopyWithImpl<$Res>
-    implements $ShowTextCopyWith<$Res> {
-  _$ShowTextCopyWithImpl(ShowText _value, $Res Function(ShowText) _then)
-      : super(_value, (v) => _then(v as ShowText));
+class _$ShowTextCopyWithImpl<$Res> extends _$Template0003StateCopyWithImpl<$Res> implements $ShowTextCopyWith<$Res> {
+  _$ShowTextCopyWithImpl(ShowText _value, $Res Function(ShowText) _then) : super(_value, (v) => _then(v as ShowText));
 
   @override
   ShowText get _value => super._value as ShowText;
@@ -647,26 +614,20 @@ class _$ShowText with DiagnosticableTreeMixin implements ShowText {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Template0003State.showText'))
-      ..add(DiagnosticsProperty('text', text));
+    properties..add(DiagnosticsProperty('type', 'Template0003State.showText'))..add(DiagnosticsProperty('text', text));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ShowText &&
-            (identical(other.text, text) ||
-                const DeepCollectionEquality().equals(other.text, text)));
+        (other is ShowText && (identical(other.text, text) || const DeepCollectionEquality().equals(other.text, text)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(text);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(text);
 
   @override
-  $ShowTextCopyWith<ShowText> get copyWith =>
-      _$ShowTextCopyWithImpl<ShowText>(this, _$identity);
+  $ShowTextCopyWith<ShowText> get copyWith => _$ShowTextCopyWithImpl<ShowText>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -674,9 +635,7 @@ class _$ShowText with DiagnosticableTreeMixin implements ShowText {
     @required Result initial(),
     @required Result showText(String text),
     @required Result showQuestion(String text, List<String> answers),
-    @required
-        Result showCorrection(
-            String text, List<String> answers, List<Color> colors),
+    @required Result showCorrection(String text, List<String> answers, List<Color> colors),
     @required Result exerciseFinished(),
   }) {
     assert(initial != null);
@@ -693,8 +652,7 @@ class _$ShowText with DiagnosticableTreeMixin implements ShowText {
     Result initial(),
     Result showText(String text),
     Result showQuestion(String text, List<String> answers),
-    Result showCorrection(
-        String text, List<String> answers, List<Color> colors),
+    Result showCorrection(String text, List<String> answers, List<Color> colors),
     Result exerciseFinished(),
     @required Result orElse(),
   }) {
@@ -748,17 +706,14 @@ abstract class ShowText implements Template0003State {
 }
 
 abstract class $ShowQuestionCopyWith<$Res> {
-  factory $ShowQuestionCopyWith(
-          ShowQuestion value, $Res Function(ShowQuestion) then) =
+  factory $ShowQuestionCopyWith(ShowQuestion value, $Res Function(ShowQuestion) then) =
       _$ShowQuestionCopyWithImpl<$Res>;
   $Res call({String text, List<String> answers});
 }
 
-class _$ShowQuestionCopyWithImpl<$Res>
-    extends _$Template0003StateCopyWithImpl<$Res>
+class _$ShowQuestionCopyWithImpl<$Res> extends _$Template0003StateCopyWithImpl<$Res>
     implements $ShowQuestionCopyWith<$Res> {
-  _$ShowQuestionCopyWithImpl(
-      ShowQuestion _value, $Res Function(ShowQuestion) _then)
+  _$ShowQuestionCopyWithImpl(ShowQuestion _value, $Res Function(ShowQuestion) _then)
       : super(_value, (v) => _then(v as ShowQuestion));
 
   @override
@@ -804,21 +759,16 @@ class _$ShowQuestion with DiagnosticableTreeMixin implements ShowQuestion {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ShowQuestion &&
-            (identical(other.text, text) ||
-                const DeepCollectionEquality().equals(other.text, text)) &&
-            (identical(other.answers, answers) ||
-                const DeepCollectionEquality().equals(other.answers, answers)));
+            (identical(other.text, text) || const DeepCollectionEquality().equals(other.text, text)) &&
+            (identical(other.answers, answers) || const DeepCollectionEquality().equals(other.answers, answers)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(text) ^
-      const DeepCollectionEquality().hash(answers);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(text) ^ const DeepCollectionEquality().hash(answers);
 
   @override
-  $ShowQuestionCopyWith<ShowQuestion> get copyWith =>
-      _$ShowQuestionCopyWithImpl<ShowQuestion>(this, _$identity);
+  $ShowQuestionCopyWith<ShowQuestion> get copyWith => _$ShowQuestionCopyWithImpl<ShowQuestion>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -826,9 +776,7 @@ class _$ShowQuestion with DiagnosticableTreeMixin implements ShowQuestion {
     @required Result initial(),
     @required Result showText(String text),
     @required Result showQuestion(String text, List<String> answers),
-    @required
-        Result showCorrection(
-            String text, List<String> answers, List<Color> colors),
+    @required Result showCorrection(String text, List<String> answers, List<Color> colors),
     @required Result exerciseFinished(),
   }) {
     assert(initial != null);
@@ -845,8 +793,7 @@ class _$ShowQuestion with DiagnosticableTreeMixin implements ShowQuestion {
     Result initial(),
     Result showText(String text),
     Result showQuestion(String text, List<String> answers),
-    Result showCorrection(
-        String text, List<String> answers, List<Color> colors),
+    Result showCorrection(String text, List<String> answers, List<Color> colors),
     Result exerciseFinished(),
     @required Result orElse(),
   }) {
@@ -893,8 +840,7 @@ class _$ShowQuestion with DiagnosticableTreeMixin implements ShowQuestion {
 }
 
 abstract class ShowQuestion implements Template0003State {
-  const factory ShowQuestion(String text, List<String> answers) =
-      _$ShowQuestion;
+  const factory ShowQuestion(String text, List<String> answers) = _$ShowQuestion;
 
   String get text;
   List<String> get answers;
@@ -902,17 +848,14 @@ abstract class ShowQuestion implements Template0003State {
 }
 
 abstract class $ShowCorrectionCopyWith<$Res> {
-  factory $ShowCorrectionCopyWith(
-          ShowCorrection value, $Res Function(ShowCorrection) then) =
+  factory $ShowCorrectionCopyWith(ShowCorrection value, $Res Function(ShowCorrection) then) =
       _$ShowCorrectionCopyWithImpl<$Res>;
   $Res call({String text, List<String> answers, List<Color> colors});
 }
 
-class _$ShowCorrectionCopyWithImpl<$Res>
-    extends _$Template0003StateCopyWithImpl<$Res>
+class _$ShowCorrectionCopyWithImpl<$Res> extends _$Template0003StateCopyWithImpl<$Res>
     implements $ShowCorrectionCopyWith<$Res> {
-  _$ShowCorrectionCopyWithImpl(
-      ShowCorrection _value, $Res Function(ShowCorrection) _then)
+  _$ShowCorrectionCopyWithImpl(ShowCorrection _value, $Res Function(ShowCorrection) _then)
       : super(_value, (v) => _then(v as ShowCorrection));
 
   @override
@@ -964,13 +907,9 @@ class _$ShowCorrection with DiagnosticableTreeMixin implements ShowCorrection {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ShowCorrection &&
-            (identical(other.text, text) ||
-                const DeepCollectionEquality().equals(other.text, text)) &&
-            (identical(other.answers, answers) ||
-                const DeepCollectionEquality()
-                    .equals(other.answers, answers)) &&
-            (identical(other.colors, colors) ||
-                const DeepCollectionEquality().equals(other.colors, colors)));
+            (identical(other.text, text) || const DeepCollectionEquality().equals(other.text, text)) &&
+            (identical(other.answers, answers) || const DeepCollectionEquality().equals(other.answers, answers)) &&
+            (identical(other.colors, colors) || const DeepCollectionEquality().equals(other.colors, colors)));
   }
 
   @override
@@ -990,9 +929,7 @@ class _$ShowCorrection with DiagnosticableTreeMixin implements ShowCorrection {
     @required Result initial(),
     @required Result showText(String text),
     @required Result showQuestion(String text, List<String> answers),
-    @required
-        Result showCorrection(
-            String text, List<String> answers, List<Color> colors),
+    @required Result showCorrection(String text, List<String> answers, List<Color> colors),
     @required Result exerciseFinished(),
   }) {
     assert(initial != null);
@@ -1009,8 +946,7 @@ class _$ShowCorrection with DiagnosticableTreeMixin implements ShowCorrection {
     Result initial(),
     Result showText(String text),
     Result showQuestion(String text, List<String> answers),
-    Result showCorrection(
-        String text, List<String> answers, List<Color> colors),
+    Result showCorrection(String text, List<String> answers, List<Color> colors),
     Result exerciseFinished(),
     @required Result orElse(),
   }) {
@@ -1057,8 +993,7 @@ class _$ShowCorrection with DiagnosticableTreeMixin implements ShowCorrection {
 }
 
 abstract class ShowCorrection implements Template0003State {
-  const factory ShowCorrection(
-      String text, List<String> answers, List<Color> colors) = _$ShowCorrection;
+  const factory ShowCorrection(String text, List<String> answers, List<Color> colors) = _$ShowCorrection;
 
   String get text;
   List<String> get answers;
@@ -1067,25 +1002,20 @@ abstract class ShowCorrection implements Template0003State {
 }
 
 abstract class $ExerciseFinishedCopyWith<$Res> {
-  factory $ExerciseFinishedCopyWith(
-          ExerciseFinished value, $Res Function(ExerciseFinished) then) =
+  factory $ExerciseFinishedCopyWith(ExerciseFinished value, $Res Function(ExerciseFinished) then) =
       _$ExerciseFinishedCopyWithImpl<$Res>;
 }
 
-class _$ExerciseFinishedCopyWithImpl<$Res>
-    extends _$Template0003StateCopyWithImpl<$Res>
+class _$ExerciseFinishedCopyWithImpl<$Res> extends _$Template0003StateCopyWithImpl<$Res>
     implements $ExerciseFinishedCopyWith<$Res> {
-  _$ExerciseFinishedCopyWithImpl(
-      ExerciseFinished _value, $Res Function(ExerciseFinished) _then)
+  _$ExerciseFinishedCopyWithImpl(ExerciseFinished _value, $Res Function(ExerciseFinished) _then)
       : super(_value, (v) => _then(v as ExerciseFinished));
 
   @override
   ExerciseFinished get _value => super._value as ExerciseFinished;
 }
 
-class _$ExerciseFinished
-    with DiagnosticableTreeMixin
-    implements ExerciseFinished {
+class _$ExerciseFinished with DiagnosticableTreeMixin implements ExerciseFinished {
   const _$ExerciseFinished();
 
   @override
@@ -1096,8 +1026,7 @@ class _$ExerciseFinished
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Template0003State.exerciseFinished'));
+    properties..add(DiagnosticsProperty('type', 'Template0003State.exerciseFinished'));
   }
 
   @override
@@ -1114,9 +1043,7 @@ class _$ExerciseFinished
     @required Result initial(),
     @required Result showText(String text),
     @required Result showQuestion(String text, List<String> answers),
-    @required
-        Result showCorrection(
-            String text, List<String> answers, List<Color> colors),
+    @required Result showCorrection(String text, List<String> answers, List<Color> colors),
     @required Result exerciseFinished(),
   }) {
     assert(initial != null);
@@ -1133,8 +1060,7 @@ class _$ExerciseFinished
     Result initial(),
     Result showText(String text),
     Result showQuestion(String text, List<String> answers),
-    Result showCorrection(
-        String text, List<String> answers, List<Color> colors),
+    Result showCorrection(String text, List<String> answers, List<Color> colors),
     Result exerciseFinished(),
     @required Result orElse(),
   }) {

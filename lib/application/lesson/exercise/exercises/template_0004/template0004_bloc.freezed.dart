@@ -52,13 +52,11 @@ mixin _$Template0004Event {
 }
 
 abstract class $Template0004EventCopyWith<$Res> {
-  factory $Template0004EventCopyWith(
-          Template0004Event value, $Res Function(Template0004Event) then) =
+  factory $Template0004EventCopyWith(Template0004Event value, $Res Function(Template0004Event) then) =
       _$Template0004EventCopyWithImpl<$Res>;
 }
 
-class _$Template0004EventCopyWithImpl<$Res>
-    implements $Template0004EventCopyWith<$Res> {
+class _$Template0004EventCopyWithImpl<$Res> implements $Template0004EventCopyWith<$Res> {
   _$Template0004EventCopyWithImpl(this._value, this._then);
 
   final Template0004Event _value;
@@ -67,16 +65,13 @@ class _$Template0004EventCopyWithImpl<$Res>
 }
 
 abstract class $StartExerciseCopyWith<$Res> {
-  factory $StartExerciseCopyWith(
-          StartExercise value, $Res Function(StartExercise) then) =
+  factory $StartExerciseCopyWith(StartExercise value, $Res Function(StartExercise) then) =
       _$StartExerciseCopyWithImpl<$Res>;
 }
 
-class _$StartExerciseCopyWithImpl<$Res>
-    extends _$Template0004EventCopyWithImpl<$Res>
+class _$StartExerciseCopyWithImpl<$Res> extends _$Template0004EventCopyWithImpl<$Res>
     implements $StartExerciseCopyWith<$Res> {
-  _$StartExerciseCopyWithImpl(
-      StartExercise _value, $Res Function(StartExercise) _then)
+  _$StartExerciseCopyWithImpl(StartExercise _value, $Res Function(StartExercise) _then)
       : super(_value, (v) => _then(v as StartExercise));
 
   @override
@@ -94,8 +89,7 @@ class _$StartExercise with DiagnosticableTreeMixin implements StartExercise {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Template0004Event.startExercise'));
+    properties..add(DiagnosticsProperty('type', 'Template0004Event.startExercise'));
   }
 
   @override
@@ -162,17 +156,14 @@ abstract class StartExercise implements Template0004Event {
 }
 
 abstract class $AnswerSelectedCopyWith<$Res> {
-  factory $AnswerSelectedCopyWith(
-          AnswerSelected value, $Res Function(AnswerSelected) then) =
+  factory $AnswerSelectedCopyWith(AnswerSelected value, $Res Function(AnswerSelected) then) =
       _$AnswerSelectedCopyWithImpl<$Res>;
   $Res call({int answer});
 }
 
-class _$AnswerSelectedCopyWithImpl<$Res>
-    extends _$Template0004EventCopyWithImpl<$Res>
+class _$AnswerSelectedCopyWithImpl<$Res> extends _$Template0004EventCopyWithImpl<$Res>
     implements $AnswerSelectedCopyWith<$Res> {
-  _$AnswerSelectedCopyWithImpl(
-      AnswerSelected _value, $Res Function(AnswerSelected) _then)
+  _$AnswerSelectedCopyWithImpl(AnswerSelected _value, $Res Function(AnswerSelected) _then)
       : super(_value, (v) => _then(v as AnswerSelected));
 
   @override
@@ -211,13 +202,11 @@ class _$AnswerSelected with DiagnosticableTreeMixin implements AnswerSelected {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is AnswerSelected &&
-            (identical(other.answer, answer) ||
-                const DeepCollectionEquality().equals(other.answer, answer)));
+            (identical(other.answer, answer) || const DeepCollectionEquality().equals(other.answer, answer)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(answer);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(answer);
 
   @override
   $AnswerSelectedCopyWith<AnswerSelected> get copyWith =>
@@ -288,8 +277,7 @@ class _$Template0004StateTearOff {
     return const Initial();
   }
 
-  ShowExercise showExercise(
-      String word, List<String> answers, List<Color> colors) {
+  ShowExercise showExercise(String word, List<String> answers, List<Color> colors) {
     return ShowExercise(
       word,
       answers,
@@ -305,9 +293,7 @@ mixin _$Template0004State {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required
-        Result showExercise(
-            String word, List<String> answers, List<Color> colors),
+    @required Result showExercise(String word, List<String> answers, List<Color> colors),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -329,13 +315,11 @@ mixin _$Template0004State {
 }
 
 abstract class $Template0004StateCopyWith<$Res> {
-  factory $Template0004StateCopyWith(
-          Template0004State value, $Res Function(Template0004State) then) =
+  factory $Template0004StateCopyWith(Template0004State value, $Res Function(Template0004State) then) =
       _$Template0004StateCopyWithImpl<$Res>;
 }
 
-class _$Template0004StateCopyWithImpl<$Res>
-    implements $Template0004StateCopyWith<$Res> {
+class _$Template0004StateCopyWithImpl<$Res> implements $Template0004StateCopyWith<$Res> {
   _$Template0004StateCopyWithImpl(this._value, this._then);
 
   final Template0004State _value;
@@ -344,14 +328,11 @@ class _$Template0004StateCopyWithImpl<$Res>
 }
 
 abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) = _$InitialCopyWithImpl<$Res>;
 }
 
-class _$InitialCopyWithImpl<$Res> extends _$Template0004StateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class _$InitialCopyWithImpl<$Res> extends _$Template0004StateCopyWithImpl<$Res> implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then) : super(_value, (v) => _then(v as Initial));
 
   @override
   Initial get _value => super._value as Initial;
@@ -383,9 +364,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required
-        Result showExercise(
-            String word, List<String> answers, List<Color> colors),
+    @required Result showExercise(String word, List<String> answers, List<Color> colors),
   }) {
     assert(initial != null);
     assert(showExercise != null);
@@ -437,17 +416,14 @@ abstract class Initial implements Template0004State {
 }
 
 abstract class $ShowExerciseCopyWith<$Res> {
-  factory $ShowExerciseCopyWith(
-          ShowExercise value, $Res Function(ShowExercise) then) =
+  factory $ShowExerciseCopyWith(ShowExercise value, $Res Function(ShowExercise) then) =
       _$ShowExerciseCopyWithImpl<$Res>;
   $Res call({String word, List<String> answers, List<Color> colors});
 }
 
-class _$ShowExerciseCopyWithImpl<$Res>
-    extends _$Template0004StateCopyWithImpl<$Res>
+class _$ShowExerciseCopyWithImpl<$Res> extends _$Template0004StateCopyWithImpl<$Res>
     implements $ShowExerciseCopyWith<$Res> {
-  _$ShowExerciseCopyWithImpl(
-      ShowExercise _value, $Res Function(ShowExercise) _then)
+  _$ShowExerciseCopyWithImpl(ShowExercise _value, $Res Function(ShowExercise) _then)
       : super(_value, (v) => _then(v as ShowExercise));
 
   @override
@@ -499,13 +475,9 @@ class _$ShowExercise with DiagnosticableTreeMixin implements ShowExercise {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ShowExercise &&
-            (identical(other.word, word) ||
-                const DeepCollectionEquality().equals(other.word, word)) &&
-            (identical(other.answers, answers) ||
-                const DeepCollectionEquality()
-                    .equals(other.answers, answers)) &&
-            (identical(other.colors, colors) ||
-                const DeepCollectionEquality().equals(other.colors, colors)));
+            (identical(other.word, word) || const DeepCollectionEquality().equals(other.word, word)) &&
+            (identical(other.answers, answers) || const DeepCollectionEquality().equals(other.answers, answers)) &&
+            (identical(other.colors, colors) || const DeepCollectionEquality().equals(other.colors, colors)));
   }
 
   @override
@@ -516,16 +488,13 @@ class _$ShowExercise with DiagnosticableTreeMixin implements ShowExercise {
       const DeepCollectionEquality().hash(colors);
 
   @override
-  $ShowExerciseCopyWith<ShowExercise> get copyWith =>
-      _$ShowExerciseCopyWithImpl<ShowExercise>(this, _$identity);
+  $ShowExerciseCopyWith<ShowExercise> get copyWith => _$ShowExerciseCopyWithImpl<ShowExercise>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required
-        Result showExercise(
-            String word, List<String> answers, List<Color> colors),
+    @required Result showExercise(String word, List<String> answers, List<Color> colors),
   }) {
     assert(initial != null);
     assert(showExercise != null);
@@ -573,8 +542,7 @@ class _$ShowExercise with DiagnosticableTreeMixin implements ShowExercise {
 }
 
 abstract class ShowExercise implements Template0004State {
-  const factory ShowExercise(
-      String word, List<String> answers, List<Color> colors) = _$ShowExercise;
+  const factory ShowExercise(String word, List<String> answers, List<Color> colors) = _$ShowExercise;
 
   String get word;
   List<String> get answers;

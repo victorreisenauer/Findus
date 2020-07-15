@@ -1,13 +1,14 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
-import 'package:kt_dart/collection.dart';
-import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/infrastructure/lesson/models/exercise_model.dart';
-import 'package:meta/meta.dart';
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:json_annotation/json_annotation.dart";
+import "package:kt_dart/collection.dart";
+import "package:meta/meta.dart";
 
-part 'lesson_model.freezed.dart';
-part 'lesson_model.g.dart';
+import "../../../domain/core/value_objects_barrel.dart";
+import "../../../domain/lesson/lesson_barrel.dart";
+import "exercise_model.dart";
+
+part "lesson_model.freezed.dart";
+part "lesson_model.g.dart";
 
 @freezed
 abstract class LessonModel with _$LessonModel {
@@ -18,17 +19,14 @@ abstract class LessonModel with _$LessonModel {
   }) = _LessonModel;
 
   /// turns Json into [LessonModel]
-  factory LessonModel.fromJson(Map<String, dynamic> json) =>
-      _$LessonModelFromJson(json);
+  factory LessonModel.fromJson(Map<String, dynamic> json) => _$LessonModelFromJson(json);
 
   /// turns [Lesson] into [LessonModel]
   factory LessonModel.fromDomain(Lesson lesson, UniqueId assignedToUserId) {
     return LessonModel(
       id: lesson.id.getOrCrash(),
-      exerciseList: lesson.exerciseList
-          .getOrCrash()
-          .mapIndexed((index, exercise) => ExerciseModel.fromDomain(exercise))
-          .asList(),
+      exerciseList:
+          lesson.exerciseList.getOrCrash().mapIndexed((index, exercise) => ExerciseModel.fromDomain(exercise)).asList(),
       assignedToUserId: assignedToUserId.getOrCrash(),
     );
   }
@@ -45,8 +43,6 @@ extension LessonModelX on LessonModel {
     );
   }
 
-  Map<String, dynamic> toJsonDeep() => <String, dynamic>{
-        "id": id,
-        "exerciseList": exerciseList.map((exModel) => exModel.toJson())
-      };
+  Map<String, dynamic> toJsonDeep() =>
+      <String, dynamic>{"id": id, "exerciseList": exerciseList.map((exModel) => exModel.toJson())};
 }

@@ -1,11 +1,10 @@
-import 'package:flutter/foundation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meta/meta.dart';
+import "package:flutter/foundation.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:meta/meta.dart";
 
-import 'package:lrs_app_v3/domain/auth/auth_barrel.dart';
-import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
+import "../../core/value_objects_barrel.dart";
 
-part 'personal_data.freezed.dart';
+part "personal_data.freezed.dart";
 
 @freezed
 
@@ -17,7 +16,7 @@ abstract class PersonalData with _$PersonalData {
   }) = _PersonalData;
 
   factory PersonalData.empty() => PersonalData(
-        firstName: StringSingleLine(''),
-        lastName: StringSingleLine(''),
+        firstName: StringSingleLine(""),
+        lastName: StringSingleLine(""),
       );
 }

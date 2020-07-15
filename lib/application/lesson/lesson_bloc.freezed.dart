@@ -70,9 +70,7 @@ mixin _$LessonEvent {
 }
 
 abstract class $LessonEventCopyWith<$Res> {
-  factory $LessonEventCopyWith(
-          LessonEvent value, $Res Function(LessonEvent) then) =
-      _$LessonEventCopyWithImpl<$Res>;
+  factory $LessonEventCopyWith(LessonEvent value, $Res Function(LessonEvent) then) = _$LessonEventCopyWithImpl<$Res>;
 }
 
 class _$LessonEventCopyWithImpl<$Res> implements $LessonEventCopyWith<$Res> {
@@ -84,25 +82,20 @@ class _$LessonEventCopyWithImpl<$Res> implements $LessonEventCopyWith<$Res> {
 }
 
 abstract class $FetchAllLessonIdsCopyWith<$Res> {
-  factory $FetchAllLessonIdsCopyWith(
-          FetchAllLessonIds value, $Res Function(FetchAllLessonIds) then) =
+  factory $FetchAllLessonIdsCopyWith(FetchAllLessonIds value, $Res Function(FetchAllLessonIds) then) =
       _$FetchAllLessonIdsCopyWithImpl<$Res>;
 }
 
-class _$FetchAllLessonIdsCopyWithImpl<$Res>
-    extends _$LessonEventCopyWithImpl<$Res>
+class _$FetchAllLessonIdsCopyWithImpl<$Res> extends _$LessonEventCopyWithImpl<$Res>
     implements $FetchAllLessonIdsCopyWith<$Res> {
-  _$FetchAllLessonIdsCopyWithImpl(
-      FetchAllLessonIds _value, $Res Function(FetchAllLessonIds) _then)
+  _$FetchAllLessonIdsCopyWithImpl(FetchAllLessonIds _value, $Res Function(FetchAllLessonIds) _then)
       : super(_value, (v) => _then(v as FetchAllLessonIds));
 
   @override
   FetchAllLessonIds get _value => super._value as FetchAllLessonIds;
 }
 
-class _$FetchAllLessonIds
-    with DiagnosticableTreeMixin
-    implements FetchAllLessonIds {
+class _$FetchAllLessonIds with DiagnosticableTreeMixin implements FetchAllLessonIds {
   const _$FetchAllLessonIds();
 
   @override
@@ -113,8 +106,7 @@ class _$FetchAllLessonIds
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'LessonEvent.fetchAllLessonIds'));
+    properties..add(DiagnosticsProperty('type', 'LessonEvent.fetchAllLessonIds'));
   }
 
   @override
@@ -193,16 +185,12 @@ abstract class FetchAllLessonIds implements LessonEvent {
 }
 
 abstract class $StartLessonCopyWith<$Res> {
-  factory $StartLessonCopyWith(
-          StartLesson value, $Res Function(StartLesson) then) =
-      _$StartLessonCopyWithImpl<$Res>;
+  factory $StartLessonCopyWith(StartLesson value, $Res Function(StartLesson) then) = _$StartLessonCopyWithImpl<$Res>;
   $Res call({UniqueId id});
 }
 
-class _$StartLessonCopyWithImpl<$Res> extends _$LessonEventCopyWithImpl<$Res>
-    implements $StartLessonCopyWith<$Res> {
-  _$StartLessonCopyWithImpl(
-      StartLesson _value, $Res Function(StartLesson) _then)
+class _$StartLessonCopyWithImpl<$Res> extends _$LessonEventCopyWithImpl<$Res> implements $StartLessonCopyWith<$Res> {
+  _$StartLessonCopyWithImpl(StartLesson _value, $Res Function(StartLesson) _then)
       : super(_value, (v) => _then(v as StartLesson));
 
   @override
@@ -232,26 +220,20 @@ class _$StartLesson with DiagnosticableTreeMixin implements StartLesson {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'LessonEvent.startLesson'))
-      ..add(DiagnosticsProperty('id', id));
+    properties..add(DiagnosticsProperty('type', 'LessonEvent.startLesson'))..add(DiagnosticsProperty('id', id));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is StartLesson &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+        (other is StartLesson && (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
 
   @override
-  $StartLessonCopyWith<StartLesson> get copyWith =>
-      _$StartLessonCopyWithImpl<StartLesson>(this, _$identity);
+  $StartLessonCopyWith<StartLesson> get copyWith => _$StartLessonCopyWithImpl<StartLesson>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -324,16 +306,13 @@ abstract class StartLesson implements LessonEvent {
 }
 
 abstract class $FinishLessonCopyWith<$Res> {
-  factory $FinishLessonCopyWith(
-          FinishLesson value, $Res Function(FinishLesson) then) =
+  factory $FinishLessonCopyWith(FinishLesson value, $Res Function(FinishLesson) then) =
       _$FinishLessonCopyWithImpl<$Res>;
   $Res call({List<ExerciseResult> results});
 }
 
-class _$FinishLessonCopyWithImpl<$Res> extends _$LessonEventCopyWithImpl<$Res>
-    implements $FinishLessonCopyWith<$Res> {
-  _$FinishLessonCopyWithImpl(
-      FinishLesson _value, $Res Function(FinishLesson) _then)
+class _$FinishLessonCopyWithImpl<$Res> extends _$LessonEventCopyWithImpl<$Res> implements $FinishLessonCopyWith<$Res> {
+  _$FinishLessonCopyWithImpl(FinishLesson _value, $Res Function(FinishLesson) _then)
       : super(_value, (v) => _then(v as FinishLesson));
 
   @override
@@ -372,17 +351,14 @@ class _$FinishLesson with DiagnosticableTreeMixin implements FinishLesson {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is FinishLesson &&
-            (identical(other.results, results) ||
-                const DeepCollectionEquality().equals(other.results, results)));
+            (identical(other.results, results) || const DeepCollectionEquality().equals(other.results, results)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(results);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(results);
 
   @override
-  $FinishLessonCopyWith<FinishLesson> get copyWith =>
-      _$FinishLessonCopyWithImpl<FinishLesson>(this, _$identity);
+  $FinishLessonCopyWith<FinishLesson> get copyWith => _$FinishLessonCopyWithImpl<FinishLesson>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -455,15 +431,11 @@ abstract class FinishLesson implements LessonEvent {
 }
 
 abstract class $AbortLessonCopyWith<$Res> {
-  factory $AbortLessonCopyWith(
-          AbortLesson value, $Res Function(AbortLesson) then) =
-      _$AbortLessonCopyWithImpl<$Res>;
+  factory $AbortLessonCopyWith(AbortLesson value, $Res Function(AbortLesson) then) = _$AbortLessonCopyWithImpl<$Res>;
 }
 
-class _$AbortLessonCopyWithImpl<$Res> extends _$LessonEventCopyWithImpl<$Res>
-    implements $AbortLessonCopyWith<$Res> {
-  _$AbortLessonCopyWithImpl(
-      AbortLesson _value, $Res Function(AbortLesson) _then)
+class _$AbortLessonCopyWithImpl<$Res> extends _$LessonEventCopyWithImpl<$Res> implements $AbortLessonCopyWith<$Res> {
+  _$AbortLessonCopyWithImpl(AbortLesson _value, $Res Function(AbortLesson) _then)
       : super(_value, (v) => _then(v as AbortLesson));
 
   @override
@@ -656,9 +628,7 @@ mixin _$LessonState {
 }
 
 abstract class $LessonStateCopyWith<$Res> {
-  factory $LessonStateCopyWith(
-          LessonState value, $Res Function(LessonState) then) =
-      _$LessonStateCopyWithImpl<$Res>;
+  factory $LessonStateCopyWith(LessonState value, $Res Function(LessonState) then) = _$LessonStateCopyWithImpl<$Res>;
 }
 
 class _$LessonStateCopyWithImpl<$Res> implements $LessonStateCopyWith<$Res> {
@@ -670,14 +640,11 @@ class _$LessonStateCopyWithImpl<$Res> implements $LessonStateCopyWith<$Res> {
 }
 
 abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) = _$InitialCopyWithImpl<$Res>;
 }
 
-class _$InitialCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class _$InitialCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res> implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then) : super(_value, (v) => _then(v as Initial));
 
   @override
   Initial get _value => super._value as Initial;
@@ -797,15 +764,13 @@ abstract class Initial implements LessonState {
 }
 
 abstract class $LessonLoadingCopyWith<$Res> {
-  factory $LessonLoadingCopyWith(
-          LessonLoading value, $Res Function(LessonLoading) then) =
+  factory $LessonLoadingCopyWith(LessonLoading value, $Res Function(LessonLoading) then) =
       _$LessonLoadingCopyWithImpl<$Res>;
 }
 
 class _$LessonLoadingCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
     implements $LessonLoadingCopyWith<$Res> {
-  _$LessonLoadingCopyWithImpl(
-      LessonLoading _value, $Res Function(LessonLoading) _then)
+  _$LessonLoadingCopyWithImpl(LessonLoading _value, $Res Function(LessonLoading) _then)
       : super(_value, (v) => _then(v as LessonLoading));
 
   @override
@@ -926,18 +891,15 @@ abstract class LessonLoading implements LessonState {
 }
 
 abstract class $LessonLoadedCopyWith<$Res> {
-  factory $LessonLoadedCopyWith(
-          LessonLoaded value, $Res Function(LessonLoaded) then) =
+  factory $LessonLoadedCopyWith(LessonLoaded value, $Res Function(LessonLoaded) then) =
       _$LessonLoadedCopyWithImpl<$Res>;
   $Res call({Lesson lesson});
 
   $LessonCopyWith<$Res> get lesson;
 }
 
-class _$LessonLoadedCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
-    implements $LessonLoadedCopyWith<$Res> {
-  _$LessonLoadedCopyWithImpl(
-      LessonLoaded _value, $Res Function(LessonLoaded) _then)
+class _$LessonLoadedCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res> implements $LessonLoadedCopyWith<$Res> {
+  _$LessonLoadedCopyWithImpl(LessonLoaded _value, $Res Function(LessonLoaded) _then)
       : super(_value, (v) => _then(v as LessonLoaded));
 
   @override
@@ -986,17 +948,14 @@ class _$LessonLoaded with DiagnosticableTreeMixin implements LessonLoaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is LessonLoaded &&
-            (identical(other.lesson, lesson) ||
-                const DeepCollectionEquality().equals(other.lesson, lesson)));
+            (identical(other.lesson, lesson) || const DeepCollectionEquality().equals(other.lesson, lesson)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(lesson);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(lesson);
 
   @override
-  $LessonLoadedCopyWith<LessonLoaded> get copyWith =>
-      _$LessonLoadedCopyWithImpl<LessonLoaded>(this, _$identity);
+  $LessonLoadedCopyWith<LessonLoaded> get copyWith => _$LessonLoadedCopyWithImpl<LessonLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1093,18 +1052,14 @@ abstract class LessonLoaded implements LessonState {
 }
 
 abstract class $LessonErrorCopyWith<$Res> {
-  factory $LessonErrorCopyWith(
-          LessonError value, $Res Function(LessonError) then) =
-      _$LessonErrorCopyWithImpl<$Res>;
+  factory $LessonErrorCopyWith(LessonError value, $Res Function(LessonError) then) = _$LessonErrorCopyWithImpl<$Res>;
   $Res call({LessonFailure error});
 
   $LessonFailureCopyWith<$Res> get error;
 }
 
-class _$LessonErrorCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
-    implements $LessonErrorCopyWith<$Res> {
-  _$LessonErrorCopyWithImpl(
-      LessonError _value, $Res Function(LessonError) _then)
+class _$LessonErrorCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res> implements $LessonErrorCopyWith<$Res> {
+  _$LessonErrorCopyWithImpl(LessonError _value, $Res Function(LessonError) _then)
       : super(_value, (v) => _then(v as LessonError));
 
   @override
@@ -1144,26 +1099,21 @@ class _$LessonError with DiagnosticableTreeMixin implements LessonError {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'LessonState.lessonError'))
-      ..add(DiagnosticsProperty('error', error));
+    properties..add(DiagnosticsProperty('type', 'LessonState.lessonError'))..add(DiagnosticsProperty('error', error));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is LessonError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+            (identical(other.error, error) || const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $LessonErrorCopyWith<LessonError> get copyWith =>
-      _$LessonErrorCopyWithImpl<LessonError>(this, _$identity);
+  $LessonErrorCopyWith<LessonError> get copyWith => _$LessonErrorCopyWithImpl<LessonError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1260,17 +1210,14 @@ abstract class LessonError implements LessonState {
 }
 
 abstract class $AllLessonIdsLoadedCopyWith<$Res> {
-  factory $AllLessonIdsLoadedCopyWith(
-          AllLessonIdsLoaded value, $Res Function(AllLessonIdsLoaded) then) =
+  factory $AllLessonIdsLoadedCopyWith(AllLessonIdsLoaded value, $Res Function(AllLessonIdsLoaded) then) =
       _$AllLessonIdsLoadedCopyWithImpl<$Res>;
   $Res call({Stream<UniqueId> ids});
 }
 
-class _$AllLessonIdsLoadedCopyWithImpl<$Res>
-    extends _$LessonStateCopyWithImpl<$Res>
+class _$AllLessonIdsLoadedCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
     implements $AllLessonIdsLoadedCopyWith<$Res> {
-  _$AllLessonIdsLoadedCopyWithImpl(
-      AllLessonIdsLoaded _value, $Res Function(AllLessonIdsLoaded) _then)
+  _$AllLessonIdsLoadedCopyWithImpl(AllLessonIdsLoaded _value, $Res Function(AllLessonIdsLoaded) _then)
       : super(_value, (v) => _then(v as AllLessonIdsLoaded));
 
   @override
@@ -1286,9 +1233,7 @@ class _$AllLessonIdsLoadedCopyWithImpl<$Res>
   }
 }
 
-class _$AllLessonIdsLoaded
-    with DiagnosticableTreeMixin
-    implements AllLessonIdsLoaded {
+class _$AllLessonIdsLoaded with DiagnosticableTreeMixin implements AllLessonIdsLoaded {
   const _$AllLessonIdsLoaded(this.ids) : assert(ids != null);
 
   @override
@@ -1311,13 +1256,11 @@ class _$AllLessonIdsLoaded
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is AllLessonIdsLoaded &&
-            (identical(other.ids, ids) ||
-                const DeepCollectionEquality().equals(other.ids, ids)));
+            (identical(other.ids, ids) || const DeepCollectionEquality().equals(other.ids, ids)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(ids);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(ids);
 
   @override
   $AllLessonIdsLoadedCopyWith<AllLessonIdsLoaded> get copyWith =>
@@ -1418,16 +1361,14 @@ abstract class AllLessonIdsLoaded implements LessonState {
 }
 
 abstract class $LessonStartedCopyWith<$Res> {
-  factory $LessonStartedCopyWith(
-          LessonStarted value, $Res Function(LessonStarted) then) =
+  factory $LessonStartedCopyWith(LessonStarted value, $Res Function(LessonStarted) then) =
       _$LessonStartedCopyWithImpl<$Res>;
   $Res call({ObjectList<Exercise> exerciseList});
 }
 
 class _$LessonStartedCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
     implements $LessonStartedCopyWith<$Res> {
-  _$LessonStartedCopyWithImpl(
-      LessonStarted _value, $Res Function(LessonStarted) _then)
+  _$LessonStartedCopyWithImpl(LessonStarted _value, $Res Function(LessonStarted) _then)
       : super(_value, (v) => _then(v as LessonStarted));
 
   @override
@@ -1438,9 +1379,7 @@ class _$LessonStartedCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
     Object exerciseList = freezed,
   }) {
     return _then(LessonStarted(
-      exerciseList == freezed
-          ? _value.exerciseList
-          : exerciseList as ObjectList<Exercise>,
+      exerciseList == freezed ? _value.exerciseList : exerciseList as ObjectList<Exercise>,
     ));
   }
 }
@@ -1469,17 +1408,14 @@ class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
     return identical(this, other) ||
         (other is LessonStarted &&
             (identical(other.exerciseList, exerciseList) ||
-                const DeepCollectionEquality()
-                    .equals(other.exerciseList, exerciseList)));
+                const DeepCollectionEquality().equals(other.exerciseList, exerciseList)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseList);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseList);
 
   @override
-  $LessonStartedCopyWith<LessonStarted> get copyWith =>
-      _$LessonStartedCopyWithImpl<LessonStarted>(this, _$identity);
+  $LessonStartedCopyWith<LessonStarted> get copyWith => _$LessonStartedCopyWithImpl<LessonStarted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1569,23 +1505,20 @@ class _$LessonStarted with DiagnosticableTreeMixin implements LessonStarted {
 }
 
 abstract class LessonStarted implements LessonState {
-  const factory LessonStarted(ObjectList<Exercise> exerciseList) =
-      _$LessonStarted;
+  const factory LessonStarted(ObjectList<Exercise> exerciseList) = _$LessonStarted;
 
   ObjectList<Exercise> get exerciseList;
   $LessonStartedCopyWith<LessonStarted> get copyWith;
 }
 
 abstract class $LessonFinishedCopyWith<$Res> {
-  factory $LessonFinishedCopyWith(
-          LessonFinished value, $Res Function(LessonFinished) then) =
+  factory $LessonFinishedCopyWith(LessonFinished value, $Res Function(LessonFinished) then) =
       _$LessonFinishedCopyWithImpl<$Res>;
 }
 
 class _$LessonFinishedCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
     implements $LessonFinishedCopyWith<$Res> {
-  _$LessonFinishedCopyWithImpl(
-      LessonFinished _value, $Res Function(LessonFinished) _then)
+  _$LessonFinishedCopyWithImpl(LessonFinished _value, $Res Function(LessonFinished) _then)
       : super(_value, (v) => _then(v as LessonFinished));
 
   @override
@@ -1706,15 +1639,13 @@ abstract class LessonFinished implements LessonState {
 }
 
 abstract class $LessonAbortedCopyWith<$Res> {
-  factory $LessonAbortedCopyWith(
-          LessonAborted value, $Res Function(LessonAborted) then) =
+  factory $LessonAbortedCopyWith(LessonAborted value, $Res Function(LessonAborted) then) =
       _$LessonAbortedCopyWithImpl<$Res>;
 }
 
 class _$LessonAbortedCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
     implements $LessonAbortedCopyWith<$Res> {
-  _$LessonAbortedCopyWithImpl(
-      LessonAborted _value, $Res Function(LessonAborted) _then)
+  _$LessonAbortedCopyWithImpl(LessonAborted _value, $Res Function(LessonAborted) _then)
       : super(_value, (v) => _then(v as LessonAborted));
 
   @override

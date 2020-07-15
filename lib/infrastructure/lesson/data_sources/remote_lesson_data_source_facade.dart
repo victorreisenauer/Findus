@@ -1,4 +1,5 @@
-import 'package:lrs_app_v3/infrastructure/lesson/lesson_barrel.dart';
+import "../models/lesson_model.dart";
+import "../models/lesson_result_model.dart";
 
 abstract class RemoteLessonDataSourceFacade {
   Stream<LessonModel> getAvailableLessonData();

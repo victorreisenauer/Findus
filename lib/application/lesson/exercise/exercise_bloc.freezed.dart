@@ -68,13 +68,11 @@ mixin _$ExerciseEvent {
 }
 
 abstract class $ExerciseEventCopyWith<$Res> {
-  factory $ExerciseEventCopyWith(
-          ExerciseEvent value, $Res Function(ExerciseEvent) then) =
+  factory $ExerciseEventCopyWith(ExerciseEvent value, $Res Function(ExerciseEvent) then) =
       _$ExerciseEventCopyWithImpl<$Res>;
 }
 
-class _$ExerciseEventCopyWithImpl<$Res>
-    implements $ExerciseEventCopyWith<$Res> {
+class _$ExerciseEventCopyWithImpl<$Res> implements $ExerciseEventCopyWith<$Res> {
   _$ExerciseEventCopyWithImpl(this._value, this._then);
 
   final ExerciseEvent _value;
@@ -83,16 +81,13 @@ class _$ExerciseEventCopyWithImpl<$Res>
 }
 
 abstract class $BuildFirstExerciseCopyWith<$Res> {
-  factory $BuildFirstExerciseCopyWith(
-          BuildFirstExercise value, $Res Function(BuildFirstExercise) then) =
+  factory $BuildFirstExerciseCopyWith(BuildFirstExercise value, $Res Function(BuildFirstExercise) then) =
       _$BuildFirstExerciseCopyWithImpl<$Res>;
 }
 
-class _$BuildFirstExerciseCopyWithImpl<$Res>
-    extends _$ExerciseEventCopyWithImpl<$Res>
+class _$BuildFirstExerciseCopyWithImpl<$Res> extends _$ExerciseEventCopyWithImpl<$Res>
     implements $BuildFirstExerciseCopyWith<$Res> {
-  _$BuildFirstExerciseCopyWithImpl(
-      BuildFirstExercise _value, $Res Function(BuildFirstExercise) _then)
+  _$BuildFirstExerciseCopyWithImpl(BuildFirstExercise _value, $Res Function(BuildFirstExercise) _then)
       : super(_value, (v) => _then(v as BuildFirstExercise));
 
   @override
@@ -183,16 +178,13 @@ abstract class BuildFirstExercise implements ExerciseEvent {
 }
 
 abstract class $BuildNextExerciseCopyWith<$Res> {
-  factory $BuildNextExerciseCopyWith(
-          BuildNextExercise value, $Res Function(BuildNextExercise) then) =
+  factory $BuildNextExerciseCopyWith(BuildNextExercise value, $Res Function(BuildNextExercise) then) =
       _$BuildNextExerciseCopyWithImpl<$Res>;
 }
 
-class _$BuildNextExerciseCopyWithImpl<$Res>
-    extends _$ExerciseEventCopyWithImpl<$Res>
+class _$BuildNextExerciseCopyWithImpl<$Res> extends _$ExerciseEventCopyWithImpl<$Res>
     implements $BuildNextExerciseCopyWith<$Res> {
-  _$BuildNextExerciseCopyWithImpl(
-      BuildNextExercise _value, $Res Function(BuildNextExercise) _then)
+  _$BuildNextExerciseCopyWithImpl(BuildNextExercise _value, $Res Function(BuildNextExercise) _then)
       : super(_value, (v) => _then(v as BuildNextExercise));
 
   @override
@@ -283,19 +275,16 @@ abstract class BuildNextExercise implements ExerciseEvent {
 }
 
 abstract class $FinishExerciseCopyWith<$Res> {
-  factory $FinishExerciseCopyWith(
-          FinishExercise value, $Res Function(FinishExercise) then) =
+  factory $FinishExerciseCopyWith(FinishExercise value, $Res Function(FinishExercise) then) =
       _$FinishExerciseCopyWithImpl<$Res>;
   $Res call({ExerciseResult result});
 
   $ExerciseResultCopyWith<$Res> get result;
 }
 
-class _$FinishExerciseCopyWithImpl<$Res>
-    extends _$ExerciseEventCopyWithImpl<$Res>
+class _$FinishExerciseCopyWithImpl<$Res> extends _$ExerciseEventCopyWithImpl<$Res>
     implements $FinishExerciseCopyWith<$Res> {
-  _$FinishExerciseCopyWithImpl(
-      FinishExercise _value, $Res Function(FinishExercise) _then)
+  _$FinishExerciseCopyWithImpl(FinishExercise _value, $Res Function(FinishExercise) _then)
       : super(_value, (v) => _then(v as FinishExercise));
 
   @override
@@ -336,13 +325,11 @@ class _$FinishExercise implements FinishExercise {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is FinishExercise &&
-            (identical(other.result, result) ||
-                const DeepCollectionEquality().equals(other.result, result)));
+            (identical(other.result, result) || const DeepCollectionEquality().equals(other.result, result)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
   @override
   $FinishExerciseCopyWith<FinishExercise> get copyWith =>
@@ -419,16 +406,13 @@ abstract class FinishExercise implements ExerciseEvent {
 }
 
 abstract class $AbortExerciseCopyWith<$Res> {
-  factory $AbortExerciseCopyWith(
-          AbortExercise value, $Res Function(AbortExercise) then) =
+  factory $AbortExerciseCopyWith(AbortExercise value, $Res Function(AbortExercise) then) =
       _$AbortExerciseCopyWithImpl<$Res>;
 }
 
-class _$AbortExerciseCopyWithImpl<$Res>
-    extends _$ExerciseEventCopyWithImpl<$Res>
+class _$AbortExerciseCopyWithImpl<$Res> extends _$ExerciseEventCopyWithImpl<$Res>
     implements $AbortExerciseCopyWith<$Res> {
-  _$AbortExerciseCopyWithImpl(
-      AbortExercise _value, $Res Function(AbortExercise) _then)
+  _$AbortExerciseCopyWithImpl(AbortExercise _value, $Res Function(AbortExercise) _then)
       : super(_value, (v) => _then(v as AbortExercise));
 
   @override
@@ -587,13 +571,11 @@ mixin _$ExerciseState {
 }
 
 abstract class $ExerciseStateCopyWith<$Res> {
-  factory $ExerciseStateCopyWith(
-          ExerciseState value, $Res Function(ExerciseState) then) =
+  factory $ExerciseStateCopyWith(ExerciseState value, $Res Function(ExerciseState) then) =
       _$ExerciseStateCopyWithImpl<$Res>;
 }
 
-class _$ExerciseStateCopyWithImpl<$Res>
-    implements $ExerciseStateCopyWith<$Res> {
+class _$ExerciseStateCopyWithImpl<$Res> implements $ExerciseStateCopyWith<$Res> {
   _$ExerciseStateCopyWithImpl(this._value, this._then);
 
   final ExerciseState _value;
@@ -602,14 +584,11 @@ class _$ExerciseStateCopyWithImpl<$Res>
 }
 
 abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) = _$InitialCopyWithImpl<$Res>;
 }
 
-class _$InitialCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class _$InitialCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res> implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then) : super(_value, (v) => _then(v as Initial));
 
   @override
   Initial get _value => super._value as Initial;
@@ -705,17 +684,14 @@ abstract class Initial implements ExerciseState {
 }
 
 abstract class $ExerciseBuiltCopyWith<$Res> {
-  factory $ExerciseBuiltCopyWith(
-          ExerciseBuilt value, $Res Function(ExerciseBuilt) then) =
+  factory $ExerciseBuiltCopyWith(ExerciseBuilt value, $Res Function(ExerciseBuilt) then) =
       _$ExerciseBuiltCopyWithImpl<$Res>;
   $Res call({Template builtExercise});
 }
 
-class _$ExerciseBuiltCopyWithImpl<$Res>
-    extends _$ExerciseStateCopyWithImpl<$Res>
+class _$ExerciseBuiltCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res>
     implements $ExerciseBuiltCopyWith<$Res> {
-  _$ExerciseBuiltCopyWithImpl(
-      ExerciseBuilt _value, $Res Function(ExerciseBuilt) _then)
+  _$ExerciseBuiltCopyWithImpl(ExerciseBuilt _value, $Res Function(ExerciseBuilt) _then)
       : super(_value, (v) => _then(v as ExerciseBuilt));
 
   @override
@@ -726,9 +702,7 @@ class _$ExerciseBuiltCopyWithImpl<$Res>
     Object builtExercise = freezed,
   }) {
     return _then(ExerciseBuilt(
-      builtExercise == freezed
-          ? _value.builtExercise
-          : builtExercise as Template,
+      builtExercise == freezed ? _value.builtExercise : builtExercise as Template,
     ));
   }
 }
@@ -749,17 +723,14 @@ class _$ExerciseBuilt implements ExerciseBuilt {
     return identical(this, other) ||
         (other is ExerciseBuilt &&
             (identical(other.builtExercise, builtExercise) ||
-                const DeepCollectionEquality()
-                    .equals(other.builtExercise, builtExercise)));
+                const DeepCollectionEquality().equals(other.builtExercise, builtExercise)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(builtExercise);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(builtExercise);
 
   @override
-  $ExerciseBuiltCopyWith<ExerciseBuilt> get copyWith =>
-      _$ExerciseBuiltCopyWithImpl<ExerciseBuilt>(this, _$identity);
+  $ExerciseBuiltCopyWith<ExerciseBuilt> get copyWith => _$ExerciseBuiltCopyWithImpl<ExerciseBuilt>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -838,19 +809,16 @@ abstract class ExerciseBuilt implements ExerciseState {
 }
 
 abstract class $ExerciseErrorCopyWith<$Res> {
-  factory $ExerciseErrorCopyWith(
-          ExerciseError value, $Res Function(ExerciseError) then) =
+  factory $ExerciseErrorCopyWith(ExerciseError value, $Res Function(ExerciseError) then) =
       _$ExerciseErrorCopyWithImpl<$Res>;
   $Res call({TemplateFailure error});
 
   $TemplateFailureCopyWith<$Res> get error;
 }
 
-class _$ExerciseErrorCopyWithImpl<$Res>
-    extends _$ExerciseStateCopyWithImpl<$Res>
+class _$ExerciseErrorCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res>
     implements $ExerciseErrorCopyWith<$Res> {
-  _$ExerciseErrorCopyWithImpl(
-      ExerciseError _value, $Res Function(ExerciseError) _then)
+  _$ExerciseErrorCopyWithImpl(ExerciseError _value, $Res Function(ExerciseError) _then)
       : super(_value, (v) => _then(v as ExerciseError));
 
   @override
@@ -891,17 +859,14 @@ class _$ExerciseError implements ExerciseError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ExerciseError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+            (identical(other.error, error) || const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $ExerciseErrorCopyWith<ExerciseError> get copyWith =>
-      _$ExerciseErrorCopyWithImpl<ExerciseError>(this, _$identity);
+  $ExerciseErrorCopyWith<ExerciseError> get copyWith => _$ExerciseErrorCopyWithImpl<ExerciseError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -980,16 +945,13 @@ abstract class ExerciseError implements ExerciseState {
 }
 
 abstract class $ExerciseFinishedCopyWith<$Res> {
-  factory $ExerciseFinishedCopyWith(
-          ExerciseFinished value, $Res Function(ExerciseFinished) then) =
+  factory $ExerciseFinishedCopyWith(ExerciseFinished value, $Res Function(ExerciseFinished) then) =
       _$ExerciseFinishedCopyWithImpl<$Res>;
 }
 
-class _$ExerciseFinishedCopyWithImpl<$Res>
-    extends _$ExerciseStateCopyWithImpl<$Res>
+class _$ExerciseFinishedCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res>
     implements $ExerciseFinishedCopyWith<$Res> {
-  _$ExerciseFinishedCopyWithImpl(
-      ExerciseFinished _value, $Res Function(ExerciseFinished) _then)
+  _$ExerciseFinishedCopyWithImpl(ExerciseFinished _value, $Res Function(ExerciseFinished) _then)
       : super(_value, (v) => _then(v as ExerciseFinished));
 
   @override
@@ -1086,16 +1048,13 @@ abstract class ExerciseFinished implements ExerciseState {
 }
 
 abstract class $AllExercisesCompletedCopyWith<$Res> {
-  factory $AllExercisesCompletedCopyWith(AllExercisesCompleted value,
-          $Res Function(AllExercisesCompleted) then) =
+  factory $AllExercisesCompletedCopyWith(AllExercisesCompleted value, $Res Function(AllExercisesCompleted) then) =
       _$AllExercisesCompletedCopyWithImpl<$Res>;
 }
 
-class _$AllExercisesCompletedCopyWithImpl<$Res>
-    extends _$ExerciseStateCopyWithImpl<$Res>
+class _$AllExercisesCompletedCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res>
     implements $AllExercisesCompletedCopyWith<$Res> {
-  _$AllExercisesCompletedCopyWithImpl(
-      AllExercisesCompleted _value, $Res Function(AllExercisesCompleted) _then)
+  _$AllExercisesCompletedCopyWithImpl(AllExercisesCompleted _value, $Res Function(AllExercisesCompleted) _then)
       : super(_value, (v) => _then(v as AllExercisesCompleted));
 
   @override

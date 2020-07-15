@@ -1,4 +1,5 @@
-import 'package:lrs_app_v3/infrastructure/auth/auth_barrel.dart';
+import "../models/personal_data_model.dart";
+import "../models/user_model.dart";
 
 abstract class LocalAuthDataSourceFacade {
   Future<void> cacheUserModel(String userId, UserModel model);

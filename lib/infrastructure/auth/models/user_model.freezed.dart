@@ -37,8 +37,7 @@ mixin _$UserModel {
 }
 
 abstract class $UserModelCopyWith<$Res> {
-  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
-      _$UserModelCopyWithImpl<$Res>;
+  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) = _$UserModelCopyWithImpl<$Res>;
   $Res call({String id, String email, bool active});
 }
 
@@ -64,15 +63,12 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
 }
 
 abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
-  factory _$UserModelCopyWith(
-          _UserModel value, $Res Function(_UserModel) then) =
-      __$UserModelCopyWithImpl<$Res>;
+  factory _$UserModelCopyWith(_UserModel value, $Res Function(_UserModel) then) = __$UserModelCopyWithImpl<$Res>;
   @override
   $Res call({String id, String email, bool active});
 }
 
-class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
-    implements _$UserModelCopyWith<$Res> {
+class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res> implements _$UserModelCopyWith<$Res> {
   __$UserModelCopyWithImpl(_UserModel _value, $Res Function(_UserModel) _then)
       : super(_value, (v) => _then(v as _UserModel));
 
@@ -99,8 +95,7 @@ class _$_UserModel implements _UserModel {
       : assert(id != null),
         assert(email != null);
 
-  factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
-      _$_$_UserModelFromJson(json);
+  factory _$_UserModel.fromJson(Map<String, dynamic> json) => _$_$_UserModelFromJson(json);
 
   @override
   final String id;
@@ -118,12 +113,9 @@ class _$_UserModel implements _UserModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _UserModel &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.active, active) ||
-                const DeepCollectionEquality().equals(other.active, active)));
+            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.email, email) || const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.active, active) || const DeepCollectionEquality().equals(other.active, active)));
   }
 
   @override
@@ -134,8 +126,7 @@ class _$_UserModel implements _UserModel {
       const DeepCollectionEquality().hash(active);
 
   @override
-  _$UserModelCopyWith<_UserModel> get copyWith =>
-      __$UserModelCopyWithImpl<_UserModel>(this, _$identity);
+  _$UserModelCopyWith<_UserModel> get copyWith => __$UserModelCopyWithImpl<_UserModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -144,13 +135,9 @@ class _$_UserModel implements _UserModel {
 }
 
 abstract class _UserModel implements UserModel {
-  const factory _UserModel(
-      {@required String id,
-      @required String email,
-      bool active}) = _$_UserModel;
+  const factory _UserModel({@required String id, @required String email, bool active}) = _$_UserModel;
 
-  factory _UserModel.fromJson(Map<String, dynamic> json) =
-      _$_UserModel.fromJson;
+  factory _UserModel.fromJson(Map<String, dynamic> json) = _$_UserModel.fromJson;
 
   @override
   String get id;

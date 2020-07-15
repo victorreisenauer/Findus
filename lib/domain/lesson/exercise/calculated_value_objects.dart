@@ -1,8 +1,7 @@
-import 'package:dartz/dartz.dart';
+import "package:dartz/dartz.dart";
 
-import 'package:lrs_app_v3/domain/core/failures.dart';
-
-import 'package:lrs_app_v3/domain/core/value_objects_barrel.dart';
+import "../../core/failures.dart";
+import "../../core/value_objects.dart";
 
 class ExerciseResultData extends ValueObject {
   @override

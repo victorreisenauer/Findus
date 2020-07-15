@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'lesson_model.dart';
+part of "lesson_model.dart";
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -10,16 +10,13 @@ _$_LessonModel _$_$_LessonModelFromJson(Map<String, dynamic> json) {
   return _$_LessonModel(
     id: json['id'] as String,
     exerciseList: (json['exerciseList'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ExerciseModel.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null ? null : ExerciseModel.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     assignedToUserId: json['assignedToUserId'] as String,
   );
 }
 
-Map<String, dynamic> _$_$_LessonModelToJson(_$_LessonModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$_$_LessonModelToJson(_$_LessonModel instance) => <String, dynamic>{
       'id': instance.id,
       'exerciseList': instance.exerciseList,
       'assignedToUserId': instance.assignedToUserId,

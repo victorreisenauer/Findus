@@ -1,20 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lrs_app_v3/application/lesson/exercise/core/base_template_bloc.dart';
-import 'package:lrs_app_v3/presentation/pages/core/background.dart';
-import 'package:lrs_app_v3/presentation/pages/core/progressBar.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:google_fonts/google_fonts.dart";
+
+import "../../../application/lesson/exercise/core/base_template_bloc.dart";
+import "background.dart";
+import "progress_bar.dart";
 
 class BaseExercise extends StatelessWidget {
   final String help;
   final Widget child;
   final Function onAbort;
   final Widget centerBottomBarWidget;
-  const BaseExercise(
-      {@required this.help,
-      @required this.child,
-      @required this.onAbort,
-      this.centerBottomBarWidget});
+  const BaseExercise({@required this.help, @required this.child, @required this.onAbort, this.centerBottomBarWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +34,7 @@ class _BaseExerciseBody extends StatefulWidget {
   final Widget centerBottomBarWidget;
 
   const _BaseExerciseBody(
-      {@required this.help,
-      @required this.child,
-      @required this.onAbort,
-      this.centerBottomBarWidget});
+      {@required this.help, @required this.child, @required this.onAbort, this.centerBottomBarWidget});
 
   @override
   State<StatefulWidget> createState() {
@@ -48,15 +42,13 @@ class _BaseExerciseBody extends StatefulWidget {
   }
 }
 
-class _BaseExerciseBodyState extends State<_BaseExerciseBody>
-    with SingleTickerProviderStateMixin {
+class _BaseExerciseBodyState extends State<_BaseExerciseBody> with SingleTickerProviderStateMixin {
   int animationLength = 200;
 
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<BaseTemplateBloc>(context)
-        .add(BaseTemplateEvent.showStandardScreen());
+    BlocProvider.of<BaseTemplateBloc>(context).add(BaseTemplateEvent.showStandardScreen());
   }
 
   @override
@@ -113,12 +105,10 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
                           ),
                         ),
                         showHelp(state.showHelp, () {
-                          BlocProvider.of<BaseTemplateBloc>(context)
-                              .add(BaseTemplateEvent.showHelpDismissed());
+                          BlocProvider.of<BaseTemplateBloc>(context).add(BaseTemplateEvent.showHelpDismissed());
                         }),
                         showAbort(state.showAbort, widget.onAbort, () {
-                          BlocProvider.of<BaseTemplateBloc>(context)
-                              .add(BaseTemplateEvent.showAbortDismissed());
+                          BlocProvider.of<BaseTemplateBloc>(context).add(BaseTemplateEvent.showAbortDismissed());
                         })
                       ],
                     ),
@@ -139,13 +129,12 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
       child: Container(
         height: 55,
         width: MediaQuery.of(context).size.width - 158,
-        child: widget.centerBottomBarWidget != null
-            ? widget.centerBottomBarWidget
-            : Container(),
+        child: widget.centerBottomBarWidget ?? Container(),
       ),
     );
   }
 
+  // ignore: avoid_positional_boolean_parameters
   Widget bottomButtons(bool close) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -153,32 +142,20 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
         width: 55,
         height: 55,
         decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-                blurRadius: 1.0,
-                spreadRadius: 0.5,
-                offset: Offset(0.0, 2.0),
-                color: Colors.black12)
-          ],
+          boxShadow: [BoxShadow(blurRadius: 1.0, spreadRadius: 0.5, offset: Offset(0.0, 2.0), color: Colors.black12)],
           borderRadius: BorderRadius.circular(8.0),
-          color: close
-              ? Color.fromRGBO(225, 80, 80, 1.0)
-              : Color.fromRGBO(73, 220, 174, 1.0),
+          color: close ? Color.fromRGBO(225, 80, 80, 1.0) : Color.fromRGBO(73, 220, 174, 1.0),
         ),
         child: InkWell(
           onTap: () {
-            BlocProvider.of<BaseTemplateBloc>(context).add(close
-                ? BaseTemplateEvent.showAbortPressed()
-                : BaseTemplateEvent.showHelpPressed());
+            BlocProvider.of<BaseTemplateBloc>(context)
+                .add(close ? BaseTemplateEvent.showAbortPressed() : BaseTemplateEvent.showHelpPressed());
           },
           child: Center(
             child: Text(
-              close ? 'X' : '?',
+              close ? "X" : "?",
               style: GoogleFonts.reemKufi(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40.0,
-                  letterSpacing: 0.1),
+                  color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40.0, letterSpacing: 0.1),
             ),
           ),
         ),
@@ -186,11 +163,12 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
     );
   }
 
+  // ignore: avoid_positional_boolean_parameters
   Widget showHelp(bool show, Function onTap) {
-    double height = show ? 380 : 0;
-    double width = show ? 380 : 0;
-    double opacity = show ? 1.0 : 0.0;
-    double opacity2 = show ? 0.5 : 0.0;
+    var height = show ? 380.0 : 0.0;
+    var width = show ? 380.0 : 0.0;
+    var opacity = show ? 1.0 : 0.0;
+    var opacity2 = show ? 0.5 : 0.0;
 
     return Stack(
       children: <Widget>[
@@ -251,6 +229,7 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
     );
   }
 
+  // ignore: avoid_positional_boolean_parameters
   Widget showAbort(bool show, Function onAbort, Function onDismiss) {
     if (show) {
       return SizedBox.expand(
@@ -273,7 +252,7 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Willst du wirklich aufgeben?',
+                        "Willst du wirklich aufgeben?",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.reemKufi(fontSize: 24.0),
                       ),
@@ -287,14 +266,14 @@ class _BaseExerciseBodyState extends State<_BaseExerciseBody>
                           RaisedButton(
                               color: Colors.greenAccent,
                               child: Text(
-                                'Natürlich nicht',
+                                "Natürlich nicht",
                                 style: GoogleFonts.reemKufi(fontSize: 16.0),
                               ),
                               onPressed: onDismiss),
                           RaisedButton(
                               color: Colors.redAccent,
                               child: Text(
-                                'Leider schon',
+                                "Leider schon",
                                 style: GoogleFonts.reemKufi(fontSize: 16.0),
                               ),
                               onPressed: onAbort)
@@ -324,27 +303,24 @@ class CustomHelpPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint speechBubblePaint = Paint()
+    var speechBubblePaint = Paint()
       ..color = color
       ..strokeWidth = 1.0
       ..style = PaintingStyle.fill;
 
-    Path speechBubble = Path();
+    var speechBubble = Path();
     speechBubble.moveTo(0.0, size.height * 0.5);
     speechBubble.lineTo(0.0, size.height * 0.1);
     speechBubble.quadraticBezierTo(0.0, 0.0, size.width * 0.1, 0.0);
     speechBubble.lineTo(size.width * 0.9, 0.0);
-    speechBubble.quadraticBezierTo(
-        size.width, 0.0, size.width, size.height * 0.1);
+    speechBubble.quadraticBezierTo(size.width, 0.0, size.width, size.height * 0.1);
     speechBubble.lineTo(size.width, size.height * 0.8);
-    speechBubble.quadraticBezierTo(
-        size.width, size.height * 0.9, size.width * 0.9, size.height * 0.9);
+    speechBubble.quadraticBezierTo(size.width, size.height * 0.9, size.width * 0.9, size.height * 0.9);
     speechBubble.lineTo(size.width * 0.75, size.height * 0.9);
     speechBubble.lineTo(size.width * 0.8, size.height);
     speechBubble.lineTo(size.width * 0.65, size.height * 0.9);
     speechBubble.lineTo(size.width * 0.1, size.height * 0.9);
-    speechBubble.quadraticBezierTo(
-        0.0, size.height * 0.9, 0.0, size.height * 0.8);
+    speechBubble.quadraticBezierTo(0.0, size.height * 0.9, 0.0, size.height * 0.8);
 
     canvas.drawPath(speechBubble, speechBubblePaint);
   }

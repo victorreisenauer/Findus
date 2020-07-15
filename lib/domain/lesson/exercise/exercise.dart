@@ -1,14 +1,14 @@
-import 'package:meta/meta.dart';
-import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
+import "package:dartz/dartz.dart";
+import "package:flutter/foundation.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:meta/meta.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:lrs_app_v3/domain/core/value_objects.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/domain/core/failures.dart';
-import 'package:lrs_app_v3/domain/core/entitiy.dart';
+import "../../core/entitiy.dart";
+import "../../core/failures.dart";
+import "../../core/value_objects.dart";
+import "validated_value_objects.dart";
 
-part 'exercise.freezed.dart';
+part "exercise.freezed.dart";
 
 @freezed
 
@@ -23,8 +23,6 @@ abstract class Exercise with _$Exercise implements IEntity {
 
 extension ExerciseX on Exercise {
   Option<ValueFailure<dynamic>> get failureOption {
-    return type.failureOrUnit
-        .andThen(data.failureOrUnit)
-        .fold((l) => some(l), (r) => none());
+    return type.failureOrUnit.andThen(data.failureOrUnit).fold(some, (r) => none());
   }
 }

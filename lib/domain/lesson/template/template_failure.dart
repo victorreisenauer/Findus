@@ -1,6 +1,6 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-part 'template_failure.freezed.dart';
+part "template_failure.freezed.dart";
 
 @freezed
 abstract class TemplateFailure with _$TemplateFailure {

@@ -1,13 +1,13 @@
-import 'package:kt_dart/collection.dart';
-import 'package:meta/meta.dart';
-import 'package:flutter/foundation.dart';
+import "package:flutter/foundation.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:kt_dart/collection.dart";
+import "package:meta/meta.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:lrs_app_v3/domain/core/value_objects.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
-import 'package:lrs_app_v3/domain/core/entitiy.dart';
+import "../core/entitiy.dart";
+import "../core/value_objects.dart";
+import "lesson_barrel.dart";
 
-part 'lesson_result.freezed.dart';
+part "lesson_result.freezed.dart";
 
 @freezed
 

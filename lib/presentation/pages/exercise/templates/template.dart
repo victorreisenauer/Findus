@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:lrs_app_v3/domain/lesson/lesson_barrel.dart';
+import "package:flutter/material.dart";
+
+import "../../../../domain/lesson/lesson_barrel.dart";
 
 abstract class Template extends StatelessWidget {
   final ExerciseData exerciseData;

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class Cloud extends StatelessWidget {
   final double opacity;
@@ -11,13 +11,13 @@ class Cloud extends StatelessWidget {
     return Stack(children: [
       SizedBox.expand(
         child: Opacity(
-          opacity: opacity != null ? opacity : 1.0,
+          opacity: opacity ?? 1.0,
           child: CustomPaint(
             painter: _CloudPainter(opacity: 1.0),
           ),
         ),
       ),
-      child != null ? child : Container(),
+      child ?? Container(),
     ]);
   }
 }
@@ -27,12 +27,12 @@ class _CloudPainter extends CustomPainter {
   _CloudPainter({this.opacity});
   @override
   void paint(Canvas canvas, Size size) {
-    Paint lightCloud = Paint()
+    var lightCloud = Paint()
       ..color = Color.fromRGBO(225, 245, 254, opacity)
       ..style = PaintingStyle.fill
       ..strokeWidth = 1.0;
 
-    Paint darkCloud = Paint()
+    var darkCloud = Paint()
       ..color = Color.fromRGBO(208, 237, 250, opacity)
       ..style = PaintingStyle.fill
       ..strokeWidth = 1.0;
@@ -49,8 +49,7 @@ class _CloudPainter extends CustomPainter {
   }
 
   Rect _getOvalRect(double x1, double y1, double x2, double y2, Size size) {
-    return Rect.fromPoints(Offset(size.width * x1, size.height * y1),
-        Offset(size.width * x2, size.height * y2));
+    return Rect.fromPoints(Offset(size.width * x1, size.height * y1), Offset(size.width * x2, size.height * y2));
   }
 
   @override

@@ -1,23 +1,24 @@
-import 'package:bloc/bloc.dart';
-export 'package:bloc/bloc.dart';
+import "package:bloc/bloc.dart";
+
+export "package:bloc/bloc.dart";
 
 /// Prints out all state changes to terminal for debugging.
-class SimpleBlocDelegate extends BlocObserver {
+class SimpleBlocDelegate extends BlocDelegate {
   @override
   void onEvent(Bloc bloc, Object event) {
     super.onEvent(bloc, event);
-    print('onEvent $event');
+    print("onEvent $event");
   }
 
   @override
-  onTransition(Bloc bloc, Transition transition) {
+  void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    print('onTransition $transition');
+    print("onTransition $transition");
   }
 
   @override
   void onError(Bloc bloc, Object error, StackTrace stacktrace) {
     super.onError(bloc, error, stacktrace);
-    print('onError $error');
+    print("onError $error");
   }
 }
