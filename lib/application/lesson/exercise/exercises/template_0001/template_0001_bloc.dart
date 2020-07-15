@@ -25,13 +25,10 @@ class Template0001Bloc extends Bloc<Template0001Event, Template0001State> {
   TextStyle defaultTextStyle = GoogleFonts.reemKufi(
       fontSize: 18.0, decoration: TextDecoration.none, color: Colors.black87, fontWeight: FontWeight.normal);
 
-  Template0001Bloc({this.exerciseData}) {
+  Template0001Bloc({this.exerciseData}) : super(Template0001State.initial()) {
     exerciseDataMap = exerciseData.value.getOrElse(null);
     filledSuffix = [];
   }
-
-  @override
-  Template0001State get initialState => Template0001State.initial();
 
   @override
   Stream<Template0001State> mapEventToState(

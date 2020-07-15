@@ -9,8 +9,7 @@ part "base_template_event.dart";
 part "base_template_state.dart";
 
 class BaseTemplateBloc extends Bloc<BaseTemplateEvent, BaseTemplateState> {
-  @override
-  BaseTemplateState get initialState => BaseTemplateState.initial();
+  BaseTemplateBloc() : super(BaseTemplateState.initial());
 
   @override
   Stream<BaseTemplateState> mapEventToState(
