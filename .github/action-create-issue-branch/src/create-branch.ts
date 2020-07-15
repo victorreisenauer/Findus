@@ -54,6 +54,6 @@ export async function createBranchForContext(octokit: Octokit) {
     owner: context.issue.owner,
     repo: context.issue.repo,
     issue_number: context.issue.number,
-    body: `Created associated working branch: [${name}](/FindusKids/test/tree/${name}).`,
+    body: `Created associated working branch: [${name}](/FindusKids/app/tree/${name}).`,
   });
 }

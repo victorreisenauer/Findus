@@ -6945,7 +6945,7 @@ function createBranchForContext(octokit) {
             owner: context.issue.owner,
             repo: context.issue.repo,
             issue_number: context.issue.number,
-            body: `Created associated working branch: [${name}](/FindusKids/test/tree/issue/${name}).`,
+            body: `Created associated working branch: [${name}](/FindusKids/app/tree/${name}).`,
         });
     });
 }
