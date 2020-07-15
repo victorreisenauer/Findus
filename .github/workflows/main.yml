@@ -37,8 +37,8 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-#      - name: Download required packages
-#        run: flutter pub get
+      - name: Download required packages
+        run: flutter pub get
       - name: Check if flutter test is happy
         run: flutter test --coverage
       - name: Generate html coverage data and send to server
