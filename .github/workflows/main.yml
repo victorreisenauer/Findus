@@ -23,6 +23,8 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
+      - name: Download required packages
+        run: flutter pub get
       - name: Check if dartanalyzer is happy
         run: bash .github/dartanalyzer.sh
 
