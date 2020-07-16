@@ -3,7 +3,7 @@ import "package:bloc/bloc.dart";
 export "package:bloc/bloc.dart";
 
 /// Prints out all state changes to terminal for debugging.
-class SimpleBlocDelegate extends BlocDelegate {
+class SimpleBlocDelegate extends BlocObserver {
   @override
   void onEvent(Bloc bloc, Object event) {
     super.onEvent(bloc, event);
