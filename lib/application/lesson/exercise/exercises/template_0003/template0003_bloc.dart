@@ -52,8 +52,6 @@ class Template0003Bloc extends Bloc<Template0003Event, Template0003State> {
           answersCorrection.add(e);
         });
         var correction = ShowCorrection(exerciseDataMap["2"][currentState], answersCorrection, colors);
-        ShowCorrection correction = ShowCorrection(exerciseDataMap["2"][currentState], answersCorrection, colors);
-        print(correction);
         yield correction;
         await Future.delayed(Duration(milliseconds: 1000));
         currentState++;
