@@ -1,6 +1,5 @@
 # lrs_app_v3
 
-The third version of the LRS App. 
 
 # Current progress:
 
@@ -10,8 +9,6 @@ The third version of the LRS App.
 
 ## Current MVP:
 
-![alt text](/doc/homePage.jpg "HomePage")
-![alt text](/doc/signInPage.jpg "SignInPage")
 
 
 # Our way of doing things:
