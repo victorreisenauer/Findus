@@ -5,6 +5,7 @@ import "package:flutter/foundation.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:injectable/injectable.dart";
 import "package:kt_dart/collection.dart";
+import 'package:lrs_app_v3/infrastructure/lesson/data_sources/remote_lesson_data_source_facade.dart';
 import "package:meta/meta.dart";
 
 import "../../domain/core/value_objects.dart";
@@ -14,6 +15,7 @@ import "../../domain/lesson/lesson.dart";
 import "../../domain/lesson/lesson_facade.dart";
 import "../../domain/lesson/lesson_failure.dart";
 import "../../domain/lesson/lesson_result.dart";
+import "../../injection.dart";
 
 part "lesson_bloc.freezed.dart";
 part "lesson_event.dart";
@@ -32,9 +34,13 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
   ) async* {
     yield* event.map(fetchAllLessonIds: (_) async* {
       yield const LessonState.lessonLoading();
-      await _lessonFacade.update();
-      yield await _lessonFacade.getLessonIdsForUser().then((either) =>
-          either.fold((f) => LessonState.lessonError(f), (idStream) => LessonState.lessonIdStreamLoaded(idStream)));
+
+      var remoteData = getIt<RemoteLessonDataSourceFacade>();
+      await remoteData.getAvailableLessonData();
+
+      //await _lessonFacade.update();
+      //yield await _lessonFacade.getLessonIdsForUser().then((either) =>
+      //    either.fold((f) => LessonState.lessonError(f), (idStream) => LessonState.lessonIdStreamLoaded(idStream)));
     }, startLesson: (e) async* {
       yield LessonLoading();
       final failureOrLesson = await _lessonFacade.getLessonById(e.id);

@@ -12,7 +12,8 @@ T _$identity<T>(T value) => value;
 class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
-  ExceedingLength<T> exceedingLength<T>({@required T failedValue, @required int max}) {
+  ExceedingLength<T> exceedingLength<T>(
+      {@required T failedValue, @required int max}) {
     return ExceedingLength<T>(
       failedValue: failedValue,
       max: max,
@@ -31,7 +32,8 @@ class _$ValueFailureTearOff {
     );
   }
 
-  NumberTooLarge<T> numberTooLarge<T>({@required T failedValue, @required num max}) {
+  NumberTooLarge<T> numberTooLarge<T>(
+      {@required T failedValue, @required num max}) {
     return NumberTooLarge<T>(
       failedValue: failedValue,
       max: max,
@@ -63,7 +65,8 @@ class _$ValueFailureTearOff {
     );
   }
 
-  NotOfObjectType<T> notOfObjectType<T>({@required T failedValue, @required Type validType}) {
+  NotOfObjectType<T> notOfObjectType<T>(
+      {@required T failedValue, @required Type validType}) {
     return NotOfObjectType<T>(
       failedValue: failedValue,
       validType: validType,
@@ -132,12 +135,14 @@ mixin _$ValueFailure<T> {
 }
 
 abstract class $ValueFailureCopyWith<T, $Res> {
-  factory $ValueFailureCopyWith(ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
+  factory $ValueFailureCopyWith(
+          ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
       _$ValueFailureCopyWithImpl<T, $Res>;
   $Res call({T failedValue});
 }
 
-class _$ValueFailureCopyWithImpl<T, $Res> implements $ValueFailureCopyWith<T, $Res> {
+class _$ValueFailureCopyWithImpl<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
   _$ValueFailureCopyWithImpl(this._value, this._then);
 
   final ValueFailure<T> _value;
@@ -149,21 +154,26 @@ class _$ValueFailureCopyWithImpl<T, $Res> implements $ValueFailureCopyWith<T, $R
     Object failedValue = freezed,
   }) {
     return _then(_value.copyWith(
-      failedValue: failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
     ));
   }
 }
 
-abstract class $ExceedingLengthCopyWith<T, $Res> implements $ValueFailureCopyWith<T, $Res> {
-  factory $ExceedingLengthCopyWith(ExceedingLength<T> value, $Res Function(ExceedingLength<T>) then) =
+abstract class $ExceedingLengthCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $ExceedingLengthCopyWith(
+          ExceedingLength<T> value, $Res Function(ExceedingLength<T>) then) =
       _$ExceedingLengthCopyWithImpl<T, $Res>;
   @override
   $Res call({T failedValue, int max});
 }
 
-class _$ExceedingLengthCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+class _$ExceedingLengthCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
     implements $ExceedingLengthCopyWith<T, $Res> {
-  _$ExceedingLengthCopyWithImpl(ExceedingLength<T> _value, $Res Function(ExceedingLength<T>) _then)
+  _$ExceedingLengthCopyWithImpl(
+      ExceedingLength<T> _value, $Res Function(ExceedingLength<T>) _then)
       : super(_value, (v) => _then(v as ExceedingLength<T>));
 
   @override
@@ -175,13 +185,16 @@ class _$ExceedingLengthCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<
     Object max = freezed,
   }) {
     return _then(ExceedingLength<T>(
-      failedValue: failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
       max: max == freezed ? _value.max : max as int,
     ));
   }
 }
 
-class _$ExceedingLength<T> with DiagnosticableTreeMixin implements ExceedingLength<T> {
+class _$ExceedingLength<T>
+    with DiagnosticableTreeMixin
+    implements ExceedingLength<T> {
   const _$ExceedingLength({@required this.failedValue, @required this.max})
       : assert(failedValue != null),
         assert(max != null);
@@ -210,8 +223,10 @@ class _$ExceedingLength<T> with DiagnosticableTreeMixin implements ExceedingLeng
     return identical(this, other) ||
         (other is ExceedingLength<T> &&
             (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality().equals(other.failedValue, failedValue)) &&
-            (identical(other.max, max) || const DeepCollectionEquality().equals(other.max, max)));
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)) &&
+            (identical(other.max, max) ||
+                const DeepCollectionEquality().equals(other.max, max)));
   }
 
   @override
@@ -318,7 +333,8 @@ class _$ExceedingLength<T> with DiagnosticableTreeMixin implements ExceedingLeng
 }
 
 abstract class ExceedingLength<T> implements ValueFailure<T> {
-  const factory ExceedingLength({@required T failedValue, @required int max}) = _$ExceedingLength<T>;
+  const factory ExceedingLength({@required T failedValue, @required int max}) =
+      _$ExceedingLength<T>;
 
   @override
   T get failedValue;
@@ -327,14 +343,18 @@ abstract class ExceedingLength<T> implements ValueFailure<T> {
   $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith;
 }
 
-abstract class $EmptyCopyWith<T, $Res> implements $ValueFailureCopyWith<T, $Res> {
-  factory $EmptyCopyWith(Empty<T> value, $Res Function(Empty<T>) then) = _$EmptyCopyWithImpl<T, $Res>;
+abstract class $EmptyCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $EmptyCopyWith(Empty<T> value, $Res Function(Empty<T>) then) =
+      _$EmptyCopyWithImpl<T, $Res>;
   @override
   $Res call({T failedValue});
 }
 
-class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res> implements $EmptyCopyWith<T, $Res> {
-  _$EmptyCopyWithImpl(Empty<T> _value, $Res Function(Empty<T>) _then) : super(_value, (v) => _then(v as Empty<T>));
+class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $EmptyCopyWith<T, $Res> {
+  _$EmptyCopyWithImpl(Empty<T> _value, $Res Function(Empty<T>) _then)
+      : super(_value, (v) => _then(v as Empty<T>));
 
   @override
   Empty<T> get _value => super._value as Empty<T>;
@@ -344,7 +364,8 @@ class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res> i
     Object failedValue = freezed,
   }) {
     return _then(Empty<T>(
-      failedValue: failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
     ));
   }
 }
@@ -373,14 +394,17 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     return identical(this, other) ||
         (other is Empty<T> &&
             (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality().equals(other.failedValue, failedValue)));
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
 
   @override
-  $EmptyCopyWith<T, Empty<T>> get copyWith => _$EmptyCopyWithImpl<T, Empty<T>>(this, _$identity);
+  $EmptyCopyWith<T, Empty<T>> get copyWith =>
+      _$EmptyCopyWithImpl<T, Empty<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -484,15 +508,20 @@ abstract class Empty<T> implements ValueFailure<T> {
   $EmptyCopyWith<T, Empty<T>> get copyWith;
 }
 
-abstract class $MultilineCopyWith<T, $Res> implements $ValueFailureCopyWith<T, $Res> {
-  factory $MultilineCopyWith(Multiline<T> value, $Res Function(Multiline<T>) then) = _$MultilineCopyWithImpl<T, $Res>;
+abstract class $MultilineCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $MultilineCopyWith(
+          Multiline<T> value, $Res Function(Multiline<T>) then) =
+      _$MultilineCopyWithImpl<T, $Res>;
   @override
   $Res call({T failedValue});
 }
 
-class _$MultilineCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+class _$MultilineCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
     implements $MultilineCopyWith<T, $Res> {
-  _$MultilineCopyWithImpl(Multiline<T> _value, $Res Function(Multiline<T>) _then)
+  _$MultilineCopyWithImpl(
+      Multiline<T> _value, $Res Function(Multiline<T>) _then)
       : super(_value, (v) => _then(v as Multiline<T>));
 
   @override
@@ -503,7 +532,8 @@ class _$MultilineCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Re
     Object failedValue = freezed,
   }) {
     return _then(Multiline<T>(
-      failedValue: failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
     ));
   }
 }
@@ -532,14 +562,17 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     return identical(this, other) ||
         (other is Multiline<T> &&
             (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality().equals(other.failedValue, failedValue)));
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
 
   @override
-  $MultilineCopyWith<T, Multiline<T>> get copyWith => _$MultilineCopyWithImpl<T, Multiline<T>>(this, _$identity);
+  $MultilineCopyWith<T, Multiline<T>> get copyWith =>
+      _$MultilineCopyWithImpl<T, Multiline<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -643,16 +676,20 @@ abstract class Multiline<T> implements ValueFailure<T> {
   $MultilineCopyWith<T, Multiline<T>> get copyWith;
 }
 
-abstract class $NumberTooLargeCopyWith<T, $Res> implements $ValueFailureCopyWith<T, $Res> {
-  factory $NumberTooLargeCopyWith(NumberTooLarge<T> value, $Res Function(NumberTooLarge<T>) then) =
+abstract class $NumberTooLargeCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $NumberTooLargeCopyWith(
+          NumberTooLarge<T> value, $Res Function(NumberTooLarge<T>) then) =
       _$NumberTooLargeCopyWithImpl<T, $Res>;
   @override
   $Res call({T failedValue, num max});
 }
 
-class _$NumberTooLargeCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+class _$NumberTooLargeCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
     implements $NumberTooLargeCopyWith<T, $Res> {
-  _$NumberTooLargeCopyWithImpl(NumberTooLarge<T> _value, $Res Function(NumberTooLarge<T>) _then)
+  _$NumberTooLargeCopyWithImpl(
+      NumberTooLarge<T> _value, $Res Function(NumberTooLarge<T>) _then)
       : super(_value, (v) => _then(v as NumberTooLarge<T>));
 
   @override
@@ -664,13 +701,16 @@ class _$NumberTooLargeCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T
     Object max = freezed,
   }) {
     return _then(NumberTooLarge<T>(
-      failedValue: failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
       max: max == freezed ? _value.max : max as num,
     ));
   }
 }
 
-class _$NumberTooLarge<T> with DiagnosticableTreeMixin implements NumberTooLarge<T> {
+class _$NumberTooLarge<T>
+    with DiagnosticableTreeMixin
+    implements NumberTooLarge<T> {
   const _$NumberTooLarge({@required this.failedValue, @required this.max})
       : assert(failedValue != null),
         assert(max != null);
@@ -699,8 +739,10 @@ class _$NumberTooLarge<T> with DiagnosticableTreeMixin implements NumberTooLarge
     return identical(this, other) ||
         (other is NumberTooLarge<T> &&
             (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality().equals(other.failedValue, failedValue)) &&
-            (identical(other.max, max) || const DeepCollectionEquality().equals(other.max, max)));
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)) &&
+            (identical(other.max, max) ||
+                const DeepCollectionEquality().equals(other.max, max)));
   }
 
   @override
@@ -807,7 +849,8 @@ class _$NumberTooLarge<T> with DiagnosticableTreeMixin implements NumberTooLarge
 }
 
 abstract class NumberTooLarge<T> implements ValueFailure<T> {
-  const factory NumberTooLarge({@required T failedValue, @required num max}) = _$NumberTooLarge<T>;
+  const factory NumberTooLarge({@required T failedValue, @required num max}) =
+      _$NumberTooLarge<T>;
 
   @override
   T get failedValue;
@@ -816,16 +859,20 @@ abstract class NumberTooLarge<T> implements ValueFailure<T> {
   $NumberTooLargeCopyWith<T, NumberTooLarge<T>> get copyWith;
 }
 
-abstract class $ListTooLongCopyWith<T, $Res> implements $ValueFailureCopyWith<T, $Res> {
-  factory $ListTooLongCopyWith(ListTooLong<T> value, $Res Function(ListTooLong<T>) then) =
+abstract class $ListTooLongCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $ListTooLongCopyWith(
+          ListTooLong<T> value, $Res Function(ListTooLong<T>) then) =
       _$ListTooLongCopyWithImpl<T, $Res>;
   @override
   $Res call({T failedValue, int max});
 }
 
-class _$ListTooLongCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+class _$ListTooLongCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
     implements $ListTooLongCopyWith<T, $Res> {
-  _$ListTooLongCopyWithImpl(ListTooLong<T> _value, $Res Function(ListTooLong<T>) _then)
+  _$ListTooLongCopyWithImpl(
+      ListTooLong<T> _value, $Res Function(ListTooLong<T>) _then)
       : super(_value, (v) => _then(v as ListTooLong<T>));
 
   @override
@@ -837,7 +884,8 @@ class _$ListTooLongCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $
     Object max = freezed,
   }) {
     return _then(ListTooLong<T>(
-      failedValue: failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
       max: max == freezed ? _value.max : max as int,
     ));
   }
@@ -872,8 +920,10 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     return identical(this, other) ||
         (other is ListTooLong<T> &&
             (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality().equals(other.failedValue, failedValue)) &&
-            (identical(other.max, max) || const DeepCollectionEquality().equals(other.max, max)));
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)) &&
+            (identical(other.max, max) ||
+                const DeepCollectionEquality().equals(other.max, max)));
   }
 
   @override
@@ -980,7 +1030,8 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
 }
 
 abstract class ListTooLong<T> implements ValueFailure<T> {
-  const factory ListTooLong({@required T failedValue, @required int max}) = _$ListTooLong<T>;
+  const factory ListTooLong({@required T failedValue, @required int max}) =
+      _$ListTooLong<T>;
 
   @override
   T get failedValue;
@@ -989,16 +1040,20 @@ abstract class ListTooLong<T> implements ValueFailure<T> {
   $ListTooLongCopyWith<T, ListTooLong<T>> get copyWith;
 }
 
-abstract class $InvalidEmailCopyWith<T, $Res> implements $ValueFailureCopyWith<T, $Res> {
-  factory $InvalidEmailCopyWith(InvalidEmail<T> value, $Res Function(InvalidEmail<T>) then) =
+abstract class $InvalidEmailCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $InvalidEmailCopyWith(
+          InvalidEmail<T> value, $Res Function(InvalidEmail<T>) then) =
       _$InvalidEmailCopyWithImpl<T, $Res>;
   @override
   $Res call({T failedValue});
 }
 
-class _$InvalidEmailCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+class _$InvalidEmailCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
     implements $InvalidEmailCopyWith<T, $Res> {
-  _$InvalidEmailCopyWithImpl(InvalidEmail<T> _value, $Res Function(InvalidEmail<T>) _then)
+  _$InvalidEmailCopyWithImpl(
+      InvalidEmail<T> _value, $Res Function(InvalidEmail<T>) _then)
       : super(_value, (v) => _then(v as InvalidEmail<T>));
 
   @override
@@ -1009,13 +1064,17 @@ class _$InvalidEmailCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, 
     Object failedValue = freezed,
   }) {
     return _then(InvalidEmail<T>(
-      failedValue: failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
     ));
   }
 }
 
-class _$InvalidEmail<T> with DiagnosticableTreeMixin implements InvalidEmail<T> {
-  const _$InvalidEmail({@required this.failedValue}) : assert(failedValue != null);
+class _$InvalidEmail<T>
+    with DiagnosticableTreeMixin
+    implements InvalidEmail<T> {
+  const _$InvalidEmail({@required this.failedValue})
+      : assert(failedValue != null);
 
   @override
   final T failedValue;
@@ -1038,11 +1097,13 @@ class _$InvalidEmail<T> with DiagnosticableTreeMixin implements InvalidEmail<T> 
     return identical(this, other) ||
         (other is InvalidEmail<T> &&
             (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality().equals(other.failedValue, failedValue)));
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
 
   @override
   $InvalidEmailCopyWith<T, InvalidEmail<T>> get copyWith =>
@@ -1150,16 +1211,20 @@ abstract class InvalidEmail<T> implements ValueFailure<T> {
   $InvalidEmailCopyWith<T, InvalidEmail<T>> get copyWith;
 }
 
-abstract class $ShortPasswordCopyWith<T, $Res> implements $ValueFailureCopyWith<T, $Res> {
-  factory $ShortPasswordCopyWith(ShortPassword<T> value, $Res Function(ShortPassword<T>) then) =
+abstract class $ShortPasswordCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $ShortPasswordCopyWith(
+          ShortPassword<T> value, $Res Function(ShortPassword<T>) then) =
       _$ShortPasswordCopyWithImpl<T, $Res>;
   @override
   $Res call({T failedValue});
 }
 
-class _$ShortPasswordCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+class _$ShortPasswordCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
     implements $ShortPasswordCopyWith<T, $Res> {
-  _$ShortPasswordCopyWithImpl(ShortPassword<T> _value, $Res Function(ShortPassword<T>) _then)
+  _$ShortPasswordCopyWithImpl(
+      ShortPassword<T> _value, $Res Function(ShortPassword<T>) _then)
       : super(_value, (v) => _then(v as ShortPassword<T>));
 
   @override
@@ -1170,13 +1235,17 @@ class _$ShortPasswordCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T,
     Object failedValue = freezed,
   }) {
     return _then(ShortPassword<T>(
-      failedValue: failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
     ));
   }
 }
 
-class _$ShortPassword<T> with DiagnosticableTreeMixin implements ShortPassword<T> {
-  const _$ShortPassword({@required this.failedValue}) : assert(failedValue != null);
+class _$ShortPassword<T>
+    with DiagnosticableTreeMixin
+    implements ShortPassword<T> {
+  const _$ShortPassword({@required this.failedValue})
+      : assert(failedValue != null);
 
   @override
   final T failedValue;
@@ -1199,11 +1268,13 @@ class _$ShortPassword<T> with DiagnosticableTreeMixin implements ShortPassword<T
     return identical(this, other) ||
         (other is ShortPassword<T> &&
             (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality().equals(other.failedValue, failedValue)));
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
 
   @override
   $ShortPasswordCopyWith<T, ShortPassword<T>> get copyWith =>
@@ -1311,16 +1382,20 @@ abstract class ShortPassword<T> implements ValueFailure<T> {
   $ShortPasswordCopyWith<T, ShortPassword<T>> get copyWith;
 }
 
-abstract class $InvalidPhotoUrlCopyWith<T, $Res> implements $ValueFailureCopyWith<T, $Res> {
-  factory $InvalidPhotoUrlCopyWith(InvalidPhotoUrl<T> value, $Res Function(InvalidPhotoUrl<T>) then) =
+abstract class $InvalidPhotoUrlCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $InvalidPhotoUrlCopyWith(
+          InvalidPhotoUrl<T> value, $Res Function(InvalidPhotoUrl<T>) then) =
       _$InvalidPhotoUrlCopyWithImpl<T, $Res>;
   @override
   $Res call({T failedValue});
 }
 
-class _$InvalidPhotoUrlCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+class _$InvalidPhotoUrlCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
     implements $InvalidPhotoUrlCopyWith<T, $Res> {
-  _$InvalidPhotoUrlCopyWithImpl(InvalidPhotoUrl<T> _value, $Res Function(InvalidPhotoUrl<T>) _then)
+  _$InvalidPhotoUrlCopyWithImpl(
+      InvalidPhotoUrl<T> _value, $Res Function(InvalidPhotoUrl<T>) _then)
       : super(_value, (v) => _then(v as InvalidPhotoUrl<T>));
 
   @override
@@ -1331,13 +1406,17 @@ class _$InvalidPhotoUrlCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<
     Object failedValue = freezed,
   }) {
     return _then(InvalidPhotoUrl<T>(
-      failedValue: failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
     ));
   }
 }
 
-class _$InvalidPhotoUrl<T> with DiagnosticableTreeMixin implements InvalidPhotoUrl<T> {
-  const _$InvalidPhotoUrl({@required this.failedValue}) : assert(failedValue != null);
+class _$InvalidPhotoUrl<T>
+    with DiagnosticableTreeMixin
+    implements InvalidPhotoUrl<T> {
+  const _$InvalidPhotoUrl({@required this.failedValue})
+      : assert(failedValue != null);
 
   @override
   final T failedValue;
@@ -1360,11 +1439,13 @@ class _$InvalidPhotoUrl<T> with DiagnosticableTreeMixin implements InvalidPhotoU
     return identical(this, other) ||
         (other is InvalidPhotoUrl<T> &&
             (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality().equals(other.failedValue, failedValue)));
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
 
   @override
   $InvalidPhotoUrlCopyWith<T, InvalidPhotoUrl<T>> get copyWith =>
@@ -1464,7 +1545,8 @@ class _$InvalidPhotoUrl<T> with DiagnosticableTreeMixin implements InvalidPhotoU
 }
 
 abstract class InvalidPhotoUrl<T> implements ValueFailure<T> {
-  const factory InvalidPhotoUrl({@required T failedValue}) = _$InvalidPhotoUrl<T>;
+  const factory InvalidPhotoUrl({@required T failedValue}) =
+      _$InvalidPhotoUrl<T>;
 
   @override
   T get failedValue;
@@ -1472,16 +1554,20 @@ abstract class InvalidPhotoUrl<T> implements ValueFailure<T> {
   $InvalidPhotoUrlCopyWith<T, InvalidPhotoUrl<T>> get copyWith;
 }
 
-abstract class $NotOfObjectTypeCopyWith<T, $Res> implements $ValueFailureCopyWith<T, $Res> {
-  factory $NotOfObjectTypeCopyWith(NotOfObjectType<T> value, $Res Function(NotOfObjectType<T>) then) =
+abstract class $NotOfObjectTypeCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $NotOfObjectTypeCopyWith(
+          NotOfObjectType<T> value, $Res Function(NotOfObjectType<T>) then) =
       _$NotOfObjectTypeCopyWithImpl<T, $Res>;
   @override
   $Res call({T failedValue, Type validType});
 }
 
-class _$NotOfObjectTypeCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+class _$NotOfObjectTypeCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
     implements $NotOfObjectTypeCopyWith<T, $Res> {
-  _$NotOfObjectTypeCopyWithImpl(NotOfObjectType<T> _value, $Res Function(NotOfObjectType<T>) _then)
+  _$NotOfObjectTypeCopyWithImpl(
+      NotOfObjectType<T> _value, $Res Function(NotOfObjectType<T>) _then)
       : super(_value, (v) => _then(v as NotOfObjectType<T>));
 
   @override
@@ -1493,14 +1579,18 @@ class _$NotOfObjectTypeCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<
     Object validType = freezed,
   }) {
     return _then(NotOfObjectType<T>(
-      failedValue: failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
       validType: validType == freezed ? _value.validType : validType as Type,
     ));
   }
 }
 
-class _$NotOfObjectType<T> with DiagnosticableTreeMixin implements NotOfObjectType<T> {
-  const _$NotOfObjectType({@required this.failedValue, @required this.validType})
+class _$NotOfObjectType<T>
+    with DiagnosticableTreeMixin
+    implements NotOfObjectType<T> {
+  const _$NotOfObjectType(
+      {@required this.failedValue, @required this.validType})
       : assert(failedValue != null),
         assert(validType != null);
 
@@ -1528,9 +1618,11 @@ class _$NotOfObjectType<T> with DiagnosticableTreeMixin implements NotOfObjectTy
     return identical(this, other) ||
         (other is NotOfObjectType<T> &&
             (identical(other.failedValue, failedValue) ||
-                const DeepCollectionEquality().equals(other.failedValue, failedValue)) &&
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)) &&
             (identical(other.validType, validType) ||
-                const DeepCollectionEquality().equals(other.validType, validType)));
+                const DeepCollectionEquality()
+                    .equals(other.validType, validType)));
   }
 
   @override
@@ -1637,7 +1729,9 @@ class _$NotOfObjectType<T> with DiagnosticableTreeMixin implements NotOfObjectTy
 }
 
 abstract class NotOfObjectType<T> implements ValueFailure<T> {
-  const factory NotOfObjectType({@required T failedValue, @required Type validType}) = _$NotOfObjectType<T>;
+  const factory NotOfObjectType(
+      {@required T failedValue,
+      @required Type validType}) = _$NotOfObjectType<T>;
 
   @override
   T get failedValue;

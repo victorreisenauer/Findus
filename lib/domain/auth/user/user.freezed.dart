@@ -12,7 +12,10 @@ T _$identity<T>(T value) => value;
 class _$UserTearOff {
   const _$UserTearOff();
 
-  _User call({@required UniqueId id, @required PersonalData personalData, @required EmailAddress emailAddress}) {
+  _User call(
+      {@required UniqueId id,
+      @required PersonalData personalData,
+      @required EmailAddress emailAddress}) {
     return _User(
       id: id,
       personalData: personalData,
@@ -33,8 +36,10 @@ mixin _$User {
 }
 
 abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) = _$UserCopyWithImpl<$Res>;
-  $Res call({UniqueId id, PersonalData personalData, EmailAddress emailAddress});
+  factory $UserCopyWith(User value, $Res Function(User) then) =
+      _$UserCopyWithImpl<$Res>;
+  $Res call(
+      {UniqueId id, PersonalData personalData, EmailAddress emailAddress});
 
   $PersonalDataCopyWith<$Res> get personalData;
 }
@@ -54,8 +59,12 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
-      personalData: personalData == freezed ? _value.personalData : personalData as PersonalData,
-      emailAddress: emailAddress == freezed ? _value.emailAddress : emailAddress as EmailAddress,
+      personalData: personalData == freezed
+          ? _value.personalData
+          : personalData as PersonalData,
+      emailAddress: emailAddress == freezed
+          ? _value.emailAddress
+          : emailAddress as EmailAddress,
     ));
   }
 
@@ -71,16 +80,20 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 }
 
 abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$UserCopyWith(_User value, $Res Function(_User) then) = __$UserCopyWithImpl<$Res>;
+  factory _$UserCopyWith(_User value, $Res Function(_User) then) =
+      __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, PersonalData personalData, EmailAddress emailAddress});
+  $Res call(
+      {UniqueId id, PersonalData personalData, EmailAddress emailAddress});
 
   @override
   $PersonalDataCopyWith<$Res> get personalData;
 }
 
-class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res> implements _$UserCopyWith<$Res> {
-  __$UserCopyWithImpl(_User _value, $Res Function(_User) _then) : super(_value, (v) => _then(v as _User));
+class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
+    implements _$UserCopyWith<$Res> {
+  __$UserCopyWithImpl(_User _value, $Res Function(_User) _then)
+      : super(_value, (v) => _then(v as _User));
 
   @override
   _User get _value => super._value as _User;
@@ -93,14 +106,21 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res> implements _$Us
   }) {
     return _then(_User(
       id: id == freezed ? _value.id : id as UniqueId,
-      personalData: personalData == freezed ? _value.personalData : personalData as PersonalData,
-      emailAddress: emailAddress == freezed ? _value.emailAddress : emailAddress as EmailAddress,
+      personalData: personalData == freezed
+          ? _value.personalData
+          : personalData as PersonalData,
+      emailAddress: emailAddress == freezed
+          ? _value.emailAddress
+          : emailAddress as EmailAddress,
     ));
   }
 }
 
 class _$_User with DiagnosticableTreeMixin implements _User {
-  const _$_User({@required this.id, @required this.personalData, @required this.emailAddress})
+  const _$_User(
+      {@required this.id,
+      @required this.personalData,
+      @required this.emailAddress})
       : assert(id != null),
         assert(personalData != null),
         assert(emailAddress != null);
@@ -131,11 +151,14 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _User &&
-            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.personalData, personalData) ||
-                const DeepCollectionEquality().equals(other.personalData, personalData)) &&
+                const DeepCollectionEquality()
+                    .equals(other.personalData, personalData)) &&
             (identical(other.emailAddress, emailAddress) ||
-                const DeepCollectionEquality().equals(other.emailAddress, emailAddress)));
+                const DeepCollectionEquality()
+                    .equals(other.emailAddress, emailAddress)));
   }
 
   @override
@@ -146,12 +169,15 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       const DeepCollectionEquality().hash(emailAddress);
 
   @override
-  _$UserCopyWith<_User> get copyWith => __$UserCopyWithImpl<_User>(this, _$identity);
+  _$UserCopyWith<_User> get copyWith =>
+      __$UserCopyWithImpl<_User>(this, _$identity);
 }
 
 abstract class _User implements User {
   const factory _User(
-      {@required UniqueId id, @required PersonalData personalData, @required EmailAddress emailAddress}) = _$_User;
+      {@required UniqueId id,
+      @required PersonalData personalData,
+      @required EmailAddress emailAddress}) = _$_User;
 
   @override
   UniqueId get id;

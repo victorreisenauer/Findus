@@ -12,7 +12,8 @@ T _$identity<T>(T value) => value;
 class _$LessonResultTearOff {
   const _$LessonResultTearOff();
 
-  _LessonResult call({@required UniqueId id, @required KtList<ExerciseResult> resultList}) {
+  _LessonResult call(
+      {@required UniqueId id, @required KtList<ExerciseResult> resultList}) {
     return _LessonResult(
       id: id,
       resultList: resultList,
@@ -31,7 +32,8 @@ mixin _$LessonResult {
 }
 
 abstract class $LessonResultCopyWith<$Res> {
-  factory $LessonResultCopyWith(LessonResult value, $Res Function(LessonResult) then) =
+  factory $LessonResultCopyWith(
+          LessonResult value, $Res Function(LessonResult) then) =
       _$LessonResultCopyWithImpl<$Res>;
   $Res call({UniqueId id, KtList<ExerciseResult> resultList});
 }
@@ -50,13 +52,17 @@ class _$LessonResultCopyWithImpl<$Res> implements $LessonResultCopyWith<$Res> {
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
-      resultList: resultList == freezed ? _value.resultList : resultList as KtList<ExerciseResult>,
+      resultList: resultList == freezed
+          ? _value.resultList
+          : resultList as KtList<ExerciseResult>,
     ));
   }
 }
 
-abstract class _$LessonResultCopyWith<$Res> implements $LessonResultCopyWith<$Res> {
-  factory _$LessonResultCopyWith(_LessonResult value, $Res Function(_LessonResult) then) =
+abstract class _$LessonResultCopyWith<$Res>
+    implements $LessonResultCopyWith<$Res> {
+  factory _$LessonResultCopyWith(
+          _LessonResult value, $Res Function(_LessonResult) then) =
       __$LessonResultCopyWithImpl<$Res>;
   @override
   $Res call({UniqueId id, KtList<ExerciseResult> resultList});
@@ -64,7 +70,8 @@ abstract class _$LessonResultCopyWith<$Res> implements $LessonResultCopyWith<$Re
 
 class __$LessonResultCopyWithImpl<$Res> extends _$LessonResultCopyWithImpl<$Res>
     implements _$LessonResultCopyWith<$Res> {
-  __$LessonResultCopyWithImpl(_LessonResult _value, $Res Function(_LessonResult) _then)
+  __$LessonResultCopyWithImpl(
+      _LessonResult _value, $Res Function(_LessonResult) _then)
       : super(_value, (v) => _then(v as _LessonResult));
 
   @override
@@ -77,7 +84,9 @@ class __$LessonResultCopyWithImpl<$Res> extends _$LessonResultCopyWithImpl<$Res>
   }) {
     return _then(_LessonResult(
       id: id == freezed ? _value.id : id as UniqueId,
-      resultList: resultList == freezed ? _value.resultList : resultList as KtList<ExerciseResult>,
+      resultList: resultList == freezed
+          ? _value.resultList
+          : resultList as KtList<ExerciseResult>,
     ));
   }
 }
@@ -110,21 +119,28 @@ class _$_LessonResult with DiagnosticableTreeMixin implements _LessonResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _LessonResult &&
-            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.resultList, resultList) ||
-                const DeepCollectionEquality().equals(other.resultList, resultList)));
+                const DeepCollectionEquality()
+                    .equals(other.resultList, resultList)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id) ^ const DeepCollectionEquality().hash(resultList);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(resultList);
 
   @override
-  _$LessonResultCopyWith<_LessonResult> get copyWith => __$LessonResultCopyWithImpl<_LessonResult>(this, _$identity);
+  _$LessonResultCopyWith<_LessonResult> get copyWith =>
+      __$LessonResultCopyWithImpl<_LessonResult>(this, _$identity);
 }
 
 abstract class _LessonResult implements LessonResult {
-  const factory _LessonResult({@required UniqueId id, @required KtList<ExerciseResult> resultList}) = _$_LessonResult;
+  const factory _LessonResult(
+      {@required UniqueId id,
+      @required KtList<ExerciseResult> resultList}) = _$_LessonResult;
 
   @override
   UniqueId get id;

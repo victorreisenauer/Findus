@@ -16,7 +16,9 @@ class _$LessonResultModelTearOff {
   const _$LessonResultModelTearOff();
 
   _LessonResultModel call(
-      {@required String id, @required List<ExerciseResultModel> resultsList, @required String assignedToUserId}) {
+      {@required String id,
+      @required List<ExerciseResultModel> resultsList,
+      @required String assignedToUserId}) {
     return _LessonResultModel(
       id: id,
       resultsList: resultsList,
@@ -38,12 +40,17 @@ mixin _$LessonResultModel {
 }
 
 abstract class $LessonResultModelCopyWith<$Res> {
-  factory $LessonResultModelCopyWith(LessonResultModel value, $Res Function(LessonResultModel) then) =
+  factory $LessonResultModelCopyWith(
+          LessonResultModel value, $Res Function(LessonResultModel) then) =
       _$LessonResultModelCopyWithImpl<$Res>;
-  $Res call({String id, List<ExerciseResultModel> resultsList, String assignedToUserId});
+  $Res call(
+      {String id,
+      List<ExerciseResultModel> resultsList,
+      String assignedToUserId});
 }
 
-class _$LessonResultModelCopyWithImpl<$Res> implements $LessonResultModelCopyWith<$Res> {
+class _$LessonResultModelCopyWithImpl<$Res>
+    implements $LessonResultModelCopyWith<$Res> {
   _$LessonResultModelCopyWithImpl(this._value, this._then);
 
   final LessonResultModel _value;
@@ -58,22 +65,33 @@ class _$LessonResultModelCopyWithImpl<$Res> implements $LessonResultModelCopyWit
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
-      resultsList: resultsList == freezed ? _value.resultsList : resultsList as List<ExerciseResultModel>,
-      assignedToUserId: assignedToUserId == freezed ? _value.assignedToUserId : assignedToUserId as String,
+      resultsList: resultsList == freezed
+          ? _value.resultsList
+          : resultsList as List<ExerciseResultModel>,
+      assignedToUserId: assignedToUserId == freezed
+          ? _value.assignedToUserId
+          : assignedToUserId as String,
     ));
   }
 }
 
-abstract class _$LessonResultModelCopyWith<$Res> implements $LessonResultModelCopyWith<$Res> {
-  factory _$LessonResultModelCopyWith(_LessonResultModel value, $Res Function(_LessonResultModel) then) =
+abstract class _$LessonResultModelCopyWith<$Res>
+    implements $LessonResultModelCopyWith<$Res> {
+  factory _$LessonResultModelCopyWith(
+          _LessonResultModel value, $Res Function(_LessonResultModel) then) =
       __$LessonResultModelCopyWithImpl<$Res>;
   @override
-  $Res call({String id, List<ExerciseResultModel> resultsList, String assignedToUserId});
+  $Res call(
+      {String id,
+      List<ExerciseResultModel> resultsList,
+      String assignedToUserId});
 }
 
-class __$LessonResultModelCopyWithImpl<$Res> extends _$LessonResultModelCopyWithImpl<$Res>
+class __$LessonResultModelCopyWithImpl<$Res>
+    extends _$LessonResultModelCopyWithImpl<$Res>
     implements _$LessonResultModelCopyWith<$Res> {
-  __$LessonResultModelCopyWithImpl(_LessonResultModel _value, $Res Function(_LessonResultModel) _then)
+  __$LessonResultModelCopyWithImpl(
+      _LessonResultModel _value, $Res Function(_LessonResultModel) _then)
       : super(_value, (v) => _then(v as _LessonResultModel));
 
   @override
@@ -87,20 +105,28 @@ class __$LessonResultModelCopyWithImpl<$Res> extends _$LessonResultModelCopyWith
   }) {
     return _then(_LessonResultModel(
       id: id == freezed ? _value.id : id as String,
-      resultsList: resultsList == freezed ? _value.resultsList : resultsList as List<ExerciseResultModel>,
-      assignedToUserId: assignedToUserId == freezed ? _value.assignedToUserId : assignedToUserId as String,
+      resultsList: resultsList == freezed
+          ? _value.resultsList
+          : resultsList as List<ExerciseResultModel>,
+      assignedToUserId: assignedToUserId == freezed
+          ? _value.assignedToUserId
+          : assignedToUserId as String,
     ));
   }
 }
 
 @JsonSerializable()
 class _$_LessonResultModel implements _LessonResultModel {
-  const _$_LessonResultModel({@required this.id, @required this.resultsList, @required this.assignedToUserId})
+  const _$_LessonResultModel(
+      {@required this.id,
+      @required this.resultsList,
+      @required this.assignedToUserId})
       : assert(id != null),
         assert(resultsList != null),
         assert(assignedToUserId != null);
 
-  factory _$_LessonResultModel.fromJson(Map<String, dynamic> json) => _$_$_LessonResultModelFromJson(json);
+  factory _$_LessonResultModel.fromJson(Map<String, dynamic> json) =>
+      _$_$_LessonResultModelFromJson(json);
 
   @override
   final String id;
@@ -118,11 +144,14 @@ class _$_LessonResultModel implements _LessonResultModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _LessonResultModel &&
-            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.resultsList, resultsList) ||
-                const DeepCollectionEquality().equals(other.resultsList, resultsList)) &&
+                const DeepCollectionEquality()
+                    .equals(other.resultsList, resultsList)) &&
             (identical(other.assignedToUserId, assignedToUserId) ||
-                const DeepCollectionEquality().equals(other.assignedToUserId, assignedToUserId)));
+                const DeepCollectionEquality()
+                    .equals(other.assignedToUserId, assignedToUserId)));
   }
 
   @override
@@ -148,7 +177,8 @@ abstract class _LessonResultModel implements LessonResultModel {
       @required List<ExerciseResultModel> resultsList,
       @required String assignedToUserId}) = _$_LessonResultModel;
 
-  factory _LessonResultModel.fromJson(Map<String, dynamic> json) = _$_LessonResultModel.fromJson;
+  factory _LessonResultModel.fromJson(Map<String, dynamic> json) =
+      _$_LessonResultModel.fromJson;
 
   @override
   String get id;

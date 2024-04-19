@@ -82,6 +82,7 @@ class LessonRepository implements LessonFacade {
   @override
   Future<Option<LessonFailure>> update() async {
     UniqueId userId;
+
     AuthFailure authFailure;
 
     await eitherUserOrFailure.then((either) => either.fold((l) async {

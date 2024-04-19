@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:cloud_functions/cloud_functions.dart";
 import "package:data_connection_checker/data_connection_checker.dart";
 import "package:firebase_auth/firebase_auth.dart";
@@ -22,4 +23,6 @@ abstract class RegisterModules {
   DataConnectionChecker dataConnectionChecker() => DataConnectionChecker();
   @lazySingleton
   CloudFunctions get cloudFunctions => CloudFunctions(region: "europe-west1");
+  @lazySingleton
+  Firestore get firestore => Firestore.instance;
 }

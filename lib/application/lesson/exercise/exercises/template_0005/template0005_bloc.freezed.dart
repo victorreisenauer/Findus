@@ -50,11 +50,13 @@ mixin _$Template0005Event {
 }
 
 abstract class $Template0005EventCopyWith<$Res> {
-  factory $Template0005EventCopyWith(Template0005Event value, $Res Function(Template0005Event) then) =
+  factory $Template0005EventCopyWith(
+          Template0005Event value, $Res Function(Template0005Event) then) =
       _$Template0005EventCopyWithImpl<$Res>;
 }
 
-class _$Template0005EventCopyWithImpl<$Res> implements $Template0005EventCopyWith<$Res> {
+class _$Template0005EventCopyWithImpl<$Res>
+    implements $Template0005EventCopyWith<$Res> {
   _$Template0005EventCopyWithImpl(this._value, this._then);
 
   final Template0005Event _value;
@@ -63,13 +65,16 @@ class _$Template0005EventCopyWithImpl<$Res> implements $Template0005EventCopyWit
 }
 
 abstract class $StartExerciseCopyWith<$Res> {
-  factory $StartExerciseCopyWith(StartExercise value, $Res Function(StartExercise) then) =
+  factory $StartExerciseCopyWith(
+          StartExercise value, $Res Function(StartExercise) then) =
       _$StartExerciseCopyWithImpl<$Res>;
 }
 
-class _$StartExerciseCopyWithImpl<$Res> extends _$Template0005EventCopyWithImpl<$Res>
+class _$StartExerciseCopyWithImpl<$Res>
+    extends _$Template0005EventCopyWithImpl<$Res>
     implements $StartExerciseCopyWith<$Res> {
-  _$StartExerciseCopyWithImpl(StartExercise _value, $Res Function(StartExercise) _then)
+  _$StartExerciseCopyWithImpl(
+      StartExercise _value, $Res Function(StartExercise) _then)
       : super(_value, (v) => _then(v as StartExercise));
 
   @override
@@ -148,13 +153,16 @@ abstract class StartExercise implements Template0005Event {
 }
 
 abstract class $AnswerSelectedCopyWith<$Res> {
-  factory $AnswerSelectedCopyWith(AnswerSelected value, $Res Function(AnswerSelected) then) =
+  factory $AnswerSelectedCopyWith(
+          AnswerSelected value, $Res Function(AnswerSelected) then) =
       _$AnswerSelectedCopyWithImpl<$Res>;
 }
 
-class _$AnswerSelectedCopyWithImpl<$Res> extends _$Template0005EventCopyWithImpl<$Res>
+class _$AnswerSelectedCopyWithImpl<$Res>
+    extends _$Template0005EventCopyWithImpl<$Res>
     implements $AnswerSelectedCopyWith<$Res> {
-  _$AnswerSelectedCopyWithImpl(AnswerSelected _value, $Res Function(AnswerSelected) _then)
+  _$AnswerSelectedCopyWithImpl(
+      AnswerSelected _value, $Res Function(AnswerSelected) _then)
       : super(_value, (v) => _then(v as AnswerSelected));
 
   @override
@@ -246,11 +254,13 @@ const $Template0005State = _$Template0005StateTearOff();
 mixin _$Template0005State {}
 
 abstract class $Template0005StateCopyWith<$Res> {
-  factory $Template0005StateCopyWith(Template0005State value, $Res Function(Template0005State) then) =
+  factory $Template0005StateCopyWith(
+          Template0005State value, $Res Function(Template0005State) then) =
       _$Template0005StateCopyWithImpl<$Res>;
 }
 
-class _$Template0005StateCopyWithImpl<$Res> implements $Template0005StateCopyWith<$Res> {
+class _$Template0005StateCopyWithImpl<$Res>
+    implements $Template0005StateCopyWith<$Res> {
   _$Template0005StateCopyWithImpl(this._value, this._then);
 
   final Template0005State _value;
@@ -259,11 +269,14 @@ class _$Template0005StateCopyWithImpl<$Res> implements $Template0005StateCopyWit
 }
 
 abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) = _$InitialCopyWithImpl<$Res>;
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
+      _$InitialCopyWithImpl<$Res>;
 }
 
-class _$InitialCopyWithImpl<$Res> extends _$Template0005StateCopyWithImpl<$Res> implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then) : super(_value, (v) => _then(v as Initial));
+class _$InitialCopyWithImpl<$Res> extends _$Template0005StateCopyWithImpl<$Res>
+    implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
+      : super(_value, (v) => _then(v as Initial));
 
   @override
   Initial get _value => super._value as Initial;

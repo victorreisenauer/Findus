@@ -74,11 +74,13 @@ mixin _$BaseTemplateEvent {
 }
 
 abstract class $BaseTemplateEventCopyWith<$Res> {
-  factory $BaseTemplateEventCopyWith(BaseTemplateEvent value, $Res Function(BaseTemplateEvent) then) =
+  factory $BaseTemplateEventCopyWith(
+          BaseTemplateEvent value, $Res Function(BaseTemplateEvent) then) =
       _$BaseTemplateEventCopyWithImpl<$Res>;
 }
 
-class _$BaseTemplateEventCopyWithImpl<$Res> implements $BaseTemplateEventCopyWith<$Res> {
+class _$BaseTemplateEventCopyWithImpl<$Res>
+    implements $BaseTemplateEventCopyWith<$Res> {
   _$BaseTemplateEventCopyWithImpl(this._value, this._then);
 
   final BaseTemplateEvent _value;
@@ -87,13 +89,16 @@ class _$BaseTemplateEventCopyWithImpl<$Res> implements $BaseTemplateEventCopyWit
 }
 
 abstract class $ShowHelpPressedCopyWith<$Res> {
-  factory $ShowHelpPressedCopyWith(ShowHelpPressed value, $Res Function(ShowHelpPressed) then) =
+  factory $ShowHelpPressedCopyWith(
+          ShowHelpPressed value, $Res Function(ShowHelpPressed) then) =
       _$ShowHelpPressedCopyWithImpl<$Res>;
 }
 
-class _$ShowHelpPressedCopyWithImpl<$Res> extends _$BaseTemplateEventCopyWithImpl<$Res>
+class _$ShowHelpPressedCopyWithImpl<$Res>
+    extends _$BaseTemplateEventCopyWithImpl<$Res>
     implements $ShowHelpPressedCopyWith<$Res> {
-  _$ShowHelpPressedCopyWithImpl(ShowHelpPressed _value, $Res Function(ShowHelpPressed) _then)
+  _$ShowHelpPressedCopyWithImpl(
+      ShowHelpPressed _value, $Res Function(ShowHelpPressed) _then)
       : super(_value, (v) => _then(v as ShowHelpPressed));
 
   @override
@@ -190,13 +195,16 @@ abstract class ShowHelpPressed implements BaseTemplateEvent {
 }
 
 abstract class $ShowAbortPressedCopyWith<$Res> {
-  factory $ShowAbortPressedCopyWith(ShowAbortPressed value, $Res Function(ShowAbortPressed) then) =
+  factory $ShowAbortPressedCopyWith(
+          ShowAbortPressed value, $Res Function(ShowAbortPressed) then) =
       _$ShowAbortPressedCopyWithImpl<$Res>;
 }
 
-class _$ShowAbortPressedCopyWithImpl<$Res> extends _$BaseTemplateEventCopyWithImpl<$Res>
+class _$ShowAbortPressedCopyWithImpl<$Res>
+    extends _$BaseTemplateEventCopyWithImpl<$Res>
     implements $ShowAbortPressedCopyWith<$Res> {
-  _$ShowAbortPressedCopyWithImpl(ShowAbortPressed _value, $Res Function(ShowAbortPressed) _then)
+  _$ShowAbortPressedCopyWithImpl(
+      ShowAbortPressed _value, $Res Function(ShowAbortPressed) _then)
       : super(_value, (v) => _then(v as ShowAbortPressed));
 
   @override
@@ -293,13 +301,16 @@ abstract class ShowAbortPressed implements BaseTemplateEvent {
 }
 
 abstract class $ShowHelpDismissedCopyWith<$Res> {
-  factory $ShowHelpDismissedCopyWith(ShowHelpDismissed value, $Res Function(ShowHelpDismissed) then) =
+  factory $ShowHelpDismissedCopyWith(
+          ShowHelpDismissed value, $Res Function(ShowHelpDismissed) then) =
       _$ShowHelpDismissedCopyWithImpl<$Res>;
 }
 
-class _$ShowHelpDismissedCopyWithImpl<$Res> extends _$BaseTemplateEventCopyWithImpl<$Res>
+class _$ShowHelpDismissedCopyWithImpl<$Res>
+    extends _$BaseTemplateEventCopyWithImpl<$Res>
     implements $ShowHelpDismissedCopyWith<$Res> {
-  _$ShowHelpDismissedCopyWithImpl(ShowHelpDismissed _value, $Res Function(ShowHelpDismissed) _then)
+  _$ShowHelpDismissedCopyWithImpl(
+      ShowHelpDismissed _value, $Res Function(ShowHelpDismissed) _then)
       : super(_value, (v) => _then(v as ShowHelpDismissed));
 
   @override
@@ -396,13 +407,16 @@ abstract class ShowHelpDismissed implements BaseTemplateEvent {
 }
 
 abstract class $ShowAbortDismissedCopyWith<$Res> {
-  factory $ShowAbortDismissedCopyWith(ShowAbortDismissed value, $Res Function(ShowAbortDismissed) then) =
+  factory $ShowAbortDismissedCopyWith(
+          ShowAbortDismissed value, $Res Function(ShowAbortDismissed) then) =
       _$ShowAbortDismissedCopyWithImpl<$Res>;
 }
 
-class _$ShowAbortDismissedCopyWithImpl<$Res> extends _$BaseTemplateEventCopyWithImpl<$Res>
+class _$ShowAbortDismissedCopyWithImpl<$Res>
+    extends _$BaseTemplateEventCopyWithImpl<$Res>
     implements $ShowAbortDismissedCopyWith<$Res> {
-  _$ShowAbortDismissedCopyWithImpl(ShowAbortDismissed _value, $Res Function(ShowAbortDismissed) _then)
+  _$ShowAbortDismissedCopyWithImpl(
+      ShowAbortDismissed _value, $Res Function(ShowAbortDismissed) _then)
       : super(_value, (v) => _then(v as ShowAbortDismissed));
 
   @override
@@ -499,13 +513,16 @@ abstract class ShowAbortDismissed implements BaseTemplateEvent {
 }
 
 abstract class $ShowStandardScreenCopyWith<$Res> {
-  factory $ShowStandardScreenCopyWith(ShowStandardScreen value, $Res Function(ShowStandardScreen) then) =
+  factory $ShowStandardScreenCopyWith(
+          ShowStandardScreen value, $Res Function(ShowStandardScreen) then) =
       _$ShowStandardScreenCopyWithImpl<$Res>;
 }
 
-class _$ShowStandardScreenCopyWithImpl<$Res> extends _$BaseTemplateEventCopyWithImpl<$Res>
+class _$ShowStandardScreenCopyWithImpl<$Res>
+    extends _$BaseTemplateEventCopyWithImpl<$Res>
     implements $ShowStandardScreenCopyWith<$Res> {
-  _$ShowStandardScreenCopyWithImpl(ShowStandardScreen _value, $Res Function(ShowStandardScreen) _then)
+  _$ShowStandardScreenCopyWithImpl(
+      ShowStandardScreen _value, $Res Function(ShowStandardScreen) _then)
       : super(_value, (v) => _then(v as ShowStandardScreen));
 
   @override
@@ -645,11 +662,13 @@ mixin _$BaseTemplateState {
 }
 
 abstract class $BaseTemplateStateCopyWith<$Res> {
-  factory $BaseTemplateStateCopyWith(BaseTemplateState value, $Res Function(BaseTemplateState) then) =
+  factory $BaseTemplateStateCopyWith(
+          BaseTemplateState value, $Res Function(BaseTemplateState) then) =
       _$BaseTemplateStateCopyWithImpl<$Res>;
 }
 
-class _$BaseTemplateStateCopyWithImpl<$Res> implements $BaseTemplateStateCopyWith<$Res> {
+class _$BaseTemplateStateCopyWithImpl<$Res>
+    implements $BaseTemplateStateCopyWith<$Res> {
   _$BaseTemplateStateCopyWithImpl(this._value, this._then);
 
   final BaseTemplateState _value;
@@ -658,11 +677,14 @@ class _$BaseTemplateStateCopyWithImpl<$Res> implements $BaseTemplateStateCopyWit
 }
 
 abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) = _$InitialCopyWithImpl<$Res>;
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
+      _$InitialCopyWithImpl<$Res>;
 }
 
-class _$InitialCopyWithImpl<$Res> extends _$BaseTemplateStateCopyWithImpl<$Res> implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then) : super(_value, (v) => _then(v as Initial));
+class _$InitialCopyWithImpl<$Res> extends _$BaseTemplateStateCopyWithImpl<$Res>
+    implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
+      : super(_value, (v) => _then(v as Initial));
 
   @override
   Initial get _value => super._value as Initial;
@@ -740,12 +762,15 @@ abstract class Initial implements BaseTemplateState {
 }
 
 abstract class $ShowCopyWith<$Res> {
-  factory $ShowCopyWith(Show value, $Res Function(Show) then) = _$ShowCopyWithImpl<$Res>;
+  factory $ShowCopyWith(Show value, $Res Function(Show) then) =
+      _$ShowCopyWithImpl<$Res>;
   $Res call({bool showHelp, bool showAbort});
 }
 
-class _$ShowCopyWithImpl<$Res> extends _$BaseTemplateStateCopyWithImpl<$Res> implements $ShowCopyWith<$Res> {
-  _$ShowCopyWithImpl(Show _value, $Res Function(Show) _then) : super(_value, (v) => _then(v as Show));
+class _$ShowCopyWithImpl<$Res> extends _$BaseTemplateStateCopyWithImpl<$Res>
+    implements $ShowCopyWith<$Res> {
+  _$ShowCopyWithImpl(Show _value, $Res Function(Show) _then)
+      : super(_value, (v) => _then(v as Show));
 
   @override
   Show get _value => super._value as Show;
@@ -781,9 +806,12 @@ class _$Show implements Show {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Show &&
-            (identical(other.showHelp, showHelp) || const DeepCollectionEquality().equals(other.showHelp, showHelp)) &&
+            (identical(other.showHelp, showHelp) ||
+                const DeepCollectionEquality()
+                    .equals(other.showHelp, showHelp)) &&
             (identical(other.showAbort, showAbort) ||
-                const DeepCollectionEquality().equals(other.showAbort, showAbort)));
+                const DeepCollectionEquality()
+                    .equals(other.showAbort, showAbort)));
   }
 
   @override
@@ -793,7 +821,8 @@ class _$Show implements Show {
       const DeepCollectionEquality().hash(showAbort);
 
   @override
-  $ShowCopyWith<Show> get copyWith => _$ShowCopyWithImpl<Show>(this, _$identity);
+  $ShowCopyWith<Show> get copyWith =>
+      _$ShowCopyWithImpl<Show>(this, _$identity);
 
   @override
   @optionalTypeArgs

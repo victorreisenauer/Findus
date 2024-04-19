@@ -12,7 +12,8 @@ T _$identity<T>(T value) => value;
 class _$ExerciseResultTearOff {
   const _$ExerciseResultTearOff();
 
-  _ExerciseResult call({@required UniqueId id, @required ExerciseResultData data}) {
+  _ExerciseResult call(
+      {@required UniqueId id, @required ExerciseResultData data}) {
     return _ExerciseResult(
       id: id,
       data: data,
@@ -31,12 +32,14 @@ mixin _$ExerciseResult {
 }
 
 abstract class $ExerciseResultCopyWith<$Res> {
-  factory $ExerciseResultCopyWith(ExerciseResult value, $Res Function(ExerciseResult) then) =
+  factory $ExerciseResultCopyWith(
+          ExerciseResult value, $Res Function(ExerciseResult) then) =
       _$ExerciseResultCopyWithImpl<$Res>;
   $Res call({UniqueId id, ExerciseResultData data});
 }
 
-class _$ExerciseResultCopyWithImpl<$Res> implements $ExerciseResultCopyWith<$Res> {
+class _$ExerciseResultCopyWithImpl<$Res>
+    implements $ExerciseResultCopyWith<$Res> {
   _$ExerciseResultCopyWithImpl(this._value, this._then);
 
   final ExerciseResult _value;
@@ -55,16 +58,20 @@ class _$ExerciseResultCopyWithImpl<$Res> implements $ExerciseResultCopyWith<$Res
   }
 }
 
-abstract class _$ExerciseResultCopyWith<$Res> implements $ExerciseResultCopyWith<$Res> {
-  factory _$ExerciseResultCopyWith(_ExerciseResult value, $Res Function(_ExerciseResult) then) =
+abstract class _$ExerciseResultCopyWith<$Res>
+    implements $ExerciseResultCopyWith<$Res> {
+  factory _$ExerciseResultCopyWith(
+          _ExerciseResult value, $Res Function(_ExerciseResult) then) =
       __$ExerciseResultCopyWithImpl<$Res>;
   @override
   $Res call({UniqueId id, ExerciseResultData data});
 }
 
-class __$ExerciseResultCopyWithImpl<$Res> extends _$ExerciseResultCopyWithImpl<$Res>
+class __$ExerciseResultCopyWithImpl<$Res>
+    extends _$ExerciseResultCopyWithImpl<$Res>
     implements _$ExerciseResultCopyWith<$Res> {
-  __$ExerciseResultCopyWithImpl(_ExerciseResult _value, $Res Function(_ExerciseResult) _then)
+  __$ExerciseResultCopyWithImpl(
+      _ExerciseResult _value, $Res Function(_ExerciseResult) _then)
       : super(_value, (v) => _then(v as _ExerciseResult));
 
   @override
@@ -83,7 +90,9 @@ class __$ExerciseResultCopyWithImpl<$Res> extends _$ExerciseResultCopyWithImpl<$
 }
 
 @override
-class _$_ExerciseResult with DiagnosticableTreeMixin implements _ExerciseResult {
+class _$_ExerciseResult
+    with DiagnosticableTreeMixin
+    implements _ExerciseResult {
   const _$_ExerciseResult({@required this.id, @required this.data})
       : assert(id != null),
         assert(data != null);
@@ -111,13 +120,17 @@ class _$_ExerciseResult with DiagnosticableTreeMixin implements _ExerciseResult 
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ExerciseResult &&
-            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.data, data) || const DeepCollectionEquality().equals(other.data, data)));
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id) ^ const DeepCollectionEquality().hash(data);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(data);
 
   @override
   _$ExerciseResultCopyWith<_ExerciseResult> get copyWith =>
@@ -125,7 +138,9 @@ class _$_ExerciseResult with DiagnosticableTreeMixin implements _ExerciseResult 
 }
 
 abstract class _ExerciseResult implements ExerciseResult {
-  const factory _ExerciseResult({@required UniqueId id, @required ExerciseResultData data}) = _$_ExerciseResult;
+  const factory _ExerciseResult(
+      {@required UniqueId id,
+      @required ExerciseResultData data}) = _$_ExerciseResult;
 
   @override
   UniqueId get id;
